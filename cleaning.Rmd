@@ -31,7 +31,9 @@ wbb_rosters23 <- wbb_rosters23 %>%
 
 # Height Cleaning
 
-Describe the source data and what you needed to do to make it usable, and then what you did to make it possible to standardize heights.
+The roster data initially referred to these players' heights in a variety of ways. Some used quotation marks to set off heights, like the 6'0" person writing this, while some used hyphens and other formats. I standardized this by making all of the heights simply use hyphens -- like 6-3 -- as that is the cleanest way to write these heights (without having quotes both inside and outside the integers).
+
+Once all the heights were in this uniformed format, we created new columns to create players' heights via total inches. As we now clearly have both numbers in the heights separated, this allowed us to easily distinguish which numbers represented feet and inches, respectively.
 
 ```{r}
 wbb_rosters23 <- wbb_rosters23 %>% 
