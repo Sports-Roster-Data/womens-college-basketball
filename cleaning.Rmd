@@ -147,7 +147,7 @@ wbb_rosters23 <- wbb_rosters23 %>%
 
 # Hometown/Homestate Cleaning
 
-Describe the original data and what was necessary to clean it up.
+The original data for the homestate column comes from the hometown. We clean up these strings to standardize them before we split them up and use the package 'postmastr' to look for state abbreviations or spellings. If the package finds a state, then great. If not, we check for any weird spellings/abbreviations of state and replace it with a standardized abbreviation. In the end, if the player is from the US, we should have a postal state abbreviation. If not, then we should have <NA>
 
 ```{r}
 wbb_rosters23 <- wbb_rosters23 %>% 
@@ -172,9 +172,6 @@ parsed <- wbb_rosters23 %>%
 
 wbb_rosters23 <- left_join(wbb_rosters23, parsed, by="pm.uid")
 
-wbb_rosters23 %>%
-  filter(is.na(hometown_cleaned))
-
 wbb_rosters23 <- wbb_rosters23 %>% separate(hometown, c('hometown', 'homestate'), sep=',', extra='merge')
 
 wbb_rosters23 <- wbb_rosters23 %>% mutate(homestate=str_trim(homestate), homestate=str_replace(homestate, '\\.', '')) %>%
@@ -186,29 +183,22 @@ wbb_rosters23 <- wbb_rosters23 %>%
   mutate(pm.state = case_when(
     homestate %in% c("Hawai‘i", "O‘ahu") ~ "HI",
     homestate == 'Ken' ~ 'KY',
+    homestate == 'Illnois' ~ 'IL',
+    homestate == 'Republic of Georgia' ~ NA,
     homestate == 'N C.' ~ 'NC',
+    homestate == 'Oreg' ~ 'OR',
     homestate == 'US.V.I.' ~ 'USVI',
+    homestate %in% c('Calfiornia', 'Califonia') ~ 'California',
     TRUE ~ pm.state
   ))
+
 ```
 
 # Foreign Nation Cleaning
 
-Turn this into sentences/more narrative and create an issue for populating the remaining NA country values.
+To extract the player's country, we are using a list of FIBA nations as a starting point. We're splitting the hometown column into multiple columns and seeing if we can detect any of the FIBA nations in the last column, where the country should be. In addition to this, we are also using some conditional statements in our code to handle special cases where the country is either not in FIBA or there are spelling errors/inconsistencies in the way countries are listed. Through this process, if a country is detected in the original hometown string, we fill a new column for the players country.
 
-I'm using the above approach to scrape the FIBA nations and put them in a dataframe. My logic is then as following:
-- Make a new column for country
-- Populate this column with USA when there is a state identified by postmaster
-- Then we are splitting the hometown_cleaned column by a ", " and taking the last item that was split by that function. This should give us either a state or a country, since country is listed as the last item in homewtown cleaned in the format "[city], [state], [country]", or "[city], [country]". Once we have this item we make it its own column "temp"
-- There are a few popular cases where a player's state is listed as a province in Canada. Since there are so many of these occurrences, we will just set the country to Canada when this happens, similar to the U.S. logic
-- Make the country uppercase to standardize
-- Add popular nations that aren't in FIBA to the FIBA dataframe
-- Use this FIBA dataframe as a list of countries to join on "temp"
-- When the "temp" column had a successful join with the FIBA countries, we know that it's a recognized country. Then we will take this "temp" value and put it in "country. Otherwise we'll keep the current country value (Canada, USA)
-- Then we'll drop the columns we don't need anymore
-
---- JETSON
-
+The values left are vast majority cities, either American or not, that are not listed with a state or country. For the sake of being conservative in our assumptions about where a city is located, we leave these rows' countries as <NA>.
 
 ```{r}
 fibaurl <- "https://www.fiba.basketball/rankingwomen"
@@ -222,7 +212,7 @@ wbb_rosters23 <- mutate(wbb_rosters23, country = case_when(!is.na(pm.state) ~ "U
 wbb_rosters23 <- wbb_rosters23 %>% mutate(temp = sapply(strsplit(wbb_rosters23$hometown_cleaned, ", ", fixed=TRUE), tail, 1))
 
 wbb_rosters23 <- mutate(wbb_rosters23, country = case_when(
-  temp %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA') ~ "CANADA", 
+  temp %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA', 'ON CANADA') ~ "CANADA", 
   temp == "THE NETHERLANDS" ~ "NETHERLANDS", 
   temp == "SOUTH AUSTRALIA" ~ "AUSTRALIA",  
   temp == "TASMANIA" ~ "AUSTRALIA",
@@ -238,6 +228,12 @@ wbb_rosters23 <- mutate(wbb_rosters23, country = case_when(
   temp == "HAWKS BAY" ~ "NEW ZEALAND",
   temp == "HAWAI'I" ~ "USA",
   temp == "SWEEDEN" ~ "SWEDEN",
+  temp == "BELARUS" ~ "BELARUS",
+  temp == "BANGLADESH" ~ "BANGLADESH",
+  temp == "FRENCH GUIANA" ~ "FRENCH GUIANA",
+  temp == "REPUBLIC OF GEORGIA" ~ "GEORGIA",
+  temp == "DEMOCRATIC REPUBLIC OF THE CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
+  "EUROPE" %in% temp ~ str_replace(temp, "EUROPE", "")
   TRUE ~ country))
 
 nations_df$Country <- toupper(nations_df$Country)
@@ -257,7 +253,7 @@ wbb_rosters23 <- mutate(wbb_rosters23, country = case_when((!is.na(Worldrank) & 
 
 wbb_rosters23 <- subset(wbb_rosters23, select = -c(Worldrank,Zonerank,IOC,`Current points`, `+/- Rank *`) )
 
-wbb_rosters23 %>% filter(is.na(country))
+wbb_rosters23 %>% filter(is.na(country)) %>% arrange(temp)
 ```
 ```{r}
 wbb_rosters23 %>% group_by(hometown,homestate, country) %>% summarise(count=n()) %>% arrange(desc(count))
