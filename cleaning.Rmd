@@ -100,7 +100,7 @@ https://lsusports.net/sports/wbball/roster/player/alexis-morris/ (5th-year Senio
 We downloaded the existing roster data and standardized the years. We classified everyone as a freshman, sophomore, junior, senior, graduate student, fifth year or sixth year. In addition, we have a separate column called redshirt that has a 1 if the original year classification included a mention of a redshirt.
 
 ```{r}
-years_cleaned <- read_csv("https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/yearscleaned.csv")
+years_cleaned <- read_csv("https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/years_cleaned.csv")
 
 missing_years <- left_join(wbb_rosters23, years_cleaned) %>% rename(year_clean = `year-clean`) %>% filter(is.na(year_clean))
 
@@ -184,11 +184,11 @@ wbb_rosters23 <- wbb_rosters23 %>%
     homestate %in% c("Hawai‘i", "O‘ahu") ~ "HI",
     homestate == 'Ken' ~ 'KY',
     homestate == 'Illnois' ~ 'IL',
-    homestate == 'Republic of Georgia' ~ NA,
+    homestate == 'Republic of Georgia' ~ as.character(NA),
     homestate == 'N C.' ~ 'NC',
     homestate == 'Oreg' ~ 'OR',
     homestate == 'US.V.I.' ~ 'USVI',
-    homestate %in% c('Calfiornia', 'Califonia') ~ 'California',
+    homestate %in% c('Calfiornia', 'Califonia') ~ 'CA',
     TRUE ~ pm.state
   ))
 
@@ -233,7 +233,7 @@ wbb_rosters23 <- mutate(wbb_rosters23, country = case_when(
   temp == "FRENCH GUIANA" ~ "FRENCH GUIANA",
   temp == "REPUBLIC OF GEORGIA" ~ "GEORGIA",
   temp == "DEMOCRATIC REPUBLIC OF THE CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
-  "EUROPE" %in% temp ~ str_replace(temp, "EUROPE", "")
+  "EUROPE" %in% temp ~ str_replace(temp, "EUROPE", ""),
   TRUE ~ country))
 
 nations_df$Country <- toupper(nations_df$Country)

@@ -71,16 +71,16 @@ RS Sr.,1,Senior,1
 RS-Freshman,1,Freshman,1
 Sr.-1L,1,Senior,0
 Sr.-Tr.,1,Senior,0
-R-SR,,Senior,1
-GS,,Graduate Student,0
-R-Senior,,Senior,1
-R-Freshman,,Freshman,1
-R-Sophomore,,Sophomore,1
-5th,,Fifth Year,0
-RS-SR.,,Senior,1
-5th-year Senior,,Fifth Year,0
-6th,,Sixth Year,0
-Rs.,,,1
-5th,,Fifth Year,0
-r-Jr,,Junior,1
-Gs,,Graduate Student,0
+R-SR,NA,Senior,1
+GS,NA,Graduate Student,0
+R-Senior,NA,Senior,1
+R-Freshman,NA,Freshman,1
+R-Sophomore,NA,Sophomore,1
+5th,NA,Fifth Year,0
+RS-SR.,NA,Senior,1
+5th-year Senior,NA,Fifth Year,0
+6th,NA,Sixth Year,0
+Rs.,NA,NA,1
+5th,NA,Fifth Year,0
+r-Jr,NA,Junior,1
+Gs,NA,Graduate Student,0
