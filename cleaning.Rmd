@@ -85,6 +85,8 @@ wbb_rosters23 <- wbb_rosters23 %>% filter(!grepl("6", wbb_rosters23$secondary_po
 
 # Years Cleaning
 
+We downloaded the existing roster data and standardized the years. We classified everyone as a freshman, sophomore, junior, senior, graduate student, fifth year or sixth year. In addition, we have a separate column called redshirt that has a 1 if the original year classification included a mention of a redshirt.
+
 Describe the source data and what you needed to do to make it usable.
 
 12/6 - Need to check NA year_clean and regenerate yearscleaned.csv with new entries from missing_years. Need to update ~33 rows:
