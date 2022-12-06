@@ -3,7 +3,9 @@ Roster data for women's college basketball teams
 
 The `wbb_rosters_2022_23.csv` file in this repository contains information on more than 13,400 NCAA women's basketball players for the 2022-23 season. It is current as of Thursday, December 8, 2022, although rosters do change frequently.
 
-This data is a project of the JOUR479X class, Sports Data Analysis & Visualization, at the Philip Merrill College of Journalism at the University of Maryland. The following students contributed to this project:
+This data is a project of the JOUR479X class, Sports Data Analysis & Visualization, at the Philip Merrill College of Journalism at the University of Maryland. Please credit the Sports Roster Data project at the University of Maryland.
+
+The following students contributed to this project:
 
 * Ben Baruch
 * Michael Charles
