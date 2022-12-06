@@ -1,1 +1,62 @@
+```{r}
+library(tidyverse)
+```
 
+```{r}
+wbb_rosters23 <- read_csv("wbb_rosters_2022_23.csv")
+```
+
+# Data Exploration Section
+
+
+## Which teams/conferences/divisions have the most first-year players? Which have the most seniors & graduate students?
+
+```{r}
+teams_first_year <- wbb_rosters23 %>% filter(year_clean == "Freshman") %>% group_by(team, division) %>% summarise(count = n()) %>% arrange(desc(count))
+#the top three schools are Mary Hardin Baylor, Simpson and Anderson (IN). The D1 school with the most freshmen is Northern Colorado
+
+conference_first_year <- wbb_rosters23 %>% group_by(conference, division) %>% summarise(count = n()) %>% arrange(desc(count))
+#PSAC, RMAC and NSIC have the most freshmen. All are D2 conferences. A10 is the fourth most, and the D1 conference with the most freshmen
+
+division_first_year <- wbb_rosters23 %>% group_by(division) %>% summarise(count = n()) %>% arrange(desc(count))
+#Division 1 had the most first year players, followed by D3 and then D2. 
+
+teams_seniors_grad <- wbb_rosters23 %>% filter(year_clean == "Senior" | year_clean == "Graduate Student" | year_clean == "Sixth Year" | year_clean == "Fifth Year") %>% group_by(team, division) %>% summarise(count = n()) %>% arrange(desc(count))
+#Austin Peay, Seton Hall and Gannon have the most seniors and grad students. The top two are D1 schools.
+
+conference_seniors_grad <- wbb_rosters23 %>% filter(year_clean == "Senior" | year_clean == "Graduate Student" | year_clean == "Sixth Year" | year_clean == "Fifth Year") %>% group_by(conference, division) %>% summarise(count = n()) %>% arrange(desc(count))
+#The ACC, SEC and and A10 have the most seniors and grad students. The top seven conferences by seniors and grad students are all D1 conferences. 
+
+division_seniors_grad <- wbb_rosters23 %>% filter(year_clean == "Senior" | year_clean == "Graduate Student" | year_clean == "Sixth Year" | year_clean == "Fifth Year") %>% group_by(division) %>% summarise(count = n()) %>% arrange(desc(count))
+#D1 has, by far, the most seniors and grad students. D1 has 1.6x times as many seniors and grad students as D3 (second most). 
+```
+
+#Data exploration: which teams/conferences/divisions have the most/least in-state players?
+```{r}
+team_in_state_players_na <- wbb_rosters23  %>%
+  group_by(team, team_state, state_clean, division, conference) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>%
+  filter(is.na(state_clean))
+
+team_recruiting <- wbb_rosters23 %>%
+  group_by(team, team_state, state_clean) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+conference_recruiting <- wbb_rosters23 %>%
+  group_by(conference, team_state, state_clean) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+division_recruiting <- wbb_rosters23 %>%
+  group_by(division, team_state, state_clean) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+wbb_rosters23 %>% group_by(team_state) %>% summarise(count = n_distinct(team)) %>% arrange(desc(count))
+
+wbb_rosters23 %>% filter(is.na(team_state))
+```
+
+In a lot of cases, we got NA as a result for the state_clean. In the cases of the DI schools, this meant that someone was an international player. 
