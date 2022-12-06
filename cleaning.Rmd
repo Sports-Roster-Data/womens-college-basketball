@@ -93,6 +93,7 @@ https://www.valpoathletics.com/wbasketball/roster/2022-23/12601/ilysse-pitts/ (5
 https://csurams.com/sports/womens-basketball/roster/petra-farkas/8848 & https://ysusports.com/sports/womens-basketball/roster/lindsey-mack/6141 (Fifth Year)
 https://lsusports.net/sports/wbball/roster/player/alexis-morris/ (5th-year Senior)
 
+We downloaded the existing roster data and standardized the years. We classified everyone as a freshman, sophomore, junior, senior, graduate student, fifth year or sixth year. In addition, we have a separate column called redshirt that has a 1 if the original year classification included a mention of a redshirt.
 
 ```{r}
 years_cleaned <- read_csv("https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/yearscleaned.csv")
@@ -100,6 +101,8 @@ years_cleaned <- read_csv("https://raw.githubusercontent.com/dwillis/jour479x_fa
 missing_years <- left_join(wbb_rosters23, years_cleaned) %>% rename(year_clean = `year-clean`) %>% filter(is.na(year_clean))
 
 wbb_rosters23 <- left_join(wbb_rosters23, years_cleaned) %>% rename(year_clean = `year-clean`) %>% select(-count)
+
+write_csv(years_cleaned, "years_cleaned.csv")
 
 ```
 
