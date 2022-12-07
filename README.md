@@ -18,7 +18,7 @@ The following students contributed to this project:
 
 This project was supervised and edited by Derek Willis, lecturer in data and computational journalism.
 
-The original roster information is drawn from team websites, mostly via [scrapers written in Python](https://github.com/dwillis/wbb/blob/master/ncaa/rosters.py). That information has been augmented by individual research and editing. For example, a transfer player's high school may not be noted on her current team, but it could be found on her previous team's roster.
+The original roster information is drawn from team websites, mostly via [scrapers written in Python](https://github.com/dwillis/wbb/blob/master/ncaa/rosters.py). That information has been augmented by individual research and editing. For example, a transfer player's high school may not be noted on her current team, but it could be found on her previous team's roster. Team information comes from [the NCAA](https://stats.ncaa.org/rankings?academic_year=2023&sport_code=WBB).
 
 The roster data in this repository has been cleaned and standardized by student contributors using R; a description of that process and the code is available in [this RMarkdown Notebook](cleaning.Rmd). Some basic exploratory analysis can be seen in [this notebook](exploration.Rmd).
 
@@ -37,4 +37,4 @@ We have *not* completely standardized the following data, at least not yet:
 * Previous School
 * Country
 
-We welcome comments, corrections and questions. Please use [this repository's Issues](https://github.com/Sports-Roster-Data/womens-college-basketball/issues) to let us know about any errors or omissions.
+We welcome comments, corrections and questions. Please use [this repository's Issues](https://github.com/Sports-Roster-Data/womens-college-basketball/issues) to let us know about any errors or omissions, or submit a pull request with any changes.
