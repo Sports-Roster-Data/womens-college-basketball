@@ -105,9 +105,6 @@ years_cleaned <- read_csv("https://raw.githubusercontent.com/dwillis/jour479x_fa
 missing_years <- left_join(wbb_rosters23, years_cleaned) %>% rename(year_clean = `year-clean`) %>% filter(is.na(year_clean))
 
 wbb_rosters23 <- left_join(wbb_rosters23, years_cleaned) %>% rename(year_clean = `year-clean`) %>% select(-count)
-
-write_csv(years_cleaned, "years_cleaned.csv")
-
 ```
 
 # Previous School Cleaning
