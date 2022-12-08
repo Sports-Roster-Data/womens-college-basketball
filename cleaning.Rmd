@@ -206,35 +206,12 @@ nations <- fibaurl %>%
   read_html() %>%
   html_nodes(xpath = '//*[@id="fiba_ranking_table_wrapper"]/table') %>%
   html_table()
-nations_df <- nations[[1]]
+
+nations_df <- nations[[1]] %>% filter(Country != "Puerto Rico") # Puerto Rico is a FIBA nation but also part of the USA
+
 wbb_rosters23 <- mutate(wbb_rosters23, country = case_when(!is.na(pm.state) ~ "USA"))
 
 wbb_rosters23 <- wbb_rosters23 %>% mutate(temp = sapply(strsplit(wbb_rosters23$hometown_cleaned, ", ", fixed=TRUE), tail, 1))
-
-wbb_rosters23 <- mutate(wbb_rosters23, country = case_when(
-  temp %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA', 'ON CANADA') ~ "CANADA", 
-  temp == "THE NETHERLANDS" ~ "NETHERLANDS", 
-  temp == "SOUTH AUSTRALIA" ~ "AUSTRALIA",  
-  temp == "TASMANIA" ~ "AUSTRALIA",
-  temp == "AUSTRAILA" ~ "AUSTRALIA",
-  temp == "WESTERN AUSTRALIA" ~ "AUSTRALIA",
-  temp == "BOSNIA" ~ "BOSNIA AND HERZEGOVINA",
-  temp == "MACEDONIA" ~ "MACEDONIA",
-  temp == "TAIWAN" ~ "TAIWAN",
-  temp == "PAPUA NEW GUINEA" ~ "PAPUA NEW GUINEA",
-  temp == "WEST AFRICA" ~ "SENEGAL",
-  temp == "UNITED KINGDOM" ~ "ENGLAND",
-  temp == "UK" ~ "ENGLAND",
-  temp == "HAWKS BAY" ~ "NEW ZEALAND",
-  temp == "HAWAI'I" ~ "USA",
-  temp == "SWEEDEN" ~ "SWEDEN",
-  temp == "BELARUS" ~ "BELARUS",
-  temp == "BANGLADESH" ~ "BANGLADESH",
-  temp == "FRENCH GUIANA" ~ "FRENCH GUIANA",
-  temp == "REPUBLIC OF GEORGIA" ~ "GEORGIA",
-  temp == "DEMOCRATIC REPUBLIC OF THE CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
-  "EUROPE" %in% temp ~ str_replace(temp, "EUROPE", ""),
-  TRUE ~ country))
 
 nations_df$Country <- toupper(nations_df$Country)
 
@@ -251,13 +228,32 @@ wbb_rosters23 <- left_join(wbb_rosters23, nations_df, by=c('temp'='Country'))
 
 wbb_rosters23 <- mutate(wbb_rosters23, country = case_when((!is.na(Worldrank) & is.na(country)) ~ temp, is.na(Worldrank) &  !is.na(country) ~ country, country == "USA" ~ "USA"))
 
-wbb_rosters23 <- subset(wbb_rosters23, select = -c(Worldrank,Zonerank,IOC,`Current points`, `+/- Rank *`) )
+wbb_rosters23 <- subset(wbb_rosters23, select = -c(Worldrank,Zonerank,IOC,`Current points`, `+/- Rank *`))
 
-wbb_rosters23 %>% filter(is.na(country)) %>% arrange(temp)
-```
-```{r}
-wbb_rosters23 %>% group_by(hometown,homestate, country) %>% summarise(count=n()) %>% arrange(desc(count))
-wbb_rosters23 <- subset(wbb_rosters23, select = -c(temp) )
+wbb_rosters23 <- wbb_rosters23 %>% 
+  mutate(country = ifelse(country == pm.state, 'USA', country)) %>% 
+  mutate(country = ifelse(country == temp, 'USA', country)) %>% 
+  mutate(country = ifelse(is.na(country), temp, country))
+
+
+wbb_rosters23 <- wbb_rosters23 %>% 
+  mutate(country = case_when(
+    country %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA', 'ON CANADA') ~ "CANADA", 
+    country %in% c('VICTORIA', 'SOUTH AUSTRALIA', 'WESTERN AUSTRALIA', 'TASMANIA', 'AUSTRAILA', 'AU') ~ 'AUSTRALIA',
+    country == 'BARCELONA' ~ 'SPAIN',
+    country == "HAWAI'I" ~ 'USA',
+    country == "SWEEDEN" ~ "SWEDEN",
+    country == "ENGLAND" ~ "UNITED KINGDOM",
+    country == "UK" ~ "UNITED KINGDOM",
+    country == "WEST AFRICA" ~ "SENEGAL",
+    country == 'BOSNIA' ~ 'BOSNIA AND HERZEGOVINA',
+    TRUE ~ country
+  ))
+
+wbb_rosters23 %>% group_by(country) %>% summarize(count = n()) %>% arrange(country)
+
+# drop temp
+#wbb_rosters23 <- subset(wbb_rosters23, select = -c(temp) )
 ```
 
 # Rename Cleaned Columns, Remove Unneeded Columns and Write Out Final CSV File
@@ -266,7 +262,7 @@ wbb_rosters23 <- subset(wbb_rosters23, select = -c(temp) )
 wbb_rosters23 <- subset(wbb_rosters23, select = -c(pm.id, pm.uid, pm.type, pm.address))
 
 wbb_rosters23 <- wbb_rosters23 %>% 
-  rename(height_clean = height, position_clean = position_full, previous_school_clean = previous_school, hometown_clean = hometown_cleaned, state_clean = pm.state, foreign_nation_clean = country)
+  rename(height_clean = height, position_clean = position_full, previous_school_clean = previous_school, hometown_clean = hometown_cleaned, state_clean = pm.state, country_clean = country)
 
 write_csv(wbb_rosters23, "wbb_rosters_2022_23.csv")
 ```

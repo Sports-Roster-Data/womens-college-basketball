@@ -8,6 +8,20 @@ wbb_rosters23 <- read_csv("wbb_rosters_2022_23.csv")
 
 # Data Exploration Section
 
+## Which countries outside the U.S. have supplied the most players?
+
+Spain, Australia and Canada provide the most non-U.S. players by far.
+
+```{r}
+wbb_rosters23 %>% 
+  filter(country_clean != 'USA') %>% 
+  group_by(country_clean) %>% 
+  summarize(count = n()) %>% 
+  arrange(desc(count))
+```
+
+
+
 
 ## Which teams/conferences/divisions have the most first-year players? Which have the most seniors & graduate students?
 
