@@ -14,7 +14,7 @@ wbb_rosters23 <- read_csv("https://raw.githubusercontent.com/dwillis/wbb-rosters
 # Teams That Have Roster Data
 
 ```{r, message=FALSE}
-teams <- read_csv("https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/teams.csv") %>% select(-url, -twitter, -stats_name, -private)
+teams <- read_csv("https://raw.githubusercontent.com/dwillis/wbb-rosters/main/teams.csv") %>% select(-url, -twitter, -stats_name, -private)
 
 roster_teams <- wbb_rosters23 %>% distinct(ncaa_id) %>% mutate(has_roster = 1)
 
@@ -88,14 +88,6 @@ wbb_rosters23 <- wbb_rosters23 %>% filter(!grepl("6", wbb_rosters23$secondary_po
 We downloaded the existing roster data and standardized the years. We classified everyone as a freshman, sophomore, junior, senior, graduate student, fifth year or sixth year. In addition, we have a separate column called redshirt that has a 1 if the original year classification included a mention of a redshirt.
 
 Describe the source data and what you needed to do to make it usable.
-
-12/6 - Need to check NA year_clean and regenerate yearscleaned.csv with new entries from missing_years. Need to update ~33 rows:
-
-Liberty
-https://golobos.com/sports/wbball/roster/season/2022-23/player/amaya-brown/ (RS-Sr.)
-https://www.valpoathletics.com/wbasketball/roster/2022-23/12601/ilysse-pitts/ (5th)
-https://csurams.com/sports/womens-basketball/roster/petra-farkas/8848 & https://ysusports.com/sports/womens-basketball/roster/lindsey-mack/6141 (Fifth Year)
-https://lsusports.net/sports/wbball/roster/player/alexis-morris/ (5th-year Senior)
 
 We downloaded the existing roster data and standardized the years. We classified everyone as a freshman, sophomore, junior, senior, graduate student, fifth year or sixth year. In addition, we have a separate column called redshirt that has a 1 if the original year classification included a mention of a redshirt.
 
@@ -250,7 +242,7 @@ wbb_rosters23 <- wbb_rosters23 %>%
 wbb_rosters23 %>% group_by(country) %>% summarize(count = n()) %>% arrange(country)
 
 # drop temp
-#wbb_rosters23 <- subset(wbb_rosters23, select = -c(temp) )
+wbb_rosters23 <- subset(wbb_rosters23, select = -c(temp) )
 ```
 
 # Rename Cleaned Columns, Remove Unneeded Columns and Write Out Final CSV File
