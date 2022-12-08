@@ -253,6 +253,6 @@ wbb_rosters23 <- subset(wbb_rosters23, select = -c(pm.id, pm.uid, pm.type, pm.ad
 wbb_rosters23 <- wbb_rosters23 %>% 
   rename(height_clean = height, position_clean = position_full, previous_school_clean = previous_school, hometown_clean = hometown_cleaned, state_clean = pm.state, country_clean = country)
 
-write_csv(wbb_rosters23, "wbb_rosters_2022_23.csv")
+write_csv(wbb_rosters23, "wbb_rosters_2022_23.csv", quote="all", na="")
 ```
 
