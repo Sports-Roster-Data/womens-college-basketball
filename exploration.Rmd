@@ -19,6 +19,27 @@ wbb_rosters23 %>%
   summarize(count = n()) %>% 
   arrange(desc(count))
 ```
+More than 25 teams have at least seven non-U.S. players on their rosters, San Francisco has 11 and Portland and UT-Tyler have 10 each (Simon Fraser has 11 but it is located in Canada).
+
+```{r}
+wbb_rosters23 %>% 
+  filter(country_clean != 'USA') %>% 
+  group_by(team) %>% 
+  summarize(count = n()) %>% 
+  arrange(desc(count))
+```
+
+
+
+Of the 111 teams that have at least one Australian player, 37 of them have two or more on their roster. Portland WBB has _seven_ Aussies.
+
+```{r}
+wbb_rosters23 %>% 
+  filter(country_clean == 'AUSTRALIA') %>% 
+  group_by(team) %>% 
+  summarize(count = n()) %>% 
+  arrange(desc(count))
+```
 
 
 
