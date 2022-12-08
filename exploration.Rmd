@@ -89,6 +89,21 @@ division_recruiting <- wbb_rosters23 %>%
   summarise(count = n()) %>%
   arrange(desc(count))
 
+total_players <- wbb_rosters23 %>% 
+  group_by(ncaa_id, team) %>% 
+  summarize(all_players = n()) %>% 
+  arrange(desc(all_players))
+
+in_state_players <- wbb_rosters23 %>% 
+  filter(team_state == state_clean) %>% 
+  group_by(ncaa_id, team) %>% 
+  summarize(in_state_players = n()) %>% 
+  arrange(desc(in_state_players))
+
+pct_in_state <- total_players %>% 
+  left_join(in_state_players) %>% 
+  mutate(in_state_players = ifelse(is.na(in_state_players),0, in_state_players))
+
 wbb_rosters23 %>% group_by(team_state) %>% summarise(count = n_distinct(team)) %>% arrange(desc(count))
 
 wbb_rosters23 %>% filter(is.na(team_state))
