@@ -248,7 +248,7 @@ wbb_rosters23 <- subset(wbb_rosters23, select = -c(temp) )
 # Rename Cleaned Columns, Remove Unneeded Columns and Write Out Final CSV File
 
 ```{r}
-wbb_rosters23 <- subset(wbb_rosters23, select = -c(pm.id, pm.uid, pm.type, pm.address))
+wbb_rosters23 <- subset(wbb_rosters23, select = -c(pm.id, pm.uid, pm.type, pm.address, has_roster, roster))
 
 wbb_rosters23 <- wbb_rosters23 %>% 
   rename(height_clean = height, position_clean = position_full, previous_school_clean = previous_school, hometown_clean = hometown_cleaned, state_clean = pm.state, country_clean = country)
