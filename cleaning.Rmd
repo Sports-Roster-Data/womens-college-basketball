@@ -26,6 +26,7 @@ teams_without_rosters <- teams %>%
   filter(!is.na(division))
 
 wbb_rosters23 <- wbb_rosters23 %>% 
+  mutate(team = str_squish(team)) %>% 
   left_join(teams, by=c("ncaa_id", "team")) 
 ```
 

@@ -13,11 +13,26 @@ wbb_rosters23 <- read_csv("wbb_rosters_2022_23.csv")
 Spain, Australia and Canada provide the most non-U.S. players by far.
 
 ```{r}
-wbb_rosters23 %>% 
+non_us <- wbb_rosters23 %>% 
   filter(country_clean != 'USA') %>% 
   group_by(country_clean) %>% 
   summarize(count = n()) %>% 
   arrange(desc(count))
+
+non_us_division <- wbb_rosters23 %>% 
+  filter(country_clean != 'USA') %>% 
+  group_by(country_clean, division) %>% 
+  summarize(players = n()) %>% 
+  pivot_wider(names_from=division, values_from = players) %>% 
+  replace(is.na(.), 0) %>% 
+  mutate(total = I + II + III) %>% 
+  mutate(pct_d1 = I/total*100)
+
+non_us_team <- wbb_rosters23 %>% 
+  filter(country_clean != 'USA') %>% 
+  group_by(team) %>% 
+  summarize(players = n()) %>% 
+  arrange(desc(players))
 ```
 More than 25 teams have at least seven non-U.S. players on their rosters, San Francisco has 11 and Portland and UT-Tyler have 10 each (Simon Fraser has 11 but it is located in Canada).
 
@@ -110,3 +125,8 @@ wbb_rosters23 %>% filter(is.na(team_state))
 ```
 
 In a lot of cases, we got NA as a result for the state_clean. In the cases of the DI schools, this meant that someone was an international player. 
+
+```{r}
+no_hs <- wbb_rosters23 %>% filter(is.na(high_school), is.na(hs_clean), country_clean == 'USA')
+```
+
