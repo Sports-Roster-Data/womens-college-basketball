@@ -71,16 +71,46 @@ RS Sr.,1,Senior,1
 RS-Freshman,1,Freshman,1
 Sr.-1L,1,Senior,0
 Sr.-Tr.,1,Senior,0
-R-SR,NA,Senior,1
-GS,NA,Graduate Student,0
-R-Senior,NA,Senior,1
-R-Freshman,NA,Freshman,1
-R-Sophomore,NA,Sophomore,1
-5th,NA,Fifth Year,0
-RS-SR.,NA,Senior,1
-5th-year Senior,NA,Fifth Year,0
-6th,NA,Sixth Year,0
-Rs.,NA,NA,1
-5th,NA,Fifth Year,0
-r-Jr,NA,Junior,1
-Gs,NA,Graduate Student,0
+R-SR,,Senior,1
+GS,,Graduate Student,0
+R-Senior,,Senior,1
+R-Freshman,,Freshman,1
+R-Sophomore,,Sophomore,1
+5th,,Fifth Year,0
+RS-SR.,,Senior,1
+5th-year Senior,,Fifth Year,0
+6th,,Sixth Year,0
+Rs.,,,1
+r-Jr,,Junior,1
+Gs,,Graduate Student,0
+RS-Sr.,,Senior,1
+Grad Student,,Graduate Student,0
+Gs.,,Graduate Student,0
+GS.,,Graduate Student,0
+RS Jr.,,Junior,1
+RFr,,Freshman,1
+COVID Senior,,Senior,0
+RSo.,,Sophomore,1
+Redshirt-Sophomore,,Sophomore,1
+Redshirt-Senior,,Senior,1
+RS Senior,,Senior,1
+5th Yr,,Senior,0
+Senior+,,Senior,0
+RS SR,,Senior,1
+RSo,,Sophomore,1
+RSr,,Senior,1
+RSr.,,Senior,1
+r-So.,,Sophomore,1
+Jr.-2L,,Junior,0
+So.-Tr.,,Sophomore,0
+Jr.-R,,Junior,1
+Graduate Transfer,,Graduate Student,1
+RS-Senior,,Senior,1
+RS-Junior,,Junior,1
+Grad,,Graduate Student,1
+RSr*,,Senior,1
+JR.,,Junior,1
+FR.,,Freshman,1
+GR.,,Graduate Student,0
+SR.,,Senior,1
+SO.,,Sophomore,1
