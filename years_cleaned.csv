@@ -104,13 +104,28 @@ r-So.,,Sophomore,1
 Jr.-2L,,Junior,0
 So.-Tr.,,Sophomore,0
 Jr.-R,,Junior,1
-Graduate Transfer,,Graduate Student,1
+Graduate Transfer,,Graduate Student,0
 RS-Senior,,Senior,1
 RS-Junior,,Junior,1
-Grad,,Graduate Student,1
+Grad,,Graduate Student,0
 RSr*,,Senior,1
-JR.,,Junior,1
-FR.,,Freshman,1
+JR.,,Junior,0
+FR.,,Freshman,0
 GR.,,Graduate Student,0
-SR.,,Senior,1
-SO.,,Sophomore,1
+SR.,,Senior,0
+SO.,,Sophomore,0
+r-SO,,Sophomore,1
+r-FR,,Freshman,1
+r-JR,,Junior,1
+Rs.,,Freshman,1
+R-Fifth,,Fifth Year,1
+R-FR.,,Freshman,1
+5th Year Sr.,,Fifth Year,0
+5TH,,Fifth Year,0
+RS-So.,,Sophomore,1
+RS-Sophomore,,Sophomore,1
+So. - RS,,Sophomore,1
+Sr.-5,,Senior,0
+Sr./Jr.,,Senior,0
+Sr.+,,Senior,0
+Super-Senior,,Senior,0
