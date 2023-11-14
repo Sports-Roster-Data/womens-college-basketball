@@ -8,15 +8,15 @@ library(rvest)
 # Load the Source Data
 
 ```{r, message=FALSE}
-wbb_rosters23 <- read_csv("https://raw.githubusercontent.com/dwillis/wbb-rosters/main/rosters_2022-23.csv")
+wbb_rosters <- read_csv("~/code/wbb-rosters/rosters_2023-24.csv")
 ```
 
 # Teams That Have Roster Data
 
 ```{r, message=FALSE}
-teams <- read_csv("https://raw.githubusercontent.com/dwillis/wbb-rosters/main/teams.csv") %>% select(-url, -twitter, -stats_name, -private)
+teams <- read_csv("https://raw.githubusercontent.com/Sports-Roster-Data/womens-college-basketball/main/teams.csv") %>% select(-url, -twitter, -stats_name, -private)
 
-roster_teams <- wbb_rosters23 %>% distinct(ncaa_id) %>% mutate(has_roster = 1)
+roster_teams <- wbb_rosters %>% distinct(ncaa_id) %>% mutate(has_roster = 1)
 
 teams <- teams %>% 
   left_join(roster_teams) %>% mutate(roster = has_roster)
@@ -25,7 +25,7 @@ teams_without_rosters <- teams %>%
   filter(is.na(roster)) %>% 
   filter(!is.na(division))
 
-wbb_rosters23 <- wbb_rosters23 %>% 
+wbb_rosters <- wbb_rosters %>% 
   mutate(team = str_squish(team)) %>% 
   left_join(teams, by=c("ncaa_id", "team")) 
 ```
@@ -37,7 +37,7 @@ The roster data initially referred to these players' heights in a variety of way
 Once all the heights were in this uniformed format, we created new columns to create players' heights via total inches. As we now clearly have both numbers in the heights separated, this allowed us to easily distinguish which numbers represented feet and inches, respectively.
 
 ```{r}
-wbb_rosters23 <- wbb_rosters23 %>% 
+wbb_rosters <- wbb_rosters %>% 
   mutate(height_clean = str_replace(height, "'", '-')) %>% 
   mutate(height_clean = str_replace(height_clean, "’", '-')) %>% 
   mutate(height_clean = str_replace(height_clean, "''", '')) %>% 
@@ -56,31 +56,31 @@ positions_cleaned <- read_csv("https://raw.githubusercontent.com/dwillis/jour479
   select(-count)
 
 # replace Ball State's position column with NAs
-wbb_rosters23 <- wbb_rosters23 %>% mutate(position = ifelse(ncaa_id == 47, NA, position))
+wbb_rosters <- wbb_rosters %>% mutate(position = ifelse(ncaa_id == 47, NA, position))
 
 # need to fix rows where the height is also in the position column
 # in many of those cases we used information from biography pages and/or previous teams or news coverage to assign the position.
 
-position_fixes <- wbb_rosters23 %>% left_join(positions_cleaned, by = "position") %>% filter(position == height)
+position_fixes <- wbb_rosters %>% left_join(positions_cleaned, by = "position") %>% filter(position == height)
 
-wbb_rosters23 <- wbb_rosters23 %>% left_join(positions_cleaned, by = "position")
+wbb_rosters <- wbb_rosters %>% left_join(positions_cleaned, by = "position")
 
-wbb_rosters23 %>% distinct(position_clean)
+wbb_rosters %>% distinct(position_clean)
 
 ## Primary/Secondary positions based on order of position_clean
 
-wbb_rosters23 <- wbb_rosters23 %>% mutate(position_full = position_clean)
-wbb_rosters23 <- wbb_rosters23 %>% mutate(position_clean = na_if(position_clean, "N/A"))
-wbb_rosters23 <- wbb_rosters23 %>% separate(position_clean, c('primary_position', 'secondary_position'), sep='/', extra='merge')
-wbb_rosters23 <- wbb_rosters23 %>% mutate(primary_position = case_when((primary_position == "G") ~ "Guard", (primary_position == "C") ~ "Center", (primary_position == "F") ~ "Forward", TRUE ~ primary_position)) 
-wbb_rosters23 <- wbb_rosters23 %>% mutate(secondary_position = case_when((secondary_position == "G") ~ "Guard", (secondary_position == "C") ~ "Center", (secondary_position == "F") ~ "Forward", TRUE ~ secondary_position))
-wbb_rosters23 <- wbb_rosters23 %>% mutate(primary_position = case_when((primary_position == "G") ~ "Guard", (primary_position == "C") ~ "Center", (primary_position == "F") ~ "Forward", TRUE ~ primary_position))
-wbb_rosters23 <- wbb_rosters23 %>% filter(!grepl("'", wbb_rosters23$primary_position))
-wbb_rosters23 <- wbb_rosters23 %>% filter(!grepl("5", wbb_rosters23$primary_position))
-wbb_rosters23 <- wbb_rosters23 %>% filter(!grepl("6", wbb_rosters23$primary_position))
-wbb_rosters23 <- wbb_rosters23 %>% filter(!grepl("'", wbb_rosters23$secondary_position))
-wbb_rosters23 <- wbb_rosters23 %>% filter(!grepl("5", wbb_rosters23$secondary_position))
-wbb_rosters23 <- wbb_rosters23 %>% filter(!grepl("6", wbb_rosters23$secondary_position))
+wbb_rosters <- wbb_rosters %>% mutate(position_full = position_clean)
+wbb_rosters <- wbb_rosters %>% mutate(position_clean = na_if(position_clean, "N/A"))
+wbb_rosters <- wbb_rosters %>% separate(position_clean, c('primary_position', 'secondary_position'), sep='/', extra='merge')
+wbb_rosters <- wbb_rosters %>% mutate(primary_position = case_when((primary_position == "G") ~ "Guard", (primary_position == "C") ~ "Center", (primary_position == "F") ~ "Forward", TRUE ~ primary_position)) 
+wbb_rosters <- wbb_rosters %>% mutate(secondary_position = case_when((secondary_position == "G") ~ "Guard", (secondary_position == "C") ~ "Center", (secondary_position == "F") ~ "Forward", TRUE ~ secondary_position))
+wbb_rosters <- wbb_rosters %>% mutate(primary_position = case_when((primary_position == "G") ~ "Guard", (primary_position == "C") ~ "Center", (primary_position == "F") ~ "Forward", TRUE ~ primary_position))
+wbb_rosters <- wbb_rosters %>% filter(!grepl("'", wbb_rosters$primary_position))
+wbb_rosters <- wbb_rosters %>% filter(!grepl("5", wbb_rosters$primary_position))
+wbb_rosters <- wbb_rosters %>% filter(!grepl("6", wbb_rosters$primary_position))
+wbb_rosters <- wbb_rosters %>% filter(!grepl("'", wbb_rosters$secondary_position))
+wbb_rosters <- wbb_rosters %>% filter(!grepl("5", wbb_rosters$secondary_position))
+wbb_rosters <- wbb_rosters %>% filter(!grepl("6", wbb_rosters$secondary_position))
 
 ```
 
@@ -93,26 +93,26 @@ Describe the source data and what you needed to do to make it usable.
 We downloaded the existing roster data and standardized the years. We classified everyone as a freshman, sophomore, junior, senior, graduate student, fifth year or sixth year. In addition, we have a separate column called redshirt that has a 1 if the original year classification included a mention of a redshirt.
 
 ```{r}
-years_cleaned <- read_csv("https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/years_cleaned.csv")
+years_cleaned <- read_csv("years_cleaned.csv")
 
-missing_years <- left_join(wbb_rosters23, years_cleaned) %>% rename(year_clean = `year-clean`) %>% filter(is.na(year_clean))
+missing_years <- left_join(wbb_rosters, years_cleaned) %>% rename(year_clean = `year-clean`) %>% filter(is.na(year_clean))
 
-wbb_rosters23 <- left_join(wbb_rosters23, years_cleaned) %>% rename(year_clean = `year-clean`) %>% select(-count)
+wbb_rosters <- left_join(wbb_rosters, years_cleaned) %>% rename(year_clean = `year-clean`) %>% select(-count)
 ```
 
 # Previous School Cleaning
 
-Some records list the player's high school in the previous school column. We filter those out and turn it into a list, then update `wbb_rosters23` to replace hs_clean with the previous school for those rows.
+Some records list the player's high school in the previous school column. We filter those out and turn it into a list, then update `wbb_rosters` to replace hs_clean with the previous school for those rows.
 
 ```{r}
-hs_wbb <- wbb_rosters23 %>%
+hs_wbb <- wbb_rosters %>%
   filter(is.na(high_school))%>%
   filter(!is.na(previous_school))%>%
   filter(str_detect(previous_school, "HS"))%>%
   mutate(hs_clean = "")%>%
   mutate(hs_clean = previous_school)%>%
   mutate(type = "has hs")
-extras_wbb <- wbb_rosters23 %>%
+extras_wbb <- wbb_rosters %>%
   filter(!is.na(high_school))%>%
   filter(is.na(previous_school))%>%
   mutate(hs_clean = "")%>%
@@ -123,7 +123,7 @@ previous_school_is_hs=as.list(hs_wbb$previous_school)
 
 # update based on list membership
 
-wbb_rosters23 <- wbb_rosters23 %>%
+wbb_rosters <- wbb_rosters %>%
   mutate(hs_clean = case_when(
     is.na(high_school) & previous_school %in% previous_school_is_hs ~ previous_school,
     TRUE ~ high_school)
@@ -131,8 +131,14 @@ wbb_rosters23 <- wbb_rosters23 %>%
 
 # where previous school == hs_clean, replace previous_school with NA
 
-wbb_rosters23 <- wbb_rosters23 %>% 
+wbb_rosters <- wbb_rosters %>% 
   mutate(previous_school = ifelse(previous_school == hs_clean, NA, previous_school))
+
+
+wbb_rosters |> 
+  filter(year_clean == 'Graduate Student') |> 
+  filter(is.na(high_school))
+
 ```
 
 # Hometown/Homestate Cleaning
@@ -140,7 +146,7 @@ wbb_rosters23 <- wbb_rosters23 %>%
 The original data for the homestate column comes from the hometown. We clean up these strings to standardize them before we split them up and use the package 'postmastr' to look for state abbreviations or spellings. If the package finds a state, then great. If not, we check for any weird spellings/abbreviations of state and replace it with a standardized abbreviation. In the end, if the player is from the US, we should have a postal state abbreviation. If not, then we should have <NA>
 
 ```{r}
-wbb_rosters23 <- wbb_rosters23 %>% 
+wbb_rosters <- wbb_rosters %>% 
   mutate(hometown_cleaned = str_to_upper(str_replace(hometown, "\\.",""))) %>% 
   mutate(hometown_cleaned = str_replace(hometown_cleaned,"\\.","")) %>%
   mutate(hometown_cleaned = str_replace(hometown_cleaned,"/.*","")) %>%
@@ -153,23 +159,23 @@ states_non_standard <- pm_append(type = "state", input = c("SD.", "MASS", "CALIF
 
 dict <- pm_dictionary(type='state', case = c("title", "upper", "lower"), append = states_non_standard)
 
-wbb_rosters23 <- wbb_rosters23 %>% pm_identify(var="hometown_cleaned")
+wbb_rosters <- wbb_rosters %>% pm_identify(var="hometown_cleaned")
 
-parsed <- wbb_rosters23 %>% 
+parsed <- wbb_rosters %>% 
   pm_identify(var="hometown_cleaned") %>% 
   pm_prep(var="hometown_cleaned", type="street") %>% 
   pm_state_parse(dict)
 
-wbb_rosters23 <- left_join(wbb_rosters23, parsed, by="pm.uid")
+wbb_rosters <- left_join(wbb_rosters, parsed, by="pm.uid")
 
-wbb_rosters23 <- wbb_rosters23 %>% separate(hometown, c('hometown', 'homestate'), sep=',', extra='merge')
+wbb_rosters <- wbb_rosters %>% separate(hometown, c('hometown', 'homestate'), sep=',', extra='merge')
 
-wbb_rosters23 <- wbb_rosters23 %>% mutate(homestate=str_trim(homestate), homestate=str_replace(homestate, '\\.', '')) %>%
+wbb_rosters <- wbb_rosters %>% mutate(homestate=str_trim(homestate), homestate=str_replace(homestate, '\\.', '')) %>%
   mutate(homestate = case_when(is.na(abbr2state(homestate)) ~ homestate, TRUE ~ (abbr2state(homestate))))
 
 # fix Hawai'i & some others
 
-wbb_rosters23 <- wbb_rosters23 %>%
+wbb_rosters <- wbb_rosters %>%
   mutate(pm.state = case_when(
     homestate %in% c("Hawai‘i", "O‘ahu") ~ "HI",
     homestate == 'Ken' ~ 'KY',
@@ -199,9 +205,9 @@ nations <- fibaurl %>%
 
 nations_df <- nations[[1]] %>% filter(Country != "Puerto Rico") # Puerto Rico is a FIBA nation but also part of the USA
 
-wbb_rosters23 <- mutate(wbb_rosters23, country = case_when(!is.na(pm.state) ~ "USA"))
+wbb_rosters <- mutate(wbb_rosters, country = case_when(!is.na(pm.state) ~ "USA"))
 
-wbb_rosters23 <- wbb_rosters23 %>% mutate(temp = sapply(strsplit(wbb_rosters23$hometown_cleaned, ", ", fixed=TRUE), tail, 1))
+wbb_rosters <- wbb_rosters %>% mutate(temp = sapply(strsplit(wbb_rosters$hometown_cleaned, ", ", fixed=TRUE), tail, 1))
 
 nations_df$Country <- toupper(nations_df$Country)
 
@@ -214,46 +220,63 @@ added_nations <- data.frame(Worldrank=c(0, 0, 0, 0),
                   check.names = FALSE)
 nations_df <- rbind(nations_df, added_nations)
 
-wbb_rosters23 <- left_join(wbb_rosters23, nations_df, by=c('temp'='Country'))
+wbb_rosters <- wbb_rosters |> mutate(temp = map_chr(temp, toString))
 
-wbb_rosters23 <- mutate(wbb_rosters23, country = case_when((!is.na(Worldrank) & is.na(country)) ~ temp, is.na(Worldrank) &  !is.na(country) ~ country, country == "USA" ~ "USA"))
+wbb_rosters <- wbb_rosters |> mutate(temp = if_else(temp == 'NA', NA, temp))
+wbb_rosters <- wbb_rosters |> mutate(temp = if_else(temp == '', NA, temp))
 
-wbb_rosters23 <- subset(wbb_rosters23, select = -c(Worldrank,Zonerank,IOC,`Current points`, `+/- Rank *`))
+wbb_rosters <- left_join(wbb_rosters, nations_df, by=c('temp'='Country'))
 
-wbb_rosters23 <- wbb_rosters23 %>% 
+wbb_rosters <- mutate(wbb_rosters, country = case_when((!is.na(Worldrank) & is.na(country)) ~ temp, is.na(Worldrank) &  !is.na(country) ~ country, country == "USA" ~ "USA"))
+
+wbb_rosters <- subset(wbb_rosters, select = -c(Worldrank,Zonerank,IOC,`Current points`, `+/- Rank *`))
+
+wbb_rosters <- wbb_rosters %>% 
   mutate(country = ifelse(country == pm.state, 'USA', country)) %>% 
   mutate(country = ifelse(country == temp, 'USA', country)) %>% 
   mutate(country = ifelse(is.na(country), temp, country))
 
 
-wbb_rosters23 <- wbb_rosters23 %>% 
+wbb_rosters <- wbb_rosters %>% 
   mutate(country = case_when(
-    country %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA', 'ON CANADA') ~ "CANADA", 
-    country %in% c('VICTORIA', 'SOUTH AUSTRALIA', 'WESTERN AUSTRALIA', 'TASMANIA', 'AUSTRAILA', 'AU') ~ 'AUSTRALIA',
+    country %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA', 'ON CANADA', 'ALBERTA CANADA', 'SASKATCHEWAN') ~ "CANADA", 
+    country %in% c('VICTORIA', 'SOUTH AUSTRALIA', 'WESTERN AUSTRALIA', 'TASMANIA', 'AUSTRAILA', 'AU', 'QUEENSLAND AUSTRALIA') ~ 'AUSTRALIA',
     country == 'BARCELONA' ~ 'SPAIN',
     country == "HAWAI'I" ~ 'USA',
     country == "SWEEDEN" ~ "SWEDEN",
+    country == 'CZECHIA' ~ 'CZECH REPUBLIC',
+    country == 'GREAT BRITAIN' ~ 'UNITED KINGDOM',
     country == "ENGLAND" ~ "UNITED KINGDOM",
     country == "UK" ~ "UNITED KINGDOM",
     country == "WEST AFRICA" ~ "SENEGAL",
+    country == 'BOSNIA' ~ 'BOSNIA & HERZEGOVINA',
     country == 'BOSNIA' ~ 'BOSNIA AND HERZEGOVINA',
+    country == 'TAURANGA BAY OF PLENTY' ~ 'NEW ZEALAND',
+    country == 'THE NETHERLANDS' ~ 'NETHERLANDS',
+    country == 'TÜRKIYE' ~ 'TURKEY',
     TRUE ~ country
   ))
 
-wbb_rosters23 %>% group_by(country) %>% summarize(count = n()) %>% arrange(country)
+
+wbb_rosters %>% group_by(country) %>% summarize(count = n()) %>% arrange(country)
+
 
 # drop temp
-wbb_rosters23 <- subset(wbb_rosters23, select = -c(temp) )
+wbb_rosters <- subset(wbb_rosters, select = -c(temp) )
 ```
 
 # Rename Cleaned Columns, Remove Unneeded Columns and Write Out Final CSV File
 
 ```{r}
-wbb_rosters23 <- subset(wbb_rosters23, select = -c(pm.id, pm.uid, pm.type, pm.address, has_roster, roster))
+wbb_rosters <- subset(wbb_rosters, select = -c(pm.id, pm.uid, pm.type, pm.address, has_roster, roster))
 
-wbb_rosters23 <- wbb_rosters23 %>% 
+wbb_rosters <- wbb_rosters %>% 
   rename(height_clean = height, position_clean = position_full, previous_school_clean = previous_school, hometown_clean = hometown_cleaned, state_clean = pm.state, country_clean = country)
 
-write_csv(wbb_rosters23, "wbb_rosters_2022_23.csv", quote="all", na="")
+distinct_countries <- wbb_rosters %>% distinct(country_clean)
+
+wbb_rosters |> filter(is.na(country_clean))
+
+#write_csv(wbb_rosters, "wbb_rosters_2022_23.csv", quote="all", na="")
 ```
 
