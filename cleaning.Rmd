@@ -135,9 +135,22 @@ wbb_rosters <- wbb_rosters %>%
   mutate(previous_school = ifelse(previous_school == hs_clean, NA, previous_school))
 
 
-wbb_rosters |> 
-  filter(year_clean == 'Graduate Student') |> 
+no_hs <- wbb_rosters |> 
   filter(is.na(high_school))
+
+with_hs <- wbb_rosters |> 
+  filter(!is.na(high_school))
+
+rosters23 <- read_csv("wbb_rosters_2022_23.csv")
+
+matches <- no_hs |> inner_join(rosters23, join_by(name, team, ncaa_id)) |> select(ncaa_id, team, name, high_school.y) |> filter(!is.na(high_school.y)) |> rename(high_school = high_school.y)
+
+hs_adds <- no_hs |> inner_join(matches, join_by(ncaa_id, team, name)) |> select(-high_school.x) |> rename(high_school = high_school.y)
+
+wbb_rosters <- bind_rows(list(with_hs, no_hs)) |> arrange(ncaa_id, jersey)
+
+
+wbb_rosters |> filter(is.na(high_school))
 
 ```
 
@@ -279,4 +292,3 @@ wbb_rosters |> filter(is.na(country_clean))
 
 write_csv(wbb_rosters, "wbb_rosters_2023_24.csv", quote="all", na="")
 ```
-
