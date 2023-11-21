@@ -150,7 +150,6 @@ hs_adds <- no_hs |> inner_join(matches, join_by(ncaa_id, team, name)) |> select(
 wbb_rosters <- bind_rows(list(with_hs, no_hs)) |> arrange(ncaa_id, jersey)
 
 
-wbb_rosters |> filter(is.na(high_school))
 
 ```
 
@@ -273,6 +272,7 @@ wbb_rosters <- wbb_rosters %>%
 
 wbb_rosters %>% group_by(country) %>% summarize(count = n()) %>% arrange(country)
 
+wbb_rosters |> filter(is.na(high_school), country == 'USA', division == 'II')
 
 # drop temp
 wbb_rosters <- subset(wbb_rosters, select = -c(temp) )
