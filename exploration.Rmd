@@ -4,40 +4,60 @@ library(tidyverse)
 
 ```{r}
 wbb_rosters23 <- read_csv("wbb_rosters_2022_23.csv")
+wbb_rosters24 <- read_csv("wbb_rosters_2023_24.csv")
+
+combined_rosters <- bind_rows(list(wbb_rosters23, wbb_rosters24))
 ```
 
 # Data Exploration Section
+
+
+## How many international players are on rosters?
+
+```{r}
+combined_rosters |> 
+  filter(country_clean != 'USA') |> 
+  group_by(season) |> 
+  summarize(count = n())
+```
+
+
 
 ## Which countries outside the U.S. have supplied the most players?
 
 Spain, Australia and Canada provide the most non-U.S. players by far.
 
 ```{r}
-non_us <- wbb_rosters23 %>% 
+non_us <- combined_rosters %>% 
   filter(country_clean != 'USA') %>% 
-  group_by(country_clean) %>% 
+  group_by(country_clean, season) %>% 
   summarize(count = n()) %>% 
-  arrange(desc(count))
-
-non_us_division <- wbb_rosters23 %>% 
+  pivot_wider(names_from=season, values_from = count) |> 
+  replace_na(list(`2022-23` = 0, `2023-24` = 0)) |> 
+  mutate(pct_change = (`2023-24` - `2022-23`)/`2022-23` *100)
+  
+non_us_division <- combined_rosters %>% 
   filter(country_clean != 'USA') %>% 
-  group_by(country_clean, division) %>% 
+  group_by(country_clean, division, season) %>% 
   summarize(players = n()) %>% 
   pivot_wider(names_from=division, values_from = players) %>% 
   replace(is.na(.), 0) %>% 
   mutate(total = I + II + III) %>% 
   mutate(pct_d1 = I/total*100)
 
-non_us_team <- wbb_rosters23 %>% 
+non_us_team <- combined_rosters %>% 
   filter(country_clean != 'USA') %>% 
-  group_by(team) %>% 
+  group_by(team, season) %>% 
   summarize(players = n()) %>% 
-  arrange(desc(players))
+  pivot_wider(names_from=season, values_from = players) |> 
+  replace_na(list(`2022-23` = 0, `2023-24` = 0)) |> 
+  mutate(total = `2022-23` + `2023-24`) |> 
+  mutate(pct_change = (`2023-24` - `2022-23`)/`2022-23` *100)
 ```
-More than 25 teams have at least seven non-U.S. players on their rosters, San Francisco has 11 and Portland and UT-Tyler have 10 each (Simon Fraser has 11 but it is located in Canada).
+More than 25 teams have at least seven non-U.S. players on their rosters, South Florida has 12, San Francisco 10 and six teams have nine each (Simon Fraser has 14 but it is located in Canada).
 
 ```{r}
-wbb_rosters23 %>% 
+wbb_rosters24 %>% 
   filter(country_clean != 'USA') %>% 
   group_by(team) %>% 
   summarize(count = n()) %>% 
@@ -46,14 +66,24 @@ wbb_rosters23 %>%
 
 
 
-Of the 111 teams that have at least one Australian player, 37 of them have two or more on their roster. Portland WBB has _seven_ Aussies.
+Of the 95 teams that have at least one Australian player, 25 of them have two or more on their roster. Southern Nazarene WBB has _six_ Aussies.
+
+More than 130 teams have a Spanish player on the roster. Four teams have enough to field a starting five entirely from Spain.
 
 ```{r}
-wbb_rosters23 %>% 
+wbb_rosters24 %>% 
   filter(country_clean == 'AUSTRALIA') %>% 
   group_by(team) %>% 
   summarize(count = n()) %>% 
   arrange(desc(count))
+
+
+wbb_rosters24 %>% 
+  filter(country_clean == 'SPAIN') %>% 
+  group_by(team) %>% 
+  summarize(count = n()) %>% 
+  arrange(desc(count))
+
 ```
 
 
@@ -62,7 +92,7 @@ wbb_rosters23 %>%
 ## Which teams/conferences/divisions have the most first-year players? Which have the most seniors & graduate students?
 
 ```{r}
-teams_first_year <- wbb_rosters23 %>% filter(year_clean == "Freshman") %>% group_by(team, division) %>% summarise(count = n()) %>% arrange(desc(count))
+teams_first_year <- wbb_rosters24 %>% filter(year_clean == "Freshman") %>% group_by(team, division) %>% summarise(count = n()) %>% arrange(desc(count))
 #the top three schools are Mary Hardin Baylor, Simpson and Anderson (IN). The D1 school with the most freshmen is Northern Colorado
 
 conference_first_year <- wbb_rosters23 %>% group_by(conference, division) %>% summarise(count = n()) %>% arrange(desc(count))
@@ -83,34 +113,34 @@ division_seniors_grad <- wbb_rosters23 %>% filter(year_clean == "Senior" | year_
 
 #Data exploration: which teams/conferences/divisions have the most/least in-state players?
 ```{r}
-team_in_state_players_na <- wbb_rosters23  %>%
+team_in_state_players_na <- wbb_rosters24  %>%
   group_by(team, team_state, state_clean, division, conference) %>%
   summarise(count = n()) %>%
   arrange(desc(count)) %>%
   filter(is.na(state_clean))
 
-team_recruiting <- wbb_rosters23 %>%
+team_recruiting <- wbb_rosters24 %>%
   group_by(team, team_state, state_clean) %>%
   summarise(count = n()) %>%
   arrange(desc(count))
 
-conference_recruiting <- wbb_rosters23 %>%
+conference_recruiting <- wbb_rosters24 %>%
   group_by(conference, team_state, state_clean) %>%
   summarise(count = n()) %>%
   arrange(desc(count))
 
-division_recruiting <- wbb_rosters23 %>%
+division_recruiting <- wbb_rosters24 %>%
   group_by(division, team_state, state_clean) %>%
   summarise(count = n()) %>%
   arrange(desc(count))
 
-total_players <- wbb_rosters23 %>% 
+total_players <- wbb_rosters24 %>% 
   group_by(ncaa_id, team) %>% 
   summarize(all_players = n()) %>% 
   arrange(desc(all_players))
 
-in_state_players <- wbb_rosters23 %>% 
-  filter(team_state == state_clean) %>% 
+in_state_players <- wbb_rosters24 %>% 
+  filter(team_state == state_clean, division == "I") %>% 
   group_by(ncaa_id, team) %>% 
   summarize(in_state_players = n()) %>% 
   arrange(desc(in_state_players))
@@ -119,9 +149,9 @@ pct_in_state <- total_players %>%
   left_join(in_state_players) %>% 
   mutate(in_state_players = ifelse(is.na(in_state_players),0, in_state_players))
 
-wbb_rosters23 %>% group_by(team_state) %>% summarise(count = n_distinct(team)) %>% arrange(desc(count))
+wbb_rosters24 %>% group_by(team_state) %>% summarise(count = n_distinct(team)) %>% arrange(desc(count))
 
-wbb_rosters23 %>% filter(is.na(team_state))
+wbb_rosters24 %>% filter(is.na(team_state))
 ```
 
 In a lot of cases, we got NA as a result for the state_clean. In the cases of the DI schools, this meant that someone was an international player. 
