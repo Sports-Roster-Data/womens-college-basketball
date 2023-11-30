@@ -8,7 +8,7 @@ library(rvest)
 # Load the Source Data
 
 ```{r, message=FALSE}
-wbb_rosters <- read_csv("~/code/wbb-rosters/rosters_2023-24.csv")
+wbb_rosters <- read_csv("~/code/wbb-rosters/rosters_2020-21.csv")
 ```
 
 # Teams That Have Roster Data
@@ -262,7 +262,7 @@ wbb_rosters <- wbb_rosters %>%
     country == "UK" ~ "UNITED KINGDOM",
     country == "WEST AFRICA" ~ "SENEGAL",
     country == 'BOSNIA' ~ 'BOSNIA & HERZEGOVINA',
-    country == 'BOSNIA' ~ 'BOSNIA AND HERZEGOVINA',
+    country == 'BOSNIA AND HERZEGOVINA' ~ 'BOSNIA & HERZEGOVINA',
     country == 'TAURANGA BAY OF PLENTY' ~ 'NEW ZEALAND',
     country == 'THE NETHERLANDS' ~ 'NETHERLANDS',
     country == 'TÜRKIYE' ~ 'TURKEY',
@@ -290,5 +290,5 @@ distinct_countries <- wbb_rosters %>% distinct(country_clean)
 
 wbb_rosters |> filter(is.na(country_clean))
 
-write_csv(wbb_rosters, "wbb_rosters_2023_24.csv", quote="all", na="")
+write_csv(wbb_rosters, "wbb_rosters_2020_21.csv", quote="all", na="")
 ```

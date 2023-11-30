@@ -37,12 +37,8 @@ SR,6,Senior,0
 1V,5,Freshman,0
 F,5,Freshman,0
 Graduate,5,Graduate Student,0
-2023,4,Senior,0
-2024,4,Senior,0
-2026,4,Sophomore,0
 First-Year Student,4,Freshman,0
 Senior*,4,Senior,0
-2025,3,Junior,0
 GR,3,Graduate Student,0
 HS,3,Freshman,0
 2V,2,Sophomore,0
@@ -137,4 +133,3 @@ R-SO.,,Sophomore,1
 Jr.-TR.,,Junior,0
 Gr.-2L,,Graduate Student,0
 Gr.-4L,,Graduate Student,0
-2027,,Freshman,0
