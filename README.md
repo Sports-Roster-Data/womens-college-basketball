@@ -15,6 +15,7 @@ The following students have contributed to this project:
 * Tanner Malinowski
 * Varun Shankar
 * Rina Torchinsky
+* Dylan Manfre
 
 This project was supervised and edited by Derek Willis, lecturer in data and computational journalism.
 
