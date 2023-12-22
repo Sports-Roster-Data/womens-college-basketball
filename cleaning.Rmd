@@ -8,7 +8,7 @@ library(rvest)
 # Load the Source Data
 
 ```{r, message=FALSE}
-wbb_rosters <- read_csv("~/code/wbb-rosters/rosters_2020-21.csv")
+wbb_rosters <- read_csv("~/code/wbb-rosters/rosters_2023-24.csv")
 ```
 
 # Teams That Have Roster Data
@@ -261,6 +261,7 @@ wbb_rosters <- wbb_rosters %>%
     country == "ENGLAND" ~ "UNITED KINGDOM",
     country == "UK" ~ "UNITED KINGDOM",
     country == "WEST AFRICA" ~ "SENEGAL",
+    country == "CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
     country == 'BOSNIA' ~ 'BOSNIA & HERZEGOVINA',
     country == 'BOSNIA AND HERZEGOVINA' ~ 'BOSNIA & HERZEGOVINA',
     country == 'TAURANGA BAY OF PLENTY' ~ 'NEW ZEALAND',
@@ -286,9 +287,24 @@ wbb_rosters <- subset(wbb_rosters, select = -c(pm.id, pm.uid, pm.type, pm.addres
 wbb_rosters <- wbb_rosters %>% 
   rename(height_clean = height, position_clean = position_full, previous_school_clean = previous_school, hometown_clean = hometown_cleaned, state_clean = pm.state, country_clean = country)
 
+wbb_rosters |> 
+  group_by(country_clean) |> 
+  summarise(count = n()) |> 
+  arrange(country_clean)
+
 distinct_countries <- wbb_rosters %>% distinct(country_clean)
 
 wbb_rosters |> filter(is.na(country_clean))
 
-write_csv(wbb_rosters, "wbb_rosters_2020_21.csv", quote="all", na="")
+write_csv(wbb_rosters, "wbb_rosters_2023_24.csv", quote="all", na="")
 ```
+
+```{r}
+wbb_rosters |> 
+  filter(!is.na(previous_school_clean)) |> 
+  group_by(previous_school_clean) |> 
+  summarize(count = n()) |> 
+  arrange(previous_school_clean)
+
+```
+
