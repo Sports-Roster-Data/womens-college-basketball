@@ -160,3 +160,18 @@ In a lot of cases, we got NA as a result for the state_clean. In the cases of th
 no_hs <- wbb_rosters23 %>% filter(is.na(high_school), is.na(hs_clean), country_clean == 'USA')
 ```
 
+
+```{r}
+wbb_rosters24 |> filter(!is.na(previous_school_clean)) |> group_by(previous_school_clean) |> summarise(count = n()) |> arrange(desc(count))
+```
+
+```{r}
+team_player_counts <- wbb_rosters24 |> group_by(ncaa_id, team) |> summarise(players = n())
+
+team_transfer_counts <- wbb_rosters24 |> filter(!is.na(previous_school_clean)) |> group_by(ncaa_id, team) |> summarise(transfers = n())
+
+teams_with_transfers_count <- team_player_counts |> left_join(team_transfer_counts) |> mutate(transfers = if_else(is.na(transfers), 0, transfers)) |> mutate(pct = transfers/players*100)
+
+```
+
+
