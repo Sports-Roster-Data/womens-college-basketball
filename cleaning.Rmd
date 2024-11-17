@@ -692,7 +692,7 @@ distinct_countries <- wbb_rosters %>% distinct(country_clean)
 
 wbb_rosters |> filter(is.na(country_clean))
 
-#wbb_rosters <- wbb_rosters |> distinct()
+wbb_rosters <- wbb_rosters |> distinct() |> select(-count)
 
 write_csv(wbb_rosters, "wbb_rosters_2024_25.csv", quote="all", na="")
 ```
