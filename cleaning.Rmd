@@ -276,29 +276,41 @@ wbb_rosters <- wbb_rosters %>%
 
 wbb_rosters <- wbb_rosters %>% 
   mutate(country = case_when(
-    country %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA', 'ON CANADA', 'ALBERTA CANADA', 'SASKATCHEWAN') ~ "CANADA", 
-    country %in% c('VICTORIA', 'SOUTH AUSTRALIA', 'WESTERN AUSTRALIA', 'TASMANIA', 'AUSTRAILA', 'AU', 'QUEENSLAND AUSTRALIA') ~ 'AUSTRALIA',
+    country %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA', 'ON CANADA', 'ALBERTA CANADA', 'SASKATCHEWAN', 'CN', 'AB', 'ALTA') ~ "CANADA", 
+    country %in% c('VICTORIA', 'SOUTH AUSTRALIA', 'WESTERN AUSTRALIA', 'TASMANIA', 'AUSTRAILA', 'AU', 'AUS', 'QUEENSLAND AUSTRALIA') ~ 'AUSTRALIA',
     country == 'BARCELONA' ~ 'SPAIN',
     country == "HAWAI'I" ~ 'USA',
     country == "SWEEDEN" ~ "SWEDEN",
     country == 'CZECHIA' ~ 'CZECH REPUBLIC',
     country == 'GREAT BRITAIN' ~ 'UNITED KINGDOM',
     country == "ENGLAND" ~ "UNITED KINGDOM",
+    country == "ENG" ~ "UNITED KINGDOM",
     country == "UK" ~ "UNITED KINGDOM",
+    country == "WALES" ~ "UNITED KINGDOM",
+    country == "NORTHERN IRELAND" ~ "UNITED KINGDOM",
+    country == "DR" ~ "DOMINICAN REPUBLIC",
     country == "WEST AFRICA" ~ "SENEGAL",
+    country == "DEMOCRATIC REPUBLIC OF CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
     country == "CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
+    country == "REPUBLIC DEMOCRATIC OF CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
+    country == "DR CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
     country == 'BOSNIA' ~ 'BOSNIA & HERZEGOVINA',
     country == 'BOSNIA AND HERZEGOVINA' ~ 'BOSNIA & HERZEGOVINA',
     country == 'TAURANGA BAY OF PLENTY' ~ 'NEW ZEALAND',
+    country == 'NOORD HOLLAND' ~ 'NETHERLANDS',
     country == 'THE NETHERLANDS' ~ 'NETHERLANDS',
+    country == "MACEDONIA" ~ "NORTH MACEDONIA",
+    country == 'TURKIYE' ~ 'TURKEY',
     country == 'TÜRKIYE' ~ 'TURKEY',
+    country == 'ABIDJAN' ~ 'IVORY COAST',
+    country == 'KEFLAVIK ICELAND' ~ 'ICELAND',
     TRUE ~ country
   ))
 
 
 wbb_rosters %>% group_by(country) %>% summarize(count = n()) %>% arrange(country)
 
-wbb_rosters |> filter(is.na(high_school), country == 'USA', division == 'I')
+wbb_rosters |> filter(country == 'MACEDONIA')
 
 # drop temp
 wbb_rosters <- wbb_rosters |>  select(-temp)
@@ -335,10 +347,12 @@ previous_schools <- previous_schools |>
     previous_school == "Barton CC (Kan.)" ~ "Barton CC",
     previous_school == "Barton CC/UTSA" ~ "Barton CC",
     previous_school == "Belmont University" ~ "Belmont",
+    previous_school == 'Bethune-Cookman University' ~ 'Bethune-Cookman',
     previous_school == "Binghamton University" ~ "Binghamton",
     str_detect(previous_school, "Blinn") ~ "Blinn College",
     previous_school == "Bowling Green State" ~ "Bowling Green",
-    previous_school == "Bradley / UT Martin" ~ "Bradley",
+    previous_school == "Bradley Univ." ~ "Bradley",
+    previous_school == "Bradley University" ~ "Bradley",
     previous_school == "Buffalo/San Francisco" ~ "Buffalo",
     previous_school == "Butler CC (Kan.)" ~ "Butler CC",
     previous_school == "Cal Poly SLO" ~ "Cal Poly",
@@ -349,6 +363,7 @@ previous_schools <- previous_schools |>
     previous_school == "Cal Baptist" ~ "California Baptist",
     previous_school == "Cameron University" ~ "Cameron",
     previous_school == "Cape Fear C.C." ~ "Cape Fear CC",
+    previous_school == "CC Baltimore County-Essex" ~ "CCBC-Essex",
     previous_school == "Central Arizona JC" ~ "Central Arizona College",
     previous_school == "Central Connecticut State University" ~ "Central Connecticut",
     previous_school == "Centralia/William Jessup" ~ "Centralia CC",
@@ -364,11 +379,14 @@ previous_schools <- previous_schools |>
     str_detect(previous_school, "College of Charleston") ~ "College of Charleston",
     previous_school == "Concordia University Irvine" ~ "Concordia Irvine",
     str_detect(previous_school, "Cowley") ~ "Cowley CC",
+    previous_school == "Davis & Elkins College" ~ "Davis & Elkins",
+    previous_school == "Dawson Community College" ~ "Dawson CC",
     str_detect(previous_school, "Daytona State") ~ "Daytona State College",
     str_detect(previous_school, "DePaul") ~ "DePaul",
     str_detect(previous_school, "Depaul") ~ "DePaul",
     previous_school == "Detroit-Mercy" ~ "Detroit Mercy",
     str_detect(previous_school, "Dodge City") ~ "Dodge City CC",
+    previous_school == "D'Youville University" ~ "D'Youville",
     previous_school == "ETSU" ~ "East Tennessee State",
     previous_school == "East Texas Baptist University" ~ "East Tex. Baptist",
     str_detect(previous_school, "Eastern Arizona") ~ "Eastern Arizona College",
@@ -670,6 +688,11 @@ previous_schools <- previous_schools |>
 )
 
 wbb_rosters <- wbb_rosters |> left_join(previous_schools, join_by(previous_school))
+
+
+wbb_rosters |> filter(previous_school_clean == 'Calif.)')
+
+wbb_rosters |> distinct(previous_school_clean) |> arrange(previous_school_clean)
 
 ```
 
