@@ -1,5 +1,6 @@
 ```{r}
 library(tidyverse)
+library(janitor)
 library(postmastr)
 library(usdata)
 library(rvest)
@@ -715,7 +716,12 @@ distinct_countries <- wbb_rosters %>% distinct(country_clean)
 
 wbb_rosters |> filter(is.na(country_clean))
 
+wbb_rosters |> get_dupes()
+
 wbb_rosters <- wbb_rosters |> distinct() |> select(-count)
+
+wbb_rosters <- wbb_rosters |> 
+  mutate(season = "2024-25")
 
 write_csv(wbb_rosters, "wbb_rosters_2024_25.csv", quote="all", na="")
 ```

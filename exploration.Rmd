@@ -3,10 +3,11 @@ library(tidyverse)
 ```
 
 ```{r}
-wbb_rosters23 <- read_csv("wbb_rosters_2022_23.csv")
-wbb_rosters24 <- read_csv("wbb_rosters_2023_24.csv")
+wbb_rosters23 <- read_csv("wbb_rosters_2022_23.csv") |> mutate(player_id = as.character(player_id))
+wbb_rosters24 <- read_csv("wbb_rosters_2023_24.csv") |> mutate(player_id = as.character(player_id))
+wbb_rosters25 <- read_csv("wbb_rosters_2024_25.csv") |> mutate(player_id = as.character(player_id))
 
-combined_rosters <- bind_rows(list(wbb_rosters23, wbb_rosters24))
+combined_rosters <- bind_rows(list(wbb_rosters23, wbb_rosters24, wbb_rosters25))
 ```
 
 # Data Exploration Section
@@ -33,8 +34,8 @@ non_us <- combined_rosters %>%
   group_by(country_clean, season) %>% 
   summarize(count = n()) %>% 
   pivot_wider(names_from=season, values_from = count) |> 
-  replace_na(list(`2022-23` = 0, `2023-24` = 0)) |> 
-  mutate(pct_change = (`2023-24` - `2022-23`)/`2022-23` *100)
+  replace_na(list(`2024-25` = 0, `2023-24` = 0)) |> 
+  mutate(pct_change = (`2024-25` - `2023-24`)/`2023-24` *100)
   
 non_us_division <- combined_rosters %>% 
   filter(country_clean != 'USA') %>% 
@@ -50,9 +51,9 @@ non_us_team <- combined_rosters %>%
   group_by(team, season) %>% 
   summarize(players = n()) %>% 
   pivot_wider(names_from=season, values_from = players) |> 
-  replace_na(list(`2022-23` = 0, `2023-24` = 0)) |> 
-  mutate(total = `2022-23` + `2023-24`) |> 
-  mutate(pct_change = (`2023-24` - `2022-23`)/`2022-23` *100)
+  replace_na(list(`2022-23` = 0, `2023-24` = 0, `2024-25` = 0)) |> 
+  mutate(total = `2022-23` + `2023-24` + `2024-25`) |> 
+  mutate(pct_change = (`2024-25` - `2023-24`)/`2023-24` *100)
 ```
 More than 25 teams have at least seven non-U.S. players on their rosters, South Florida has 12, San Francisco 10 and six teams have nine each (Simon Fraser has 14 but it is located in Canada).
 
