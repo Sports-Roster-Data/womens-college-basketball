@@ -1,761 +1,498 @@
-```{r}
+# Women's College Basketball Roster Data Cleaning
+
+This notebook processes and standardizes women's college basketball roster data for the 2024-25 season. The data requires extensive cleaning to standardize heights, positions, years, geographic information, and previous school names.
+
+## Setup and Configuration
+
+```{r setup, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(janitor)
 library(postmastr)
 library(usdata)
 library(rvest)
+
+# Configuration
+INPUT_FILE <- "~/code/wbb-rosters/rosters_2025-26.csv"
+OUTPUT_FILE <- "wbb_rosters_2025_26.csv"
+TEAMS_URL <- "https://raw.githubusercontent.com/Sports-Roster-Data/womens-college-basketball/main/teams.csv"
+POSITIONS_URL <- "https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/wbb_positions.csv"
+FIBA_URL <- "https://www.fiba.basketball/rankingwomen"
 ```
 
-# Load the Source Data
+## Load Source Data
 
-```{r, message=FALSE}
-wbb_rosters <- read_csv("~/code/wbb-rosters/rosters_2024-25.csv")
-```
+```{r load-data, message=FALSE}
+# Load roster data and rename team_id column
+wbb_rosters <- read_csv(INPUT_FILE) %>% 
+  rename(ncaa_id = team_id) %>%
+  mutate(team = str_squish(team))
 
-# Teams That Have Roster Data
+# Load teams metadata
+teams <- read_csv(TEAMS_URL) %>% 
+  select(-url, -twitter, -stats_name, -private)
 
-```{r, message=FALSE}
-teams <- read_csv("https://raw.githubusercontent.com/Sports-Roster-Data/womens-college-basketball/main/teams.csv") %>% select(-url, -twitter, -stats_name, -private)
-
-roster_teams <- wbb_rosters %>% distinct(ncaa_id) %>% mutate(has_roster = 1)
+# Create roster availability indicator
+roster_teams <- wbb_rosters %>% 
+  distinct(ncaa_id) %>% 
+  mutate(has_roster = 1)
 
 teams <- teams %>% 
-  left_join(roster_teams) %>% mutate(roster = has_roster)
+  left_join(roster_teams, by = "ncaa_id") %>% 
+  mutate(roster = has_roster)
 
-teams_without_rosters <- teams %>% 
-  filter(is.na(roster)) %>% 
-  filter(!is.na(division))
-
+# Join rosters with team metadata
 wbb_rosters <- wbb_rosters %>% 
-  mutate(team = str_squish(team)) %>% 
-  left_join(teams, by=c("ncaa_id", "team")) 
+  left_join(teams, by = c("ncaa_id", "team"))
+
+cat("Loaded", nrow(wbb_rosters), "player records from", n_distinct(wbb_rosters$ncaa_id), "teams")
 ```
 
-# Height Cleaning
+## Height Cleaning
 
-The roster data initially referred to these players' heights in a variety of ways. Some used quotation marks to set off heights, like the 6'0" person writing this, while some used hyphens and other formats. I standardized this by making all of the heights simply use hyphens -- like 6-3 -- as that is the cleanest way to write these heights (without having quotes both inside and outside the integers).
+The roster data contains heights in various formats (6'0", 6-0, 6'0, etc.). We standardize all heights to use hyphens (6-0) and create a total inches column for analysis.
 
-Once all the heights were in this uniformed format, we created new columns to create players' heights via total inches. As we now clearly have both numbers in the heights separated, this allowed us to easily distinguish which numbers represented feet and inches, respectively.
-
-```{r}
-wbb_rosters <- wbb_rosters %>% 
-  mutate(height_clean = str_replace(height, "'", '-')) %>% 
-  mutate(height_clean = str_replace(height_clean, "’", '-')) %>% 
-  mutate(height_clean = str_replace(height_clean, "''", '')) %>% 
-  mutate(height_clean = str_replace(height_clean, '"', '')) %>%
-  separate(height_clean, c('height_ft', 'height_in'), sep="-", extra="merge") %>% 
-  mutate(height_ft = as.numeric(height_ft), height_in = as.numeric(height_in)) %>%
-  mutate(total_inches = (height_ft*12)+height_in)
-```
-
-# Positions Cleaning
-
-Describe the source data and what you needed to do to make it usable, and then what you did to make it possible to standardize the positions.
-
-```{r}
-positions_cleaned <- read_csv("https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/wbb_positions.csv") %>%
-  select(-count)
-
-# replace Ball State's position column with NAs
-wbb_rosters <- wbb_rosters %>% mutate(position = ifelse(ncaa_id == 47, NA, position))
-
-# need to fix rows where the height is also in the position column
-# in many of those cases we used information from biography pages and/or previous teams or news coverage to assign the position.
-
-position_fixes <- wbb_rosters %>% left_join(positions_cleaned, by = "position") %>% filter(position == height)
-
-wbb_rosters <- wbb_rosters %>% left_join(positions_cleaned, by = "position")
-
-wbb_rosters %>% distinct(position_clean)
-
-## Primary/Secondary positions based on order of position_clean
-
-wbb_rosters <- wbb_rosters %>% mutate(position_full = position_clean)
-wbb_rosters <- wbb_rosters %>% mutate(position_clean = na_if(position_clean, "N/A"))
-wbb_rosters <- wbb_rosters %>% separate(position_clean, c('primary_position', 'secondary_position'), sep='/', extra='merge')
-wbb_rosters <- wbb_rosters %>% mutate(primary_position = case_when((primary_position == "G") ~ "Guard", (primary_position == "C") ~ "Center", (primary_position == "F") ~ "Forward", TRUE ~ primary_position)) 
-wbb_rosters <- wbb_rosters %>% mutate(secondary_position = case_when((secondary_position == "G") ~ "Guard", (secondary_position == "C") ~ "Center", (secondary_position == "F") ~ "Forward", TRUE ~ secondary_position))
-wbb_rosters <- wbb_rosters %>% mutate(primary_position = case_when((primary_position == "G") ~ "Guard", (primary_position == "C") ~ "Center", (primary_position == "F") ~ "Forward", TRUE ~ primary_position))
-wbb_rosters <- wbb_rosters %>% filter(!grepl("'", wbb_rosters$primary_position))
-wbb_rosters <- wbb_rosters %>% filter(!grepl("5", wbb_rosters$primary_position))
-wbb_rosters <- wbb_rosters %>% filter(!grepl("6", wbb_rosters$primary_position))
-wbb_rosters <- wbb_rosters %>% filter(!grepl("'", wbb_rosters$secondary_position))
-wbb_rosters <- wbb_rosters %>% filter(!grepl("5", wbb_rosters$secondary_position))
-wbb_rosters <- wbb_rosters %>% filter(!grepl("6", wbb_rosters$secondary_position))
-
-```
-
-# Years Cleaning
-
-We downloaded the existing roster data and standardized the years. We classified everyone as a freshman, sophomore, junior, senior, graduate student, fifth year or sixth year. In addition, we have a separate column called redshirt that has a 1 if the original year classification included a mention of a redshirt.
-
-Describe the source data and what you needed to do to make it usable.
-
-We downloaded the existing roster data and standardized the years. We classified everyone as a freshman, sophomore, junior, senior, graduate student, fifth year or sixth year. In addition, we have a separate column called redshirt that has a 1 if the original year classification included a mention of a redshirt.
-
-```{r}
-years_cleaned <- read_csv("years_cleaned.csv")
-
-missing_years <- left_join(wbb_rosters, years_cleaned) %>% rename(year_clean = `year-clean`) %>% filter(is.na(year_clean))
-
-wbb_rosters <- left_join(wbb_rosters, years_cleaned) %>% rename(year_clean = `year-clean`) 
-
-wbb_rosters <- wbb_rosters |> 
-  mutate(year_clean = case_when(
-    year == '2028' ~ 'Freshman',
-    year == "'28" ~ 'Freshman',
-    year == "2027" ~ 'Sophomore',
-    year == "'27" ~ 'Sophomore',
-    year == "2026" ~ 'Junior',
-    year == "'26" ~ 'Junior',
-    year == "2025" ~ 'Senior',
-    year == "'25" ~ 'Senior',
-    .default = year_clean
-  ))
-
-wbb_rosters |> filter(is.na(year_clean)) |> distinct(team)
-
-```
-# Previous School Cleaning
-
-Some records list the player's high school in the previous school column. We filter those out and turn it into a list, then update `wbb_rosters` to replace hs_clean with the previous school for those rows.
-
-```{r}
-hs_wbb <- wbb_rosters %>%
-  filter(is.na(high_school))%>%
-  filter(!is.na(previous_school))%>%
-  filter(str_detect(previous_school, "HS") | str_detect(previous_school, "H.S.") | str_detect(previous_school, "High School")) %>%
-  mutate(hs_clean = "")%>%
-  mutate(hs_clean = previous_school)%>%
-  mutate(type = "has hs")
-extras_wbb <- wbb_rosters %>%
-  filter(!is.na(high_school))%>%
-  filter(is.na(previous_school))%>%
-  mutate(hs_clean = "")%>%
-  mutate(type = "no hs")
-all_wbb <- bind_rows(hs_wbb, extras_wbb)
-
-previous_school_is_hs=as.list(hs_wbb$previous_school)
-
-# update based on list membership
-
+```{r clean-heights}
 wbb_rosters <- wbb_rosters %>%
-  mutate(hs_clean = case_when(
-    is.na(high_school) & previous_school %in% previous_school_is_hs ~ previous_school,
-    TRUE ~ high_school)
+  mutate(
+    # Standardize height format to use hyphens
+    height_clean = height %>%
+      str_replace_all("'", "-") %>%
+      str_replace_all("''", "") %>%
+      str_replace_all('"', "")
+  ) %>%
+  # Split into feet and inches
+  separate(height_clean, c("height_ft", "height_in"), sep = "-", extra = "merge") %>%
+  mutate(
+    height_ft = as.numeric(height_ft),
+    height_in = as.numeric(height_in),
+    total_inches = (height_ft * 12) + height_in
   )
 
-# where previous school == hs_clean, replace previous_school with NA
-
-wbb_rosters <- wbb_rosters %>% 
-  mutate(previous_school = ifelse(previous_school == hs_clean, NA, previous_school))
-
-
-no_hs <- wbb_rosters |> 
-  filter(is.na(high_school))
-
-with_hs <- wbb_rosters |> 
-  filter(!is.na(high_school))
-
-previous_rosters <- read_csv("wbb_rosters_2023_24.csv")
-
-matches <- no_hs |> inner_join(previous_rosters, join_by(name, team, ncaa_id)) |> select(ncaa_id, team, name, high_school.y) |> filter(!is.na(high_school.y)) |> rename(high_school = high_school.y)
-
-hs_adds <- no_hs |> inner_join(matches, join_by(ncaa_id, team, name)) |> select(-high_school.x) |> rename(high_school = high_school.y)
-
-no_hs_minus_adds <- no_hs |> anti_join(matches, join_by(ncaa_id, team, name)) 
-
-wbb_rosters <- bind_rows(list(with_hs, no_hs_minus_adds, hs_adds)) |> arrange(ncaa_id, jersey)
-
-
-
+# Check results
+wbb_rosters %>% 
+  select(height, height_ft, height_in, total_inches) %>% 
+  slice_head(n = 5)
 ```
 
-# Hometown/Homestate Cleaning
+## Position Cleaning
 
-The original data for the homestate column comes from the hometown. We clean up these strings to standardize them before we split them up and use the package 'postmastr' to look for state abbreviations or spellings. If the package finds a state, then great. If not, we check for any weird spellings/abbreviations of state and replace it with a standardized abbreviation. In the end, if the player is from the US, we should have a postal state abbreviation. If not, then we should have <NA>
+Position data comes in various formats and combinations. We standardize positions and separate primary/secondary positions where applicable.
 
-```{r}
-wbb_rosters <- wbb_rosters %>% 
-  mutate(hometown_cleaned = str_to_upper(str_replace(hometown, "\\.",""))) %>% 
-  mutate(hometown_cleaned = str_replace(hometown_cleaned,"\\.","")) %>%
-  mutate(hometown_cleaned = str_replace(hometown_cleaned,"/.*","")) %>%
-  mutate(hometown_cleaned = str_replace(hometown_cleaned,"\\.$","")) %>%
-  mutate(hometown_cleaned = str_replace(hometown_cleaned,",",", ")) %>%
-  mutate(hometown_cleaned = str_replace(hometown_cleaned,"-"," ")) %>% 
-  mutate(hometown_cleaned = str_squish(hometown_cleaned))
-
-states_non_standard <- pm_append(type = "state", input = c("SD.", "MASS", "CALIF", "MICH", "NEB", "IND", "MINN", "ORE", "OHIO", "FLA", "MISS", "TENN", "ARIZ", "KAN", "ALA", "OKLA", "WIS", "ILL", " WASH", "ARK", "COLO", "NEV", "CONN", "WISC", "WVA", "DEL", "WYO", "CALI", "LOUIS", "VIRG", "MONT", "PENN", "TEX", "KANS", "NEBR", "IDA", "COL"), output = c("SD", "MA", "CA", "MI", "NE", "IN", "MN", "OR", "OH", "FL", "MS", "TN", "AZ", "KS", "AL", "OK", "WI", "IL", "WA", "AR", "CO", "NV", "CT", "WI", "WV", "DE", "WY", "CA", "LA", "VA", "MT", "PA", "TX", "KS", "NE", "ID", "CO"), locale = "us")
-
-dict <- pm_dictionary(type='state', case = c("title", "upper", "lower"), append = states_non_standard)
-
-wbb_rosters <- wbb_rosters %>% pm_identify(var="hometown_cleaned")
-
-parsed <- wbb_rosters %>% 
-  pm_identify(var="hometown_cleaned") %>% 
-  pm_prep(var="hometown_cleaned", type="street") %>% 
-  pm_state_parse(dict)
-
-wbb_rosters <- left_join(wbb_rosters, parsed, by="pm.uid")
-
-wbb_rosters <- wbb_rosters %>% separate(hometown, c('hometown', 'homestate'), sep=',', extra='merge')
-
-wbb_rosters <- wbb_rosters %>% mutate(homestate=str_trim(homestate), homestate=str_replace(homestate, '\\.', '')) %>%
-  mutate(homestate = case_when(is.na(abbr2state(homestate)) ~ homestate, TRUE ~ (abbr2state(homestate))))
-
-
-wbb_rosters |> filter(is.na(pm.state)) |> distinct(homestate) |> arrange(homestate)
-
-# fix Hawai'i & some others
+```{r clean-positions}
+# Load position standardization mapping
+positions_cleaned <- read_csv(POSITIONS_URL) %>%
+  select(-count)
 
 wbb_rosters <- wbb_rosters %>%
-  mutate(pm.state = case_when(
-    homestate %in% c("Hawai‘i", "O‘ahu", "Hawai'i") ~ "HI",
-    homestate == 'Ken' ~ 'KY',
-    homestate == 'Alta' ~ NA,
-    homestate == 'Caif' ~ 'CA',
-    homestate == 'Cal' ~ 'CA',
-    homestate == 'Illi' ~ 'IL',
-    homestate == 'IIl' ~ 'IL',
-    homestate == 'Illnois' ~ 'IL',
-    homestate == 'Republic of Georgia' ~ as.character(NA),
-    homestate == 'Min' ~ 'MN',
-    homestate == 'N C.' ~ 'NC',
-    homestate == 'NMex.' ~ 'NM',
-    homestate == 'Oreg' ~ 'OR',
-    homestate == 'US.V.I.' ~ 'USVI',
-    homestate == 'Ver' ~ 'VT',
-    homestate == 'Was' ~ 'WA',
-    homestate == 'WS' ~ 'WI',
-    homestate %in% c('Calfiornia', 'Califonia') ~ 'CA',
-    TRUE ~ pm.state
-  ))
+  left_join(positions_cleaned, by = "position") %>%
+  mutate(
+    position_full = position_clean,
+    position_clean = na_if(position_clean, "N/A")
+  ) %>%
+  # Split combined positions (e.g., "G/F" -> "Guard"/"Forward")
+  separate(position_clean, c("primary_position", "secondary_position"), 
+           sep = "/", extra = "merge") %>%
+  mutate(
+    # Standardize position abbreviations
+    primary_position = case_when(
+      primary_position == "G" ~ "Guard",
+      primary_position == "C" ~ "Center",
+      primary_position == "F" ~ "Forward",
+      TRUE ~ primary_position
+    ),
+    secondary_position = case_when(
+      secondary_position == "G" ~ "Guard",
+      secondary_position == "C" ~ "Center",
+      secondary_position == "F" ~ "Forward",
+      TRUE ~ secondary_position
+    )
+  ) %>%
+  # Remove rows where height data appears in position columns
+  filter(
+    is.na(primary_position) | !grepl("[56']", primary_position),
+    is.na(secondary_position) | !grepl("[56']", secondary_position)
+  )
 
+# Check position distribution
+wbb_rosters %>% 
+  count(primary_position, sort = TRUE)
 ```
 
-# Foreign Nation Cleaning
+## Year Classification Cleaning
 
-To extract the player's country, we are using a list of FIBA nations as a starting point. We're splitting the hometown column into multiple columns and seeing if we can detect any of the FIBA nations in the last column, where the country should be. In addition to this, we are also using some conditional statements in our code to handle special cases where the country is either not in FIBA or there are spelling errors/inconsistencies in the way countries are listed. Through this process, if a country is detected in the original hometown string, we fill a new column for the players country.
+We standardize year classifications to: Freshman, Sophomore, Junior, Senior, Graduate Student, Fifth Year, Sixth Year. We also track redshirt status separately.
 
-The values left are vast majority cities, either American or not, that are not listed with a state or country. For the sake of being conservative in our assumptions about where a city is located, we leave these rows' countries as <NA>.
+```{r clean-years}
+# Load year standardization mapping
+years_cleaned <- read_csv("years_cleaned.csv") %>%
+  rename(year_clean = `year-clean`)
 
-```{r}
-fibaurl <- "https://www.fiba.basketball/rankingwomen"
-nations <- fibaurl %>%
+wbb_rosters <- wbb_rosters %>%
+  left_join(years_cleaned, by = "year") %>%
+  mutate(
+    # Handle graduation year format (e.g., '26 = Senior)
+    year_clean = case_when(
+      year %in% c("2029", "'29") ~ "Freshman",
+      year %in% c("2028", "'28") ~ "Sophomore",
+      year %in% c("2027", "'27") ~ "Junior", 
+      year %in% c("2026", "'26") ~ "Senior",
+      TRUE ~ year_clean
+    )
+  )
+
+# Check year distribution
+wbb_rosters %>% 
+  count(year_clean, sort = TRUE)
+```
+
+## High School and Previous School Cleaning
+
+Some records list high schools in the previous_school column. We separate these and backfill missing high school data from previous roster years.
+
+```{r clean-schools}
+# Identify high school patterns
+hs_indicators <- c("HS", "H.S.", "High School")
+hs_pattern <- paste(hs_indicators, collapse = "|")
+
+# Find previous schools that are actually high schools
+previous_school_is_hs <- wbb_rosters %>%
+  filter(
+    is.na(high_school),
+    !is.na(previous_school),
+    str_detect(previous_school, hs_pattern)
+  ) %>%
+  pull(previous_school)
+
+# Clean high school assignments
+wbb_rosters <- wbb_rosters %>%
+  mutate(
+    hs_clean = case_when(
+      is.na(high_school) & previous_school %in% previous_school_is_hs ~ previous_school,
+      TRUE ~ high_school
+    ),
+    # Clear previous_school when it matches high school
+    previous_school = ifelse(previous_school == hs_clean, NA, previous_school)
+  )
+
+# Backfill missing high schools from previous year's data
+if (file.exists("wbb_rosters_2024_25.csv")) {
+  previous_rosters <- read_csv("wbb_rosters_2024_25.csv") %>%
+    # Deduplicate previous year's data by keeping first occurrence
+    distinct(name, team, ncaa_id, .keep_all = TRUE)
+  
+  no_hs <- wbb_rosters %>% 
+    filter(is.na(high_school)) %>%
+    # Deduplicate current data for matching
+    distinct(name, team, ncaa_id, .keep_all = TRUE)
+  
+  with_hs <- wbb_rosters %>% filter(!is.na(high_school))
+  
+  # Find matches in previous year's data
+  matches <- no_hs %>%
+    inner_join(previous_rosters, by = c("name", "team", "ncaa_id"), 
+               relationship = "many-to-one") %>%
+    select(ncaa_id, team, name, high_school = high_school.y) %>%
+    filter(!is.na(high_school)) %>%
+    # Ensure no duplicates in matches
+    distinct(ncaa_id, team, name, .keep_all = TRUE)
+  
+  if (nrow(matches) > 0) {
+    # Apply high school data back to original records (may be multiple per player)
+    hs_adds <- wbb_rosters %>%
+      filter(is.na(high_school)) %>%
+      inner_join(matches, by = c("ncaa_id", "team", "name")) %>%
+      select(-high_school.x) %>%
+      rename(high_school = high_school.y)
+    
+    no_hs_final <- wbb_rosters %>%
+      filter(is.na(high_school)) %>%
+      anti_join(matches, by = c("ncaa_id", "team", "name"))
+    
+    wbb_rosters <- bind_rows(with_hs, no_hs_final, hs_adds) %>%
+      arrange(ncaa_id, jersey)
+    
+    cat("Backfilled", nrow(hs_adds), "high school records from previous year")
+  }
+}
+```
+
+## Geographic Data Cleaning
+
+We clean hometown/homestate data to standardize state abbreviations and identify international players.
+
+```{r clean-geography}
+# Standardize hometown format
+wbb_rosters <- wbb_rosters %>%
+  mutate(
+    hometown_cleaned = hometown %>%
+      str_to_upper() %>%
+      str_replace_all("\\.", "") %>%
+      str_replace("/.*", "") %>%
+      str_replace("\\.$", "") %>%
+      # Fix reversed format: "ILLINOIS, CHICAGO" -> "CHICAGO, ILLINOIS"
+      str_replace("^ILLINOIS, CHICAGO$", "CHICAGO, ILLINOIS") %>%
+      str_replace(",", ", ") %>%
+      str_replace("-", " ") %>%
+      str_squish()
+  )
+
+# Create extended state dictionary for postmastr
+states_non_standard <- pm_append(
+  type = "state",
+  input = c("SD.", "MASS", "CALIF", "MICH", "NEB", "IND", "MINN", "ORE", "OHIO", 
+            "FLA", "MISS", "TENN", "ARIZ", "KAN", "ALA", "OKLA", "WIS", "ILL", 
+            "WASH", "ARK", "COLO", "NEV", "CONN", "WISC", "WVA", "DEL", "WYO",
+            "CALI", "LOUIS", "VIRG", "MONT", "PENN", "TEX", "KANS", "NEBR", 
+            "IDA", "COL"),
+  output = c("SD", "MA", "CA", "MI", "NE", "IN", "MN", "OR", "OH", "FL", "MS", 
+             "TN", "AZ", "KS", "AL", "OK", "WI", "IL", "WA", "AR", "CO", "NV", 
+             "CT", "WI", "WV", "DE", "WY", "CA", "LA", "VA", "MT", "PA", "TX", 
+             "KS", "NE", "ID", "CO"),
+  locale = "us"
+)
+
+dict <- pm_dictionary(type = "state", case = c("title", "upper", "lower"), 
+                     append = states_non_standard)
+
+# Identify addresses and parse states using postmastr
+wbb_rosters <- wbb_rosters %>%
+  pm_identify(var = "hometown_cleaned")
+
+parsed <- wbb_rosters %>%
+  pm_prep(var = "hometown_cleaned", type = "street") %>%
+  pm_state_parse(dict)
+
+# Join parsed results
+wbb_rosters <- wbb_rosters %>%
+  left_join(parsed, by = "pm.uid") %>%
+  separate(hometown, c("hometown", "homestate"), sep = ",", extra = "merge") %>%
+  mutate(
+    homestate = str_trim(homestate),
+    homestate = str_replace(homestate, "\\.", ""),
+    homestate = case_when(
+      is.na(abbr2state(homestate)) ~ homestate,
+      TRUE ~ abbr2state(homestate)
+    )
+  )
+
+# Handle special state cases
+wbb_rosters <- wbb_rosters %>%
+  mutate(
+    pm.state = case_when(
+      homestate %in% c("Hawai'i", "O'ahu") ~ "HI",
+      homestate == "Ken" ~ "KY",
+      homestate %in% c("Caif", "Cal", "Calfiornia", "Califonia") ~ "CA",
+      homestate %in% c("Illi", "IIl", "Illnois") ~ "IL",
+      homestate == "Min" ~ "MN",
+      homestate == "N C." ~ "NC",
+      homestate == "NMex." ~ "NM",
+      homestate == "Oreg" ~ "OR",
+      homestate == "US.V.I." ~ "USVI",
+      homestate == "Ver" ~ "VT",
+      homestate == "Was" ~ "WA",
+      homestate == "WS" ~ "WI",
+      homestate == "NYC" ~ "NY",
+      # Special cases
+      is.na(pm.state) & is.na(homestate) & str_detect(hometown_cleaned, "^ARLINGTON$") ~ "TX",
+      is.na(pm.state) & is.na(homestate) & str_detect(hometown_cleaned, "^LOS ANGELES$") ~ "CA",
+      is.na(pm.state) & is.na(homestate) & str_detect(hometown_cleaned, "^GREENWOOD$") ~ "SC",
+      is.na(pm.state) & is.na(homestate) & str_detect(hometown_cleaned, "^GWYNN PARK$") ~ "MD",
+      is.na(pm.state) & is.na(homestate) & str_detect(hometown_cleaned, "^KING COVE$") ~ "AK",
+      TRUE ~ pm.state
+    )
+  )
+```
+
+## Country Identification
+
+We identify international players using FIBA nations list and handle special cases for countries not in FIBA.
+
+```{r clean-countries}
+# Scrape FIBA nations
+nations <- FIBA_URL %>%
   read_html() %>%
   html_table()
 
-nations_df <-  bind_rows(nations[[1]], nations[[2]], nations[[3]]) %>% filter(country != "Puerto Rico") # Puerto Rico is a FIBA nation but also part of the USA
+nations_df <- bind_rows(nations[[1]], nations[[2]], nations[[3]]) %>%
+  filter(country != "Puerto Rico") %>% # Puerto Rico is FIBA but also USA
+  mutate(country = toupper(country)) %>%
+  select(country)
 
-wbb_rosters <- mutate(wbb_rosters, country = case_when(!is.na(pm.state) ~ "USA"))
-
-wbb_rosters <- wbb_rosters %>% mutate(temp = sapply(strsplit(wbb_rosters$hometown_cleaned, ", ", fixed=TRUE), tail, 1))
-
-nations_df$country <- toupper(nations_df$country)
-
-nations_df <- nations_df |> select(country)
-
+# Add non-FIBA nations
 added_nations <- data.frame(
-                  country=c('ENGLAND', 'RUSSIA', 'SCOTLAND', 'NORTHERN IRELAND'),
-                  check.names = FALSE)
+  country = c("ENGLAND", "RUSSIA", "SCOTLAND", "NORTHERN IRELAND")
+)
 nations_df <- rbind(nations_df, added_nations)
 
-wbb_rosters <- wbb_rosters |> mutate(temp = map_chr(temp, toString))
-
-wbb_rosters <- wbb_rosters |> mutate(temp = if_else(temp == 'NA', NA, temp))
-wbb_rosters <- wbb_rosters |> mutate(temp = if_else(temp == '', NA, temp))
-
-wbb_rosters <- left_join(wbb_rosters, nations_df, by=c('temp'='country'))
-
-wbb_rosters <- mutate(wbb_rosters, country = case_when((is.na(country)) ~ temp, !is.na(country) ~ country, country == "USA" ~ "USA"))
-
-wbb_rosters <- wbb_rosters %>% 
-  mutate(country = ifelse(country == pm.state, 'USA', country)) %>% 
-  mutate(country = ifelse(country == temp, 'USA', country)) %>% 
-  mutate(country = ifelse(is.na(country), temp, country))
-
-
-wbb_rosters <- wbb_rosters %>% 
-  mutate(country = case_when(
-    country %in% c('BC', 'QUEBEC', 'BRITISH COLUMBIA', 'ALBERTA', 'ONTARIO', 'NOVA SCOTIA', 'ONT', 'QUÉBEC', 'MANITOBA', 'QUE', 'ON', 'QC', 'ALBERTA (AB)', 'ONT CANADA', 'BC CANADA', 'BC,CANADA', 'ON CANADA', 'ALBERTA CANADA', 'SASKATCHEWAN', 'CN', 'AB', 'ALTA') ~ "CANADA", 
-    country %in% c('VICTORIA', 'SOUTH AUSTRALIA', 'WESTERN AUSTRALIA', 'TASMANIA', 'AUSTRAILA', 'AU', 'AUS', 'QUEENSLAND AUSTRALIA') ~ 'AUSTRALIA',
-    country == 'BARCELONA' ~ 'SPAIN',
-    country == "HAWAI'I" ~ 'USA',
-    country == "SWEEDEN" ~ "SWEDEN",
-    country == 'CZECHIA' ~ 'CZECH REPUBLIC',
-    country == 'GREAT BRITAIN' ~ 'UNITED KINGDOM',
-    country == "ENGLAND" ~ "UNITED KINGDOM",
-    country == "ENG" ~ "UNITED KINGDOM",
-    country == "UK" ~ "UNITED KINGDOM",
-    country == "WALES" ~ "UNITED KINGDOM",
-    country == "NORTHERN IRELAND" ~ "UNITED KINGDOM",
-    country == "DR" ~ "DOMINICAN REPUBLIC",
-    country == "WEST AFRICA" ~ "SENEGAL",
-    country == "DEMOCRATIC REPUBLIC OF CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
-    country == "CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
-    country == "REPUBLIC DEMOCRATIC OF CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
-    country == "DR CONGO" ~ "DEMOCRATIC REPUBLIC OF THE CONGO",
-    country == 'BOSNIA' ~ 'BOSNIA & HERZEGOVINA',
-    country == 'BOSNIA AND HERZEGOVINA' ~ 'BOSNIA & HERZEGOVINA',
-    country == 'TAURANGA BAY OF PLENTY' ~ 'NEW ZEALAND',
-    country == 'NOORD HOLLAND' ~ 'NETHERLANDS',
-    country == 'THE NETHERLANDS' ~ 'NETHERLANDS',
-    country == "MACEDONIA" ~ "NORTH MACEDONIA",
-    country == 'TURKIYE' ~ 'TURKEY',
-    country == 'TÜRKIYE' ~ 'TURKEY',
-    country == 'ABIDJAN' ~ 'IVORY COAST',
-    country == 'KEFLAVIK ICELAND' ~ 'ICELAND',
-    TRUE ~ country
-  ))
-
-
-wbb_rosters %>% group_by(country) %>% summarize(count = n()) %>% arrange(country)
-
-wbb_rosters |> filter(country == 'MACEDONIA')
-
-# drop temp
-wbb_rosters <- wbb_rosters |>  select(-temp)
-```
-# Standardize Previous Schools
-
-```{r}
-previous_schools <- wbb_rosters |> filter(!is.na(previous_school)) |> group_by(previous_school) |> summarise(count = n()) |> arrange(previous_school)
-
-
-previous_schools <- previous_schools |> 
-  mutate(previous_school_clean = case_when(
-    previous_school == "Abilene Christian, Tarleton" ~ "Abilene Christian",
-    previous_school == "Academic of Art University" ~ "Academy of Art University",
-    previous_school == "Air Force Academy" ~ "Air Force",
-    previous_school == "Alabama A&M / Wabash Valley College" ~ "Alabama A&M",
-    previous_school == "Alderson Broaddus University" ~ "Alderson Broaddus",
-    previous_school == "Alderson Broaddus/Lincoln" ~ "Alderson Broaddus",
-    previous_school == "American Univ." ~ "American",
-    previous_school == "Angelina College" ~ "Angelina CC",
-    previous_school == "Arizona Western" ~ "Arizona Western CC",
-    previous_school == "Arkansas Little Rock/New Mexico" ~ "Arkansas-Little Rock",
-    previous_school == "Arkansas Little Rock" ~ "Arkansas-Little Rock",
-    previous_school == "Arkansas at Little Rock" ~ "Arkansas-Little Rock",
-    previous_school == "Arkansas-Little Rock/Marquette" ~ "Arkansas-Little Rock",
-    previous_school == "Arkansas State/Tarleton State" ~ "Arkansas State",
-    previous_school == "Arkansas at Pine Bluff" ~ "Arkansas-Pine Bluff",
-    previous_school == "Arkansas in Fort Smith" ~ "Arkansas-Fort Smith",
-    previous_school == "Auburn/Gulf Coast State College" ~ "Auburn",
-    previous_school == "Auburn/McNeese State" ~ "Auburn",
-    previous_school == "Augusta University" ~ "Augusta",
-    previous_school == "Austin Peay State" ~ "Austin Peay",
-    previous_school == "Barton" ~ "Barton CC",
-    previous_school == "Barton CC (Kan.)" ~ "Barton CC",
-    previous_school == "Barton CC/UTSA" ~ "Barton CC",
-    previous_school == "Belmont University" ~ "Belmont",
-    previous_school == 'Bethune-Cookman University' ~ 'Bethune-Cookman',
-    previous_school == "Binghamton University" ~ "Binghamton",
-    str_detect(previous_school, "Blinn") ~ "Blinn College",
-    previous_school == "Bowling Green State" ~ "Bowling Green",
-    previous_school == "Bradley Univ." ~ "Bradley",
-    previous_school == "Bradley University" ~ "Bradley",
-    previous_school == "Buffalo/San Francisco" ~ "Buffalo",
-    previous_school == "Butler CC (Kan.)" ~ "Butler CC",
-    previous_school == "Cal Poly SLO" ~ "Cal Poly",
-    previous_school == "Cal Poly San Luis Obispo" ~ "Cal Poly",
-    previous_school == "CSU Bakersfield" ~ "Cal State Bakersfield",
-    previous_school == "Cal State Northridge" ~ "CSUN",
-    previous_school == "California Baptist University" ~ "California Baptist",
-    previous_school == "Cal Baptist" ~ "California Baptist",
-    previous_school == "Cameron University" ~ "Cameron",
-    previous_school == "Cape Fear C.C." ~ "Cape Fear CC",
-    previous_school == "CC Baltimore County-Essex" ~ "CCBC-Essex",
-    previous_school == "Central Arizona JC" ~ "Central Arizona College",
-    previous_school == "Central Connecticut State University" ~ "Central Connecticut",
-    previous_school == "Centralia/William Jessup" ~ "Centralia CC",
-    previous_school == "Chabot College/Mississippi Valley State" ~ "Chabot College",
-    previous_school == "Charleston" ~ "Charleston (WV)",
-    previous_school == "Charleston (WV) | Detroit Mercy" ~ "Charleston (WV)",
-    previous_school == "Chattahoochee Valley" ~ "Chattahoochee Valley CC",
-    str_detect(previous_school, "^Chipola") ~ "Chipola College",
-    previous_school == "Chowan University" ~ "Chowan",
-    previous_school == "Christian Brothers University" ~ "Christian Brothers",
-    previous_school == "Cincinnati / Buffalo" ~ "Cincinnati",
-    previous_school == "Cochise College (Ariz.)" ~ "Cochise College",
-    str_detect(previous_school, "College of Charleston") ~ "College of Charleston",
-    previous_school == "Concordia University Irvine" ~ "Concordia Irvine",
-    str_detect(previous_school, "Cowley") ~ "Cowley CC",
-    previous_school == "Davis & Elkins College" ~ "Davis & Elkins",
-    previous_school == "Dawson Community College" ~ "Dawson CC",
-    str_detect(previous_school, "Daytona State") ~ "Daytona State College",
-    str_detect(previous_school, "DePaul") ~ "DePaul",
-    str_detect(previous_school, "Depaul") ~ "DePaul",
-    previous_school == "Detroit-Mercy" ~ "Detroit Mercy",
-    str_detect(previous_school, "Dodge City") ~ "Dodge City CC",
-    previous_school == "D'Youville University" ~ "D'Youville",
-    previous_school == "ETSU" ~ "East Tennessee State",
-    previous_school == "East Texas Baptist University" ~ "East Tex. Baptist",
-    str_detect(previous_school, "Eastern Arizona") ~ "Eastern Arizona College",
-    str_detect(previous_school, "Eastern Florida") ~ "Eastern Florida State College",
-    previous_school == "Eastern Illinois University" ~ "Eastern Illinois",
-    str_detect(previous_school, "Eastern Washington") ~ "Eastern Washington",
-    previous_school == "Edinboro University" ~ "Edinboro",
-    str_detect(previous_school, "Embry-Riddle") ~ "Embry-Riddle (FL)",
-    previous_school == "Essex County College" ~ "Essex CC",
-    previous_school == "Evergreen State/Merced College" ~ "Evergreen State",
-    previous_school == "FDU" ~ "Fairleigh Dickinson",
-    previous_school == "Florida / Vanderbilt" ~ "Florida",
-    previous_school == "Florida A&M/North Georgia" ~ "Florida A&M",
-    previous_school == "Florida Atlantic/George Mason" ~ "Florida Atlantic",
-    str_detect(previous_school, "Florida International") ~ "FIU",
-    str_detect(previous_school, "Florida SouthWestern") ~ "Florida SouthWestern State College",
-    str_detect(previous_school, "Florida Southwestern") ~ "Florida SouthWestern State College",
-    previous_school == "Florida State University" ~ "Florida State",
-    str_detect(previous_school, "Fort Hays") ~ "Fort Hays St.",
-    str_detect(previous_school, "Frank Phillips") ~ "Frank Phillips College",
-    previous_school == "Frostburg State" ~ "Frostburg St.",
-    previous_school == "Garden CC" ~ "Garden City CC",
-    str_detect(previous_school, "Garrett") ~ "Garrett College",
-    previous_school == "Georgia Southern/Tennessee State" ~ "Georgia Southern",
-    str_detect(previous_school, "Georgia Southwestern") ~ "Georgia Southwestern State",
-    previous_school == "Georgia/Rutgers" ~ "Georgia",
-    str_detect(previous_school, "Grambling") ~ "Grambling",
-    str_detect(previous_school, "Grand Canyon Univ") ~ "Grand Canyon",
-    str_detect(previous_school, "Gulf Coast State") ~ "Gulf Coast State College",
-    previous_school == "Harford CC/Chowan" ~ "Harford CC",
-    previous_school == "Hawai'i" ~ "Hawaii",
-    previous_school == "Highland CC (IL)" ~ "Highland CC",
-    previous_school == "Hill (Texas)" ~ "Hill College",
-    str_detect(previous_school, "Hutchinson") ~ "Hutchinson CC",
-    previous_school == "Iceland" ~ NA,
-    previous_school == "Idaho State University" ~ "Idaho State",
-    previous_school == "Illinois Central College" ~ "Illinois Central",
-    previous_school == "Illinois State University" ~ "Illinois State",
-    previous_school == "Illinois-Marquette" ~ "Illinois",
-    previous_school == "Illinois-Springfield" ~ "Ill. Springfield",
-    str_detect(previous_school, "Indian River") ~ "Indian River State College",
-    previous_school == "Iona/Georgia State" ~ "Iona",
-    previous_school == "Iowa State University" ~ "Iowa State",
-    previous_school == "Iowa Western" ~ "Iowa Western CC",
-    str_detect(previous_school, "awamba") ~ "Itawamba CC",
-    previous_school == "Jacksonville State / Northwest Florida State College" ~ "Jacksonville State",
-    previous_school == "JMU" ~ "James Madison",
-    str_detect(previous_school, "Jamestown") ~ "Jamestown CC",
-    str_detect(previous_school, "Kennesaw State") ~ "Kennesaw State",
-    str_detect(previous_school, "Kilgore") ~ "Kilgore College",
-    previous_school == "Kirkwood" ~ "Kirkwood CC",
-    previous_school == "LA Trade Tech/Cal State Dominguez Hills" ~ "LA Trade Tech",
-    previous_school == "LIU" ~ "Long Island",
-    previous_school == "Long Island University" ~ "Long Island",
-    previous_school == "LSU/Houston" ~ "LSU",
-    previous_school == "La Salle" ~ "LaSalle",
-    previous_school == "Lasalle" ~ "LaSalle",
-    str_detect(previous_school, "Labette") ~ "Labette CC",
-    previous_school == "Lafayette College" ~ "Lafayette",
-    previous_school == "Lamar CC/Old Dominion" ~ "Lamar CC",
-    previous_school == "Lamar University" ~ "Lamar",
-    previous_school == "Lamar/Houston" ~ "Lamar",
-    previous_school == "Laney" ~ "Laney College",
-    previous_school == "Laramie County CC (Wyo.)" ~ "Laramie County CC",
-    previous_school == "Lees-McRae College" ~ "Lees-McRae",
-    previous_school == "Lenoir-Rhyne University" ~ "Lenoir-Rhyne",
-    str_detect(previous_school, "Lindenwood") ~ "Lindenwood (MO)",
-    previous_school == "Lipscomb Univ." ~ "Lipscomb",
-    str_detect(previous_school, "Long Beach State") ~ "Long Beach State",
-    previous_school == "Longwood University" ~ "Longwood",
-    previous_school == "Louisiana State" ~ "LSU",
-    str_detect(previous_school, "Lower Columbia") ~ "Lower Columbia CC",
-    previous_school == "Loyola Marymount University" ~ "Loyola Marymount",
-    previous_school == "Loyola Chicago" ~ "Loyola-Chicago",
-    previous_school == "Loyola Maryland" ~ "Loyola-Maryland",
-    previous_school == "Loyola Marymount University" ~ "Loyola Marymount",
-    previous_school == "Loyola University" ~ "Loyola-Maryland",
-    previous_school == "MD Eastern Shore" ~ "Maryland-Eastern Shore",
-    previous_school == "MSU-Moorhead" ~ "MSU Moorhead",
-    previous_school == "Marquette/Iona" ~ "Marquette",
-    previous_school == "Marquette/Pittsburgh" ~ "Marquette",
-    previous_school == "Marquette/Virginia" ~ "Marquette",
-    previous_school == "Marshall University" ~ "Marshall",
-    previous_school == "Mary Baldwin University" ~ "Mary Baldwin",
-    previous_school == "Mary Hardin Baylor" ~ "Mary Hardin-Baylor",
-    previous_school == "Maryland/Virginia Tech" ~ "Virginia Tech",
-    previous_school == "Massachusetts/Hawaii" ~ "Massachusetts",
-    previous_school == "McNeese" ~ "McNeese State",
-    previous_school == "Memphis / Jones Junior College" ~ "Memphis",
-    previous_school == "Merrimack / CCBC Essex" ~ "Merrimack",
-    previous_school == "Mesa CC / Franklin Pierce" ~ "Mesa CC",
-    previous_school == "Miami (FL)" ~ "Miami",
-    previous_school == "Miami (OH)" ~ "Miami Ohio",
-    previous_school == "Miami (OH) / Xavier / Marquette" ~ "Miami Ohio",
-    previous_school == "Miami (Ohio)" ~ "Miami Ohio",
-    previous_school == "Miami Dade / Three Rivers CC" ~ "Miami Dade College",
-    previous_school == "Middle Tennessee State" ~ "Middle Tennessee",
-    previous_school == "Midland College / Garden City CC" ~ "Midland College",
-    previous_school == "Miles (Montana) CC" ~ "Miles CC",
-    previous_school == "Minnesota / Nebraska / California" ~ "Minnesota",
-    previous_school == "Minnesota Crookston" ~ "Minn.-Crookston",
-    previous_school == "Minnesota State University-Moorhead" ~ "MSU Moorhead",
-    previous_school == "Minnesota/ Arkansas" ~ "Minnesota",
-    previous_school == "Mississippi Valley State University" ~ "Mississippi Valley State",
-    previous_school == "Missouri State/Duke" ~ "Missouri State",
-    previous_school == "Morehead State / Georgia Highlands" ~ "Morehead State",
-    previous_school == "Morgan State/Western Carolina/Barton CC" ~ "Morgan State",
-    previous_school == "N.C. State" ~ "NC State",
-    previous_school == "NC A&T/Pensacola State College" ~ "N.C. A&T",
-    previous_school == "NC Central" ~ "North Carolina Central",
-    previous_school == "NDSCS" ~ "North Dakota State College of Science",
-    previous_school == "NEO/Dodge City CC" ~ "Northeastern Oklahoma A&M College",
-    previous_school == "Nebraska Kearney" ~ "Neb.-Kearney",
-    previous_school == "Nebraska at Kearney" ~ "Neb.-Kearney",
-    previous_school == "Nebraska-Omaha" ~ "Omaha",
-    previous_school == "Nevada / Grand Canyon" ~ "Grand Canyon",
-    previous_school == "Nevada-Reno" ~ "Nevada",
-    previous_school == "New Mexico Highlands / Dodge City CC / Otero JC" ~ "New Mexico Highlands",
-    previous_school == "New Mexico JC/Seward CC" ~ "New Mexico JC",
-    previous_school == "New Mexico Junior College" ~ "New Mexico JC",
-    previous_school == "New Mexico St. JC / Texas-Permian Basin" ~ "New Mexico JC",
-    previous_school == "New Orleans/Salt Lake CC" ~ "New Orleans",
-    previous_school == "Niagara University" ~ "Niagara",
-    previous_school == "North Alabama / Northwestern State" ~ "North Alabama",
-    previous_school == "Northeastern State/Northern Colorado" ~ "Northeastern St.",
-    previous_school == "Northern Arizona University" ~ "Northern Arizona",
-    previous_school == "Northern Illinois/Kirkwood CC" ~ "Northern Illinois",
-    previous_school == "Northern Michigan University" ~ "Northern Michigan",
-    previous_school == "Northwest Florida State" ~ "Northwest Florida State College",
-    previous_school == "Northwestern State University" ~ "Northwestern State",
-    previous_school == "Notre Dame of Maryland University" ~ "Notre Dame of Maryland",
-    previous_school == "Oakland University" ~ "Oakland",
-    previous_school == "Occidental College" ~ "Occidental",
-    previous_school == "Odessa / South Plains" ~ "Odessa College",
-    previous_school == "Odessa/University of San Francisco/Eckerd" ~ "Eckerd",
-    previous_school == "Old Dominion University" ~ "Old Dominion",
-    previous_school == "Ole Miss" ~ "Mississippi",
-    previous_school == "Onondaga C.C./St. John Fisher" ~ "St. John Fisher",
-    previous_school == "Otero College/Dodge City CC" ~ "Otero College",
-    previous_school == "Ouachita Baptist University" ~ "Ouachita Baptist",
-    previous_school == "Palm Beach Atlantic/Chatham" ~ "Palm Beach Atlantic",
-    previous_school == "Panola CC" ~ "Panola College",
-    previous_school == "Panola JC / SMU" ~ "Panola College",
-    previous_school == "Pensacola State" ~ "Pensacola State College",
-    previous_school == "Pensacola State / Cleveland State" ~ "Pensacola State College",
-    previous_school == "Prairie View A&M University" ~ "Prairie View A&M",
-    previous_school == "Presbyterian" ~ "Presbyterian College",
-    previous_school == "Providence College" ~ "Providence",
-    previous_school == "Purdue Fort Wayne" ~ "Purdue-Fort Wayne",
-    previous_school == "Purdue University-Fort Wayne" ~ "Purdue-Fort Wayne",
-    previous_school == "Queens (N.C.)" ~ "Queens (NC)",
-    previous_school == "Queens University" ~ "Queens (NC)",
-    previous_school == "Queens University of Charlotte" ~ "Queens (NC)",
-    previous_school == "Queens College" ~ "Queens (NY)",
-    previous_school == "Quincy Univ." ~ "Quincy",
-    previous_school == "Quinnipiac University" ~ "Quinnipiac",
-    previous_school == "Radford University" ~ "Radford",
-    previous_school == "Radford/Wabash Valley College" ~ "Radford",
-    previous_school == "Rider University" ~ "Rider",
-    previous_school == "Robert Morris / Buffalo" ~ "Buffalo",
-    previous_school == "Rockford University" ~ "Rockford",
-    previous_school == "Rogers (Okla.) State" ~ "Rogers St.",
-    previous_school == "Rosemont College" ~ "Rosemont",
-    previous_school == "Rutgers/Jackson State" ~ "Jackson State",
-    previous_school == "SAGU" ~ "Southwestern Assemblies of God",
-    previous_school == "SEMO" ~ "Southeast Missouri State",
-    previous_school == "SIU Edwardsville" ~ "SIUE",
-    previous_school == "SNHU" ~ "Southern New Hampshire",
-    previous_school == "SRSU" ~ "Sul Ross St.",
-    previous_school == "SUNY Sullivan/Cloud County CC/Hampton" ~ "Hampton",
-    previous_school == "Sacramento State/MVSU" ~ "Mississippi Valley State",
-    previous_school == "Sacred Heart / CCBC Essex" ~ "Sacred Heart",
-    previous_school == "Saginaw Valley State" ~ "Saginaw Valley",
-    previous_school == "Saint Anselm" ~ "Saint Anselm College",
-    previous_school == "Saint Anslem" ~ "Saint Anselm College",
-    previous_school == "Saint Francis (Pa.)" ~ "Saint Francis (PA)",
-    previous_school == "Saint Francis U" ~ "Saint Francis (PA)",
-    previous_school == "Saint Francis University" ~ "Saint Francis (PA)",
-    previous_school == "Saint Joseph's" ~ "Saint Joseph's (PA)",
-    previous_school == "Saint Peter's University" ~ "Saint Peter’s",
-    previous_school == "Salt Lake City C.C." ~ "Salt Lake CC",
-    previous_school == "Sam Houston State Univ. (Texas)" ~ "Sam Houston State",
-    previous_school == "Samford University" ~ "Samford",
-    previous_school == "San Diego State/St. Bonaventure" ~ "St. Bonaventure",
-    previous_school == "San Joaquin Delta College/Cal Poly Pomona" ~ "Cal Poly Pomona",
-    previous_school == "Santa Clara Univ." ~ "Santa Clara",
-    previous_school == "Santa Rosa JC" ~ "Santa Rosa College",
-    previous_school == "Schoolcraft CC" ~ "Schoolcraft College",
-    previous_school == "Seattle Pacific University" ~ "Seattle Pacific",
-    previous_school == "Seattle U" ~ "Seattle",
-    previous_school == "Seward County (Kan.) / New Mexico JC" ~ "New Mexico JC",
-    previous_school == "Shorter University" ~ "Shorter",
-    previous_school == "Siena College" ~ "Siena",
-    previous_school == "South Carolina Upstate" ~ "USC Upstate",
-    previous_school == "South Georgia Tech" ~ "South Georgia Technical College",
-    previous_school == "South Plains" ~ "South Plains College",
-    previous_school == "South Plains CC / Central Arkansas" ~ "Central Arkansas",
-    previous_school == "Southern Illinois Edwardsville" ~ "SIUE",
-    previous_school == "Southern Illinois University Edwardsville" ~ "SIUE",
-    previous_school == "Southern Miss." ~ "Southern Miss",
-    previous_school == "Southern Utah / Utah Valley" ~ "Utah Valley",
-    previous_school == "Southwest Mississippi CC/Mississippi College" ~ "Mississippi College",
-    previous_school == "Spring Hill College" ~ "Spring Hill",
-    previous_school == "St. Francis (Brooklyn)" ~ "St. Francis College Brooklyn",
-    previous_school == "St. Francis Brooklyn" ~ "St. Francis College Brooklyn",
-    previous_school == "St. Francis-Brooklyn" ~ "St. Francis College Brooklyn",
-    previous_school == "St. John's University" ~ "St. John's",
-    previous_school == "St. Johns" ~ "St. John's",
-    previous_school == "St. Josephs (PA)" ~ "Saint Joseph's (PA)",
-    previous_school == "St. Mary's" ~ "St. Mary's (TX)",
-    previous_school == "St. Mary's (TX) / Tallahassee CC" ~ "Tallahassee CC",
-    previous_school == "Stephen F. Austin State" ~ "Stephen F. Austin",
-    previous_school == "Stetson University" ~ "Stetson",
-    previous_school == "Stetson/Moberly Area CC" ~ "Moberly Area CC",
-    previous_school == "Syracuse / North Carolina A&T / CCBC Essex" ~ "CCBC Essex",
-    previous_school == "TCU" ~ "Texas Christian",
-    previous_school == "Tarleton" ~ "Tarleton St.",
-    previous_school == "Tarleton State" ~ "Tarleton St.",
-    previous_school == "Temple University" ~ "Temple",
-    previous_school == "Tennessee Tech University" ~ "Tennessee Tech",
-    previous_school == "Tennessee-Chattanooga" ~ "Chattanooga",
-    previous_school == "Tennessee/Texas A&M" ~ "Texas A&M",
-    previous_school == "Texas A&M - Commerce" ~ "Tex. A&M-Commerce",
-    previous_school == "Texas A&M-Commerce" ~ "Tex. A&M-Commerce",
-    previous_school == "Texas A&M International University" ~ "Texas A&M International",
-    previous_school == "Texas A&M-Corpus Christi" ~ "A&M-Corpus Christi",
-    previous_school == "Texas Rio Grande Valley" ~ "Texas Rio Grande Valley",
-    previous_school == "The George Washington University" ~ "George Washington",
-    previous_school == "The Master's" ~ "The Master's University",
-    previous_school == "The University of Tampa" ~ "Tampa",
-    previous_school == "Toledo/Akron" ~ "Toledo",
-    str_detect(previous_school, "Trinity Valley") ~ "Trinity Valley CC",
-    previous_school == "Tulane University" ~ "Tulane",
-    previous_school == "Tyler Junior College" ~ "Tyler JC",
-    previous_school == "U. of Missouri-Kansas City" ~ "Kansas City",
-    previous_school == "UAlbany" ~ "Albany",
-    previous_school == "UC Colorado Springs" ~ "UC-Colo. Springs",
-    previous_school == "UC Riverside / San Jose State" ~ "San Jose State",
-    previous_school == "UC-Riverside" ~ "UC Riverside",
-    previous_school == "UCF" ~ "Central Florida",
-    previous_school == "UCSB" ~ "UC Santa Barbara",
-    previous_school == "UIC" ~ "Illinois-Chicago",
-    previous_school == "UIC / Trinity Valley CC" ~ "Trinity Valley CC",
-    previous_school == "ULM" ~ "Louisiana Monroe",
-    previous_school == "UMHB" ~ "Mary Hardin-Baylor",
-    previous_school == "UMKC" ~ "Kansas City",
-    previous_school == "UMass" ~ "Massachusetts",
-    previous_school == "UNC-Charlotte/Tennessee State" ~ "Tennessee State",
-    previous_school == "USC Aiken" ~ "S.C. Aiken",
-    previous_school == "USC-Upstate" ~ "USC Upstate",
-    previous_school == "USF" ~ "South Florida",
-    previous_school == "UT Arlington" ~ "Texas-Arlington",
-    previous_school == "UT-Arlington" ~ "Texas-Arlington",
-    previous_school == "UT Chattanooga" ~ "Chattanooga",
-    previous_school == "UT Dallas" ~ "Texas-Dallas",
-    previous_school == "UT-Dallas" ~ "Texas-Dallas",
-    previous_school == "UT Rio Grande Valley" ~ "UT-Rio Grande Valley",
-    previous_school == "UT Tyler" ~ "Texas-Tyler",
-    previous_school == "UT-Martin" ~ "UT Martin",
-    previous_school == "UTA" ~ "Texas-Arlington",
-    previous_school == "UTEP" ~ "Texas-El Paso",
-    previous_school == "UTEP / Weatherford College" ~ "Texas-El Paso",
-    previous_school == "UTRGV" ~ "Texas Rio Grande Valley",
-    previous_school == "UTSA/Sam Houston State" ~ "Sam Houston State",
-    previous_school == "UVA Wise" ~ "UVa-Wise",
-    previous_school == "UW-Green Bay" ~ "Green Bay",
-    previous_school == "Union College" ~ "Union (NY)",
-    previous_school == "Univ. of Charleston (W.Va.)" ~ "Charleston (WV)",
-    previous_school == "Univ. of Montevallo (Ala.)" ~ "Montevallo",
-    previous_school == "University of Bridgeport" ~ "Bridgeport",
-    previous_school == "University of Denver" ~ "Denver",
-    previous_school == "University of Texas Rio Grande Valley, Garden City CC, University Mary Hardin Baylor" ~ "Mary Hardin-Baylor",
-    previous_school == "Utah Valley University" ~ "Utah Valley",
-    previous_school == "VCU" ~ "Virginia Commonwealth",
-    previous_school == "Ventura CC" ~ "Ventura College",
-    previous_school == "Vermont/NJIT" ~ "Vermont",
-    previous_school == "Victor Valley CC" ~ "Victor Valley College",
-    previous_school == "Vincennes University" ~ "Vincennes",
-    previous_school == "Virginia/New Mexico" ~ "Virginia",
-    previous_school == "Wabash Valley College/Vincennes University" ~ "Vincennes",
-    str_detect(previous_school, "Wabash") ~ "Wabash Valley College",
-    previous_school == "Wake Forest/Northwest Florida State" ~ "Northwest Florida State College",
-    str_detect(previous_school, "Warner") ~ "Warner",
-    previous_school == "Weatherford" ~ "Weatherford College",
-    previous_school == "Weber State University" ~ "Weber State",
-    previous_school == "West Virginia / Auburn / Seton Hall" ~ "Seton Hall",
-    str_detect(previous_school, "Western Kentucky") ~ "Western Ky.",
-    previous_school == "Western Nebraska CC/Vincennes" ~ "Western Nebraska CC",
-    previous_school == "Western New Mexico / McLennan CC" ~ "Western New Mexico",
-    previous_school == "Westminster" ~ "Westminster (PA)",
-    previous_school == "Wichita State University" ~ "Wichita State",
-    previous_school == "Wilmington University" ~ "Wilmington (OH)",
-    previous_school == "Winthrop University" ~ "Winthrop",
-    previous_school == "Wright State/Memphis" ~ "Memphis",
-    previous_school == "Young Harris College" ~ "Young Harris",
-    previous_school == "Youngstown State" ~ "Youngstown St.",
-    .default = previous_school
+# Extract potential country from last part of hometown
+wbb_rosters <- wbb_rosters %>%
+  mutate(
+    country = case_when(!is.na(pm.state) ~ "USA"),
+    temp = map_chr(strsplit(hometown_cleaned, ", ", fixed = TRUE), tail, 1),
+    temp = if_else(temp %in% c("NA", ""), NA_character_, temp)
+  ) %>%
+  left_join(nations_df, by = c("temp" = "country")) %>%
+  mutate(
+    country = case_when(
+      is.na(country) ~ temp,
+      !is.na(country) ~ country,
+      country == "USA" ~ "USA"
+    )
   )
+
+# Standardize country names
+wbb_rosters <- wbb_rosters %>%
+  mutate(
+    country = case_when(
+      # Canadian provinces
+      country %in% c("BC", "QUEBEC", "BRITISH COLUMBIA", "ALBERTA", "ONTARIO", 
+                    "NOVA SCOTIA", "ONT", "QUÉBEC", "MANITOBA", "QUE", "ON", 
+                    "QC", "ALBERTA (AB)", "ONT CANADA", "BC CANADA", "BC,CANADA", 
+                    "ON CANADA", "ALBERTA CANADA", "SASKATCHEWAN", "CN", "AB", 
+                    "ALTA") ~ "CANADA",
+      # Australian states
+      country %in% c("VICTORIA", "SOUTH AUSTRALIA", "WESTERN AUSTRALIA", 
+                    "TASMANIA", "AUSTRAILA", "AU", "AUS", 
+                    "QUEENSLAND AUSTRALIA") ~ "AUSTRALIA",
+      # UK variations
+      country %in% c("GREAT BRITAIN", "ENGLAND", "ENG", "UK", "WALES", 
+                    "NORTHERN IRELAND", "EAST MIDLANDS") ~ "UNITED KINGDOM",
+      # Other standardizations
+      country == "BARCELONA" ~ "SPAIN",
+      country == "HAWAI'I" ~ "USA",
+      country == "SWEEDEN" ~ "SWEDEN",
+      country == 'HUDIKSVALL' ~ 'SWEDEN',
+      country == 'KEFLAVIK ICELAND' ~ 'ICELAND',
+      country == "CZECHIA" ~ "CZECH REPUBLIC",
+      country == "DR" ~ "DOMINICAN REPUBLIC",
+      country %in% c('THE NETHERLANDS', 'NETHLERLANDS', 'NOORD HOLLAND') ~ 'NETHERLANDS',
+      country == 'MÉXICO' ~ 'MEXICO',
+      country == 'NZ' ~ 'NEW ZEALAND',
+      country == 'SÉNÉGAL' ~ 'SENEGAL',
+      country %in% c('DR CONGO', 'DEMOCRATIC REPUBLIC OF CONGO', 'CONGO') ~ 'DEMOCRATIC REPUBLIC OF THE CONGO',
+      country %in% c("TURKIYE", "TÜRKIYE") ~ "TURKEY",
+      TRUE ~ country
+    )
+  ) %>%
+  select(-temp)
+
+# Show country distribution
+wbb_rosters %>% 
+  count(country, sort = TRUE) 
+
+wbb_rosters |> filter(country == 'NEW')
+```
+
+## Previous School Standardization
+
+We standardize previous school names to handle variations in how schools are referenced.
+
+```{r standardize-previous-schools}
+# Create standardization mapping for most common variations
+previous_school_mapping <- tribble(
+  ~previous_school, ~previous_school_clean,
+  "Academic of Art University", "Academy of Art University",
+  "Air Force Academy", "Air Force",
+  "American Univ.", "American",
+  "Arkansas Little Rock", "Arkansas-Little Rock",
+  "Austin Peay State", "Austin Peay",
+  "Cal Poly SLO", "Cal Poly",
+  "CSU Bakersfield", "Cal State Bakersfield",
+  "California Baptist University", "California Baptist",
+  "ETSU", "East Tennessee State",
+  "FDU", "Fairleigh Dickinson",
+  "JMU", "James Madison",
+  "LIU", "Long Island",
+  "Louisiana State", "LSU",
+  "Miami (FL)", "Miami",
+  "Miami (OH)", "Miami Ohio",
+  "N.C. State", "NC State",
+  "Ole Miss", "Mississippi",
+  "TCU", "Texas Christian",
+  "UCF", "Central Florida",
+  "UCSB", "UC Santa Barbara",
+  "UIC", "Illinois-Chicago",
+  "UMass", "Massachusetts",
+  "USF", "South Florida",
+  "UTEP", "Texas-El Paso",
+  "VCU", "Virginia Commonwealth"
 )
 
-wbb_rosters <- wbb_rosters |> left_join(previous_schools, join_by(previous_school))
+# Apply standardization
+wbb_rosters <- wbb_rosters %>%
+  left_join(previous_school_mapping, by = "previous_school") %>%
+  mutate(
+    previous_school_clean = coalesce(previous_school_clean, previous_school)
+  )
 
+# Show transfer statistics
+transfer_summary <- wbb_rosters %>%
+  filter(!is.na(previous_school_clean)) %>%
+  count(previous_school_clean, sort = TRUE) %>%
+  head(10)
 
-wbb_rosters |> filter(previous_school_clean == 'Calif.)')
-
-wbb_rosters |> distinct(previous_school_clean) |> arrange(previous_school_clean)
-
+print(transfer_summary)
 ```
 
+## Final Data Preparation
 
+```{r final-cleanup}
+# Remove temporary columns and rename cleaned columns
+wbb_rosters_final <- wbb_rosters %>%
+  select(-pm.id, -pm.uid, -pm.type, -pm.address, -has_roster, -roster) %>%
+  rename(
+    height_clean = height,
+    position_clean = position_full,
+    hometown_clean = hometown_cleaned,
+    state_clean = pm.state,
+    country_clean = country
+  ) %>%
+  # Remove duplicates and add season identifier
+  distinct() %>%
+  mutate(season = "2025-26") %>%
+  arrange(ncaa_id, jersey)
 
-# Rename Cleaned Columns, Remove Unneeded Columns and Write Out Final CSV File
+# Write final dataset
+write_csv(wbb_rosters_final, OUTPUT_FILE, quote = "all", na = "")
 
-```{r}
-wbb_rosters <- subset(wbb_rosters, select = -c(pm.id, pm.uid, pm.type, pm.address, has_roster, roster))
-
-wbb_rosters <- wbb_rosters %>% 
-  rename(height_clean = height, position_clean = position_full, hometown_clean = hometown_cleaned, state_clean = pm.state, country_clean = country)
-
-wbb_rosters |> 
-  group_by(country_clean) |> 
-  summarise(count = n()) |> 
-  arrange(country_clean)
-
-distinct_countries <- wbb_rosters %>% distinct(country_clean)
-
-wbb_rosters |> filter(is.na(country_clean))
-
-wbb_rosters |> get_dupes()
-
-wbb_rosters <- wbb_rosters |> distinct() |> select(-count)
-
-wbb_rosters <- wbb_rosters |> 
-  mutate(season = "2024-25")
-
-write_csv(wbb_rosters, "wbb_rosters_2024_25.csv", quote="all", na="")
+cat("Final dataset written to", OUTPUT_FILE)
+cat("\nFinal statistics:")
+cat("\n- Total players:", nrow(wbb_rosters_final))
+cat("\n- Teams:", n_distinct(wbb_rosters_final$ncaa_id))
+cat("\n- Transfer players:", sum(!is.na(wbb_rosters_final$previous_school_clean)))
+cat("\n- International players:", sum(wbb_rosters_final$country_clean != "USA", na.rm = TRUE))
 ```
 
+## Transfer Analysis by Conference
 
-```{r}
-wbb_rosters |> 
-  filter(!is.na(previous_school_clean)) |> 
-  group_by(previous_school_clean) |> 
-  summarise(count = n()) |> 
-  arrange(desc(count))
+```{r transfer-analysis}
+# Analyze transfer patterns for D1 teams
+d1_transfer_analysis <- wbb_rosters_final %>%
+  filter(division == "I") %>%
+  group_by(team, conference) %>%
+  summarise(
+    total_players = n(),
+    transfers = sum(!is.na(previous_school_clean)),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    transfer_pct = transfers / total_players * 100
+  ) %>%
+  arrange(desc(transfer_pct))
+
+# Conference-level transfer rates
+conference_transfers <- d1_transfer_analysis %>%
+  group_by(conference) %>%
+  summarise(
+    total_players = sum(total_players),
+    total_transfers = sum(transfers),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    transfer_pct = total_transfers / total_players * 100
+  ) %>%
+  arrange(desc(transfer_pct))
+
+print("Top conferences by transfer percentage:")
+print(head(conference_transfers, 10))
 ```
-
-```{r}
-d1_xfer_counts <- wbb_rosters |> 
-  filter(!is.na(previous_school_clean), division == "I") |> 
-  group_by(team, conference) |> 
-  summarise(transfers = n()) |> 
-  arrange(desc(transfers))
-
-d1_player_counts <- wbb_rosters |> 
-  filter(division == "I") |> 
-  group_by(team, conference) |> 
-  summarise(players = n()) |> 
-  arrange(desc(players))
-
-transfer_counts_d1 <- d1_player_counts |> left_join(d1_xfer_counts) |> mutate(transfers = if_else(is.na(transfers), 0, transfers)) |> mutate(pct = transfers/players *100)
-
-transfer_counts_d1 |> group_by(conference) |> summarize(total_players = sum(players), total_transfers = sum(transfers)) |> mutate(pct = total_transfers/total_players *100) |> arrange(desc(pct))
-
-```
-
-```{r}
-wbb_rosters |> 
-  filter(conference == "Big Ten", !is.na(previous_school_clean))
-```
-
