@@ -6,129 +6,17 @@ and builds the foundation for standardization
 """
 
 import pandas as pd
-import re
 from pathlib import Path
-from collections import defaultdict
+from hs_standardization import (
+    normalize_hs_name,
+    extract_disambiguator,
+    categorize_school_type,
+    is_likely_common_name
+)
 
 # Configuration
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
-
-def normalize_hs_name(name):
-    """
-    Create a normalized version of a high school name for matching.
-    This is conservative and designed for fuzzy matching.
-
-    Args:
-        name: Original high school name
-
-    Returns:
-        Normalized name for matching (uppercase, no suffix, etc.)
-    """
-    if pd.isna(name) or name == '':
-        return ''
-
-    # Convert to string and uppercase
-    normalized = str(name).upper().strip()
-
-    # Remove common high school suffixes
-    # Order matters - remove longer patterns first
-    suffixes = [
-        r'\s+HIGH\s+SCHOOL$',
-        r'\s+H\.S\.$',
-        r'\s+HS$',
-        r'\s+H\.S$'
-    ]
-
-    for suffix in suffixes:
-        normalized = re.sub(suffix, '', normalized, flags=re.IGNORECASE)
-
-    # Standardize St./Saint
-    normalized = re.sub(r'\bST\.?\s+', 'SAINT ', normalized)
-
-    # Remove periods, commas, apostrophes
-    normalized = re.sub(r'[.,\']', '', normalized)
-
-    # Remove parenthetical notes (but save them separately for context)
-    # Examples: "Tappan Zee (Saint Rose)" -> "Tappan Zee"
-    normalized = re.sub(r'\s*\([^)]+\)$', '', normalized)
-
-    # Collapse multiple spaces
-    normalized = re.sub(r'\s+', ' ', normalized).strip()
-
-    return normalized
-
-
-def extract_disambiguator(name):
-    """
-    Extract any disambiguating information from parentheses.
-
-    Args:
-        name: Original high school name
-
-    Returns:
-        Content from parentheses, or empty string
-    """
-    if pd.isna(name):
-        return ''
-
-    match = re.search(r'\(([^)]+)\)$', str(name))
-    return match.group(1) if match else ''
-
-
-def categorize_school_type(name):
-    """
-    Categorize school type based on name patterns.
-
-    Returns: 'public', 'private', 'prep', 'international', or 'unknown'
-    """
-    if pd.isna(name):
-        return 'unknown'
-
-    name_upper = str(name).upper()
-
-    # Prep schools and academies
-    if any(pattern in name_upper for pattern in ['ACADEMY', 'PREP', 'PREPARATORY']):
-        return 'prep'
-
-    # Private school indicators
-    if any(pattern in name_upper for pattern in [
-        'SAINT ', 'ST. ', 'BISHOP ', 'CATHOLIC', 'CHRISTIAN',
-        'LUTHERAN', 'METHODIST', 'BAPTIST', 'EPISCOPAL'
-    ]):
-        return 'private'
-
-    # International patterns
-    if any(pattern in name_upper for pattern in [
-        'IES ', 'INSTITUT', 'LYCEE', 'GYMNASIUM', 'SECONDARY SCHOOL',
-        'COLLEGE '  # In international context, college often means high school
-    ]):
-        return 'international'
-
-    # Common public school patterns
-    if any(pattern in name_upper for pattern in [
-        ' HS', 'HIGH SCHOOL', 'H.S.', 'CENTRAL', 'EAST ', 'WEST ',
-        'NORTH ', 'SOUTH '
-    ]):
-        return 'public'
-
-    return 'unknown'
-
-
-def is_likely_common_name(normalized_name):
-    """
-    Check if a normalized name is likely to be ambiguous (many schools share it).
-
-    Returns: Boolean
-    """
-    common_names = {
-        'CENTRAL', 'LIBERTY', 'LINCOLN', 'WASHINGTON', 'JEFFERSON',
-        'ROOSEVELT', 'FRANKLIN', 'MADISON', 'KENNEDY', 'WILSON',
-        'EAST', 'WEST', 'NORTH', 'SOUTH', 'NORTHEAST', 'NORTHWEST',
-        'SOUTHEAST', 'SOUTHWEST', 'CENTENNIAL', 'HIGHLAND', 'RIVERSIDE'
-    }
-
-    return normalized_name in common_names
 
 
 def analyze_high_schools(csv_files):
