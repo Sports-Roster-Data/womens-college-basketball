@@ -31,10 +31,13 @@ The specific information cleaned and parsed includes the following:
 * Hometown (parsed using the [postmastr](https://slu-opengis.github.io/postmastr/) package, then separated into hometown, state and country-specific fields. For foreign countries, we started with the list of FIBA nations and added others, then standardized the results)
 * Previous School (probably the least consistent column in this data because of the way it is presented in the original data; we did make an attempt to move high schools listed in this column to the high school field)
 
-We have *not* completely standardized the following data, at least not yet:
+Recent additions to standardization (November 2025):
 
-* High School
-* Hometown
-* Previous School
+* **High School** - Partially standardized using automated duplicate resolution and manual curation. See [HIGH_SCHOOL_STANDARDIZATION.md](HIGH_SCHOOL_STANDARDIZATION.md) for details. Coverage: ~44% of US player-seasons, with ongoing work to expand via NCES data matching.
+
+We have *not* completely standardized the following data:
+
+* Hometown (parsed but not normalized)
+* Previous School (inconsistent formatting remains)
 
 We welcome comments, corrections and questions. Please use [this repository's Issues](https://github.com/Sports-Roster-Data/womens-college-basketball/issues) to let us know about any errors or omissions, or submit a pull request with any changes.
