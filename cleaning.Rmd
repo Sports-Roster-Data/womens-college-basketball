@@ -216,6 +216,81 @@ if (file.exists("wbb_rosters_2024_25.csv")) {
 }
 ```
 
+### High School Name Standardization
+
+Apply standardized high school names to reduce duplicates and improve consistency. See `HIGH_SCHOOL_STANDARDIZATION.md` for details.
+
+```{r standardize-high-schools}
+# Load high school mapping
+hs_mapping_file <- "data/high_school_mapping.csv"
+
+if (file.exists(hs_mapping_file)) {
+  cat("Applying high school standardization...\n")
+
+  hs_mapping <- read_csv(hs_mapping_file, show_col_types = FALSE) %>%
+    select(high_school_original, high_school_standardized, confidence, source)
+
+  cat(sprintf("  Loaded %d high school mappings\n", nrow(hs_mapping)))
+
+  # Count unique schools before standardization
+  unique_before <- n_distinct(wbb_rosters$hs_clean[!is.na(wbb_rosters$hs_clean)])
+
+  # Apply mapping
+  wbb_rosters <- wbb_rosters %>%
+    left_join(
+      hs_mapping,
+      by = c("hs_clean" = "high_school_original")
+    ) %>%
+    mutate(
+      # Use standardized name if available, otherwise keep hs_clean
+      high_school_standardized = coalesce(high_school_standardized, hs_clean),
+      # Set confidence level
+      hs_confidence = case_when(
+        !is.na(confidence) ~ confidence,
+        country_clean != "USA" ~ "international",
+        is.na(hs_clean) ~ "missing",
+        TRUE ~ "unstandardized"
+      ),
+      # Track if standardization was applied
+      hs_was_standardized = hs_clean != high_school_standardized &
+                           !is.na(high_school_standardized)
+    ) %>%
+    select(-confidence, -source)
+
+  # Count unique schools after standardization
+  unique_after <- n_distinct(wbb_rosters$high_school_standardized[!is.na(wbb_rosters$high_school_standardized)])
+
+  # Report statistics
+  total_hs <- sum(!is.na(wbb_rosters$hs_clean))
+  standardized <- sum(wbb_rosters$hs_was_standardized, na.rm = TRUE)
+
+  cat(sprintf("  Total records with high schools: %d\n", total_hs))
+  cat(sprintf("  Standardized: %d (%.1f%%)\n",
+              standardized,
+              standardized / total_hs * 100))
+  cat(sprintf("  Unique schools before: %d\n", unique_before))
+  cat(sprintf("  Unique schools after: %d\n", unique_after))
+  cat(sprintf("  Deduplication: %.1f%%\n",
+              (unique_before - unique_after) / unique_before * 100))
+
+  cat("\n  Confidence breakdown:\n")
+  print(table(wbb_rosters$hs_confidence))
+
+} else {
+  cat("Note: High school mapping file not found:", hs_mapping_file, "\n")
+  cat("      Run scripts/normalize_high_schools.py and scripts/build_hs_mapping.py to create it\n")
+  cat("      Proceeding without standardization...\n")
+
+  # Create placeholder columns
+  wbb_rosters <- wbb_rosters %>%
+    mutate(
+      high_school_standardized = hs_clean,
+      hs_confidence = "none",
+      hs_was_standardized = FALSE
+    )
+}
+```
+
 ## Geographic Data Cleaning
 
 We clean hometown/homestate data to standardize state abbreviations and identify international players.
