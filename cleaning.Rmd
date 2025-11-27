@@ -17,6 +17,7 @@ OUTPUT_FILE <- "wbb_rosters_2025_26.csv"
 TEAMS_URL <- "https://raw.githubusercontent.com/Sports-Roster-Data/womens-college-basketball/main/teams.csv"
 POSITIONS_URL <- "https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/wbb_positions.csv"
 FIBA_URL <- "https://www.fiba.basketball/rankingwomen"
+
 ```
 
 ## Load Source Data
@@ -29,12 +30,18 @@ wbb_rosters <- read_csv(INPUT_FILE) %>%
 
 # Load teams metadata
 teams <- read_csv(TEAMS_URL) %>% 
-  select(-url, -twitter, -stats_name, -private)
+  select(-url, -twitter, -stats_name) |> distinct()
+
+ncaa_teams <- read_csv("~/code/wbb/ncaa/ncaa_teams.csv")
+
 
 # Create roster availability indicator
 roster_teams <- wbb_rosters %>% 
   distinct(ncaa_id) %>% 
   mutate(has_roster = 1)
+
+
+missing <- ncaa_teams |> anti_join(roster_teams, join_by(school_id == ncaa_id)) 
 
 teams <- teams %>% 
   left_join(roster_teams, by = "ncaa_id") %>% 
@@ -44,7 +51,9 @@ teams <- teams %>%
 wbb_rosters <- wbb_rosters %>% 
   left_join(teams, by = c("ncaa_id", "team"))
 
-cat("Loaded", nrow(wbb_rosters), "player records from", n_distinct(wbb_rosters$ncaa_id), "teams")
+teams |> anti_join(roster_teams, by = "ncaa_id") |> 
+  select(ncaa_id, team)
+
 ```
 
 ## Height Cleaning
@@ -52,6 +61,10 @@ cat("Loaded", nrow(wbb_rosters), "player records from", n_distinct(wbb_rosters$n
 The roster data contains heights in various formats (6'0", 6-0, 6'0, etc.). We standardize all heights to use hyphens (6-0) and create a total inches column for analysis.
 
 ```{r clean-heights}
+wbb_rosters |> 
+  filter(is.na(height))
+
+
 wbb_rosters <- wbb_rosters %>%
   mutate(
     # Standardize height format to use hyphens
@@ -79,6 +92,15 @@ wbb_rosters %>%
 Position data comes in various formats and combinations. We standardize positions and separate primary/secondary positions where applicable.
 
 ```{r clean-positions}
+
+# check for NA positions
+
+na_positions <- wbb_rosters %>%
+  filter(is.na(position)) %>%
+  distinct(ncaa_id, team)
+
+
+
 # Load position standardization mapping
 positions_cleaned <- read_csv(POSITIONS_URL) %>%
   select(-count)
