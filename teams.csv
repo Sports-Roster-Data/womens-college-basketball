@@ -1,946 +1,989 @@
-team,twitter,url,ncaa_id,stats_name,private,team_state,conference,division
-Abilene Christian,acuwbb,https://acusports.com/sports/womens-basketball,2,Abilene Christian,,TX,WAC,I
-Adelphi,AdelphiWBB,https://aupanthers.com/sports/womens-basketball,3,,,NY,NE10,II
-Akron,zipswbb,https://gozips.com/sports/womens-basketball,5,Akron,,OH,MAC,I
-Alabama A&M,aamuwbb,https://aamusports.com/sports/womens-basketball,6,Alabama A&M,,AL,SWAC,I
-Alabama State,bamastatewbb,https://bamastatesports.com/sports/womens-basketball,7,Alabama St.,,AL,SWAC,I
-Alabama,alabamawbb,https://rolltide.com/sports/womens-basketball,8,Alabama,,AL,SEC,I
-UAB,UAB_WBBALL,https://uabsports.com/sports/womens-basketball,9,Uab,FALSE,AL,C-USA,I
-Alas. Anchorage,UAAWBB,https://goseawolves.com/sports/womens-basketball,11,Alas. Anchorage,,AK,Great Northwest,II
-Alas. Fairbanks,NanooksWBB,https://alaskananooks.com/sports/womens-basketball,12,Alas. Fairbanks,,AK,Great Northwest,II
-Albany,ualbanywbb,https://ualbanysports.com/sports/womens-basketball,14,Albany (NY),,NY,America East,I
-Albion,AlbionWBB,https://gobrits.com/sports/womens-basketball,15,,,MI,Michigan Intercol. Ath. Assn.,III
-Albright,AlbrightWBB,https://albrightathletics.com/sports/womens-basketball,16,,,PA,MAC Commonwealth,III
-Alcorn State,alcornwbb,https://alcornsports.com/sports/womens-basketball,17,Alcorn,,MS,SWAC,I
-Alfred,AU_WBB,https://gosaxons.com/sports/womens-basketball,18,,,NY,Empire 8,III
-Allegheny,AlleghenyWBB,https://alleghenygators.com/sports/womens-basketball,19,,,PA,PAC,III
-DeSales,desales_wbb,https://athletics.desales.edu/sports/womens-basketball,20,DeSales,,PA,MAC Freedom,III
-Alma,AlmaScotsWBB,https://almascots.com/sports/wbkb/index,21,,,MI,Michigan Intercol. Ath. Assn.,III
-American International,AICWBB,https://aicyellowjackets.com/sports/womens-basketball,22,,,MA,NE10,II
-American,American_WBB,https://aueagles.com/sports/womens-basketball,23,American,,DC,Patriot,I
-Angelo St.,Belle_Hoops,https://angelosports.com/sports/womens-basketball,25,Angelo St.,,TX,Lone Star,II
-Appalachian State,appstatewbb,https://appstatesports.com/sports/womens-basketball,27,Appalachian St.,FALSE,NC,Sun Belt,I
-Arizona State,sundevilwbb,https://thesundevils.com/sports/womens-basketball,28,Arizona St.,,AZ,Pac-12,I
-Arizona,arizonawbb,https://arizonawildcats.com/sports/womens-basketball,29,Arizona,,AZ,Pac-12,I
-Arkansas St.,AStateWB,https://astateredwolves.com/sports/womens-basketball,30,Arkansas St.,,AR,Sun Belt,I
-Arkansas,razorbackwbb,https://arkansasrazorbacks.com/sport/w-baskbl/,31,,,AR,SEC,I
-Arkansas-Little Rock,littlerockwbb,https://lrtrojans.com/sports/womens-basketball,32,Little Rock,,AR,OVC,I
-Ashland,AshlandWBB,https://goashlandeagles.com/sports/womens-basketball,35,,,OH,G-MAC,II
-Assumption,AssumptionWBB,https://assumptiongreyhounds.com/sports/womens-basketball,36,,,MA,NE10,II
-Auburn,auburnwbb,https://auburntigers.com/sports/womens-basketball,37,Auburn,,AL,SEC,I
-Augsburg,AugsburgWBB,https://athletics.augsburg.edu/sports/womens-basketball,38,Augsburg,,MN,MIAC,III
-Augusta,AUG_WBB,https://augustajags.com/sports/womens-basketball,39,Augusta,,GA,Peach Belt,II
-Augustana (IL),AugustanaWBBall,https://athletics.augustana.edu/sports/womens-basketball,40,Augustana (IL),,IL,CCIW,III
-Augustana (SD),AugieWBB,https://goaugie.com/sports/womens-basketball,41,,,SD,NSIC,II
-Aurora,AUSpartanWBB,https://athletics.aurora.edu/sports/womens-basketball,42,Aurora University,,IL,NACC,III
-Austin Peay,GovsWBB,https://letsgopeay.com/sports/womens-basketball,43,Austin Peay,,TN,ASUN,I
-Averett,AverettWBB,https://averettcougars.com/sports/womens-basketball,44,,,VA,ODAC,III
-Babson,babsonwhoops,https://www.babsonathletics.com/sports/w-baskbl/index,45,,,MA,NEWMAC,III
-Baldwin Wallace,BW_wbasketball,https://www.bwyellowjackets.com/sports/wbkb/index,46,,,OH,OAC,III
-Ball State,ballstatewbb,https://ballstatesports.com/sports/womens-basketball,47,Ball St.,,IN,MAC,I
-Charleston Southern,csubucswbb,https://www.csusports.com/sports/womens-basketball,48,Charleston So.,,SC,Big South,I
-Barry,BarryUWBB,https://gobarrybucs.com/sports/womens-basketball,49,Barry,,FL,Sunshine State,II
-Bates,Bates_WBB,https://gobatesbobcats.com/sports/womens-basketball,50,,,ME,NESCAC,III
-Baylor,BaylorWBB,https://baylorbears.com/sports/womens-basketball,51,Baylor,,TX,Big 12,I
-Bellarmine,BUKnightsWBB,,52,Bellarmine,,KY,ASUN,I
-Bemidji St.,BSUBeaversWBB,https://www.bsubeavers.com/wbasketball/,54,Bemidji St.,,MN,NSIC,II
-Benedict,BenedictWBB,https://benedicttigers.com/sports/womens-basketball,55,Benedict,,SC,SIAC,II
-Bentley,BentleyWBball,https://www.bentleyfalcons.com/sports/wbkb/index,56,,,MA,NE10,II
-Baruch,BaruchWBB,https://athletics.baruch.cuny.edu/sports/womens-basketball,58,Baruch,,NY,CUNYAC,III
-Bethany (WV),BCWBB,https://www.bethanybison.com/sports/wbkb/index,59,,,WV,PAC,III
-Bethel (MN),Bethel_WBB,https://athletics.bethel.edu/sports/womens-basketball,60,Bethel University,,MN,MIAC,III
-Bethune-Cookman,bcuwbb,https://bcuathletics.com/sports/womens-basketball,61,Bethune-Cookman,,FL,SWAC,I
-Binghamton,binghamtonuwbb,https://bubearcats.com/sports/womens-basketball,62,Binghamton,,NY,America East,I
-Blackburn,Blackburn_WBB,https://www.blackburnbeavers.com/sports/wbkb/index,64,Blackburn,,IL,SLIAC,III
-Bloomsburg,buwbb_huskies,https://buhuskies.com/sports/womens-basketball,65,Bloomsburg,,PA,PSAC,II
-Boise State,broncosportswbb,https://broncosports.com/sports/womens-basketball,66,Boise St.,,ID,Mountain West,I
-Boston College,bc_wbb,https://bceagles.com/sports/womens-basketball,67,Boston College,,MA,ACC,I
-Boston,terrierwbb,https://goterriers.com/sports/womens-basketball,68,Boston U.,,MA,Patriot,I
-Bowdoin,BowdoinWBB,https://athletics.bowdoin.edu/sports/womens-basketball,69,Bowdoin,,ME,NESCAC,III
-Bowie St.,BowieStatewbb,https://bsubulldogs.com/sports/womens-basketball,70,Bowie St.,,MD,CIAA,II
-Bowling Green,bgsuwbb,https://bgsufalcons.com/sports/womens-basketball,71,Bowling Green,,KY,MAC,I
-Bradley,bradleywbb,https://bradleybraves.com/sports/womens-basketball,72,Bradley,,IL,MVC,I
-Brandeis,BrandeisWBB,https://www.brandeisjudges.com/sports/wbkb/index,73,Brandeis,,MA,UAA,III
-Bridgeport,ub_wbb,https://www.ubknights.com/sports/wbkb/index,74,,,CT,CACC,II
-Bridgewater (VA),BridgewaterWBB,https://bridgewatereagles.com/sports/womens-basketball/roster,75,,,VA,ODAC,III
-Brigham Young,byuwbb,https://byucougars.com/home/w-basketball,77,Byu,,UT,WCC,I
-Brockport,Brockport_WBB,https://gobrockport.com/sports/womens-basketball,78,,,NY,SUNYAC,III
-Brown,BrownU_WBB,https://brownbears.com/sports/womens-basketball,80,Brown,,RI,Ivy League,I
-Bryant,bryantwbball,https://www.bryantbulldogs.com/sports/wbkb/index,81,Bryant,,RI,America East,I
-Bucknell,bucknell_wbb,https://bucknellbison.com/sports/womens-basketball,83,Bucknell,,PA,Patriot,I
-Buena Vista,BVU_WBBALL,https://bvuathletics.com/sports/womens-basketball,84,,,IA,American Rivers,III
-Buffalo,UBwomenshoops,https://ubbulls.com/sports/womens-basketball,86,Buffalo,,NY,MAC,I
-Butler,butleruwbb,https://butlersports.com/sports/womens-basketball,87,Butler,,IN,Big East,I
-Cabrini,_cwbb,https://cabriniathletics.com/sports/womens-basketball,88,,,PA,Atlantic East,III
-Caltech,caltechwbb,https://www.gocaltech.com/sports/wbkb/index,89,,,CA,SCIAC,III
-Cal Poly,calpolywbb,https://gopoly.com/sports/womens-basketball,90,Cal Poly,,CA,Big West,I
-Cal Poly Pomona,cppwbb,https://broncoathletics.com/sports/womens-basketball,91,Cal Poly Pomona,,CA,CCAA,II
-Cal St. Dom. Hills,CSUDHwbb,https://gotoros.com/sports/womens-basketball,92,,,CA,CCAA,II
-Cal St. San Bernardino,CSUSBWBB,https://www.csusbathletics.com/sports/womens-basketball,93,,,CA,CCAA,II
-Cal State Bakersfield,csub_wbb,https://gorunners.com/sports/womens-basketball,94,CSU Bakersfield,,CA,Big West,I
-Chico St.,ChicoWbb,https://chicowildcats.com/sports/womens-basketball,95,Chico St.,,CA,CCAA,II
-Fresno State,fresnostatewbb,https://gobulldogs.com/sports/womens-basketball,96,Fresno St.,,CA,Mountain West,I
-Cal State Fullerton,fullertonwbb,https://www.fullertontitans.com/sports/w-baskbl/index,97,Cal St. Fullerton,,CA,Big West,I
-Cal St. East Bay,EastBayWBB,https://eastbaypioneers.com/sports/womens-basketball,98,,,CA,CCAA,II
-Long Beach State,LBSUWBB,https://longbeachstate.com/sports/womens-basketball,99,Long Beach St.,,CA,Big West,I
-Cal State LA,CalStateLAWBB1,https://lagoldeneagles.com/sports/womens-basketball,100,Cal State LA,,CA,CCAA,II
-CSUN,CSUNWBB,https://gomatadors.com/sports/womens-basketball,101,Csun,,CA,Big West,I
-Sacramento State,sacstatewbb,https://www.hornetsports.com/sports/wbkb/index,102,Sacramento St.,,CA,Big Sky,I
-UC Santa Barbara,ucsb_wbb,https://www.ucsbgauchos.com/sports/w-baskbl/index,104,UC Santa Barbara,,CA,Big West,I
-Cal U (PA),CALU_wbb,https://calvulcans.com/sports/womens-basketball,106,Cal U (PA),,PA,PSAC,II
-California,calwbball,https://calbears.com/sports/womens-basketball,107,California,,CA,Pac-12,I
-UC Davis,ucdaviswbb,https://ucdavisaggies.com/sports/womens-basketball,108,UC Davis,,CA,Big West,I
-UC Irvine,uciwbb,https://ucirvinesports.com/sports/womens-basketball,109,UC Irvine,,CA,Big West,I
-UCLA,UCLAWBB,https://uclabruins.com/sports/womens-basketball,110,Ucla,,CA,Pac-12,I
-UC Riverside,ucr_wbb,https://gohighlanders.com/sports/womens-basketball,111,UC Riverside,FALSE,CA,Big West,I
-UC San Diego,UCSDwbb,https://ucsdtritons.com/sports/womens-basketball,112,UC San Diego,,CA,Big West,I
-UC Santa Cruz,ucscwbb,https://goslugs.com/sports/womens-basketball,113,,,CA,C2C,III
-Calvin,CalvinWBball,https://calvinknights.com/sports/wbkb/index,114,,,MI,Michigan Intercol. Ath. Assn.,III
-Campbell,gocamelswbb,https://gocamels.com/sports/womens-basketball,115,Campbell,,NC,Big South,I
-Canisius,griffswbb,https://gogriffs.com/sports/womens-basketball,116,Canisius,,NY,MAAC,I
-Capital,CapitalWBB,https://athletics.capital.edu/sports/womens-basketball,117,,,OH,OAC,III
-Carleton,Carleton_WBB,https://athletics.carleton.edu/sports/womens-basketball,118,Carleton,,MN,MIAC,III
-Carnegie Mellon,cmutartanswbb,https://athletics.cmu.edu/sports/wbkb/index,119,,,PA,UAA,III
-Carroll (WI),carrollu_wbb,https://gopios.com/sports/womens-basketball,120,,,WI,CCIW,III
-Carthage,Carthage_WBB,https://athletics.carthage.edu/sports/womens-basketball,121,Carthage,,WI,CCIW,III
-CWRU,CWRUWBB,https://athletics.case.edu/sports/wbkb/index,122,,,OH,UAA,III
-Castleton,CastletonWBB,https://castletonsports.com/sports/womens-basketball,123,,,VT,Little East,III
-Catholic,CatholicU_WBB,https://www.catholicathletics.com/sports/wbkb/index,124,,,DC,Landmark,III
-Centenary (LA),CentenaryWBB,https://centenarycyclones.com/sports/womens-basketball,125,Centenary (LA),,LA,SCAC,III
-Central Connecticut,ccsu_wbb,https://ccsubluedevils.com/sports/wbkb/index,127,,,CT,NEC,I
-Central Florida,ucf_wbb,https://ucfknights.com/sports/womens-basketball,128,Ucf,,FL,AAC,I
-Central Michigan,cmuwbball,https://cmuchippewas.com/sports/womens-basketball,129,Central Mich.,,MI,MAC,I
-Central Mo.,UCMWBB,https://ucmathletics.com/sports/womens-basketball,130,Central Mo.,,MO,Mid-America Intercollegiate,II
-Centre,CCWBasketball,https://centrecolonels.com/sports/womens-basketball,132,Centre,,KY,SAA,III
-Chicago State,chistatewbb,https://www.gocsucougars.com/sports/womens-basketball,136,Chicago St.,,IL,DI Independent,I
-Chicago,UChicagoWBB,https://athletics.uchicago.edu/sports/wbkb/index,137,,,IL,UAA,III
-Chris. Newport,cnuwbb,https://www.cnusports.com/sports/womens-basketball,139,,,VA,C2C,III
-Cincinnati,gobearcatswbb,https://gobearcats.com/sports/womens-basketball,140,Cincinnati,,OH,AAC,I
-Claremont-M-S,cmswbasketball,https://www.cmsathletics.org/sports/wbkb/index,142,Claremont-M-S,,CA,SCIAC,III
-Clark Atlanta,CAU_WBasketball,https://clarkatlantasports.com/sports/womens-basketball,144,,,GA,SIAC,II
-Clark (MA),ClarkU_wbb,https://www.clarkathletics.com/sports/wbkb/index,145,,,MA,NEWMAC,III
-Clarkson,Clarkson_WBB,https://clarksonathletics.com/sports/womens-basketball,146,,,NY,Liberty League,III
-Clemson,clemsonwbb,https://clemsontigers.com/sports/w-basketball/,147,Clemson,,SC,ACC,I
-Cleveland State,CSU_WBasketball,https://www.csuvikings.com/sports/w-baskbl/index,148,,,OH,Horizon,I
-Coastal Carolina,coastalwbb,https://goccusports.com/sports/womens-basketball,149,Coastal Carolina,,SC,Sun Belt,I
-Coe,CoeCollegeWBB,https://kohawkathletics.com/sports/womens-basketball,150,,,IA,American Rivers,III
-Colby,ColbyWBB,https://colbyathletics.com/sports/womens-basketball,151,,,ME,NESCAC,III
-Colgate,colgatewbb,https://colgateathletics.com/sports/womens-basketball,153,Colgate,,NY,Patriot,I
-Colorado Col.,cc_wbb,https://cctigers.com/sports/womens-basketball,154,,,CO,SCAC,III
-Colo. Sch. of Mines,MinesWBB,https://minesathletics.com/sports/womens-basketball,155,Colo. Sch. of Mines,,CO,RMAC,II
-Colorado St.,CSUWBasketball,https://csurams.com/sports/womens-basketball,156,Colorado St.,,CO,Mountain West,I
-Colorado,cubuffswbb,https://cubuffs.com/sports/womens-basketball,157,Colorado,,CO,Pac-12,I
-Columbia,culionswbb,https://gocolumbialions.com/sports/womens-basketball,158,Columbia,,NY,Ivy League,I
-Columbus St.,CSUCougarsWBB,https://csucougars.com/sports/womens-basketball,159,Columbus State,,GA,Peach Belt,II
-Concordia Chicago,CUCWBball,https://www.cucougars.com/sports/womens-basketball,160,Concordia Chicago,,IL,NACC,III
-Connecticut Col.,conncollegewbb,https://camelathletics.com/sports/womens-basketball,163,Connecticut Col.,,CT,NESCAC,III
-UConn,UConnWBB,https://uconnhuskies.com/sports/womens-basketball,164,UConn,,CT,Big East,I
-Coppin State,CoppinState_WBB,https://coppinstatesports.com/sports/womens-basketball,165,Coppin St.,,MD,MEAC,I
-Cornell College,CornellRamsWBB,https://cornellrams.com/sports/womens-basketball,166,,,IA,MWC,III
-Cornell,cornellwbball,https://cornellbigred.com/sports/womens-basketball,167,Cornell,,NY,Ivy League,I
-Creighton,creightonwbb,https://gocreighton.com/sports/womens-basketball,169,Creighton,,NE,Big East,I
-Dartmouth,dartmouthwbb,https://dartmouthsports.com/sports/womens-basketball,172,Dartmouth,,VT,Ivy League,I
-Davidson,davidsonwbb,https://davidsonwildcats.com/sports/womens-basketball,173,Davidson,,NC,Atlantic 10,I
-Davis & Elkins,Senator_WBB,https://senatornation.com/sports/womens-basketball,174,Davis & Elkins,,WV,MEC,II
-Dayton,daytonwbb,https://daytonflyers.com/sports/womens-basketball,175,Dayton,,OH,Atlantic 10,I
-DePaul,DePaulWBBHoops,https://depaulbluedemons.com/sports/womens-basketball,176,DePaul,,IL,Big East,I
-DePauw,DePauw_WBB,https://depauwtigers.com/sports/wbkb/index,177,,,IN,NCAC,III
-Delaware State,dsuwbb,https://dsuhornets.com/sports/womens-basketball,178,Delaware St.,,DE,MEAC,I
-Delaware Valley,DVUwbb,https://athletics.delval.edu/sports/womens-basketball,179,,,PA,MAC Freedom,III
-Delaware,delawarewbb,https://bluehens.com/sports/womens-basketball,180,Delaware,,DE,CAA,I
-Delta St.,DeltaStateWBB,https://gostatesmen.com/sports/womens-basketball,181,Delta St.,,MS,Gulf South,II
-Denison,DUWBB,https://denisonbigred.com/sports/womens-basketball,182,Denison,,OH,NCAC,III
-Denver,DU_WHoops,https://denverpioneers.com/sports/womens-basketball,183,Denver,,CO,Summit League,I
-Detroit Mercy,detroit_wbb,https://detroittitans.com/sports/womens-basketball,184,Detroit Mercy,,MI,Horizon,I
-Dickinson,DickinsonWBB,https://www.dickinsonathletics.com/sports/wbkb/index,185,,,PA,Centennial,III
-Dist. Columbia,UDC_WBB,https://www.udcfirebirds.com/sports/wbkb/index,186,,,DC,ECC,II
-Drake,drakewbb,https://godrakebulldogs.com/sports/womens-basketball/,189,Drake,,IA,MVC,I
-Drew,Rangers_WBB,https://drewrangers.com/sports/womens-basketball,190,Drew,,NJ,Landmark,III
-Drexel,drexelwbb,https://drexeldragons.com/sports/womens-basketball,191,Drexel,,PA,CAA,I
-Dubuque,UD_WBB,https://udspartans.com/sports/womens-basketball,192,,,IA,American Rivers,III
-Duke,dukewbb,https://goduke.com/sports/womens-basketball,193,Duke,,NC,ACC,I
-Duquesne,duqwbb,https://goduquesne.com/sports/womens-basketball,194,Duquesne,,PA,Atlantic 10,I
-Earlham,EarlhamWBB,https://goearlham.com/sports/womens-basketball,195,Earlham,,IN,HCAC,III
-East Carolina,ECUWBB,https://ecupirates.com/sports/womens-basketball,196,East Carolina,,NC,AAC,I
-East Stroudsburg,ESU_WBB,https://esuwarriors.com/sports/womens-basketball,197,East Stroudsburg,,PA,PSAC,II
-East Tennessee State,etsu_wbb,https://www.etsubucs.com/wbasketball,198,Etsu,,TN,SoCon,I
-Tex. A&M-Commerce,Lion_WBB,https://lionathletics.com/sports/womens-basketball,199,,,TX,Southland,I
-Eastern Conn. St.,EasternWBB,https://gowarriorathletics.com/sports/womens-basketball,200,,,CT,Little East,III
-Eastern Illinois,eiuwbb,https://eiupanthers.com/sports/womens-basketball,201,Eastern Ill.,,IL,OVC,I
-Eastern Kentucky,ekuwbb,https://ekusports.com/sports/womens-basketball,202,Eastern Ky.,,KY,ASUN,I
-East. Mennonite,emu_wbb,https://www.emuroyals.com/sports/wbkb/index,203,,,VA,ODAC,III
-Eastern Michigan,emuwbb,https://emueagles.com/sports/womens-basketball,204,Eastern Mich.,,MI,MAC,I
-Mont. St. Billings,MSUBWBB,https://msubsports.com/sports/womens-basketball,205,Montana St. Billings,,MT,Great Northwest,II
-Eastern N.M.,ENMUWBB,https://goeasternathletics.com/sports/womens-basketball,206,Eastern N.M.,,NM,Lone Star,II
-Eastern Washington,ewuwbb,https://goeags.com/sports/womens-basketball,207,,,WA,Big Sky,I
-Eckerd,EC_WBB,https://eckerdtritons.com/sports/womens-basketball,208,Eckerd,,FL,Sunshine State,II
-Edinboro,BoroWBB,https://gofightingscots.com/sports/womens-basketball,209,Edinboro,,PA,PSAC,II
-Elizabethtown,BlueJaysWBB,https://etownbluejays.com/sports/womens-basketball,211,Elizabethtown,,PA,Landmark,III
-Elmhurst,ElmhurstU_WBB,https://elmhurstbluejays.com/sports/womens-basketball,212,Elmhurst,,IL,CCIW,III
-Elmira,ElmiraWBB,https://athletics.elmira.edu/sports/womens-basketball,213,,,NY,Empire 8,III
-Emerson,EmersonWBBall,https://www.emersonlions.com/sports/wbkb/index,214,,,MA,NEWMAC,III
-Emmanuel (MA),EmmanuelHoops,https://www.goecsaints.com/sports/w-baskbl/index,215,,TRUE,MA,Great Northeast,III
-Emory & Henry,EHCWBB,https://www.gowasps.com/sports/wbkb/index,216,Emory & Henry,,VA,SAC,II
-Emory,EmoryWBB,https://www.emoryathletics.com/sports/wbkb/index,217,,,GA,UAA,III
-Eureka,wildcatwmnhoops,http://www.eurekareddevils.com/sports/wbkb/index,218,,,IL,SLIAC,III
-Evansville,ueathletics_wbb,https://gopurpleaces.com/sports/womens-basketball,219,Evansville,,IN,MVC,I
-Fairfield,stagswbball,https://fairfieldstags.com/sports/womens-basketball,220,Fairfield,,CT,MAAC,I
-FDU-Florham,DevilsWBB,https://fdudevils.com/sports/womens-basketball,221,FDU-Florham,,NJ,MAC Freedom,III
-Fairleigh Dickinson,fduknightswbb,https://fduknights.com/sports/womens-basketball,222,Fairleigh Dickinson,,NJ,NEC,I
-Ferris St.,FerrisWBBall,https://www.ferrisstatebulldogs.com/sports/wbkb/index,224,,,MI,GLIAC,II
-Ferrum,FerrumWBB,https://ferrumpanthers.com/sports/womens-basketball,225,,,VA,ODAC,III
-Fitchburg St.,FSU_FalconsWBB,https://www.fitchburgfalcons.com/sports/wbkb/index,227,,,MA,MASCAC,III
-Florida A&M,FAMU_WBB,https://famuathletics.com/sports/womens-basketball,228,Florida A&M,,FL,SWAC,I
-Florida Atlantic,FAUWBB,https://fausports.com/sports/womens-basketball,229,Fla. Atlantic,,FL,C-USA,I
-Florida Tech,FloridaTechWBB,https://floridatechsports.com/sports/womens-basketball,230,Florida Tech,,FL,Sunshine State,II
-FIU,FIUWBB,https://fiusports.com/sports/womens-basketball,231,Fiu,,FL,C-USA,I
-Fla. Southern,FSC_WBB,https://fscmocs.com/sports/womens-basketball,233,Fla. Southern,,FL,Sunshine State,II
-Florida State,fsuwbb,https://seminoles.com/sports/w-basketball/,234,Florida St.,,FL,ACC,I
-Florida,GatorsWBK,https://floridagators.com/sports/womens-basketball,235,Florida,,FL,SEC,I
-Fordham,FordhamWBB,https://fordhamsports.com/sports/womens-basketball,236,Fordham,,NY,Atlantic 10,I
-Franklin & Marshall,FandMWBB,https://www.godiplomats.com/sports/w-baskbl/index,239,,,PA,Centennial,III
-Franklin Pierce,FPURavensWBB,https://www.fpuravens.com/sports/wbkb/index,241,,,NH,NE10,II
-Fredonia,FredoniaWHoops,https://fredoniabluedevils.com/sports/womens-basketball,242,,,NY,SUNYAC,III
-Frostburg St.,FROSTBURG_WBB,https://frostburgsports.com/sports/womens-basketball,243,Frostburg St.,,MD,MEC,II
-Furman,furmanwbb,https://furmanpaladins.com/sports/womens-basketball,244,Furman,,SC,SoCon,I
-Gannon,GannonWBB,https://gannonsports.com/sports/womens-basketball,246,Gannon,,PA,PSAC,II
-SUNY Geneseo,GeneseoWBB,https://geneseoknights.com/sports/wbball,247,,,NY,SUNYAC,III
-George Mason,masonwbb,https://gomason.com/sports/womens-basketball,248,George Mason,,VA,Atlantic 10,I
-George Washington,gw_wbb,https://gwsports.com/sports/womens-basketball,249,George Washington,,DC,Atlantic 10,I
-Georgetown,georgetownwbb,https://guhoyas.com/sports/womens-basketball,251,Georgetown,,DC,Big East,I
-Georgia Southern,gsathletics_wbb,https://gseagles.com/sports/womens-basketball,253,Ga. Southern,,GA,Sun Belt,I
-Georgia State,gsu_wbb,https://georgiastatesports.com/sports/womens-basketball,254,Georgia State,,GA,Sun Belt,I
-Georgia Tech,gtwbb,https://ramblinwreck.com/sports/w-baskbl/,255,Georgia Tech,,GA,ACC,I
-Georgia,uga_wbb,https://georgiadogs.com/sports/womens-basketball,257,Georgia,,GA,SEC,I
-Gettysburg,GburgWBB,https://gettysburgsports.com/sports/womens-basketball,258,,,PA,Centennial,III
-Rowan,RowanWBB,https://www.rowanathletics.com/sports/womens-basketball,259,Rowan,,NJ,NJAC,III
-Gonzaga,zagwbb,https://gozags.com/sports/womens-basketball,260,Gonzaga,,WA,WCC,I
-Grambling,WBB_LadyTigers,https://gsutigers.com/sports/womens-basketball,261,Grambling,,LA,SWAC,I
-Grand Valley St.,gvsuwbb,https://gvsulakers.com/sports/womens-basketball,262,,,MI,GLIAC,II
-Grinnell,GrinnellWBB,https://pioneers.grinnell.edu/sports/womens-basketball,264,,,IA,MWC,III
-Grove City,GCC_WBB,https://athletics.gcc.edu/sports/womens-basketball,265,Grove City,,PA,PAC,III
-Gust. Adolphus,GustavusWBB,https://gustavus.edu/athletics/wbb/,266,,,MN,MIAC,III
-Hamilton,HamCollWBBall,https://athletics.hamilton.edu/sports/womens-basketball,267,Hamilton College,,NY,NESCAC,III
-Hamline,HamlineWBB,https://hamlineathletics.com/sports/womens-basketball,268,Hamline University,,MN,MIAC,III
-Hampton,ladypirateswbb,https://hamptonpirates.com/sports/womens-basketball,270,Hampton University,,VA,CAA,I
-Hardin-Simmons,cowgirl_bball,https://www.hsuathletics.com/sports/w-baskbl/index,271,,,TX,ASC,III
-Hartford,hartfordwbb,https://www.hartfordhawks.com/index.aspx?path=wbball,272,Hartford,,CT,DI Independent,I
-Hartwick,hartwickwbb,https://www.hartwickhawks.com/sports/womens-basketball,273,,,NY,Empire 8,III
-Harvard,harvardwbb,https://gocrimson.com/sports/womens-basketball,275,Harvard,,MA,Ivy League,I
-Hawaii,hawaiiwbb,https://hawaiiathletics.com/sports/womens-basketball,277,Hawaii,,HI,Big West,I
-Heidelberg,bergwbb,https://www.bergathletics.com/sports/womens-basketball,278,,,OH,OAC,III
-Hillsdale,ChargersWBB,https://www.hillsdalechargers.com/sports/wbkb/index,280,Hillsdale,,MI,G-MAC,II
-Hiram,HiramCollegeWBB,https://hiramterriers.com/sports/womens-basketball,281,Hiram,,OH,NCAC,III
-Hofstra,hofstrawbb,https://gohofstra.com/sports/womens-basketball,283,Hofstra,,NY,CAA,I
-Hollins,HollinsHoops,https://hollinssports.com/sports/womens-basketball,284,,,VA,ODAC,III
-Holy Cross,hcrosswbb,https://goholycross.com/sports/womens-basketball,285,Holy Cross,,MA,Patriot,I
-Hope,HopeCollegeWBB,https://athletics.hope.edu/sports/wbkb/index,286,,,MI,Michigan Intercol. Ath. Assn.,III
-Houston Christian,HCUWBB,https://hcuhuskies.com/sports/womens-basketball,287,,,TX,Southland,I
-Houston,uhcougarwbb,https://uhcougars.com/sports/womens-basketball,288,Houston,,TX,AAC,I
-Howard,Howard_WBB,https://hubison.com/sports/womens-basketball,290,Howard,,DC,MEAC,I
-Cal Poly Humboldt,humboldtwbb,https://humboldtathletics.com/sports/womens-basketball,291,Humboldt St.,,CA,CCAA,II
-Hunter,HunterCollegeW1,https://www.huntercollegeathletics.com/sports/womens-basketball,292,Hunter College,,NY,CUNYAC,III
-Idaho St.,HeartofaBengal,https://isubengals.com/sports/womens-basketball,294,Idaho St.,,ID,Big Sky,I
-Idaho,vandalswbb,https://govandals.com/sports/womens-basketball,295,Idaho,,ID,Big Sky,I
-Benedictine (IL),benuwbb,https://benueagles.com/sports/womens-basketball,296,Benedictine (IL),,IL,NACC,III
-Illinois Col.,ICWBB,https://illinoiscollegeathletics.com/sports/womens-basketball,297,Illinois College,,IL,MWC,III
-Illinois State,redbirdwbb,https://goredbirds.com/sports/womens-basketball,299,Illinois St.,,IL,MVC,I
-Ill. Wesleyan,IWUWomensBball,https://www.iwusports.com/sports/womens-basketball,300,Ill. Wesleyan,,IL,CCIW,III
-Illinois,illiniwbb,https://fightingillini.com/sports/womens-basketball,301,Illinois,,IL,Big Ten,I
-Illinois-Chicago,UIC_WBB,https://uicflames.com/sports/womens-basketball,302,Uic,,IL,MVC,I
-Indiana State,indstwbb,https://gosycamores.com/sports/womens-basketball,305,Indiana St.,,IN,MVC,I
-Indiana,indianawbb,https://iuhoosiers.com/sports/womens-basketball,306,Indiana,,IN,Big Ten,I
-Indiana (PA),IUP_WBB,https://iupathletics.com/sports/womens-basketball,307,Indiana (PA),,PA,PSAC,II
-Purdue-Fort Wayne,mastodonwbb,https://gomastodons.com/sports/womens-basketball,308,Purdue Fort Wayne,,IN,Horizon,I
-UIndy,UIndyWBB,https://athletics.uindy.edu/sports/womens-basketball,309,UIndy,,IN,GLVC,II
-Iona,ionawbb,https://ionagaels.com/sports/womens-basketball,310,Iona,,NY,MAAC,I
-Iowa State,cyclonewbb,https://cyclones.com/sports/womens-basketball,311,Iowa St.,,IA,Big 12,I
-Iowa,iowawbb,https://hawkeyesports.com/sports/wbball,312,Iowa,,IA,Big Ten,I
-Ithaca,ithacawbb,https://athletics.ithaca.edu/sports/womens-basketball,313,Ithaca,,NY,Liberty League,III
-Jackson St.,GoJSUTigersWBB,https://gojsutigers.com/sports/womens-basketball,314,Jackson St.,,MS,SWAC,I
-Jacksonville St.,JSUGamecocksWBB,https://jsugamecocksports.com/sports/womens-basketball,315,,,AL,ASUN,I
-Jacksonville,jax_wbb,https://judolphins.com/sports/womens-basketball,316,Jacksonville,,FL,ASUN,I
-James Madison,JMUWBasketball,https://jmusports.com/sports/womens-basketball,317,James Madison,,VA,Sun Belt,I
-John Carroll,JohnCarroll_WBB,https://jcusports.com/sports/womens-basketball,320,John Carroll,FALSE,OH,OAC,III
-John Jay,JJCWBasketball,https://johnjayathletics.com/sports/womens-basketball,321,John Jay,,NY,CUNYAC,III
-Johns Hopkins,JHUwbb,https://hopkinssports.com/sports/womens-basketball,322,Johns Hopkins,,MD,Centennial,III
-Johnson C. Smith,jcsmith_wbb,https://goldenbullsports.com/sports/womens-basketball,323,Johnson C. Smith,,NC,CIAA,II
-Juniata,JuniataWBB,https://www.juniatasports.net/sports/wbkb/index,325,,,PA,Landmark,III
-Kalamazoo,KzooWBball,https://hornets.kzoo.edu/sports/wbkb/index,326,,,MI,Michigan Intercol. Ath. Assn.,III
-Kansas State,kstatewbb,https://www.kstatesports.com/sports/womens-basketball,327,Kansas St.,,KS,Big 12,I
-Kansas,kuwbball,https://kuathletics.com/sports/wbball/,328,Kansas,,KS,Big 12,I
-Keene St.,KeeneWBB,https://keeneowls.com/sports/womens-basketball,330,Keene St.,,NH,Little East,III
-Kent State,kentstwbb,https://kentstatesports.com/sports/womens-basketball,331,Kent St.,,OH,MAC,I
-Kentucky St.,KYSUWBB,https://ksuthorobreds.com/sports/womens-basketball,332,Kentucky St.,,KY,SIAC,II
-Ky. Wesleyan,kwcwomenshoops,https://kwcpanthers.com/sports/womens-basketball,333,Ky. Wesleyan,,KY,G-MAC,II
-Kentucky,kentuckywbb,https://ukathletics.com/sports/wbball,334,Kentucky,,KY,SEC,I
-Kenyon,KenyonWBB,https://athletics.kenyon.edu/sports/womens-basketball,335,Kenyon,,OH,NCAC,III
-King's (PA),Monarchs_KCWB,https://kingscollegeathletics.com/sports/womens-basketball,336,King's (PA),,PA,MAC Freedom,III
-Knox,KnoxWomensBBall,https://prairiefire.knox.edu/sports/womens-basketball,337,Knox,,IL,MWC,III
-Kutztown,KUBearsWBB,https://kubears.com/sports/womens-basketball,339,Kutztown,,PA,PSAC,II
-LaSalle,lasalle_wbb,https://goexplorers.com/sports/womens-basketball,340,La Salle,,PA,Atlantic 10,I
-La Verne,ULVLeopardsWBB,https://www.leopardathletics.com/sports/wbkb/index,341,,,CA,SCIAC,III
-Lafayette,lafayettewbb,https://goleopards.com/sports/womens-basketball,342,Lafayette,,PA,Patriot,I
-Lake Forest,LFC_WBB,https://www.goforesters.com/sports/wbkb/index,344,,,IL,MWC,III
-Lake Superior St.,LakeStateWBB,https://www.lssulakers.com/sports/w-baskbl/index,345,,,MI,GLIAC,II
-Lamar,lamarwbb,https://lamarcardinals.com/sports/womens-basketball,346,Lamar University,,TX,Southland,I
-Lawrence,LUVikingsWBB,https://vikings.lawrence.edu/sports/womens-basketball,348,Lawrence University,,WI,MWC,III
-Le Moyne,LeMoyneWBB,https://lemoynedolphins.com/sports/womens-basketball,349,,,NY,NE10,II
-Lebanon Valley,lvcwbb,https://godutchmen.com/sports/womens-basketball,351,,,PA,MAC Commonwealth,III
-Lehigh,lehighwbb,https://lehighsports.com/sports/womens-basketball,352,Lehigh,,PA,Patriot,I
-Lewis,LewisWBBall,https://lewisflyers.com/sports/womens-basketball,354,Lewis,,IL,GLVC,II
-Liberty,libertywbb,https://www.liberty.edu/flames/index.cfm?PID=36964&teamID=7,355,Liberty,,VA,ASUN,I
-West Alabama,UWA_WBB,https://uwaathletics.com/sports/womens-basketball,358,West Ala.,,AL,Gulf South,II
-Lock Haven,LHUWBB,https://www.golhu.com/sports/womens-basketball,360,Lock Haven,,PA,PSAC,II
-Long Island,liuwbb,https://www.liuathletics.com/sports/womens-basketball,361,Liu,,NY,NEC,I
-Longwood,longwoodwbb,https://longwoodlancers.com/sports/womens-basketball,363,Longwood,,VA,Big South,I
-Loras,DuhawkWBB,https://duhawks.com/sports/womens-basketball,364,Loras,,IA,American Rivers,III
-LSU,LSUwbkb,https://lsusports.net/sports/womens-basketball,365,Lsu,,LA,SEC,I
-Louisiana Tech,LATechWBB,https://latechsports.com/sports/womens-basketball,366,Louisiana Tech,,LA,C-USA,I
-Louisville,LouisvilleWBB,https://gocards.com/sports/womens-basketball,367,Louisville,,KY,ACC,I
-UMass Lowell,riverhawkwbb,https://goriverhawks.com/sports/womens-basketball,368,UMass Lowell,,MA,America East,I
-Loyola-Maryland,loyolawbb,https://loyolagreyhounds.com/sports/womens-basketball,369,Loyola Maryland,,MD,Patriot,I
-Loyola Marymount,lmulionswb,https://lmulions.com/sports/womens-basketball,370,Loyola Marymount,,CA,WCC,I
-Loyola-Chicago,ramblerswbb,https://loyolaramblers.com/sports/womens-basketball,371,Loyola Chicago,,IL,Atlantic 10,I
-Luther,LutherWBB,https://luthernorse.com/sports/womens-basketball,372,,,IA,American Rivers,III
-Lycoming,lycowomensbb,https://lycomingathletics.com/sports/womens-basketball,373,,,PA,MAC Freedom,III
-Lynchburg,lynchburg_wbb,https://www.lynchburgsports.com/sports/wbkb/index,374,,,VA,ODAC,III
-Macalester,MacalesterWBB,https://athletics.macalester.edu/sports/womens-basketball,376,Macalester College,,MN,MIAC,III
-MacMurray,MacWHoops,https://mchighlanders.com/sports/womens-basketball,377,,,IL,,
-Me.-Farmington,UMFwomenshoops,https://athletics.umf.maine.edu/sports/wbkb/index,379,,,ME,North Atlantic,III
-Maine,blackbearswbb,https://goblackbears.com/sports/womens-basketball,380,Maine,,ME,America East,I
-Manhattan,manhattan_wbb,https://gojaspers.com/sports/womens-basketball,381,Manhattan,,NY,MAAC,I
-Manhattanville,valiantswbb,https://govaliants.com/sports/womens-basketball,382,,FALSE,NY,Skyline,III
-Minnesota St.,MinnStWBB,https://msumavericks.com/sports/womens-basketball,383,,,MN,NSIC,II
-Mansfield,MansfieldWBB,https://gomounties.com/sports/womens-basketball,384,Mansfield,,PA,PSAC,II
-Marietta,Marietta_WBB,https://pioneers.marietta.edu/sports/womens-basketball,385,Marietta,,OH,OAC,III
-Marist,maristwbb,https://goredfoxes.com/sports/womens-basketball,386,Marist,,NY,MAAC,I
-Marquette,marquettewbb,https://gomarquette.com/sports/womens-basketball,387,Marquette,,WI,Big East,I
-Marshall,herdwbb,https://herdzone.com/sports/womens-basketball,388,Marshall,,WV,Sun Belt,I
-Mary Baldwin,MBaldwinWBB,https://www.marybaldwinathletics.com/sports/wbkb/index,389,,,VA,USA South,III
-Mary Washington,umwwbasketball,https://umweagles.com/sports/wbkb/index,390,,,VA,C2C,III
-UMBC,umbcwbb,https://umbcretrievers.com/sports/womens-basketball,391,Umbc,,MD,America East,I
-Maryland,TerpsWBB,https://umterps.com/sports/womens-basketball,392,Maryland,,MD,Big Ten,I
-Maryland-Eastern Shore,eshawkswbb,https://easternshorehawks.com/sports/womens-basketball,393,Maryland Eastern Shore,,MD,MEAC,I
-Marymount (VA),Marymount_WBB,https://www.marymountsaints.com/sports/wbkb/index,394,,,VA,Atlantic East,III
-Maryville (MO),MaryvilleWBB,https://maryvillesaints.com/sports/womens-basketball,395,Maryville (MO),FALSE,MO,GLVC,II
-Marywood,MarywoodWBB,https://marywoodpacers.com/sports/womens-basketball,397,Marywood,,PA,Atlantic East,III
-MIT,mitwbball,https://mitathletics.com/sports/womens-basketball,398,,,MA,NEWMAC,III
-Massachusetts,umasswbb,https://umassathletics.com/sports/womens-basketball,400,Massachusetts,,MA,Atlantic 10,I
-McNeese State,mcneesewbb,https://mcneesesports.com/sports/womens-basketball,402,McNeese,,LA,Southland,I
-Memphis,memphiswbb,https://gotigersgo.com/sports/womens-basketball,404,Memphis,,TN,AAC,I
-Mercer,mercer_wbb,https://mercerbears.com/sports/womens-basketball,406,Mercer,,NJ,SoCon,I
-Mercy,WbbMercy,https://mercyathletics.com/sports/womens-basketball,407,Mercy,,NY,ECC,II
-Mercyhurst,HurstWBB,https://hurstathletics.com/sports/womens-basketball,408,Mercyhurst,,PA,PSAC,II
-Meredith,MeredithCBB,https://www.goavengingangels.com/sports/wbkb/index,409,,,NC,USA South,III
-Merrimack,merrimackwbb,https://merrimackathletics.com/sports/womens-basketball,410,Merrimack,,MA,NEC,I
-Messiah,messiahwbball,https://gomessiah.com/sports/womens-basketball,411,,,PA,MAC Commonwealth,III
-MSU Denver,MSUDenverWBB,https://roadrunnersathletics.com/sports/womens-basketball,413,MSU Denver,,MN,RMAC,II
-Miami Ohio,miamioh_wbb,https://miamiredhawks.com/sports/womens-basketball,414,Miami (OH),,OH,MAC,I
-Miami,caneswbb,https://miamihurricanes.com/sports/wbball,415,Miami (FL),,FL,ACC,I
-Michigan State,msu_wbasketball,https://msuspartans.com/sports/womens-basketball,416,Michigan St.,,MI,Big Ten,I
-Michigan Tech,mtuwbb,https://www.michigantechhuskies.com/sports/wbkb/index,417,,,MI,GLIAC,II
-Michigan,umichwbball,https://mgoblue.com/sports/womens-basketball,418,Michigan,,MI,Big Ten,I
-Middle Tennessee,mt_wbb,https://goblueraiders.com/sports/womens-basketball,419,Middle Tenn.,,TN,C-USA,I
-Middlebury,middwbball,https://athletics.middlebury.edu/sports/wbball,420,,,VT,NESCAC,III
-Miles,Miles_wbb,https://milesgoldenbears.com/sports/womens-basketball,422,Miles College,,AL,SIAC,II
-Millersville,millersvillewbb,https://millersvilleathletics.com/sports/womens-basketball,423,Millersville,,PA,PSAC,II
-Millikin,MillikinWBB,https://athletics.millikin.edu/sports/womens-basketball,424,Millikin,,IL,CCIW,III
-Millsaps,MillsapsWBB,https://gomajors.com/sports/womens-basketball,426,Millsaps,,MS,SAA,III
-Minn. Duluth,UMDWomensBBall,https://umdbulldogs.com/sports/womens-basketball,427,Minn. Duluth,,MN,NSIC,II
-Minnesota,gopherwbb,https://gophersports.com/sports/womens-basketball,428,Minnesota,,MN,Big Ten,I
-Mississippi College,GoChoctaws_WBB,https://www.gochoctaws.com/sports/womens-basketball,429,Mississippi Col.,,MS,Gulf South,II
-Mississippi State,HailStateWBK,https://hailstate.com/sports/womens-basketball,430,Mississippi St.,,MS,SEC,I
-Mississippi Valley State,ValleyStateWBB,https://mvsusports.com/sports/womens-basketball,432,Mississippi Val.,,MS,SWAC,I
-Mississippi,olemisswbb,https://olemisssports.com/sports/womens-basketball,433,Ole Miss,,MS,SEC,I
-Missouri,mizzouwbb,https://mutigers.com/sports/womens-basketball,434,Missouri,,MO,SEC,I
-Missouri S&T,Miners_WBB,https://minerathletics.com/sports/womens-basketball,435,Missouri S&T,,MO,GLVC,II
-Missouri-St. Louis,UMSLWBB,https://umsltritons.com/sports/womens-basketball,436,Mo.-St. Louis,,MO,GLVC,II
-Monmouth (IL),ScotsWHoops,https://monmouthscots.com/sports/womens-basketball,438,,,IL,MWC,III
-Monmouth,muhawkswbb,https://monmouthhawks.com/sports/womens-basketball,439,Monmouth,,NJ,CAA,I
-Montana State,msubobcatswbb,https://msubobcats.com/sports/womens-basketball,440,Montana St.,,MT,Big Sky,I
-Montana,montanagrizwbb,https://gogriz.com/sports/womens-basketball,441,Montana,,MT,Big Sky,I
-Montclair St.,montclairstwbb,https://montclairathletics.com/sports/womens-basketball,442,,,NJ,NJAC,III
-Moravian,MoravianWBB,https://www.moraviansports.com/sports/wbkb/index,443,,,PA,Landmark,III
-Morehead State,msueagleswbb,https://msueagles.com/sports/womens-basketball,444,Morehead St.,,KY,OVC,I
-Morgan St.,,https://morganstatebears.com/sports/womens-basketball,446,Morgan St.,TRUE,MD,MEAC,I
-Mount Holyoke,mhc_basketball,https://athletics.mtholyoke.edu/sports/wbkb/index,449,,TRUE,MA,NEWMAC,III
-Mount St. Mary's,mount_wbb,https://mountathletics.com/sports/womens-basketball,450,Mount St. Mary's,,MD,MAAC,I
-CMSV,CMSVWBB,https://cmsvathletics.com/sports/womens-basketball,451,,,NY,Skyline,III
-Mount Union,MountUnionWbb,https://athletics.mountunion.edu/sports/womens-basketball,452,Mount Union,,OH,OAC,III
-Muhlenberg,Muhl_wbb,https://muhlenbergsports.com/sports/womens-basketball,453,Muhlenberg,,PA,Centennial,III
-Murray State,racerswbb,https://goracers.com/sports/womens-basketball,454,Murray St.,,KY,MVC,I
-Muskingum,MuskingumWBB,https://www.fightingmuskies.com/sports/wbkb/index,455,,,OH,OAC,III
-UNC Asheville,uncavlwbb,https://uncabulldogs.com/sports/womens-basketball,456,UNC Asheville,,NC,Big South,I
-North Carolina,uncwbb,https://goheels.com/sports/womens-basketball,457,North Carolina,,NC,ACC,I
-Charlotte,charlottewbb,https://charlotte49ers.com/sports/womens-basketball,458,Charlotte,,NC,C-USA,I
-UNC Greensboro,uncgwbb,https://uncgspartans.com/sports/womens-basketball,459,UNC Greensboro,,NC,SoCon,I
-UNCW,UNCWwomenshoops,https://uncwsports.com/sports/womens-basketball,460,Uncw,,NC,CAA,I
-Nazareth,Nazareth_WBB,https://nazathletics.com/sports/womens-basketball,461,,,NY,Empire 8,III
-Neb. Wesleyan,NWU_WomensBB,https://nwusports.com/sports/womens-basketball,462,Neb. Wesleyan,,NE,American Rivers,III
-Nebraska,huskerswbb,https://huskers.com/sports/womens-basketball,463,Nebraska,,NE,Big Ten,I
-Omaha,omahawbb,https://omavs.com/sports/womens-basketball,464,Omaha,,NE,Summit League,I
-UNLV,UNLVLadyRebels,https://unlvrebels.com/sports/womens-basketball,465,Unlv,,NV,Mountain West,I
-Nevada,nevadawbb,https://nevadawolfpack.com/sports/womens-basketball,466,Nevada,,NV,Mountain West,I
-New England Col.,NEC_WBB,https://athletics.nec.edu/sports/wbkb/index,467,,,NH,NECC,III
-Southern N.H.,SNHUWBB,https://snhupenmen.com/sports/womens-basketball,468,,,NH,NE10,II
-New Hampshire,unhwbb,https://unhwildcats.com/sports/womens-basketball,469,New Hampshire,,NH,America East,I
-New Haven,UNewHavenWBB,https://newhavenchargers.com/sports/womens-basketball,470,New Haven,,CT,NE10,II
-New Jersey Institute of Technology,njitwbb,https://www.njithighlanders.com/sports/womens-basketball,471,Njit,,NJ,America East,I
-New Mexico State,nmstatewbb,https://nmstatesports.com/sports/womens-basketball,472,New Mexico St.,,NM,WAC,I
-New Mexico,unmlobowbb,https://golobos.com/sports/Wbball/,473,New Mexico,,NM,Mountain West,I
-New Orleans,privateerswbb,https://unoprivateers.com/sports/womens-basketball,474,New Orleans,FALSE,LA,Southland,I
-NYU,nyuwomenshoops,https://gonyuathletics.com/sports/womens-basketball,479,Nyu,,NY,UAA,III
-CCNY,ccnywbb,https://ccnyathletics.com/sports/womens-basketball,480,Ccny,,NY,CUNYAC,III
-Niagara,niagarawbb,https://purpleeagles.com/sports/womens-basketball,482,Niagara,,NY,MAAC,I
-Nicholls State,nicholls_wbb,https://geauxcolonels.com/sports/womens-basketball,483,Nicholls St.,,LA,Southland,I
-Nichols,ncbison_wbball,https://nicholsathletics.com/sports/womens-basketball,484,,,MA,CCC,III
-Norfolk State,norfolkstatewbb,https://nsuspartans.com/sports/womens-basketball,485,Norfolk State,,VA,MEAC,I
-MCLA,MCLAWbasketball,https://athletics.mcla.edu/sports/wbkb/index,486,,,MA,MASCAC,III
-North Alabama,UNAHOOPS,http://www.roarlions.com/sports/womens-basketball,487,North Ala.,,AL,ASUN,I
-N.C. A&T,LadyAggieBall,https://ncataggies.com/sports/womens-basketball,488,N.C. A&T,,NC,CAA,I
-North Carolina Central,nccuwbb,https://nccueaglepride.com/sports/womens-basketball,489,N.C. Central,,NC,MEAC,I
-NC State,PackWomensBball,https://gopack.com/sports/womens-basketball,490,NC State,,NC,ACC,I
-N.C. Wesleyan,NCWU_WBB,https://www.ncwcsports.com/sports/wbkb/index,491,,,NC,USA South,III
-North Dakota State,ndsuwbb,https://gobison.com/sports/womens-basketball,493,North Dakota St.,,ND,Summit League,I
-North Dakota,UNDwbasketball,https://fightinghawks.com/sports/womens-basketball,494,North Dakota,,ND,Summit League,I
-North Park,NPU_womenshoops,https://athletics.northpark.edu/sports/womens-basketball,496,North Park,,IL,CCIW,III
-North Texas,meangreenwbb,https://meangreensports.com/sports/womens-basketball,497,,,TX,C-USA,I
-Louisiana Monroe,ulm_wbb,https://ulmwarhawks.com/sports/womens-basketball,498,La.-Monroe,,LA,Sun Belt,I
-Truman State,Truman_WBB,https://trumanbulldogs.com/sports/womens-basketball,499,Truman,,MO,GLVC,II
-Northeastern,GoNUwbasketball,https://nuhuskies.com/sports/womens-basketball,500,Northeastern,,MA,CAA,I
-Northern Arizona,nau_wbb,https://nauathletics.com/sports/womens-basketball,501,Northern Ariz.,,AZ,Big Sky,I
-Northern Colorado,unc_bearswbb,https://uncbears.com/sports/womens-basketball,502,Northern Colo.,,CO,Big Sky,I
-Northern Illinois,gohuskieswbb,https://niuhuskies.com/sports/womens-basketball,503,Northern Ill.,,IL,MAC,I
-Northern Iowa,uniwbb,https://unipanthers.com/sports/womens-basketball,504,Uni,,IA,MVC,I
-Northern Kentucky,nkunorsewbb,https://nkunorse.com/sports/womens-basketball,505,Northern Ky.,,KY,Horizon,I
-Northern Michigan,NMU_WBBall,https://nmuwildcats.com/sports/womens-basketball,506,Northern Mich.,,MI,GLIAC,II
-Northwest Missouri State,nwbearcatwbb,https://bearcatsports.com/sports/womens-basketball,507,Northwest Mo. St.,,MO,Mid-America Intercollegiate,II
-Northwestern State,nsudemonswbb,https://nsudemons.com/sports/womens-basketball,508,Northwestern St.,,LA,Southland,I
-Northwestern,nuwbball,https://nusports.com/sports/womens-basketball,509,Northwestern,,IL,Big Ten,I
-Northwood,NorthwoodWBB,https://www.gonorthwood.com/sports/wbkb/index,510,,,MI,G-MAC,II
-Norwich,NorwichWBB,https://www.norwichathletics.com/sports/wbkb/index,511,,,VT,Great Northeast,III
-Notre Dame,ndwbb,https://und.com/sports/wbball,513,Notre Dame,,IN,ACC,I
-Oakland,OaklandWBBall,https://goldengrizzlies.com/sports/womens-basketball,514,Oakland,,MI,Horizon,I
-Oberlin,Yeo_WBB,https://goyeo.com/sports/womens-basketball,515,Oberlin,,OH,NCAC,III
-Occidental,tigerswbb,https://www.oxyathletics.com/sports/wbkb/index,516,Occidental,,CA,SCIAC,III
-Ohio Northern,Onuwomensbball,https://www.onusports.com/sports/wbkb/index,517,,,OH,OAC,III
-Ohio State,ohiostatewbb,https://ohiostatebuckeyes.com/sports/w-baskbl/,518,Ohio St.,,OH,Big Ten,I
-Ohio,OhioWBasketball,https://ohiobobcats.com/sports/wbball,519,,,OH,MAC,I
-Oklahoma State,osuwbb,https://okstate.com/sports/womens-basketball,521,Oklahoma St.,,OK,Big 12,I
-Oklahoma,ou_wbball,https://soonersports.com/sports/womens-basketball,522,Oklahoma,,OK,Big 12,I
-Old Dominion,ODU_WBB,https://odusports.com/sports/womens-basketball,523,Old Dominion,,VA,Sun Belt,I
-Olivet,olivet_wbb,https://www.olivetcomets.com/sports/wbkb/index,525,,,MI,Michigan Intercol. Ath. Assn.,III
-SUNY Oneonta,OState_WBB,https://oneontaathletics.com/sports/womens-basketball,526,,,NY,SUNYAC,III
-Oral Roberts,oruwbb,https://oruathletics.com/sports/womens-basketball,527,Oral Roberts,,OK,Summit League,I
-Oregon State,beaverwbb,https://osubeavers.com/sports/womens-basketball,528,Oregon St.,,OR,Pac-12,I
-Oregon,OregonWBB,https://goducks.com/sports/womens-basketball,529,Oregon,,OR,Pac-12,I
-Oswego St.,OswegoWBball,https://oswegolakers.com/sports/womens-basketball,530,,,NY,SUNYAC,III
-Otterbein,Otterbein_WBB,https://otterbeincardinals.com/sports/womens-basketball,531,Otterbein,,OH,OAC,III
-Elms,ElmsBlazersWBB,https://www.ecblazers.com/sports/wbkb/index,532,,,MA,Great Northeast,III
-Pace,PaceWBB,https://paceuathletics.com/sports/womens-basketball,533,,,NY,NE10,II
-UT-Rio Grande Valley,utrgvwbb,https://goutrgv.com/sports/womens-basketball,536,Utrgv,,TX,WAC,I
-UNC Pembroke,UNCP_WBB,https://uncpbraves.com/sports/wbball,537,UNC Pembroke,,NC,Conference Carolinas,II
-Penn St.-Behrend,PSB_WBB,https://www.psblions.com/sports/wbkb/index,538,,,PA,AMCC,III
-Penn State,pennstatewbb,https://gopsusports.com/sports/womens-basketball,539,Penn St.,,PA,Big Ten,I
-Pennsylvania,pennwbb,https://pennathletics.com/sports/womens-basketball,540,Penn,,PA,Ivy League,I
-Pepperdine,WavesHoops,https://pepperdinewaves.com/sports/womens-basketball,541,Pepperdine,,CA,WCC,I
-Pfeiffer,,https://gofalconsports.com/sports/womens-basketball,542,Pfeiffer,TRUE,NC,USA South,III
-Jefferson,Jefferson_WBB,https://jeffersonrams.com/sports/womens-basketball,543,Jefferson,,PA,CACC,II
-Pine Manor,PineManorWBB,https://pmcathletics.com/sports/wbkb/index,544,,,MA,DIII Independent,III
-Pittsburgh,pitt_wbb,https://pittsburghpanthers.com/sports/womens-basketball,545,Pittsburgh,,PA,ACC,I
-Pitt.-Johnstown,MountainCatsWBB,https://pittjohnstownathletics.com/sports/womens-basketball,546,Pitt-Johnstown,,PA,PSAC,II
-Plattsburgh St.,Cardinals_WBB,https://gocardinalsports.com/sports/womens-basketball,547,,,NY,SUNYAC,III
-Pomona-Pitzer,pomonapitzerwbb,https://www.sagehens.com/sports/wbkb/index,549,,,CA,SCIAC,III
-Portland State,psuvikswbb,https://goviks.com/sports/womens-basketball,550,Portland St.,,OR,Big Sky,I
-Portland,portlandwbb,https://portlandpilots.com/sports/womens-basketball,551,Portland,,OR,WCC,I
-SUNY Potsdam,PotsdamWbb,https://potsdambears.com/sports/womens-basketball,552,,,NY,SUNYAC,III
-Prairie View A&M,PVAMUwbb,https://pvpanthers.com/sports/womens-basketball,553,Prairie View,,TX,SWAC,I
-Princeton,princetonwbb,https://goprincetontigers.com/sports/womens-basketball,554,Princeton,,NJ,Ivy League,I
-Providence,providencewbb,https://friars.com/sports/womens-basketball,556,Providence,,RI,Big East,I
-Puget Sound,PSwbasketball,https://loggerathletics.com/sports/womens-basketball,557,Puget Sound,,WA,NWC,III
-Purdue,purduewbb,https://purduesports.com/sports/womens-basketball,559,Purdue,,IN,Big Ten,I
-Queens (NY),QCKNIGHTS_WBB,https://queensknights.com/sports/womens-basketball,560,,,NY,ECC,II
-Quincy,QUHawksWBB,https://quhawks.com/sports/womens-basketball,561,Quincy,,IL,GLVC,II
-Quinnipiac,qu_wbb,https://gobobcats.com/sports/womens-basketball,562,Quinnipiac,,CT,MAAC,I
-Radford,radford_wbb,https://radfordathletics.com/sports/womens-basketball,563,Radford,,VA,Big South,I
-Ramapo,RCNJWBB,https://ramapoathletics.com/sports/womens-basketball,564,,,NJ,NJAC,III
-Randolph-Macon,RMCWBB,https://www.rmcathletics.com/sports/wbkb/index,565,,,VA,ODAC,III
-Randolph,RCWomensHoop,https://randolphwildcats.com/sports/womens-basketball,566,,,VA,ODAC,III
-Redlands,RedlandsWBB,https://www.goredlands.com/sports/wbkb/index,567,,,CA,SCIAC,III
-Regis (CO),RegisRangersWBB,https://regisrangers.com/sports/womens-basketball,568,Regis (CO),,CO,RMAC,II
-Regis (MA),RegisWBB,https://www.goregispride.com/sports/wbkb/index,569,,,MA,Great Northeast,III
-Rhode Island College,Go_AnchorWBB,https://goanchormen.com/sports/womens-basketball,571,,,RI,Little East,III
-Rhode Island,rhodywbb,https://gorhody.com/sports/womens-basketball,572,Rhode Island,,RI,Atlantic 10,I
-Rhodes,Rhodes_WBB,https://rhodeslynx.com/sports/womens-basketball,573,Rhodes,,TN,SAA,III
-Rice,ricewbb,https://riceowls.com/sports/womens-basketball,574,Rice,,TX,C-USA,I
-Richmond,spiderwbball,https://richmondspiders.com/sports/womens-basketball,575,Richmond,,VA,Atlantic 10,I
-Rider,riderwbb,https://gobroncs.com/sports/womens-basketball,576,Rider,,NJ,MAAC,I
-Ripon,RiponCollegeWBB,https://riponredhawks.com/sports/womens-basketball,577,Ripon College,TRUE,WI,MWC,III
-Robert Morris,RMUWBasketball,https://rmucolonials.com/sports/womens-basketball,579,Rmu,,PA,Horizon,I
-Rochester (NY),RochesterWBB,https://uofrathletics.com/sports/womens-basketball,581,Rochester,,NY,UAA,III
-Rockford,RockfordWbb,https://rockfordregents.com/sports/womens-basketball,582,Rockford,,IL,NACC,III
-Roger Williams,RWUHoops,https://rwuhawks.com/sports/womens-basketball,583,,,RI,CCC,III
-Rollins,RollinsWBB,https://rollinssports.com/sports/womens-basketball,584,Rollins,,FL,Sunshine State,II
-Rose-Hulman,RoseHulmanWBB,https://athletics.rose-hulman.edu/sports/womens-basketball,585,Rose-Hulman,,IN,HCAC,III
-Rutgers,rutgerswbb,https://scarletknights.com/sports/womens-basketball,587,Rutgers,,NJ,Big Ten,I
-Rutgers-Newark,RN_WBB,https://rutgersnewarkathletics.com/sports/womens-basketball,589,,,NJ,NJAC,III
-Sacred Heart,sacredheartwbb,https://sacredheartpioneers.com/sports/womens-basketball,590,Sacred Heart,,CT,NEC,I
-Saginaw Valley,svsuwbb,https://www.svsucardinals.com/sports/wbkb/index,591,,,MI,GLIAC,II
-St. Anselm,STAHawksWBB,https://saintanselmhawks.com/sports/womens-basketball,593,,,NH,NE10,II
-Saint Benedict,CSBBasketball,https://gobennies.com/sports/womens-basketball,595,Saint Benedict,,MN,MIAC,III
-St. Bonaventure,bonnieswbb,https://gobonnies.com/sports/womens-basketball,596,St. Bonaventure,,NY,Atlantic 10,I
-St. Catherine,StKatesWBB,https://stkatesathletics.com/sports/womens-basketball,597,St. Catherine,,MN,MIAC,III
-St. Cloud St.,SCSUHUSKIES_WBB,https://scsuhuskies.com/sports/womens-basketball,598,,,MN,NSIC,II
-St. Francis College Brooklyn,sfbk_wbb,https://sfcathletics.com/sports/womens-basketball,599,St. Francis Brooklyn,,NY,NEC,I
-Saint Francis (PA),sfuwbb,https://sfuathletics.com/sports/womens-basketball,600,Saint Francis (PA),,PA,NEC,I
-St. John Fisher,SJFWBB,https://athletics.sjfc.edu/sports/womens-basketball,601,St. John Fisher,,NY,Empire 8,III
-St. John's,stjohnswbb,https://redstormsports.com/sports/womens-basketball,603,St. John's (NY),,NY,Big East,I
-Saint Joseph's (PA),sjuhawks_wbb,https://sjuhawks.com/sports/womens-basketball,606,Saint Joseph's,,PA,Atlantic 10,I
-St. Lawrence,SLUWBBall,https://saintsathletics.com/sports/womens-basketball,607,St. Lawrence,,NY,Liberty League,III
-Saint Leo,SaintLeoWBB,https://saintleolions.com/sports/womens-basketball,608,Saint Leo,,FL,Sunshine State,II
-Saint Louis,saintlouiswbb,https://slubillikens.com/sports/womens-basketball,609,Saint Louis,,MO,Atlantic 10,I
-Saint Mary's (CA),gaelswbb,https://smcgaels.com/sports/womens-basketball,610,Saint Mary's (CA),,CA,WCC,I
-St. Mary's (MD),SMCM_WBB,https://smcmathletics.com/sports/womens-basketball,611,,,MD,United East,III
-Saint Mary's (MN),saintmarys_wbb,https://saintmaryssports.com/sports/womens-basketball,612,,,MN,MIAC,III
-Saint Michael's,SMC_wbb,https://www.smcathletics.com/sports/wbkb/index,613,,,VT,NE10,II
-St. Norbert,SNCWBB,https://athletics.snc.edu/sports/womens-basketball,614,St. Norbert College,,WI,NACC,III
-St. Olaf,StOlafWBB,https://athletics.stolaf.edu/sports/womens-basketball,615,St. Olaf College,,MN,MIAC,III
-Saint Peter's,peacockswbb,https://saintpeterspeacocks.com/sports/womens-basketball,617,Saint Peter's,,NJ,MAAC,I
-St. Scholastica,CSSWBBall,https://csssaints.com/sports/womens-basketball,618,,,MN,MIAC,III
-St. Thomas (MN),USTTommiesWBB,https://tommiesports.com/sports/wbball,620,St. Thomas (MN),,MN,Summit League,I
-Salisbury,SalisburyWBB,https://www.suseagulls.com/sports/wbkb/index,622,,,MD,C2C,III
-Salve Regina,salvewbb,https://www.salveathletics.com/sports/wbkb/index,623,,,RI,CCC,III
-Sam Houston State,Bearkats_WBB,https://gobearkats.com/sports/womens-basketball,624,Sam Houston,,TX,WAC,I
-Samford,samfordwbb,https://samfordsports.com/sports/womens-basketball,625,Samford,,AL,SoCon,I
-San Diego State,Aztec_WBB,https://goaztecs.com/sports/womens-basketball,626,,,CA,Mountain West,I
-San Diego,usdwbb,https://usdtoreros.com/sports/womens-basketball,627,San Diego,,CA,WCC,I
-San Fran. St.,SFState_WBB,https://sfstategators.com/sports/womens-basketball,628,San Fran. St.,,CA,CCAA,II
-San Francisco,usfdonswbb,https://usfdons.com/sports/womens-basketball,629,San Francisco,,CA,WCC,I
-San Jose State,sanjosestatewbb,https://sjsuspartans.com/sports/womens-basketball,630,San Jose St.,,CA,Mountain West,I
-Santa Clara,santaclarawbb,https://www.santaclarabroncos.com/sports/w-baskbl/index,631,Santa Clara,,CA,WCC,I
-Scranton,ScrantonWBB,https://athletics.scranton.edu/sports/wbkb/index,633,,,PA,Landmark,III
-Seattle Pacific,SpuWbb,https://spufalcons.com/sports/womens-basketball,634,Seattle Pacific,,WA,Great Northwest,II
-Seton Hall,shuwbb,https://shupirates.com/sports/womens-basketball,635,Seton Hall,,NJ,Big East,I
-Shenandoah,SUHornetsWBB,https://suhornets.com/sports/womens-basketball,637,Shenandoah,,VA,ODAC,III
-Shippensburg,ShipWBB,https://shipraiders.com/sports/womens-basketball,638,Shippensburg,,PA,PSAC,II
-Siena,Siena_WBB,https://sienasaints.com/sports/womens-basketball,639,Siena,,NY,MAAC,I
-Simpson,SCStorm_WBB,https://www.simpsonathletics.com/sports/wbkb/index,641,,,CA,American Rivers,III
-Skidmore,SkidmoreWBB,https://skidmoreathletics.com/sports/womens-basketball,642,Skidmore College,,NY,Liberty League,III
-Smith,SC_BBall,https://smithpioneers.com/sports/womens-basketball,644,,,MA,NEWMAC,III
-Sonoma St.,SonomaStWBBall,https://sonomaseawolves.com/sports/womens-basketball,645,Sonoma St.,,CA,CCAA,II
-South Alabama,SouthAlabamaWBB,https://usajaguars.com/sports/womens-basketball,646,South Alabama,,AL,Sun Belt,I
-South Carolina St.,ScstateWBB,https://www.scsuathletics.com/sports/womens-basketball,647,SC State Lady Bulldogs,,SC,MEAC,I
-South Carolina,GamecockWBB,https://gamecocksonline.com/sports/wbball,648,South Carolina,,SC,SEC,I
-South Dakota State,gojackswbb,https://gojacks.com/sports/womens-basketball,649,South Dakota St.,,SD,Summit League,I
-South Dakota,sdcoyoteswbb,https://goyotes.com/sports/womens-basketball,650,South Dakota,,SD,Summit League,I
-South Florida,usfwbb,https://gousfbulls.com/sports/womens-basketball,651,South Fla.,,FL,AAC,I
-Sewanee,SewaneeWBB,https://sewaneetigers.com/sports/womens-basketball,652,Sewanee,,TN,SAA,III
-Southeast Missouri State,officialsemowbb,https://semoredhawks.com/sports/womens-basketball,654,Southeast Mo. St.,,MO,OVC,I
-Southeastern Louisiana,lionupwbb,https://lionsports.net/sports/womens-basketball,655,Southeastern La.,,LA,Southland,I
-UMass Dartmouth,UMassDwbkb,https://corsairathletics.com/sports/womens-basketball,656,,,MA,Little East,III
-Southern Cal,uscwbb,https://usctrojans.com/sports/womens-basketball,657,Southern California,,CA,Pac-12,I
-Southern Conn. St.,SCSU_WBB,https://scsuowls.com/sports/womens-basketball,658,Southern Conn. St.,,CT,NE10,II
-Southern Ill.,SIU_WBasketball,https://siusalukis.com/sports/womens-basketball,659,Southern Ill.,,IL,MVC,I
-SIUE,SIUEWBB,https://siuecougars.com/sports/womens-basketball,660,Siue,,IL,OVC,I
-Southern Ind.,usiwbb,https://gousieagles.com/sports/womens-basketball,661,Southern Ind.,,IN,OVC,I
-Southern Me.,USMwbb,https://southernmainehuskies.com/sports/womens-basketball,662,,,ME,Little East,III
-Southern Methodist,smuwbb,https://smumustangs.com/sports/womens-basketball,663,Smu,,TX,AAC,I
-Southern Miss,southernmisswbb,https://southernmiss.com/sports/womens-basketball,664,Southern Miss.,,MS,Sun Belt,I
-Southern,jaguarswbb,https://gojagsports.com/sports/womens-basketball,665,Southern U.,,LA,SWAC,I
-Southern Utah,SUUWBasketball,https://suutbirds.com/sports/womens-basketball,667,Southern Utah,,UT,WAC,I
-Missouri St.,MSULadyBears,https://missouristatebears.com/sports/womens-basketball,669,Missouri St.,,MO,MVC,I
-Texas State,txstatewbb,https://txstatebobcats.com/sports/womens-basketball,670,Texas St.,,TX,Sun Belt,I
-Louisiana,ragincajunswbb,https://ragincajuns.com/sports/womens-basketball,671,Louisiana,,LA,Sun Belt,I
-Springfield,SCWBB,https://springfieldcollegepride.com/sports/wbkb/index,673,,,MA,NEWMAC,III
-Stanford,StanfordWBB,https://gostanford.com/sports/womens-basketball,674,Stanford,,CA,Pac-12,I
-Staten Island,CsiWbb,https://csidolphins.com/sports/womens-basketball,675,Staten Island,,NY,ECC,II
-Stephen F. Austin,SFAWBB,https://sfajacks.com/sports/womens-basketball,676,Sfa,,TX,WAC,I
-Stetson,stetsonwbb,https://gohatters.com/sports/womens-basketball,678,Stetson,,FL,ASUN,I
-Stevens,StevensWBBALL,https://stevensducks.com/sports/womens-basketball,679,Stevens,,NJ,MAC Freedom,III
-Stonehill,StonehillWBB,https://www.stonehillskyhawks.com/sports/wbkb/index,682,,,MA,NEC,I
-Stony Brook,stonybrookwbb,https://stonybrookathletics.com/sports/womens-basketball,683,Stony Brook,,NY,CAA,I
-Suffolk,SuffolkWbb,https://www.gosuffolkrams.com/sports/wbkb/index,684,,,MA,CCC,III
-Susquehanna,SusquehannaWBB,https://suriverhawks.com/sports/womens-basketball,685,,,PA,Landmark,III
-Swarthmore,SwatWBasketball,https://swarthmoreathletics.com/sports/womens-basketball,686,,,PA,Centennial,III
-Syracuse,cusewbb,https://cuse.com/sports/womens-basketball,688,Syracuse,,NY,ACC,I
-Tampa,TampaWBB,https://www.tampaspartans.com/sports/wbkb/index,689,Tampa,,FL,Sunshine State,II
-Temple,templewbb,https://owlsports.com/sports/womens-basketball,690,Temple,,PA,AAC,I
-Tennessee St.,TSUTigersWBB,https://tsutigers.com/sports/womens-basketball,691,,,TN,OVC,I
-Tennessee Tech,ttuwbb,https://www.ttusports.com/sports/wbkb/index,692,Tennessee Tech,,TN,OVC,I
-Chattanooga,GoMocsWBK,https://gomocs.com/sports/womens-basketball,693,,,TN,SoCon,I
-Tennessee,LadyVol_Hoops,https://utsports.com/sports/womens-basketball,694,Tennessee,,TN,SEC,I
-UT Martin,utmartinwbb,https://utmsports.com/sports/womens-basketball,695,UT Martin,,TN,OVC,I
-Tex. A&M-Kingsville,Javelina_WBB,https://javelinaathletics.com/sports/womens-basketball,696,Tex. A&M-Kingsville,,TX,Lone Star,II
-Texas A&M,aggiewbb,https://12thman.com/sports/womens-basketball,697,Texas A&M,,TX,SEC,I
-Texas Christian,tcuwbasketball,https://gofrogs.com/sports/womens-basketball,698,Tcu,,TX,Big 12,I
-Texas Southern,TSUWomensHoops,https://tsusports.com/sports/womens-basketball,699,Texas Southern,,TX,SWAC,I
-Texas Tech,ladyraiderwbb,https://texastech.com/sports/womens-basketball,700,Texas Tech,,TX,Big 12,I
-Texas Woman's,TWU_Basketball,https://twuathletics.com/sports/womens-basketball,701,,,TX,Lone Star,II
-Texas-Arlington,utamavswbb,https://utamavs.com/sports/womens-basketball,702,UT Arlington,,TX,WAC,I
-Texas,TexasWBB,https://texassports.com/sports/womens-basketball,703,Texas,,TX,Big 12,I
-Texas-El Paso,utepwbb,https://utepminers.com/sports/womens-basketball,704,Utep,,TX,C-USA,I
-UT-San Antonio,utsawbb,https://goutsa.com/sports/womens-basketball,706,Utsa,,TX,C-USA,I
-Thiel,thiel_wb,https://thielathletics.com/sports/womens-basketball,707,Thiel,,PA,PAC,III
-Toledo,toledowbb,https://utrockets.com/sports/womens-basketball,709,Toledo,,OH,MAC,I
-Towson,towson_wbb,https://towsontigers.com/sports/womens-basketball,711,Towson,,MD,CAA,I
-TCNJ,tcnjwb,https://tcnjathletics.com/sports/womens-basketball/roster,712,,,NJ,NJAC,III
-Trinity (CT),trincollwbb,https://bantamsports.com/sports/womens-basketball,713,,,CT,NESCAC,III
-Trinity (TX),TUWBB,https://www.trinitytigers.com/sports/wbkb/index,715,,,TX,SCAC,III
-Troy,troytrojanswbb,https://troytrojans.com/sports/womens-basketball,716,Troy,,AL,Sun Belt,I
-Tufts,TuftsWbball,https://gotuftsjumbos.com/sports/womens-basketball/roster,717,,,MA,NESCAC,III
-Tulane,greenwavewbb,https://tulanegreenwave.com/sports/womens-basketball,718,Tulane,,LA,AAC,I
-Tulsa,TUWBasketball,https://tulsahurricane.com/sports/womens-basketball,719,Tulsa,,OK,AAC,I
-Tuskegee,tuskegee_WBB,https://goldentigersports.com/sports/womens-basketball,720,Tuskegee University,,AL,SIAC,II
-Air Force,af_wbb,https://goairforcefalcons.com/sports/womens-basketball,721,Air Force,,CO,Mountain West,I
-Coast Guard,uscga_wbb,https://www.uscgasports.com/sports/wbkb/index,722,,,CT,NEWMAC,III
-Army,armywp_wbb,https://goarmywestpoint.com/sports/womens-basketball,725,Army West Point,,NY,Patriot,I
-Navy,navywbb,https://navysports.com/sports/womens-basketball,726,Navy,,MD,Patriot,I
-Union (NY),UnionCollegeWBB,https://unionathletics.com/sports/womens-basketball,727,Union (NY),,NY,Liberty League,III
-Upper Iowa,UIU_WBB,https://uiupeacocks.com/sports/womens-basketball,728,Upper Iowa,,IA,NSIC,II
-Ursinus,UrsinusWBB,https://www.ursinusathletics.com/sports/wbkb/index,730,,TRUE,PA,Centennial,III
-Utah St.,USUWBasketball,https://utahstateaggies.com/sports/womens-basketball,731,Utah St.,,UT,Mountain West,I
-Utah,utahwbb,https://utahutes.com/sports/womens-basketball,732,Utah,,UT,Pac-12,I
-Valdosta St.,VSULadyBlazers,https://vstateblazers.com/sports/womens-basketball,734,Valdosta St.,,GA,Gulf South,II
-Valparaiso,valpowbb,https://www.valpoathletics.com/wbasketball,735,Valparaiso,,IN,MVC,I
-Vanderbilt,vandywbb,https://vucommodores.com/sports/wbball,736,Vanderbilt,,TN,SEC,I
-Vassar,VassarWBB,https://www.vassarathletics.com/sports/womens-basketball,737,Vassar College,,NY,Liberty League,III
-Vermont,uvmwbb,https://uvmathletics.com/sports/womens-basketball,738,Vermont,,VT,America East,I
-Villanova,novawbb,https://villanova.com/sports/womens-basketball,739,Villanova,,PA,Big East,I
-Virginia Commonwealth,vcuwbb,https://vcuathletics.com/sports/womens-basketball,740,Vcu,,VA,Atlantic 10,I
-Virginia Tech,hokieswbb,https://hokiesports.com/sports/womens-basketball,742,Virginia Tech,,VA,ACC,I
-Va. Wesleyan,VWUWBB,https://vwuathletics.com/sports/womens-basketball,745,,,VA,ODAC,III
-Virginia,UVAWomensHoops,https://virginiasports.com/sports/wbball/,746,Virginia,,VA,ACC,I
-Wagner,WagnerWHoops,https://wagnerathletics.com/sports/womens-basketball,748,Wagner,,NY,NEC,I
-Wake Forest,wakewbb,https://godeacs.com/sports/womens-basketball,749,Wake Forest,,NC,ACC,I
-Wartburg,WartburgWBBALL,https://go-knights.net/sports/womens-basketball,750,,,IA,American Rivers,III
-Washington & Jefferson,WJ_WBB,https://gopresidents.com/sports/womens-basketball,751,Wash. & Jeff.,,PA,PAC,III
-Washington Col.,washcollwbb,https://www.washingtoncollegesports.com/sports/wbkb/index,753,,,MD,Centennial,III
-Washington State,wsucougarwbb,https://wsucougars.com/sports/womens-basketball,754,Washington St.,,WA,Pac-12,I
-WashU,WashU_WBB,https://washubears.com/sports/wbkb/index,755,,,MO,UAA,III
-Washington,uw_wbb,https://gohuskies.com/sports/womens-basketball,756,Washington,,WA,Pac-12,I
-Wayne St. (MI),WSUWarriorsWBB,https://wsuathletics.com/sports/womens-basketball,757,Wayne St. (MI),,MI,GLIAC,II
-Weber State,weberstatewbb,https://weberstatesports.com/sports/womens-basketball,758,Weber St.,,UT,Big Sky,I
-Webster,GorlokWBB,https://websterathletics.com/sports/womens-basketball,759,Webster University,,MO,SLIAC,III
-Wellesley,WellesleyBB,https://www.wellesleyblue.com/sports/wbkb/index,760,,,MA,NEWMAC,III
-Wentworth,WITWomensBball,https://www.wentworthathletics.com/sports/wbkb/index,762,,,MA,CCC,III
-Wesleyan (CT),wes_wbball,https://athletics.wesleyan.edu/sports/womens-basketball,764,,,CT,NESCAC,III
-West Texas A&M,ladybuffhoops,https://gobuffsgo.com/sports/womens-basketball,767,,,TX,Lone Star,II
-West Virginia,WVUWBB,https://wvusports.com/sports/womens-basketball,768,West Virginia,,WV,Big 12,I
-Western Carolina,catamountwbb,https://catamountsports.com/sports/womens-basketball,769,Western Caro.,,NC,SoCon,I
-Western Connecticut St.,WestConnWBB,https://westconnathletics.com/sports/womens-basketball,770,,TRUE,CT,Little East,III
-Western Illinois,wiuwbb,https://goleathernecks.com/sports/womens-basketball,771,Western Ill.,,IL,Summit League,I
-Western Ky.,LadyTopperHoops,https://wkusports.com/sports/womens-basketball,772,Western Ky.,,KY,C-USA,I
-McDaniel,McDaniel_WBB,https://mcdanielathletics.com/sports/womens-basketball/roster,773,,,MD,Centennial,III
-Western Michigan,wmu_wbb,https://wmubroncos.com/sports/womens-basketball,774,Western Mich.,,MI,MAC,I
-Western New Eng.,WNEwbasketball,https://www.wnegoldenbears.com/sports/wbkb/index,775,,,MA,CCC,III
-Wheaton (IL),Wheaton_WBB,https://athletics.wheaton.edu/sports/womens-basketball,778,Wheaton (IL),,IL,CCIW,III
-Wheaton (MA),WheatonWBB,https://www.wheatoncollegelyons.com/sports/wbkb/index,779,,,MA,NEWMAC,III
-Whitman,WhitmanWBB,https://athletics.whitman.edu/sports/womens-basketball,780,Whitman,,WA,NWC,III
-Wichita State,goshockerswbb,https://goshockers.com/sports/womens-basketball,782,Wichita St.,,KS,AAC,I
-Widener,WUWBB,https://widenerpride.com/sports/womens-basketball,783,,,PA,MAC Freedom,III
-Wilkes,WilkesWBB,https://gowilkesu.com/sports/womens-basketball,784,,,PA,MAC Freedom,III
-Willamette,WillametteWBB,https://www.wubearcats.com/sports/wbkb/index,785,,,OR,NWC,III
-William & Mary,wmtribewbb,https://tribeathletics.com/sports/womens-basketball,786,William & Mary,,VA,CAA,I
-William Paterson,WPUWBB,https://www.wpupioneers.com/sports/womens-basketball,787,,,NJ,NJAC,III
-Winona St.,WinonaStateWBB,https://winonastatewarriors.com/sports/womens-basketball,790,,,MN,NSIC,II
-Winston-Salem,wssuwhoops,https://www.wssurams.com/sports/w-baskbl/index,791,,,NC,CIAA,II
-Winthrop,winthropwbb,https://winthropeagles.com/sports/womens-basketball,792,Winthrop,,SC,Big South,I
-Wis.-Eau Claire,UWECWBB,https://blugolds.com/sports/wbkb/index,793,,,WI,WIAC,III
-Green Bay,gbphoenixwbb,https://greenbayphoenix.com/sports/womens-basketball,794,Green Bay,,WI,Horizon,I
-Wisconsin-La Crosse,uwleagleswbb,https://uwlathletics.com/sports/womens-basketball,795,Wis.-La Crosse,,WI,WIAC,III
-Wisconsin,badgerwbb,https://uwbadgers.com/sports/womens-basketball,796,Wisconsin,,WI,Big Ten,I
-Milwaukee,mke_wbb,https://mkepanthers.com/sports/womens-basketball,797,Milwaukee,,WI,Horizon,I
-Wis.-Oshkosh,UWOWBB1,https://www.uwoshkoshtitans.com/sports/wbkb/index,798,,,WI,WIAC,III
-Wisconsin-Parkside,RangersWBB,https://parksiderangers.com/sports/womens-basketball,799,Wis.-Parkside,,WI,GLIAC,II
-Wis.-Platteville,UWPLATTWBB,https://letsgopioneers.com/sports/wbkb/index,800,,,WI,WIAC,III
-Wisconsin-River Falls,UWRFWomensBball,https://uwrfsports.com/sports/womens-basketball,801,Wis.-River Falls,,WI,WIAC,III
-Wisconsin-Stevens Point,UWSPWBB,https://athletics.uwsp.edu/sports/womens-basketball,802,Wis.-Stevens Point,,WI,WIAC,III
-Wisconsin-Stout,BlueDevilsWBB,https://stoutbluedevils.com/sports/womens-basketball,803,,,WI,WIAC,III
-Wisconsin-Superior,UWSWBB,https://uwsyellowjackets.com/sports/womens-basketball,804,,,WI,UMAC,III
-Wisconsin-Whitewater,UWWWomensHoops,https://uwwsports.com/sports/womens-basketball,805,Wis.-Whitewater,,WI,WIAC,III
-Wittenberg,wittwbb,https://www.wittenbergtigers.com/sports/wbkb/index,806,,,OH,NCAC,III
-Wooster,WoosterWBB,https://www.woosterathletics.com/sports/wbkb/index,807,,,OH,NCAC,III
-WPI,WPIWBasketball,https://athletics.wpi.edu/sports/wbkb/index,808,,,MA,NEWMAC,III
-Worcester St.,WSUWBBall,https://www.wsulancers.com/sports/wbkb/index,809,,,MA,MASCAC,III
-Wright St.,WSUWBasketball,https://wsuraiders.com/sports/womens-basketball,810,Wright St.,,OH,Horizon,I
-Wyoming,wyo_wbb,https://gowyo.com/sports/womens-basketball,811,Wyoming,,WY,Mountain West,I
-Xavier,xavierwbb,https://goxavier.com/sports/womens-basketball,812,Xavier,,OH,Big East,I
-Yale,YaleWBasketball,https://yalebulldogs.com/sports/womens-basketball,813,Yale,,CT,Ivy League,I
-York (PA),YCPWBasketball,,815,,,PA,MAC Commonwealth,III
-Youngstown St.,YSUWomensHoops,https://ysusports.com/sports/womens-basketball/roster,817,Youngstown St.,,OH,Horizon,I
-Adams St.,AdamsStateU_WBB,https://asugrizzlies.com/sports/womens-basketball,929,,,CO,RMAC,II
-Alderson Broaddus,ABUWBB,https://gobattlers.com/sports/womens-basketball,934,,,WV,MEC,II
-Alvernia,AlverniaWbb,https://auwolves.com/sports/womens-basketball,938,Alvernia,,PA,MAC Commonwealth,III
-Anderson (IN),AURavensWBB,https://aua.prestosports.com/sports/wbkb/index,939,,,IN,HCAC,III
-Arkansas Tech,ATUWBasketball,https://arkansastechsports.com/sports/womens-basketball,947,Arkansas Tech,,AR,GAC,II
-Austin,roos_hoops,https://www.acroos.com/sports/wbkb/index,953,,,TX,SCAC,III
-Bard,BardCollegeWBB,https://bardathletics.com/sports/womens-basketball,962,Bard,,NY,Liberty League,III
-Arcadia,Arcadia_WBB,https://arcadiaknights.com/sports/womens-basketball,966,,,PA,MAC Freedom,III
-Berry,BerryWBB,https://www.berryvikings.com/sports/womens-basketball,973,,,GA,SAA,III
-Bluefield St.,BluefieldWbb,https://bcrams.com/sports/womens-basketball,985,Bluefield St.,,WV,DII Independent,II
-Caldwell,CaldwellWBB,https://caldwellathletics.com/sports/womens-basketball,995,Caldwell,,NJ,CACC,II
-Cameron,AggiesWBB,https://cameronaggies.com/sports/womens-basketball,996,Cameron,,OK,Lone Star,II
-Carson-Newman,CNwbasketball,https://www.cneagles.com/sports/w-baskbl/index,1000,Carson-Newman,,TN,SAC,II
-Catawba,catawba_wbb,http://gocatawbaindians.com/sport.asp?sportID=3,1001,Catawba,,NC,SAC,II
-Central Arkansas,ucawbb,https://ucasports.com/sports/womens-basketball,1004,Central Ark.,,AR,ASUN,I
-Central Okla.,UCOWBB,https://bronchosports.com/sports/womens-basketball,1009,Central Okla.,,OK,Mid-America Intercollegiate,II
-Central Wash.,cwu_wbb,https://wildcatsports.com/sports/womens-basketball,1010,Central Wash.,,WA,Great Northwest,II
-Chadron St.,ChadronEagles,https://chadroneagles.com/sports/womens-basketball,1012,Chadron St.,,NE,RMAC,II
-Charleston (WV),ucwv_wbb,https://ucgoldeneagles.com/sports/womens-basketball,1013,Charleston (WV),,WV,MEC,II
-College of Charleston,cofcwbb,https://cofcsports.com/sports/womens-basketball,1014,Col. of Charleston,,SC,CAA,I
-Christian Brothers,cbubucswbb,https://cbubucs.com/sports/womens-basketball,1015,Christian Brothers,,TN,Gulf South,II
-Coker,Coker_WBB,https://www.cokercobras.com/sports/wbkb/index,1023,Coker,,SC,SAC,II
-Concord,CU_WBB,https://cumountainlions.com/sports/womens-basketball,1028,Concord,,WV,MEC,II
-Concordia Wisconsin,CUWWBB,https://www.cuwfalcons.com/sports/wbkb/index,1036,Concordia Wisconsin,,WI,NACC,III
-Defiance,DCWB_,https://www.defianceathletics.com/sports/wbkb/index,1050,Defiance,,OH,HCAC,III
-Drury,DULadyPanthers,https://drurypanthers.com/sports/womens-basketball,1057,Drury,,MO,GLVC,II
-D'Youville,dy_wbb,https://athletics.dyc.edu/sports/wbkb/index,1059,D'Youville,,NY,ECC,II
-East Tex. Baptist,ETBU_WBSK,https://goetbutigers.com/sports/womens-basketball,1062,East Tex. Baptist,,TX,ASC,III
-Eastern Nazarene,ENCWBB,https://athletics.enc.edu/sports/wbkb/index,1064,Eastern Nazarene,,MA,NECC,III
-Edgewood,EdgewoodWbb,https://edgewoodcollegeeagles.com/sports/womens-basketball,1066,Edgewood,,WI,NACC,III
-Elon,ElonWBasketball,https://elonphoenix.com/sports/womens-basketball,1068,Elon,,NC,CAA,I
-Emporia St.,LadyHornetWBB,https://esuhornets.com/sports/womens-basketball,1071,Emporia St.,,KS,Mid-America Intercollegiate,II
-Erskine,FlyingFleetWBB,https://erskinesports.com/sports/womens-basketball,1072,Erskine,,SC,Conference Carolinas,II
-Fairmont St.,FairmontWbb,https://fightingfalcons.com/sports/womens-basketball,1076,Fairmont St.,,WV,MEC,II
-Findlay,UFWBB,https://athletics.findlay.edu/sports/wbkb/index,1079,,,OH,G-MAC,II
-Fort Lewis,FortLewis_WBB,https://goskyhawks.com/sports/womens-basketball,1083,Fort Lewis,FALSE,CO,RMAC,II
-Francis Marion,FM_WBB,https://fmupatriots.com/sports/womens-basketball/,1085,,,SC,Conference Carolinas,II
-Gardner-Webb,GWU_WBK,https://gwusports.com/sports/womens-basketball,1092,Gardner-Webb,,NC,Big South,I
-George Fox,GeorgeFoxWBB,https://athletics.georgefox.edu/sports/womens-basketball,1094,,,OR,NWC,III
-Georgia College,gcbobcatswbb,https://www.gcbobcats.com/sports/wbkb/index,1096,,,GA,Peach Belt,II
-Glenville St.,LadyPioneers_,https://gscpioneers.com/sports/womens-basketball,1098,Glenville St.,,WV,MEC,II
-Grand Canyon,gcu_wbb,https://gculopes.com/sports/womens-basketball,1104,Grand Canyon,,AZ,WAC,I
-Greenville,guwbball,http://athletics.greenville.edu/sports/wbkb/index,1111,,,IL,SLIAC,III
-Guilford,GuilfordWBB,https://guilfordquakers.com/sports/womens-basketball/roster,1112,,,NC,ODAC,III
-Hanover,HanoverWBB,https://athletics.hanover.edu/sports/wbball,1115,Hanover,,IN,HCAC,III
-Harding,Harding_WBB,https://hardingsports.com/sports/womens-basketball,1116,Harding,,AR,GAC,II
-Henderson St.,ReddiesWBB,https://hsusports.com/sports/womens-basketball,1123,Henderson St.,,AR,GAC,II
-Hendrix,HX_WBB,https://hendrixwarriors.com/sports/womens-basketball,1124,Hendrix,,AR,SAA,III
-Holy Family,HolyFamily_WBB,https://athletics.holyfamily.edu/sports/womens-basketball,1126,Holy Family,,PA,CACC,II
-Huntingdon,HCHawksWBB,https://www.huntingdonhawks.com/sports/wbkb/index,1130,,,AL,CCS,III
-Husson,Hussonwbb,https://hussoneagles.com/sports/wbkb/index,1133,,,ME,North Atlantic,III
-Neb.-Kearney,UNKWBB,https://lopers.com/sports/womens-basketball,1156,Neb.-Kearney,,NE,Mid-America Intercollegiate,II
-Kennesaw State,ksuowlswbb,https://ksuowls.com/sports/womens-basketball,1157,Kennesaw St.,,GA,ASUN,I
-Keuka,KeukaWBB,https://www.keukaathletics.com/sports/wbkb/index,1159,,,NY,Empire 8,III
-LaGrange,LCPanthers_WBB,https://www.lagrangepanthers.com/sports/wbkb/index,1162,,,GA,CCS,III
-Lakeland,MuskiesWBB,https://lakelandmuskies.com/sports/womens-basketball,1164,,,WI,NACC,III
-Lander,LanderWBB,https://landerbearcats.com/sports/wbball,1167,,,NY,Peach Belt,II
-Lenoir-Rhyne,LRUWBB,https://lrbears.com/sports/womens-basketball,1170,,,NC,SAC,II
-Limestone,LCWBB,https://golimestonesaints.com/sports/womens-basketball,1174,Limestone,,SC,SAC,II
-Linfield,linfieldwbb,https://golinfieldwildcats.com/sports/womens-basketball,1179,Linfield,,OR,NWC,III
-Marian (WI),marianwbb,https://www.muknights.com/sport/0/2,1196,,,WI,NACC,III
-Mars Hill,MarsHill_WBB,https://www.marshilllions.com/sports/wbkb/index,1199,Mars Hill,,NC,SAC,II
-Mary Hardin-Baylor,cruwomenshoops,https://cruathletics.com/sports/womens-basketball,1203,,,TX,ASC,III
-Montevallo,MontevalloWBB,https://montevallofalcons.com/sports/womens-basketball,1238,,,AL,Gulf South,II
-MSU Moorhead,MSUM_WBB,https://www.msumdragons.com/sports/womens-basketball,1240,,,MN,NSIC,II
-Mount Olive,umowbb,https://umotrojans.com/sports/womens-basketball,1245,Mount Olive,,NC,Conference Carolinas,II
-Neumann,NeumannWBB,https://www.neumannathletics.com/sports/womens-basketball,1254,Neumann,,PA,Atlantic East,III
-Newberry,newberry_wbb,https://newberrywolves.com/sports/womens-basketball,1257,Newberry,,SC,SAC,II
-Northern St.,nsuwolves_wbb,https://nsuwolves.com/sports/womens-basketball,1266,Northern St.,,SD,NSIC,II
-Northland,jillswbb,https://northlandcollegesports.com/sports/womens-basketball,1267,Northland,,WI,UMAC,III
-Northwest Nazarene,NnuWbb,https://nnusports.com/sports/womens-basketball,1274,Northwest Nazarene,,ID,Great Northwest,II
-Alliance,NyackWomen,https://athletics.nyack.edu/sports/wbkb/index,1277,,,NY,CACC,II
-Ouachita Baptist,OBULadyTigers,https://obutigers.com/sports/womens-basketball,1289,Ouachita Baptist,,AR,GAC,II
-Cairn,CairnWBB,https://www.cairnhighlanders.com/sports/womens-basketball,1305,,,PA,CSAC,III
-Pittsburg St.,GorillasWBB,https://pittstategorillas.com/sports/womens-basketball,1314,Pittsburg St.,,KS,Mid-America Intercollegiate,II
-Pitt.-Bradford,upb_wbb,https://athletics.pittbradford.org/sports/wbkb/index,1315,,,PA,AMCC,III
-Post,PostWBB,https://posteagles.com/sports/womens-basketball,1318,Post,,CT,CACC,II
-Presbyterian College,bluehosewbb,https://gobluehose.com/sports/womens-basketball,1320,Presbyterian,,SC,Big South,I
-Rockhurst,RockhurstWBB,https://rockhursthawks.com/sports/womens-basketball,1328,Rockhurst,,MO,GLVC,II
-St. Edward's,SEUWBasketball,https://gohilltoppers.com/sports/womens-basketball,1334,St. Edward's,,TX,Lone Star,II
-St. Joseph's (L.I.),sjc_wbb,https://sjliathletics.com/sports/wbkb/index,1340,,,NY,Skyline,III
-Saint Martin's,SMUSaints_WBB,https://smusaints.com/sports/womens-basketball,1343,Saint Martin's,,WA,Great Northwest,II
-St. Mary's (TX),StMUwbb,https://rattlerathletics.com/sports/womens-basketball,1346,St. Mary's (TX),,TX,Lone Star,II
-St. Thomas Aquinas,STACWBB,https://www.stacathletics.com/sports/wbkb/index,1348,,,NY,ECC,II
-Schreiner,SchreinerWBK,https://schreinermountaineers.com/sports/wbkb/index,1355,Schreiner,,TX,SCAC,III
-Seattle,seattleu_wbb,https://goseattleu.com/sports/womens-basketball,1356,Seattle U,FALSE,WA,WAC,I
-Southeastern Okla.,SavageStormWBB,https://gosoutheastern.com/sports/womens-basketball,1371,Southeastern Okla.,,OK,GAC,II
-Southern Ark.,SAUWBasketball,https://muleriderathletics.com/sports/womens-basketball,1376,Southern Ark.,,AR,GAC,II
-Sul Ross St.,SRSU_WBB,https://srlobos.com/sports/womens-basketball,1390,,,TX,ASC,III
-Tarleton St.,TarletonWBB,https://tarletonsports.com/sports/womens-basketball,1395,Tarleton St.,,TX,WAC,I
-Texas Lutheran,TLUwbb,https://tlubulldogs.com/sports/wbkb/index,1400,Texas Lutheran,,TX,SCAC,III
-Tiffin,TiffinUwbb,https://www.gotiffindragons.com/sports/wbkb/index,1403,,,OH,G-MAC,II
-Wayne St. (NE),WayneStateWBB,https://wscwildcats.com/sports/womens-basketball,1433,Wayne St. (NE),,NE,NSIC,II
-Waynesburg,LadyJ_Hoops,https://waynesburgsports.com/sports/womens-basketball,1434,Waynesburg,,PA,PAC,III
-West Liberty,WLU_Hoops,https://hilltoppersports.com/sports/womens-basketball,1438,West Liberty,,WV,MEC,II
-West Virginia St.,WVSULadyJackets,https://wvsuyellowjackets.com/sports/womens-basketball,1439,,,WV,MEC,II
-Western N.M.,WNMU_WBB,https://wnmumustangs.com/index.aspx?path=wbball,1445,,,NM,Lone Star,II
-Western Ore.,WOUWBB,https://wouwolves.com/sports/womens-basketball,1446,Western Ore.,,OR,Great Northwest,II
-Western Wash.,WWUbasketball,https://wwuvikings.com/sports/womens-basketball,1448,Western Wash.,,WA,Great Northwest,II
-Westminster (PA),WC_WBB,https://athletics.westminster.edu/sports/womens-basketball,1451,Westminster (PA),,PA,PAC,III
-Whitworth,BucWBB,https://whitworthpirates.com/sports/womens-basketball,1454,Whitworth,,WA,NWC,III
-Wilmington (OH),DubC_LQB,http://www.wilmingtonquakers.com/sports/wbkb/index,1461,,,OH,OAC,III
-Wingate,WingateWBB,https://wingatebulldogs.com/sports/womens-basketball,1462,,,NC,SAC,II
-Goucher,GoucherWBB,https://athletics.goucher.edu/sports/wbkb/index,1467,,,MD,Landmark,III
-Arkansas-Pine Bluff,uapbwbb,https://uapblionsroar.com/sports/womens-basketball,2678,Arkansas-Pine Bluff,,AR,SWAC,I
-Belmont Abbey,AbbeyWBB,https://abbeyathletics.com/sports/womens-basketball,2683,Belmont Abbey,,NC,Conference Carolinas,II
-Franklin,FCGrizWBB,https://franklingrizzlies.com/sports/wbkb/index,2694,,,IN,HCAC,III
-IUPUI,IUPUILadyJags,https://iupuijags.com/sports/womens-basketball,2699,Iupui,FALSE,IN,Horizon,I
-Kansas City,KCRoosWBB,https://kcroos.com/sports/womens-basketball,2707,Kansas City,,MO,Summit League,I
-North Florida,ospreywbb,https://unfospreys.com/sports/womens-basketball,2711,North Florida,,FL,ASUN,I
-Oglethorpe,GoPetrelsWBB,https://gopetrels.com/sports/womens-basketball,2713,,,GA,SAA,III
-Colorado St.-Pueblo,CSUPuebloWBB,https://gothunderwolves.com/sports/womens-basketball,2720,Colorado St.-Pueblo,,CO,RMAC,II
-Howard Payne,HPUWBasketball,https://hpusports.com/sports/womens-basketball,2741,Howard Payne,,TX,ASC,III
-Incarnate Word,uiwwbb,https://uiwcardinals.com/sports/womens-basketball,2743,Incarnate Word,,TX,Southland,I
-Lake Erie,lakeeriewbb,https://www.lakeeriestorm.com/sports/wbkb/index,2746,,,OH,G-MAC,II
-Pacific (OR),PACUWBB,https://goboxers.com/sports/womens-basketball,2751,,TRUE,OR,NWC,III
-Southwest Baptist,SBUbearcatsWBB,https://www.sbubearcats.com/sports/womens-basketball,2755,Southwest Baptist,,MO,GLVC,II
-Western Colo.,westerncowbb,https://gomountaineers.com/sports/womens-basketball,2759,Western Colo.,,CO,RMAC,II
-Albertus Magnus,AlbertusWBB,https://www.albertusfalcons.com/sports/wbkb/index,2798,,,CT,Great Northeast,III
-St. Thomas (TX),USTWBB,https://ustcelts.com/sports/wbkb/index,2810,,,TX,SCAC,III
-Washburn,IchabodWBB,https://wusports.com/sports/womens-basketball,2814,Washburn,,KS,Mid-America Intercollegiate,II
-Wofford,wofford_wbb,https://woffordterriers.com/sports/womens-basketball,2915,Wofford,,SC,SoCon,I
-Hilbert,HilbertWBB,https://hilberthawks.com/sports/womens-basketball,8398,Hilbert,,NY,AMCC,III
-Hood,Hood_wbb,https://hoodathletics.com/sports/womens-basketball,8404,Hood,,MD,MAC Commonwealth,III
-Ark.-Monticello,UAMwbkb,https://www.uamsports.com/sports/womens-basketball,8411,,,AR,GAC,II
-LeTourneau,LETUWBB,https://letuathletics.com/sports/womens-basketball,8490,,,TX,ASC,III
-McMurry,McMurry_WBB,https://mcmurrysports.com/sports/womens-basketball,8530,,,TX,ASC,III
-Mount St. Joseph,msjwbb,https://msjlions.com/sports/womens-basketball,8567,,TRUE,OH,Heartland,III
-St. Mary's (IN),SMC_Basketball,https://belles.saintmarys.edu/sports/wbkb/index,8688,,,IN,Michigan Intercol. Ath. Assn.,III
-Southwest Minn. St.,SMSUWomensHoops,https://smsumustangs.com/sports/womens-basketball,8736,,,MN,NSIC,II
-Southwestern Okla.,SWOSUW,https://swosuathletics.com/sports/womens-basketball,8744,,,OK,GAC,II
-Southwestern (TX),SUPiratesWBB,https://www.southwesternpirates.com/sports/w-baskbl/index,8746,,,TX,SCAC,III
-Chowan,ChowanWBB,https://gocuhawks.com/sports/womens-basketball,8875,,,NC,Conference Carolinas,II
-Wis. Lutheran,WLC_WBB,https://www.wlcsports.com/sports/wbkb/index,8911,,,WI,NACC,III
-Converse,Converse_wbb,https://govalkyries.com/sports/womens-basketball,8935,,FALSE,SC,Conference Carolinas,II
-East Central,ECUTigersWBB,https://ecutigers.com/sports/womens-basketball,8965,,,OK,GAC,II
-Endicott,EndicottWBB,https://www.ecgulls.com/sports/wbkb/index,8981,,,MA,CCC,III
-Georgian Court,GCULionswbb,https://gculions.com/sports/womens-basketball,9004,Georgian Court,,NJ,CACC,II
-Fort Hays St.,FHSUWBB,https://fhsuathletics.com/sports/womens-basketball,9011,Fort Hays St.,,KS,Mid-America Intercollegiate,II
-Mo. Southern St.,MssuWbb,https://mssulions.com/sports/womens-basketball,9012,,,MO,Mid-America Intercollegiate,II
-Missouri Western,GriffonWBB,https://gogriffons.com/sports/womens-basketball,9013,,,MO,Mid-America Intercollegiate,II
-Concordia-St. Paul,CSPBearsWBB,https://cspbears.com/sports/womens-basketball,9081,,,MN,NSIC,II
-West Va. Wesleyan,wvwcwbb,https://wesleyanbobcats.com/sports/womens-basketball,9630,,,WV,MEC,II
-Embry-Riddle (FL),erau_wbb,https://erauathletics.com/sports/womens-basketball,9680,,,FL,Sunshine State,II
-St. Elizabeth,CSEWBB,https://seueagles.com/sports/womens-basketball,9684,,,NJ,CSAC,III
-UC-Colo. Springs,UCCSWBB,https://gomountainlions.com/sports/womens-basketball,9754,UC-Colo. Springs,,CA,RMAC,II
-USC Upstate,upstateWBB,https://upstatespartans.com/sports/womens-basketball,10411,USC Upstate,,SC,Big South,I
-Shepherd,SURamsWHoops,https://shepherdrams.com/sports/womens-basketball,10870,Shepherd,,WV,PSAC,II
-Chatham,chathamwbb,https://gochathamcougars.com/sports/womens-basketball,10972,Chatham,,PA,PAC,III
-Sage Colleges,sagewbb,https://www.sagegators.com/sports/wbkb/index,11036,,,NY,Empire 8,III
-S.C. Aiken,USCAWBB,https://pacersports.com/sports/womens-basketball,11276,S.C. Aiken,,SC,Peach Belt,II
-Colo. Christian,ccu_wbb,https://ccucougars.com/sports/womens-basketball,11403,,,CO,RMAC,II
-Colorado Mesa,CMUWBasketball,https://cmumavericks.com/sports/womens-basketball,11416,,,CO,RMAC,II
-Queens (NC),QueensWBB,https://queensathletics.com/sports/womens-basketball,11504,,,NC,ASUN,I
-Fontbonne,fontbonnewbb,https://fontbonnegriffins.com/sports/wbkb/index,11538,,,MO,SLIAC,III
-West Florida,UWFWBB,https://goargos.com/index.aspx?path=wbball,11740,,,FL,Gulf South,II
-Pitt.-Greensburg,UPG_WBB,https://pittgreensburgathletics.com/sports/womens-basketball,11839,Pitt.-Greensburg,,PA,AMCC,III
-Wheeling,WU_WBB,https://wucardinals.com/sports/womens-basketball,12799,Wheeling,,WV,MEC,II
-Northeastern St.,RiverHawksWBK,https://goriverhawksgo.com/sports/womens-basketball,12810,Northeastern St.,,OK,Mid-America Intercollegiate,II
-Tusculum,TusculumWBB,https://www.tusculumpioneers.com/sports/wbkb/index,12830,,,TN,SAC,II
-Centenary (NJ),CyclonesWBB,,12884,,,NJ,Atlantic East,III
-Anderson (SC),AUTrojansWBB,https://www.autrojans.com/sports/wbkb/index,13028,Anderson (SC),,SC,SAC,II
-Lees-McRae,LMCWBB,https://lmcbobcats.com/sports/womens-basketball,13302,Lees-McRae,,NC,Conference Carolinas,II
-Cedar Crest,cccwbb,https://cedarcrestathletics.com/sports/womens-basketball,14795,,,PA,CSAC,III
-Belmont,belmontwbb,https://belmontbruins.com/sports/womens-basketball,14927,,,TN,MVC,I
-Rosemont,_rosemontwbb,https://rosemont-ravens.com/sports/womens-basketball,15882,Rosemont,,PA,CSAC,III
-Misericordia,MisericordiaWBB,https://athletics.misericordia.edu/sports/womens-basketball,16142,,,PA,MAC Freedom,III
-William Peace,gopeacewbb,https://gopeacepacers.com/sports/womens-basketball,17094,William Peace,,NC,USA South,III
-Salem (WV),SU_WBBHoops,https://salemtigers.com/sports/womens-basketball,19117,Salem (WV),,WV,DII Independent,II
-High Point,hpuwbb,https://highpointpanthers.com/sports/womens-basketball,19651,High Point,,NC,Big South,I
-MSOE,MSOEwbb,https://www.go-raiders.com/sports/wbkb/index,20220,,,WI,NACC,III
-Chestnut Hill,CHC_WBB,https://griffinathletics.com/sports/womens-basketball,21323,Chestnut Hill,,PA,CACC,II
-Piedmont,PiedmontWBB,https://piedmontlions.com/sports/womens-basketball,21830,,FALSE,GA,CCS,III
-Stevenson,StevensonU_WBB,https://www.gomustangsports.com/sports/wbkb/index,21852,,,MD,MAC Commonwealth,III
-JWU (Providence),JWUWBasketball,https://providence.jwuathletics.com/sports/wbkb/index,22626,,,RI,Great Northeast,III
-Texas-Dallas,UTDALLAS_WBB,https://utdcomets.com/sports/womens-basketball,23121,UT Dallas,,TX,ASC,III
-Felician,FelicianU_WBB,https://www.felicianathletics.com/sports/wbkb/index,23157,,,NJ,CACC,II
-Medaille,MedailleWBB,https://medaillesports.com/sports/womens-basketball,23725,Medaille,,NY,Empire 8,III
-Lesley,Lesley_WBB,https://lesleyathletics.com/sports/wbkb/index,24317,,,MA,NECC,III
-Concordia (TX),ctxwomensbball,https://athletics.concordia.edu/sports/womens-basketball,24400,Concordia (TX),,TX,ASC,III
-Nova Southeastern,NSU_WBasketball,https://nsusharks.com/sports/womens-basketball,24639,Nova Southeastern,,FL,Sunshine State,II
-Penn St.-Altoona,PSAltoonaWBB,https://www.psaltoonalions.com/sports/wbkb/index,25719,,,PA,AMCC,III
-Becker,BCLadyhoopHawks,https://beckerhawks.com/sports/wbkb/index,26107,,,MA,NECC,III
-A&M-Corpus Christi,Islanders_WBB,https://goislanders.com/sports/womens-basketball,26172,A&M-Corpus Christi,,TX,Southland,I
-Minn.-Crookston,UMNCrookstonWBB,https://goldeneaglesports.com/sports/womens-basketball,27854,Minn.-Crookston,,MN,NSIC,II
-Farmingdale St.,fscwbb_,https://www.farmingdalesports.com/sports/wbkb/index,27892,,,NY,Skyline,III
-Birmingham-Southern,SOUTHERNWBB,https://bscsports.net/sports/womens-basketball,28593,Birmingham-Southern,,AL,SAA,III
-USciences,USciencesWBB,https://www.devilsathletics.com/sports/wbkb/index,28594,,,PA,CACC,II
-Lipscomb,lipscombwbb,https://lipscombsports.com/sports/womens-basketball,28600,Lipscomb,,TN,ASUN,I
-Transylvania,TUWBX,http://www.transysports.com/sports/womens-basketball,28749,Transylvania,,KY,HCAC,III
-Florida Gulf Coast,fgcu_wbb,https://fgcuathletics.com/sports/womens-basketball,28755,Fgcu,,FL,ASUN,I
-Trevecca Nazarene,TNUwBasketball,https://www.tnutrojans.com/sports/wbkb/index,30002,,,TN,G-MAC,II
-Lee,LeeUWBB,https://leeuflames.com/sports/womens-basketball,30013,Lee,,TN,Gulf South,II
-Utah Valley,uvuwbb,https://gouvu.com/sports/womens-basketball,30024,Utah Valley,,UT,WAC,I
-Texas-Tyler,UTTylerWBB,https://uttylerpatriots.com/sports/womens-basketball,30028,Texas-Tyler,,TX,Lone Star,II
-Northwestern-St. Paul,unwwbb,https://unweagles.com/sports/womens-basketball,30031,,,MN,UMAC,III
-Finlandia,FinnUwbb,https://fulions.com/sports/womens-basketball,30032,,,MI,C2C,III
-Crown (MN),BasketballCrown,https://athletics.crown.edu/sports/womens-basketball,30035,Crown (MN),,MN,UMAC,III
-Mount Aloysius,MountieHoops,https://mountieathletics.com/sports/womens-basketball,30036,Mount Aloysius,,PA,AMCC,III
-Trine,TrineWBB,https://www.trinethunder.com/sports/wbkb/index,30037,,,IN,Michigan Intercol. Ath. Assn.,III
-Bethany Lutheran,BethanyWbb,https://blcvikings.com/sports/womens-basketball,30038,Bethany Lutheran,,MN,UMAC,III
-North Central (MN),NCU_WBB,https://ncurams.com/sports/womens-basketball,30039,North Central (MN),FALSE,MN,UMAC,III
-Mitchell,mitchellcollwbb,https://www.mitchellathletics.com/sports/wbkb/index,30042,,,CT,NECC,III
-Palm Beach Atl.,SailfishWBB,https://pbasailfish.com/sports/womens-basketball,30045,Palm Beach Atl.,,FL,Sunshine State,II
-Keystone,KeystoneWBB,https://www.gokcgiants.com/sports/womens-basketball,30047,,,PA,CSAC,III
-Ill. Springfield,UISWBB,https://uisprairiestars.com/sports/womens-basketball,30050,Ill. Springfield,,IL,GLVC,II
-North Georgia,UNGWBB,https://ungathletics.com/sports/womens-basketball,30052,University of North GeorgiaW,,GA,Peach Belt,II
-Newman,NewmanJetsWBB,https://newmanjets.com/sports/womens-basketball,30054,Newman,,KS,Mid-America Intercollegiate,II
-Cal St. Monterey Bay,CSUMBwbb,https://otterathletics.com/sports/womens-basketball,30055,Cal St. Monterey Bay,,CA,CCAA,II
-Seton Hill,SetonHillWBB,https://athletics.setonhill.edu/sports/womens-basketball,30063,Seton Hill,,PA,PSAC,II
-Saint Vincent,SVC_WomensBball,https://athletics.stvincent.edu/sports/womens-basketball,30064,Saint Vincent,,PA,PAC,III
-NVU-Lyndon,LyndonWBB,https://www.lyndonhornets.com/sports/wbkb/index,30065,,,VT,North Atlantic,III
-SUNY Morrisville,MorrisvilleWBB,https://morrisvillemustangs.com/sports/womens-basketball,30067,,,NY,United East,III
-Franciscan,FranciscanWBB,https://franciscanathletics.com/sports/womens-basketball,30069,Franciscan,,OH,PAC,III
-William Smith,HeronHoops,https://hwsathletics.com/sports/womens-basketball,30073,William Smith,,NY,Liberty League,III
-Penn St. Harrisburg,PSHbgWBBall,https://athletics.hbg.psu.edu/sports/wbkb/index,30081,,,PA,United East,III
-Geneva,genevawbb,https://athletics.geneva.edu/sports/womens-basketball,30084,Geneva,,PA,PAC,III
-Lancaster Bible,lbc_wbb,https://lbcchargers.com/sports/womens-basketball,30085,,,PA,United East,III
-Tex. Permian Basin,UTPB_WBB,https://utpbfalcons.com/sports/womens-basketball,30088,Tex. Permian Basin,,TX,Lone Star,II
-Flagler,Flagler_WBB,https://flaglerathletics.com/sports/womens-basketball,30092,Flagler,,FL,Peach Belt,II
-AUM,AUMWarhawksWBB,https://aumathletics.com/sports/womens-basketball,30093,Aum,,AL,Gulf South,II
-Utah Tech,UtahTech_WBB,https://utahtechtrailblazers.com/sports/womens-basketball,30095,Utah Tech,,UT,WAC,I
-Ark.-Fort Smith,UAFSWBB,https://uafortsmithlions.com/sports/womens-basketball,30105,Ark.-Fort Smith,,AR,Lone Star,II
-Covenant,CovenantWBB,https://athletics.covenant.edu/sports/womens-basketball,30111,,,GA,CCS,III
-Penn St.-Abington,PSUA_WBB,https://abingtonsports.com/sports/womens-basketball,30114,,,PA,United East,III
-Ohio Dominican,ODUPANTHERS_WBB,https://www.ohiodominicanpanthers.com/sports/wbkb/index,30119,,,OH,G-MAC,II
-William Jewell,Jewell_WBB,https://jewellcardinals.com/sports/womens-basketball,30120,William Jewell,FALSE,MO,GLVC,II
-Academy of Art,ARTUWBB,https://artuathletics.com/sports/womens-basketball,30123,Academy of Art,,CA,PacWest,II
-Cedarville,CedarvilleWBB,https://yellowjackets.cedarville.edu/sports/womens-basketball,30124,Cedarville,,OH,G-MAC,II
-Minot St.,MSUBeaversWBB,https://msubeavers.com/sports/womens-basketball,30125,Minot St.,,ND,NSIC,II
-Notre Dame (OH),NDCWBB,https://notredamefalcons.com/sports/womens-basketball,30126,Notre Dame (OH),,OH,MEC,II
-Simon Fraser,SFU_WBB,https://athletics.sfu.ca/sports/womens-basketball,30127,Simon Fraser,,,Great Northwest,II
-Sioux Falls,USFcougars_wbb,https://usfcougars.com/sports/womens-basketball,30128,Sioux Falls,,SD,NSIC,II
-Black Hills St.,BHSUWBB,https://bhsuathletics.com/sports/womens-basketball,30134,Black Hills St.,,SD,RMAC,II
-California Baptist,cbuwbb,https://cbulancers.com/sports/womens-basketball,30135,California Baptist,,CA,WAC,I
-Lindenwood (MO),LindenwoodWBB,https://lindenwoodlions.com/sports/womens-basketball,30136,Lindenwood (MO),,MO,OVC,I
-McKendree,McKendreeWBB,https://mckbearcats.com/sports/womens-basketball,30138,McKendree,,IL,GLVC,II
-South Dakota Mines,hardrockerwbb,https://gorockers.com/sports/womens-basketball,30139,South Dakota Mines,,SD,RMAC,II
-Ursuline,ursuline_wbb,https://ursulinearrows.com/sports/womens-basketball,30140,Ursuline,,OH,G-MAC,II
-Walsh,WalshCavsWBB,https://www.athletics.walsh.edu/sports/wbkb/index,30141,,,OH,G-MAC,II
-Fresno Pacific,FPUwbb,https://www.fpuathletics.com/sports/womens-basketball,30147,Fresno Pacific,,CA,PacWest,II
-Point Loma,PLNU_WBB,https://plnusealions.com/sports/womens-basketball,30149,Point Loma,,CA,PacWest,II
-Shorter,Shorter_WBB,https://goshorterhawks.com/sports/womens-basketball,30151,Shorter,,GA,Gulf South,II
-Southern Nazarene,SNUwbb,https://snuathletics.com/sports/womens-basketball,30152,Southern Nazarene,,OK,GAC,II
-Union (TN),UUAthleticsWB,https://uuathletics.com/sports/womens-basketball,30153,Union (TN),,TN,Gulf South,II
-Young Harris,YHC_Wbb,https://yhcathletics.com/sports/womens-basketball,30154,Young Harris,,GA,Peach Belt,II
-Houghton,houghtonwbb,https://athletics.houghton.edu/sports/womens-basketball,30160,Houghton,,NY,Empire 8,III
-Sarah Lawrence,GryphonsWBB,https://gogryphons.com/sports/womens-basketball,30163,Sarah Lawrence,,NY,Skyline,III
-Southern Va.,svuwbb,http://athletics.svu.edu/sports/wbkb/index,30164,,,VA,USA South,III
-SUNY Canton,RoosWBB,https://rooathletics.com/sports/womens-basketball,30165,SUNY Canton,,NY,North Atlantic,III
-Valley Forge,uvf_wbb,https://uvfpatriots.com/sports/womens-basketball,30166,Valley Forge,,PA,CSAC,III
-Berea,BereaWBBALL,https://bereaathletics.com/sports/womens-basketball,30171,Berea,,KY,CCS,III
-Iowa Wesleyan,IWTigersWBB,https://www.iwtigers.com/sport/0/2,30173,,FALSE,IA,,NAIA
-Daemen,DaemenWBB,https://daemenwildcats.com/sports/womens-basketball,30174,,,NY,ECC,II
-Holy Names,HNUWBB,https://hnuhawks.com/sports/womens-basketball,30175,Holy Names,,CA,PacWest,II
-Lubbock Christian,LCUWomensBball,https://lcuchaps.com/sports/womens-basketball,30177,Lubbock Christian,,TX,Lone Star,II
-Northwestern Okla.,NWOSUWBB,https://riderangersride.com/sports/womens-basketball,30178,Northwestern Okla.,,OK,GAC,II
-Rogers St.,rsuwbb,https://rsuhillcats.com/sports/womens-basketball,30180,Rogers St.,,OK,Mid-America Intercollegiate,II
-UVa-Wise,UVAWISEWBB,https://uvawisecavs.com/sports/womens-basketball,30181,UVA Wise,,VA,SAC,II
-Bryn Athyn,BrynAthynWBB,https://brynathynathletics.com/sports/womens-basketball,30188,,,PA,CSAC,III
-Penn College,PCTWBasketball,https://pctwildcats.com/sports/womens-basketball,30190,,,PA,United East,III
-Southern Wesleyan,SWUWomensBB,https://swuathletics.com/sports/womens-basketball,30192,Southern Wesleyan,,SC,Conference Carolinas,II
-Belhaven,BelhavenWbb,https://blazers.belhaven.edu/index.aspx?path=wbball,30197,,,MS,CCS,III
-Cal St. San Marcos,CSUSM_WBB,https://csusmcougars.com/sports/womens-basketball,30198,Cal St. San Marcos,,CA,CCAA,II
-Concordia (CA),cuiwbasketball,https://cuieagles.com/sports/womens-basketball,30199,Concordia (CA),,CA,PacWest,II
-Concordia Portland,gocugowbb,,30200,,,OR,,
-Okla. Baptist,OBU_WBBall,https://obubison.com/sports/womens-basketball,30202,Okla. Baptist,,OK,GAC,II
-Westminster (UT),westminsterwbb,https://westminstergriffins.com/sports/womens-basketball,30209,Westminster (UT),,UT,RMAC,II
-Dean,DeanWBB,https://deanbulldogs.com/sports/womens-basketball,30219,,,MA,Great Northeast,III
-Biola,biolawbb,https://athletics.biola.edu/sports/womens-basketball,30220,Biola,,CA,PacWest,II
-Davenport,DU_WBB,https://dupanthers.com/sports/womens-basketball,30221,Davenport,,MI,GLIAC,II
-Purdue Northwest,PNWWBB,https://pnwathletics.com/sports/womens-basketball,30222,Purdue Northwest,,IN,GLIAC,II
-SUNY Delhi,SUNYDelhiWBB,https://delhibroncos.com/sports/wbkb/index,30225,,,NY,North Atlantic,III
-Edward Waters,,https://www.ewctigerpride.com/sport/0/2.php,30244,Edward Waters,TRUE,FL,SIAC,II
-Talladega,,http://www.talladegatornadoes.com/sport/0/3,505160,Talladega,TRUE,AL,,NAIA
+team,url,ncaa_id,stats_name,twitter,private,team_state,conference,division
+Air Force,https://goairforcefalcons.com/sports/womens-basketball,721,Air Force,af_wbb,,CO,Mountain West,I
+Texas A&M,https://12thman.com/sports/womens-basketball,697,Texas A&M,aggiewbb,,TX,SEC,I
+Alabama,https://rolltide.com/sports/womens-basketball,8,Alabama,alabamawbb,,AL,SEC,I
+Arizona,https://arizonawildcats.com/sports/womens-basketball,29,Arizona,arizonawbb,,AZ,Pac-12,I
+Army,https://goarmywestpoint.com/sports/womens-basketball,725,Army West Point,armywp_wbb,,NY,Patriot,I
+Auburn,https://auburntigers.com/sports/womens-basketball,37,Auburn,auburnwbb,,AL,SEC,I
+Wisconsin,https://uwbadgers.com/sports/womens-basketball,796,Wisconsin,badgerwbb,,WI,Big Ten,I
+Baylor,https://baylorbears.com/sports/womens-basketball,51,Baylor,BaylorWBB,,TX,Big 12,I
+Bellarmine,https://athletics.bellarmine.edu/sports/womens-basketball,52,Bellarmine,BUKnightsWBB,,KY,ASUN,I
+Boston College,https://bceagles.com/sports/womens-basketball,67,Boston College,bc_wbb,,MA,ACC,I
+Oregon State,https://osubeavers.com/sports/womens-basketball,528,Oregon St.,beaverwbb,,OR,Pac-12,I
+Belmont,https://belmontbruins.com/sports/womens-basketball,14927,,belmontwbb,,TN,MVC,I
+St. Bonaventure,https://gobonnies.com/sports/womens-basketball,596,St. Bonaventure,bonnieswbb,,NY,Atlantic 10,I
+California,https://calbears.com/sports/womens-basketball,107,California,calwbball,,CA,Pac-12,I
+Miami,https://miamihurricanes.com/sports/wbball,415,Miami (FL),caneswbb,,FL,ACC,I
+California Baptist,https://cbulancers.com/sports/womens-basketball,30135,California Baptist,cbuwbb,,CA,WAC,I
+Chicago State,https://www.gocsucougars.com/sports/womens-basketball,136,Chicago St.,chistatewbb,,IL,DI Independent,I
+Clemson,https://clemsontigers.com/sports/w-basketball,147,Clemson,clemsonwbb,,SC,ACC,I
+Central Michigan,https://cmuchippewas.com/sports/womens-basketball,129,Central Mich.,cmuwbball,,MI,MAC,I
+Creighton,https://gocreighton.com/sports/womens-basketball,169,Creighton,creightonwbb,,NE,Big East,I
+Colorado,https://cubuffs.com/sports/womens-basketball,157,Colorado,cubuffswbb,,CO,Pac-12,I
+Coppin State,https://coppinstatesports.com/sports/womens-basketball,165,Coppin St.,CoppinState_WBB,,MD,MEAC,I
+Syracuse,https://cuse.com/sports/womens-basketball,688,Syracuse,cusewbb,,NY,ACC,I
+Iowa State,https://cyclones.com/sports/womens-basketball,311,Iowa St.,cyclonewbb,,IA,Big 12,I
+Dayton,https://daytonflyers.com/sports/womens-basketball,175,Dayton,daytonwbb,,OH,Atlantic 10,I
+Drake,https://godrakebulldogs.com/sports/womens-basketball/,189,Drake,drakewbb,,IA,MVC,I
+Duke,https://goduke.com/sports/womens-basketball,193,Duke,dukewbb,,NC,ACC,I
+Duquesne,https://goduquesne.com/sports/womens-basketball,194,Duquesne,duqwbb,,PA,Atlantic 10,I
+South Carolina,https://gamecocksonline.com/sports/wbball,648,South Carolina,GamecockWBB,,SC,SEC,I
+Green Bay,https://greenbayphoenix.com/sports/womens-basketball,794,Green Bay,gbphoenixwbb,,WI,Horizon,I
+Georgetown,https://guhoyas.com/sports/womens-basketball,251,Georgetown,georgetownwbb,,DC,Big East,I
+South Dakota State,https://gojacks.com/sports/womens-basketball,649,South Dakota St.,gojackswbb,,SD,Summit League,I
+George Washington,https://gwsports.com/sports/womens-basketball,249,George Washington,gw_wbb,,DC,Atlantic 10,I
+Mississippi State,https://hailstate.com/sports/womens-basketball,430,Mississippi St.,HailStateWBK,,MS,SEC,I
+Virginia Tech,https://hokiesports.com/sports/womens-basketball,742,Virginia Tech,hokieswbb,,VA,ACC,I
+Nebraska,https://huskers.com/sports/womens-basketball,463,Nebraska,huskerswbb,,NE,Big Ten,I
+Illinois,https://fightingillini.com/sports/womens-basketball,301,Illinois,illiniwbb,,IL,Big Ten,I
+Indiana,https://iuhoosiers.com/sports/womens-basketball,306,Indiana,indianawbb,,IN,Big Ten,I
+Iona,https://ionagaels.com/sports/womens-basketball,310,Iona,ionawbb,,NY,MAAC,I
+Iowa,https://hawkeyesports.com/sports/wbball,312,Iowa,iowawbb,,IA,Big Ten,I
+Kentucky,https://ukathletics.com/sports/wbball,334,Kentucky,kentuckywbb,,KY,SEC,I
+Kansas State,https://www.kstatesports.com/sports/womens-basketball,327,Kansas St.,kstatewbb,,KS,Big 12,I
+Hampton,https://hamptonpirates.com/sports/womens-basketball,270,Hampton University,ladypirateswbb,,VA,CAA,I
+Tennessee,https://utsports.com/sports/womens-basketball,694,Tennessee,LadyVol_Hoops,,TN,SEC,I
+LaSalle,https://goexplorers.com/sports/womens-basketball,340,La Salle,lasalle_wbb,,PA,Atlantic 10,I
+Manhattan,https://gojaspers.com/sports/womens-basketball,381,Manhattan,manhattan_wbb,,NY,MAAC,I
+Marquette,https://gomarquette.com/sports/womens-basketball,387,Marquette,marquettewbb,,WI,Big East,I
+Memphis,https://gotigersgo.com/sports/womens-basketball,404,Memphis,memphiswbb,,TN,AAC,I
+Mercer,https://mercerbears.com/sports/womens-basketball,406,Mercer,mercer_wbb,,NJ,SoCon,I
+Missouri,https://mutigers.com/sports/womens-basketball,434,Missouri,mizzouwbb,,MO,SEC,I
+Mount St. Mary's,https://mountathletics.com/sports/womens-basketball,450,Mount St. Mary's,mount_wbb,,MD,MAAC,I
+Middle Tennessee,https://goblueraiders.com/sports/womens-basketball,419,Middle Tenn.,mt_wbb,,TN,C-USA,I
+Northern Arizona,https://nauathletics.com/sports/womens-basketball,501,Northern Ariz.,nau_wbb,,AZ,Big Sky,I
+Notre Dame,https://fightingirish.com/sports/wbball,513,Notre Dame,ndwbb,,IN,ACC,I
+Nevada,https://nevadawolfpack.com/sports/womens-basketball,466,Nevada,nevadawbb,,NV,Mountain West,I
+Villanova,https://villanova.com/sports/womens-basketball,739,Villanova,novawbb,,PA,Big East,I
+Southeast Missouri State,https://semoredhawks.com/sports/womens-basketball,654,Southeast Mo. St.,officialsemowbb,,MO,OVC,I
+Oregon,https://goducks.com/sports/womens-basketball,529,Oregon,OregonWBB,,OR,Pac-12,I
+Saint Peter's,https://saintpeterspeacocks.com/sports/womens-basketball,617,Saint Peter's,peacockswbb,,NJ,MAAC,I
+Pennsylvania,https://pennathletics.com/sports/womens-basketball,540,Penn,pennwbb,,PA,Ivy League,I
+Pittsburgh,https://pittsburghpanthers.com/sports/womens-basketball,545,Pittsburgh,pitt_wbb,,PA,ACC,I
+Princeton,https://goprincetontigers.com/sports/womens-basketball,554,Princeton,princetonwbb,,NJ,Ivy League,I
+Providence,https://friars.com/sports/womens-basketball,556,Providence,providencewbb,,RI,Big East,I
+Purdue,https://purduesports.com/sports/womens-basketball,559,Purdue,purduewbb,,IN,Big Ten,I
+Arkansas,https://arkansasrazorbacks.com/sport/w-baskbl/,31,,razorbackwbb,,AR,SEC,I
+Robert Morris,https://rmucolonials.com/sports/womens-basketball,579,Rmu,RMUWBasketball,,PA,Horizon,I
+Rutgers,https://scarletknights.com/sports/womens-basketball,587,Rutgers,rutgerswbb,,NJ,Big Ten,I
+Seton Hall,https://shupirates.com/sports/womens-basketball,635,Seton Hall,shuwbb,,NJ,Big East,I
+St. John's,https://redstormsports.com/sports/womens-basketball,603,St. John's (NY),stjohnswbb,,NY,Big East,I
+Arizona State,https://thesundevils.com/sports/womens-basketball,28,Arizona St.,sundevilwbb,,AZ,Pac-12,I
+Temple,https://owlsports.com/sports/womens-basketball,690,Temple,templewbb,,PA,AAC,I
+Texas,https://texassports.com/sports/womens-basketball,703,Texas,TexasWBB,,TX,Big 12,I
+Toledo,https://utrockets.com/sports/womens-basketball,709,Toledo,toledowbb,,OH,MAC,I
+Troy,https://troytrojans.com/sports/womens-basketball,716,Troy,troytrojanswbb,,AL,Sun Belt,I
+Albany,https://ualbanysports.com/sports/womens-basketball,14,Albany (NY),ualbanywbb,,NY,America East,I
+Central Florida,https://ucfknights.com/sports/womens-basketball,128,Ucf,ucf_wbb,,FL,AAC,I
+UCLA,https://uclabruins.com/sports/womens-basketball,110,Ucla,UCLAWBB,,CA,Pac-12,I
+UConn,https://uconnhuskies.com/sports/womens-basketball,164,UConn,UConnWBB,,CT,Big East,I
+Michigan,https://mgoblue.com/sports/womens-basketball,418,Michigan,umichwbball,,MI,Big Ten,I
+Louisville,https://gocards.com/sports/womens-basketball,367,Louisville,LouisvilleWBB,,KY,ACC,I
+San Francisco,https://usfdons.com/sports/womens-basketball,629,San Francisco,usfdonswbb,,CA,WCC,I
+South Florida,https://gousfbulls.com/sports/womens-basketball,651,South Fla.,usfwbb,,FL,AAC,I
+Utah,https://utahutes.com/sports/womens-basketball,732,Utah,utahwbb,,UT,Pac-12,I
+Texas-Arlington,https://utamavs.com/sports/womens-basketball,702,UT Arlington,utamavswbb,,TX,WAC,I
+Idaho,https://govandals.com/sports/womens-basketball,295,Idaho,vandalswbb,,ID,Big Sky,I
+Virginia Commonwealth,https://vcuathletics.com/sports/womens-basketball,740,Vcu,vcuwbb,,VA,Atlantic 10,I
+Wake Forest,https://godeacs.com/sports/womens-basketball,749,Wake Forest,wakewbb,,NC,ACC,I
+Western Illinois,https://goleathernecks.com/sports/womens-basketball,771,Western Ill.,wiuwbb,,IL,Summit League,I
+Washington State,https://wsucougars.com/sports/womens-basketball,754,Washington St.,wsucougarwbb,,WA,Pac-12,I
+Wyoming,https://gowyo.com/sports/womens-basketball,811,Wyoming,wyo_wbb,,WY,Mountain West,I
+Xavier,https://goxavier.com/sports/womens-basketball,812,Xavier,xavierwbb,,OH,Big East,I
+Abilene Christian,https://acusports.com/sports/womens-basketball,2,Abilene Christian,acuwbb,,TX,WAC,I
+Alcorn State,https://alcornsports.com/sports/womens-basketball,17,Alcorn,alcornwbb,,MS,SWAC,I
+Appalachian State,https://appstatesports.com/sports/womens-basketball,27,Appalachian St.,appstatewbb,FALSE,NC,Sun Belt,I
+Austin Peay,https://letsgopeay.com/sports/womens-basketball,43,Austin Peay,GovsWBB,,TN,ASUN,I
+San Diego State,https://goaztecs.com/sports/womens-basketball,626,,Aztec_WBB,,CA,Mountain West,I
+Ball State,https://ballstatesports.com/sports/womens-basketball,47,Ball St.,ballstatewbb,,IN,MAC,I
+Alabama State,https://bamastatesports.com/sports/womens-basketball,7,Alabama St.,bamastatewbb,,AL,SWAC,I
+Bethune-Cookman,https://bcuathletics.com/sports/womens-basketball,61,Bethune-Cookman,bcuwbb,,FL,SWAC,I
+Long Beach State,https://longbeachstate.com/sports/womens-basketball,99,Long Beach St.,LBSUWBB,,CA,Big West,I
+Sam Houston State,https://gobearkats.com/sports/womens-basketball,624,Sam Houston,Bearkats_WBB,,TX,WAC,I
+Bowling Green,https://bgsufalcons.com/sports/womens-basketball,71,Bowling Green,bgsuwbb,,KY,MAC,I
+Binghamton,https://binghamtonbearcats.com/sports/womens-basketball,62,Binghamton,binghamtonuwbb,,NY,America East,I
+Maine,https://goblackbears.com/sports/womens-basketball,380,Maine,blackbearswbb,,ME,America East,I
+Presbyterian College,https://gobluehose.com/sports/womens-basketball,1320,Presbyterian,bluehosewbb,,SC,Big South,I
+Bradley,https://bradleybraves.com/sports/womens-basketball,72,Bradley,bradleywbb,,IL,MVC,I
+Boise State,https://broncosports.com/sports/womens-basketball,66,Boise St.,broncosportswbb,,ID,Mountain West,I
+Bryant,https://bryantbulldogs.com/sports/womens-basketball,81,Bryant,bryantwbball,,RI,America East,I
+Bucknell,https://bucknellbison.com/sports/womens-basketball,83,Bucknell,bucknell_wbb,,PA,Patriot,I
+Butler,https://butlersports.com/sports/womens-basketball,87,Butler,butleruwbb,,IN,Big East,I
+Brigham Young,https://byucougars.com/sports/womens-basketball,77,Byu,byuwbb,,UT,WCC,I
+Cal Poly,https://gopoly.com/sports/womens-basketball,90,Cal Poly,calpolywbb,,CA,Big West,I
+Western Carolina,https://catamountsports.com/sports/womens-basketball,769,Western Caro.,catamountwbb,,NC,SoCon,I
+Central Connecticut,https://ccsubluedevils.com/sports/wbkb,127,,ccsu_wbb,,CT,NEC,I
+Charlotte,https://charlotte49ers.com/sports/womens-basketball,458,Charlotte,charlottewbb,,NC,C-USA,I
+Cleveland State,https://csuvikings.com/sports/womens-basketball,148,,CSU_WBasketball,,OH,Horizon,I
+Coastal Carolina,https://goccusports.com/sports/womens-basketball,149,Coastal Carolina,coastalwbb,,SC,Sun Belt,I
+College of Charleston,https://cofcsports.com/sports/womens-basketball,1014,Col. of Charleston,cofcwbb,,SC,CAA,I
+Colgate,https://colgateathletics.com/sports/womens-basketball,153,Colgate,colgatewbb,,NY,Patriot,I
+Cornell,https://cornellbigred.com/sports/womens-basketball,167,Cornell,cornellwbball,,NY,Ivy League,I
+Cal State Bakersfield,https://gorunners.com/sports/womens-basketball,94,CSU Bakersfield,csub_wbb,,CA,Big West,I
+Charleston Southern,https://www.csusports.com/sports/womens-basketball,48,Charleston So.,csubucswbb,,SC,Big South,I
+Columbia,https://gocolumbialions.com/sports/womens-basketball,158,Columbia,culionswbb,,NY,Ivy League,I
+Dartmouth,https://dartmouthsports.com/sports/womens-basketball,172,Dartmouth,dartmouthwbb,,VT,Ivy League,I
+Davidson,https://davidsonwildcats.com/sports/womens-basketball,173,Davidson,davidsonwbb,,NC,Atlantic 10,I
+Delaware,https://bluehens.com/sports/womens-basketball,180,Delaware,delawarewbb,,DE,CAA,I
+DePaul,https://depaulbluedemons.com/sports/womens-basketball,176,DePaul,DePaulWBBHoops,,IL,Big East,I
+Detroit Mercy,https://detroittitans.com/sports/womens-basketball,184,Detroit Mercy,detroit_wbb,,MI,Horizon,I
+Drexel,https://drexeldragons.com/sports/womens-basketball,191,Drexel,drexelwbb,,PA,CAA,I
+Delaware State,https://dsuhornets.com/sports/womens-basketball,178,Delaware St.,dsuwbb,,DE,MEAC,I
+Eastern Illinois,https://eiupanthers.com/sports/womens-basketball,201,Eastern Ill.,eiuwbb,,IL,OVC,I
+Eastern Kentucky,https://ekusports.com/sports/womens-basketball,202,Eastern Ky.,ekuwbb,,KY,ASUN,I
+Eastern Michigan,https://emueagles.com/sports/womens-basketball,204,Eastern Mich.,emuwbb,,MI,MAC,I
+Maryland-Eastern Shore,https://umeshawksports.com/sports/womens-basketball,393,Maryland Eastern Shore,eshawkswbb,,MD,MEAC,I
+East Tennessee State,https://etsubucs.com/sports/womens-basketball,198,Etsu,etsu_wbb,,TN,SoCon,I
+Eastern Washington,https://goeags.com/sports/womens-basketball,207,,ewuwbb,,WA,Big Sky,I
+Florida Atlantic,https://fausports.com/sports/womens-basketball,229,Fla. Atlantic,FAUWBB,,FL,C-USA,I
+Fairleigh Dickinson,https://fduknights.com/sports/womens-basketball,222,Fairleigh Dickinson,fduknightswbb,,NJ,NEC,I
+Florida Gulf Coast,https://fgcuathletics.com/sports/womens-basketball,28755,Fgcu,fgcu_wbb,,FL,ASUN,I
+Fordham,https://fordhamsports.com/sports/womens-basketball,236,Fordham,FordhamWBB,,NY,Atlantic 10,I
+Fresno State,https://gobulldogs.com/sports/womens-basketball,96,Fresno St.,fresnostatewbb,,CA,Mountain West,I
+Florida St,https://seminoles.com/sports/womens-basketball,234,Florida St.,fsuwbb,,FL,ACC,I
+Cal State Fullerton,https://fullertontitans.com/sports/womens-basketball,97,Cal St. Fullerton,fullertonwbb,,CA,Big West,I
+Furman,https://furmanpaladins.com/sports/womens-basketball,244,Furman,furmanwbb,,SC,SoCon,I
+Saint Mary's (CA),https://smcgaels.com/sports/womens-basketball,610,Saint Mary's (CA),gaelswbb,,CA,WCC,I
+Grand Canyon,https://gculopes.com/sports/womens-basketball,1104,Grand Canyon,gcu_wbb,,AZ,WAC,I
+Cincinnati,https://gobearcats.com/sports/womens-basketball,140,Cincinnati,gobearcatswbb,,OH,AAC,I
+Campbell,https://gocamels.com/sports/womens-basketball,115,Campbell,gocamelswbb,,NC,Big South,I
+Northern Illinois,https://niuhuskies.com/sports/womens-basketball,503,Northern Ill.,gohuskieswbb,,IL,MAC,I
+Minnesota,https://gophersports.com/sports/womens-basketball,428,Minnesota,gopherwbb,,MN,Big Ten,I
+Wichita State,https://goshockers.com/sports/womens-basketball,782,Wichita St.,goshockerswbb,,KS,AAC,I
+Tulane,https://tulanegreenwave.com/sports/womens-basketball,718,Tulane,greenwavewbb,,LA,AAC,I
+Canisius,https://gogriffs.com/sports/womens-basketball,116,Canisius,griffswbb,,NY,MAAC,I
+Georgia Southern,https://gseagles.com/sports/womens-basketball,253,Ga. Southern,gsathletics_wbb,,GA,Sun Belt,I
+Georgia State,https://georgiastatesports.com/sports/womens-basketball,254,Georgia State,gsu_wbb,,GA,Sun Belt,I
+Georgia Tech,https://ramblinwreck.com/sports/w-baskbl/,255,Georgia Tech,gtwbb,,GA,ACC,I
+Hartford,https://hartfordhawks.com/sports/womens-basketball,272,Hartford,hartfordwbb,,CT,DI Independent,I
+Harvard,https://gocrimson.com/sports/womens-basketball,275,Harvard,harvardwbb,,MA,Ivy League,I
+Hawaii,https://hawaiiathletics.com/sports/womens-basketball,277,Hawaii,hawaiiwbb,,HI,Big West,I
+Houston Christian,https://hcuhuskies.com/sports/womens-basketball,287,,HCUWBB,,TX,Southland,I
+Holy Cross,https://goholycross.com/sports/womens-basketball,285,Holy Cross,hcrosswbb,,MA,Patriot,I
+Marshall,https://herdzone.com/sports/womens-basketball,388,Marshall,herdwbb,,WV,Sun Belt,I
+Hofstra,https://gohofstra.com/sports/womens-basketball,283,Hofstra,hofstrawbb,,NY,CAA,I
+Howard,https://hubison.com/sports/womens-basketball,290,Howard,Howard_WBB,,DC,MEAC,I
+High Point,https://highpointpanthers.com/sports/womens-basketball,19651,High Point,hpuwbb,,NC,Big South,I
+Indiana State,https://gosycamores.com/sports/womens-basketball,305,Indiana St.,indstwbb,,IN,MVC,I
+Southern,https://gojagsports.com/sports/womens-basketball,665,Southern U.,jaguarswbb,,LA,SWAC,I
+Jacksonville,https://judolphins.com/sports/womens-basketball,316,Jacksonville,jax_wbb,,FL,ASUN,I
+Kent State,https://kentstatesports.com/sports/womens-basketball,331,Kent St.,kentstwbb,,OH,MAC,I
+Kennesaw State,https://ksuowls.com/sports/womens-basketball,1157,Kennesaw St.,ksuowlswbb,,GA,ASUN,I
+Kansas,https://kuathletics.com/sports/wbball,328,Kansas,kuwbball,,KS,Big 12,I
+Texas Tech,https://texastech.com/sports/womens-basketball,700,Texas Tech,ladyraiderwbb,,TX,Big 12,I
+Lafayette,https://goleopards.com/sports/womens-basketball,342,Lafayette,lafayettewbb,,PA,Patriot,I
+Lamar,https://lamarcardinals.com/sports/womens-basketball,346,Lamar University,lamarwbb,,TX,Southland,I
+Lehigh,https://lehighsports.com/sports/womens-basketball,352,Lehigh,lehighwbb,,PA,Patriot,I
+Liberty,https://libertyflames.com/sports/womens-basketball,355,Liberty,libertywbb,,VA,ASUN,I
+Southeastern Louisiana,https://lionsports.net/sports/womens-basketball,655,Southeastern La.,lionupwbb,,LA,Southland,I
+Lipscomb,https://lipscombsports.com/sports/womens-basketball,28600,Lipscomb,lipscombwbb,,TN,ASUN,I
+Arkansas-Little Rock,https://lrtrojans.com/sports/womens-basketball,32,Little Rock,littlerockwbb,,AR,OVC,I
+Long Island,https://www.liuathletics.com/sports/womens-basketball,361,Liu,liuwbb,,NY,NEC,I
+Longwood,https://longwoodlancers.com/sports/womens-basketball,363,Longwood,longwoodwbb,,VA,Big South,I
+Loyola-Maryland,https://loyolagreyhounds.com/sports/womens-basketball,369,Loyola Maryland,loyolawbb,,MD,Patriot,I
+Marist,https://goredfoxes.com/sports/womens-basketball,386,Marist,maristwbb,,NY,MAAC,I
+George Mason,https://gomason.com/sports/womens-basketball,248,George Mason,masonwbb,,VA,Atlantic 10,I
+Purdue-Fort Wayne,https://gomastodons.com/sports/womens-basketball,308,Purdue Fort Wayne,mastodonwbb,,IN,Horizon,I
+McNeese State,https://mcneesesports.com/sports/womens-basketball,402,McNeese,mcneesewbb,,LA,Southland,I
+North Texas,https://meangreensports.com/sports/womens-basketball,497,,meangreenwbb,,TX,C-USA,I
+Merrimack,https://merrimackathletics.com/sports/womens-basketball,410,Merrimack,merrimackwbb,,MA,NEC,I
+Miami Ohio,https://miamiredhawks.com/sports/womens-basketball,414,Miami (OH),miamioh_wbb,,OH,MAC,I
+Milwaukee,https://mkepanthers.com/sports/womens-basketball,797,Milwaukee,mke_wbb,,WI,Horizon,I
+Montana,https://gogriz.com/sports/womens-basketball,441,Montana,montanagrizwbb,,MT,Big Sky,I
+Mount St. Joseph,https://msjlions.com/sports/womens-basketball,8567,,msjwbb,TRUE,OH,Heartland,III
+Michigan State,https://msuspartans.com/sports/womens-basketball,416,Michigan St.,msu_wbasketball,,MI,Big Ten,I
+Montana State,https://msubobcats.com/sports/womens-basketball,440,Montana St.,msubobcatswbb,,MT,Big Sky,I
+Morehead State,https://msueagles.com/sports/womens-basketball,444,Morehead St.,msueagleswbb,,KY,OVC,I
+Monmouth,https://monmouthhawks.com/sports/womens-basketball,439,Monmouth,muhawkswbb,,NJ,CAA,I
+Navy,https://navysports.com/sports/womens-basketball,726,Navy,navywbb,,MD,Patriot,I
+North Carolina Central,https://nccueaglepride.com/sports/womens-basketball,489,N.C. Central,nccuwbb,,NC,MEAC,I
+North Dakota State,https://gobison.com/sports/womens-basketball,493,North Dakota St.,ndsuwbb,,ND,Summit League,I
+Niagara,https://purpleeagles.com/sports/womens-basketball,482,Niagara,niagarawbb,,NY,MAAC,I
+Nicholls State,https://geauxcolonels.com/sports/womens-basketball,483,Nicholls St.,nicholls_wbb,,LA,Southland,I
+New Jersey Institute of Technology,https://www.njithighlanders.com/sports/womens-basketball,471,Njit,njitwbb,,NJ,America East,I
+Northern Kentucky,https://nkunorse.com/sports/womens-basketball,505,Northern Ky.,nkunorsewbb,,KY,Horizon,I
+New Mexico State,https://nmstatesports.com/sports/womens-basketball,472,New Mexico St.,nmstatewbb,,NM,WAC,I
+Norfolk State,https://nsuspartans.com/sports/womens-basketball,485,Norfolk State,norfolkstatewbb,,VA,MEAC,I
+Northwestern State,https://nsudemons.com/sports/womens-basketball,508,Northwestern St.,nsudemonswbb,,LA,Southland,I
+Northwestern,https://nusports.com/sports/womens-basketball,509,Northwestern,nuwbball,,IL,Big Ten,I
+Old Dominion,https://odusports.com/sports/womens-basketball,523,Old Dominion,ODU_WBB,,VA,Sun Belt,I
+Ohio State,https://ohiostatebuckeyes.com/sports/womens-basketball,518,Ohio St.,ohiostatewbb,,OH,Big Ten,I
+Mississippi,https://olemisssports.com/sports/womens-basketball,433,Ole Miss,olemisswbb,,MS,SEC,I
+Omaha,https://omavs.com/sports/womens-basketball,464,Omaha,omahawbb,,NE,Summit League,I
+Oral Roberts,https://oruathletics.com/sports/womens-basketball,527,Oral Roberts,oruwbb,,OK,Summit League,I
+North Florida,https://unfospreys.com/sports/womens-basketball,2711,North Florida,ospreywbb,,FL,ASUN,I
+Oklahoma State,https://okstate.com/sports/womens-basketball,521,Oklahoma St.,osuwbb,,OK,Big 12,I
+Oklahoma,https://soonersports.com/sports/womens-basketball,522,Oklahoma,ou_wbball,,OK,Big 12,I
+Penn State,https://gopsusports.com/sports/womens-basketball,539,Penn St.,pennstatewbb,,PA,Big Ten,I
+Portland,https://portlandpilots.com/sports/womens-basketball,551,Portland,portlandwbb,,OR,WCC,I
+New Orleans,https://unoprivateers.com/sports/womens-basketball,474,New Orleans,privateerswbb,FALSE,LA,Southland,I
+Portland State,https://goviks.com/sports/womens-basketball,550,Portland St.,psuvikswbb,,OR,Big Sky,I
+Quinnipiac,https://gobobcats.com/sports/womens-basketball,562,Quinnipiac,qu_wbb,,CT,MAAC,I
+Murray State,https://goracers.com/sports/womens-basketball,454,Murray St.,racerswbb,,KY,MVC,I
+Radford,https://radfordathletics.com/sports/womens-basketball,563,Radford,radford_wbb,,VA,Big South,I
+Louisiana,https://ragincajuns.com/sports/womens-basketball,671,Louisiana,ragincajunswbb,,LA,Sun Belt,I
+Loyola-Chicago,https://loyolaramblers.com/sports/womens-basketball,371,Loyola Chicago,ramblerswbb,,IL,Atlantic 10,I
+Illinois State,https://goredbirds.com/sports/womens-basketball,299,Illinois St.,redbirdwbb,,IL,MVC,I
+Rhode Island,https://gorhody.com/sports/womens-basketball,572,Rhode Island,rhodywbb,,RI,Atlantic 10,I
+Rice,https://riceowls.com/sports/womens-basketball,574,Rice,ricewbb,,TX,C-USA,I
+Rider,https://gobroncs.com/sports/womens-basketball,576,Rider,riderwbb,,NJ,MAAC,I
+UMass Lowell,https://goriverhawks.com/sports/womens-basketball,368,UMass Lowell,riverhawkwbb,,MA,America East,I
+Sacred Heart,https://sacredheartpioneers.com/sports/womens-basketball,590,Sacred Heart,sacredheartwbb,,CT,NEC,I
+Sacramento State,https://hornetsports.com/sports/womens-basketball,102,Sacramento St.,sacstatewbb,,CA,Big Sky,I
+Saint Louis,https://slubillikens.com/sports/womens-basketball,609,Saint Louis,saintlouiswbb,,MO,Atlantic 10,I
+Samford,https://samfordsports.com/sports/womens-basketball,625,Samford,samfordwbb,,AL,SoCon,I
+San Jose State,https://sjsuspartans.com/sports/womens-basketball,630,San Jose St.,sanjosestatewbb,,CA,Mountain West,I
+Santa Clara,https://santaclarabroncos.com/sports/womens-basketball,631,Santa Clara,santaclarawbb,,CA,WCC,I
+South Dakota,https://goyotes.com/sports/womens-basketball,650,South Dakota,sdcoyoteswbb,,SD,Summit League,I
+Stephen F. Austin,https://sfajacks.com/sports/womens-basketball,676,Sfa,SFAWBB,,TX,WAC,I
+St. Francis College Brooklyn,https://sfcathletics.com/sports/womens-basketball,599,St. Francis Brooklyn,sfbk_wbb,,NY,NEC,I
+Saint Francis (PA),https://sfuathletics.com/sports/womens-basketball,600,Saint Francis (PA),sfuwbb,,PA,NEC,I
+Saint Joseph's (PA),https://sjuhawks.com/sports/womens-basketball,606,Saint Joseph's,sjuhawks_wbb,,PA,Atlantic 10,I
+Southern Methodist,https://smumustangs.com/sports/womens-basketball,663,Smu,smuwbb,,TX,AAC,I
+Southern Miss,https://southernmiss.com/sports/womens-basketball,664,Southern Miss.,southernmisswbb,,MS,Sun Belt,I
+Richmond,https://richmondspiders.com/sports/womens-basketball,575,Richmond,spiderwbball,,VA,Atlantic 10,I
+Fairfield,https://fairfieldstags.com/sports/womens-basketball,220,Fairfield,stagswbball,,CT,MAAC,I
+Stanford,https://gostanford.com/sports/womens-basketball,674,Stanford,StanfordWBB,,CA,Pac-12,I
+Stetson,https://gohatters.com/sports/womens-basketball,678,Stetson,stetsonwbb,,FL,ASUN,I
+Stony Brook,https://stonybrookathletics.com/sports/womens-basketball,683,Stony Brook,stonybrookwbb,,NY,CAA,I
+Seattle,https://goseattleu.com/sports/womens-basketball,1356,Seattle U,seattleu_wbb,FALSE,WA,WAC,I
+Texas Christian,https://gofrogs.com/sports/womens-basketball,698,Tcu,tcuwbasketball,,TX,Big 12,I
+Boston,https://goterriers.com/sports/womens-basketball,68,Boston U.,terrierwbb,,MA,Patriot,I
+Towson,https://towsontigers.com/sports/womens-basketball,711,Towson,towson_wbb,,MD,CAA,I
+Tennessee Tech,https://www.ttusports.com/sports/wbkb,692,Tennessee Tech,ttuwbb,,TN,OVC,I
+Texas State,https://txst.com/sports/womens-basketball,670,Texas St.,txstatewbb,,TX,Sun Belt,I
+UAB,https://uabsports.com/sports/womens-basketball,9,Uab,UAB_WBBALL,FALSE,AL,C-USA,I
+Arkansas-Pine Bluff,https://uapblionsroar.com/sports/womens-basketball,2678,Arkansas-Pine Bluff,uapbwbb,,AR,SWAC,I
+Central Arkansas,https://ucasports.com/sports/womens-basketball,1004,Central Ark.,ucawbb,,AR,ASUN,I
+UC Davis,https://ucdavisaggies.com/sports/womens-basketball,108,UC Davis,ucdaviswbb,,CA,Big West,I
+UC Irvine,https://ucirvinesports.com/sports/womens-basketball,109,UC Irvine,uciwbb,,CA,Big West,I
+UC Riverside,https://gohighlanders.com/sports/womens-basketball,111,UC Riverside,ucr_wbb,FALSE,CA,Big West,I
+UC Santa Barbara,https://ucsbgauchos.com/sports/womens-basketball,104,UC Santa Barbara,ucsb_wbb,,CA,Big West,I
+Evansville,https://gopurpleaces.com/sports/womens-basketball,219,Evansville,ueathletics_wbb,,IN,MVC,I
+Georgia,https://georgiadogs.com/sports/womens-basketball,257,Georgia,uga_wbb,,GA,SEC,I
+Houston,https://uhcougars.com/sports/womens-basketball,288,Houston,uhcougarwbb,,TX,AAC,I
+Illinois-Chicago,https://uicflames.com/sports/womens-basketball,302,Uic,UIC_WBB,,IL,MVC,I
+Incarnate Word,https://uiwcardinals.com/sports/womens-basketball,2743,Incarnate Word,uiwwbb,,TX,Southland,I
+Louisiana Monroe,https://ulmwarhawks.com/sports/womens-basketball,498,La.-Monroe,ulm_wbb,,LA,Sun Belt,I
+Massachusetts,https://umassathletics.com/sports/womens-basketball,400,Massachusetts,umasswbb,,MA,Atlantic 10,I
+UMBC,https://umbcretrievers.com/sports/womens-basketball,391,Umbc,umbcwbb,,MD,America East,I
+Maryland,https://umterps.com/sports/womens-basketball,392,Maryland,TerpsWBB,,MD,Big Ten,I
+Maryland,,392,,TerpsWBB,,MD,Big Ten,I
+Northern Colorado,https://uncbears.com/sports/womens-basketball,502,Northern Colo.,unc_bearswbb,,CO,Big Sky,I
+UNC Asheville,https://uncabulldogs.com/sports/womens-basketball,456,UNC Asheville,uncavlwbb,,NC,Big South,I
+UNC Greensboro,https://uncgspartans.com/sports/womens-basketball,459,UNC Greensboro,uncgwbb,,NC,SoCon,I
+North Carolina,https://goheels.com/sports/womens-basketball,457,North Carolina,uncwbb,,NC,ACC,I
+New Hampshire,https://unhwildcats.com/sports/womens-basketball,469,New Hampshire,unhwbb,,NH,America East,I
+Northern Iowa,https://unipanthers.com/sports/womens-basketball,504,Uni,uniwbb,,IA,MVC,I
+New Mexico,https://golobos.com/sports/wbball,473,New Mexico,unmlobowbb,,NM,Mountain West,I
+Southern Cal,https://usctrojans.com/sports/womens-basketball,657,Southern California,uscwbb,,CA,Pac-12,I
+San Diego,https://usdtoreros.com/sports/womens-basketball,627,San Diego,usdwbb,,CA,WCC,I
+Texas-El Paso,https://utepminers.com/sports/womens-basketball,704,Utep,utepwbb,,TX,C-USA,I
+UT Martin,https://utmsports.com/sports/womens-basketball,695,UT Martin,utmartinwbb,,TN,OVC,I
+UT-Rio Grande Valley,https://goutrgv.com/sports/womens-basketball,536,Utrgv,utrgvwbb,,TX,WAC,I
+UT-San Antonio,https://goutsa.com/sports/womens-basketball,706,Utsa,utsawbb,,TX,C-USA,I
+Vermont,https://uvmathletics.com/sports/womens-basketball,738,Vermont,uvmwbb,,VT,America East,I
+Utah Valley,https://gouvu.com/sports/womens-basketball,30024,Utah Valley,uvuwbb,,UT,WAC,I
+Washington,https://gohuskies.com/sports/womens-basketball,756,Washington,uw_wbb,,WA,Pac-12,I
+Valparaiso,https://valpoathletics.com/sports/womens-basketball,735,Valparaiso,valpowbb,,IN,MVC,I
+Vanderbilt,https://vucommodores.com/sports/wbball,736,Vanderbilt,vandywbb,,TN,SEC,I
+Weber State,https://weberstatesports.com/sports/womens-basketball,758,Weber St.,weberstatewbb,,UT,Big Sky,I
+Winthrop,https://winthropeagles.com/sports/womens-basketball,792,Winthrop,winthropwbb,,SC,Big South,I
+William & Mary,https://tribeathletics.com/sports/womens-basketball,786,William & Mary,wmtribewbb,,VA,CAA,I
+Western Michigan,https://wmubroncos.com/sports/womens-basketball,774,Western Mich.,wmu_wbb,,MI,MAC,I
+Wofford,https://woffordterriers.com/sports/womens-basketball,2915,Wofford,wofford_wbb,,SC,SoCon,I
+West Virginia,https://wvusports.com/sports/womens-basketball,768,West Virginia,WVUWBB,,WV,Big 12,I
+Gonzaga,https://gozags.com/sports/womens-basketball,260,Gonzaga,zagwbb,,WA,WCC,I
+Akron,https://gozips.com/sports/womens-basketball,5,Akron,zipswbb,,OH,MAC,I
+Cal State LA,https://lagoldeneagles.com/sports/womens-basketball,100,Cal State LA,CalStateLAWBB1,,CA,CCAA,II
+Carson-Newman,https://www.cneagles.com/sports/w-baskbl,1000,Carson-Newman,CNwbasketball,,TN,SAC,II
+Catawba,https://catawbaathletics.com/sports/womens-basketball,1001,Catawba,catawba_wbb,,NC,SAC,II
+Central Okla.,https://bronchosports.com/sports/womens-basketball,1009,Central Okla.,UCOWBB,,OK,Mid-America Intercollegiate,II
+CSUN,https://gomatadors.com/sports/womens-basketball,101,Csun,CSUNWBB,,CA,Big West,I
+Central Wash.,https://wildcatsports.com/sports/womens-basketball,1010,Central Wash.,cwu_wbb,,WA,Great Northwest,II
+Chadron St.,https://chadroneagles.com/sports/womens-basketball,1012,Chadron St.,ChadronEagles,,NE,RMAC,II
+Charleston (WV),https://ucgoldeneagles.com/sports/womens-basketball,1013,Charleston (WV),ucwv_wbb,,WV,MEC,II
+Christian Brothers,https://cbubucs.com/sports/womens-basketball,1015,Christian Brothers,cbubucswbb,,TN,Gulf South,II
+Coker,https://www.cokercobras.com/sports/wbkb,1023,Coker,Coker_WBB,,SC,SAC,II
+Concord,https://cumountainlions.com/sports/womens-basketball,1028,Concord,CU_WBB,,WV,MEC,II
+Concordia Wisconsin,https://cuwfalcons.com/sports/womens-basketball,1036,Concordia Wisconsin,CUWWBB,,WI,NACC,III
+USC Upstate,https://upstatespartans.com/sports/womens-basketball,10411,USC Upstate,upstateWBB,,SC,Big South,I
+Defiance,https://www.defianceathletics.com/sports/wbkb,1050,Defiance,DCWB_,,OH,HCAC,III
+Drury,https://drurypanthers.com/sports/womens-basketball,1057,Drury,DULadyPanthers,,MO,GLVC,II
+D'Youville,https://dyusaints.com/sports/womens-basketball,1059,D'Youville,dy_wbb,,NY,ECC,II
+Cal U (PA),https://calvulcans.com/sports/womens-basketball,106,Cal U (PA),CALU_wbb,,PA,PSAC,II
+East Tex. Baptist,https://goetbutigers.com/sports/womens-basketball,1062,East Tex. Baptist,ETBU_WBSK,,TX,ASC,III
+Eastern Nazarene,https://athletics.enc.edu/sports/wbkb,1064,Eastern Nazarene,ENCWBB,,MA,NECC,III
+Edgewood,https://edgewoodcollegeeagles.com/sports/womens-basketball,1066,Edgewood,EdgewoodWbb,,WI,NACC,III
+Elon,https://elonphoenix.com/sports/womens-basketball,1068,Elon,ElonWBasketball,,NC,CAA,I
+Emporia St.,https://esuhornets.com/sports/womens-basketball,1071,Emporia St.,LadyHornetWBB,,KS,Mid-America Intercollegiate,II
+Erskine,https://erskinesports.com/sports/womens-basketball,1072,Erskine,FlyingFleetWBB,,SC,Conference Carolinas,II
+Fairmont St.,https://fightingfalcons.com/sports/womens-basketball,1076,Fairmont St.,FairmontWbb,,WV,MEC,II
+Findlay,https://findlayoilers.com/sports/womens-basketball,1079,,UFWBB,,OH,G-MAC,II
+Fort Lewis,https://goskyhawks.com/sports/womens-basketball,1083,Fort Lewis,FortLewis_WBB,FALSE,CO,RMAC,II
+Francis Marion,https://fmupatriots.com/sports/womens-basketball/,1085,,FM_WBB,,SC,Conference Carolinas,II
+Shepherd,https://shepherdrams.com/sports/womens-basketball,10870,Shepherd,SURamsWHoops,,WV,PSAC,II
+Gardner-Webb,https://gwusports.com/sports/womens-basketball,1092,Gardner-Webb,GWU_WBK,,NC,Big South,I
+George Fox,https://athletics.georgefox.edu/sports/womens-basketball,1094,,GeorgeFoxWBB,,OR,NWC,III
+Georgia College,https://gcsubobcats.com/sports/womens-basketball,1096,,gcbobcatswbb,,GA,Peach Belt,II
+Chatham,https://gochathamcougars.com/sports/womens-basketball,10972,Chatham,chathamwbb,,PA,PAC,III
+Glenville St.,https://gscpioneers.com/sports/womens-basketball,1098,Glenville St.,LadyPioneers_,,WV,MEC,II
+Alas. Anchorage,https://goseawolves.com/sports/womens-basketball,11,Alas. Anchorage,UAAWBB,,AK,Great Northwest,II
+Sage Colleges,https://www.sagegators.com/sports/wbkb,11036,,sagewbb,,NY,Empire 8,III
+Greenville,https://greenvillepanthers.com/sports/womens-basketball,1111,,guwbball,,IL,SLIAC,III
+Guilford,https://guilfordquakers.com/sports/womens-basketball,1112,,GuilfordWBB,,NC,ODAC,III
+Hanover,https://athletics.hanover.edu/sports/wbball,1115,Hanover,HanoverWBB,,IN,HCAC,III
+Harding,https://hardingsports.com/sports/womens-basketball,1116,Harding,Harding_WBB,,AR,GAC,II
+UC San Diego,https://ucsdtritons.com/sports/womens-basketball,112,UC San Diego,UCSDwbb,,CA,Big West,I
+Henderson St.,https://hsusports.com/sports/womens-basketball,1123,Henderson St.,ReddiesWBB,,AR,GAC,II
+Hendrix,https://hendrixwarriors.com/sports/womens-basketball,1124,Hendrix,HX_WBB,,AR,SAA,III
+Holy Family,https://athletics.holyfamily.edu/sports/womens-basketball,1126,Holy Family,HolyFamily_WBB,,PA,CACC,II
+S.C. Aiken,https://pacersports.com/sports/womens-basketball,11276,S.C. Aiken,USCAWBB,,SC,Peach Belt,II
+UC Santa Cruz,https://goslugs.com/sports/womens-basketball,113,,ucscwbb,,CA,C2C,III
+Huntingdon,https://www.huntingdonhawks.com/sports/wbkb,1130,,HCHawksWBB,,AL,CCS,III
+Husson,https://hussoneagles.com/sports/womens-basketball,1133,,Hussonwbb,,ME,North Atlantic,III
+Calvin,https://calvinknights.com/sports/womens-basketball,114,,CalvinWBball,,MI,Michigan Intercol. Ath. Assn.,III
+Colo. Christian,https://ccucougars.com/sports/womens-basketball,11403,,ccu_wbb,,CO,RMAC,II
+Colorado Mesa,https://cmumavericks.com/sports/womens-basketball,11416,,CMUWBasketball,,CO,RMAC,II
+Queens (NC),https://queensathletics.com/sports/womens-basketball,11504,,QueensWBB,,NC,ASUN,I
+Fontbonne,https://fontbonnegriffins.com/sports/wbkb,11538,,fontbonnewbb,,MO,SLIAC,III
+Neb.-Kearney,https://lopers.com/sports/womens-basketball,1156,Neb.-Kearney,UNKWBB,,NE,Mid-America Intercollegiate,II
+Keuka,https://keukaathletics.com/sports/womens-basketball,1159,,KeukaWBB,,NY,Empire 8,III
+LaGrange,https://lagrangepanthers.com/sports/womens-basketball,1162,,LCPanthers_WBB,,GA,CCS,III
+Lakeland,https://lakelandmuskies.com/sports/womens-basketball,1164,,MuskiesWBB,,WI,NACC,III
+Lander,https://landerbearcats.com/sports/wbball,1167,,LanderWBB,,NY,Peach Belt,II
+Capital,https://athletics.capital.edu/sports/womens-basketball,117,,CapitalWBB,,OH,OAC,III
+Lenoir-Rhyne,https://lrbears.com/sports/womens-basketball,1170,,LRUWBB,,NC,SAC,II
+Limestone,https://golimestonesaints.com/sports/womens-basketball,1174,Limestone,LCWBB,,SC,SAC,II
+West Florida,https://goargos.com/sports/womens-basketball,11740,,UWFWBB,,FL,Gulf South,II
+Linfield,https://golinfieldwildcats.com/sports/womens-basketball,1179,Linfield,linfieldwbb,,OR,NWC,III
+Carleton,https://athletics.carleton.edu/sports/womens-basketball,118,Carleton,Carleton_WBB,,MN,MIAC,III
+Pitt.-Greensburg,https://pittgreensburgathletics.com/sports/womens-basketball,11839,Pitt.-Greensburg,UPG_WBB,,PA,AMCC,III
+Carnegie Mellon,https://athletics.cmu.edu/sports/wbkb,119,,cmutartanswbb,,PA,UAA,III
+Marian (WI),https://muknights.com/sports/womens-basketball,1196,,marianwbb,,WI,NACC,III
+Mars Hill,https://www.marshilllions.com/sports/wbkb,1199,Mars Hill,MarsHill_WBB,,NC,SAC,II
+Alas. Fairbanks,https://alaskananooks.com/sports/womens-basketball,12,Alas. Fairbanks,NanooksWBB,,AK,Great Northwest,II
+Carroll (WI),https://gopios.com/sports/womens-basketball,120,,carrollu_wbb,,WI,CCIW,III
+Mary Hardin-Baylor,https://cruathletics.com/sports/womens-basketball,1203,,cruwomenshoops,,TX,ASC,III
+Cabrini,https://cabriniathletics.com/sports/womens-basketball,88,,_cwbb,,PA,Atlantic East,III
+CWRU,https://athletics.case.edu/sports/womens-basketball,122,,CWRUWBB,,OH,UAA,III
+Albion,https://gobrits.com/sports/womens-basketball,15,,AlbionWBB,,MI,Michigan Intercol. Ath. Assn.,III
+Montevallo,https://montevallofalcons.com/sports/womens-basketball,1238,,MontevalloWBB,,AL,Gulf South,II
+Allegheny,https://alleghenygators.com/sports/womens-basketball,19,,AlleghenyWBB,,PA,PAC,III
+MSU Moorhead,https://www.msumdragons.com/sports/womens-basketball,1240,,MSUM_WBB,,MN,NSIC,II
+Mount Olive,https://umotrojans.com/sports/womens-basketball,1245,Mount Olive,umowbb,,NC,Conference Carolinas,II
+Centenary (LA),https://www.gocentenary.com/sports/wbkb,125,Centenary (LA),CentenaryWBB,,LA,SCAC,III
+Neumann,https://www.neumannathletics.com/sports/womens-basketball,1254,Neumann,NeumannWBB,,PA,Atlantic East,III
+Newberry,https://newberrywolves.com/sports/womens-basketball,1257,Newberry,newberry_wbb,,SC,SAC,II
+Northern St.,https://nsuwolves.com/sports/womens-basketball,1266,Northern St.,nsuwolves_wbb,,SD,NSIC,II
+Northland,https://northlandcollegesports.com/sports/womens-basketball,1267,Northland,jillswbb,,WI,UMAC,III
+Northwest Nazarene,https://nnusports.com/sports/womens-basketball,1274,Northwest Nazarene,NnuWbb,,ID,Great Northwest,II
+Wheeling,https://wucardinals.com/sports/womens-basketball,12799,Wheeling,WU_WBB,,WV,MEC,II
+Northeastern St.,https://goriverhawksgo.com/sports/womens-basketball,12810,Northeastern St.,RiverHawksWBK,,OK,Mid-America Intercollegiate,II
+Tusculum,https://www.tusculumpioneers.com/sports/wbkb,12830,,TusculumWBB,,TN,SAC,II
+Centenary (NJ),https://centenarycyclones.com/sports/womens-basketball,12884,,CyclonesWBB,,NJ,Atlantic East,III
+Ouachita Baptist,https://obutigers.com/sports/womens-basketball,1289,Ouachita Baptist,OBULadyTigers,,AR,GAC,II
+Central Mo.,https://ucmathletics.com/sports/womens-basketball,130,Central Mo.,UCMWBB,,MO,Mid-America Intercollegiate,II
+Anderson (SC),https://autrojans.com/sports/womens-basketball,13028,Anderson (SC),AUTrojansWBB,,SC,SAC,II
+Cairn,https://www.cairnhighlanders.com/sports/womens-basketball,1305,,CairnWBB,,PA,CSAC,III
+Pittsburg St.,https://pittstategorillas.com/sports/womens-basketball,1314,Pittsburg St.,GorillasWBB,,KS,Mid-America Intercollegiate,II
+Benedictine (IL),https://benueagles.com/sports/womens-basketball,296,Benedictine (IL),benuwbb,,IL,NACC,III
+Post,https://posteagles.com/sports/womens-basketball,1318,Post,PostWBB,,CT,CACC,II
+Centre,https://centrecolonels.com/sports/womens-basketball,132,Centre,CCWBasketball,,KY,SAA,III
+Rockhurst,https://rockhursthawks.com/sports/womens-basketball,1328,Rockhurst,RockhurstWBB,,MO,GLVC,II
+Lees-McRae,https://lmcbobcats.com/sports/womens-basketball,13302,Lees-McRae,LMCWBB,,NC,Conference Carolinas,II
+St. Edward's,https://gohilltoppers.com/sports/womens-basketball,1334,St. Edward's,SEUWBasketball,,TX,Lone Star,II
+St. Joseph's (L.I.),https://sjliathletics.com/sports/womens-basketball,1340,,sjc_wbb,,NY,Skyline,III
+Saint Martin's,https://smusaints.com/sports/womens-basketball,1343,Saint Martin's,SMUSaints_WBB,,WA,Great Northwest,II
+St. Mary's (TX),https://rattlerathletics.com/sports/womens-basketball,1346,St. Mary's (TX),StMUwbb,,TX,Lone Star,II
+St. Thomas Aquinas,https://www.stacathletics.com/sports/wbkb,1348,,STACWBB,,NY,ECC,II
+Schreiner,https://schreinermountaineers.com/sports/wbkb,1355,Schreiner,SchreinerWBK,,TX,SCAC,III
+Blackburn,https://www.blackburnbeavers.com/sports/wbkb,64,Blackburn,Blackburn_WBB,,IL,SLIAC,III
+Southeastern Okla.,https://gosoutheastern.com/sports/womens-basketball,1371,Southeastern Okla.,SavageStormWBB,,OK,GAC,II
+Southern Ark.,https://muleriderathletics.com/sports/womens-basketball,1376,Southern Ark.,SAUWBasketball,,AR,GAC,II
+Chris. Newport,https://www.cnusports.com/sports/womens-basketball,139,,cnuwbb,,VA,C2C,III
+Sul Ross St.,https://srlobos.com/sports/womens-basketball,1390,,SRSU_WBB,,TX,ASC,III
+Tarleton St.,https://tarletonsports.com/sports/womens-basketball,1395,Tarleton St.,TarletonWBB,,TX,WAC,I
+Brockport,https://gobrockport.com/sports/womens-basketball,78,,Brockport_WBB,,NY,SUNYAC,III
+Tiffin,https://gotiffindragons.com/sports/womens-basketball,1403,,TiffinUwbb,,OH,G-MAC,II
+Whitworth,https://whitworthpirates.com/sports/womens-basketball,1454,Whitworth,BucWBB,,WA,NWC,III
+Wayne St. (NE),https://wscwildcats.com/sports/womens-basketball,1433,Wayne St. (NE),WayneStateWBB,,NE,NSIC,II
+Waynesburg,https://waynesburgsports.com/sports/womens-basketball,1434,Waynesburg,LadyJ_Hoops,,PA,PAC,III
+West Liberty,https://hilltoppersports.com/sports/womens-basketball,1438,West Liberty,WLU_Hoops,,WV,MEC,II
+West Virginia St.,https://wvsuyellowjackets.com/sports/womens-basketball,1439,,WVSULadyJackets,,WV,MEC,II
+Clark Atlanta,https://clarkatlantasports.com/sports/womens-basketball,144,,CAU_WBasketball,,GA,SIAC,II
+Western N.M.,https://wnmumustangs.com/sports/womens-basketball,1445,,WNMU_WBB,,NM,Lone Star,II
+Western Ore.,https://wouwolves.com/sports/womens-basketball,1446,Western Ore.,WOUWBB,,OR,Great Northwest,II
+Western Wash.,https://wwuvikings.com/sports/womens-basketball,1448,Western Wash.,WWUbasketball,,WA,Great Northwest,II
+Clark (MA),https://clarkathletics.com/sports/womens-basketball,145,,ClarkU_wbb,,MA,NEWMAC,III
+Carthage,https://athletics.carthage.edu/sports/womens-basketball,121,Carthage,Carthage_WBB,,WI,CCIW,III
+Castleton,https://castletonsports.com/sports/womens-basketball,123,,CastletonWBB,,VT,Little East,III
+Clarkson,https://clarksonathletics.com/sports/womens-basketball,146,,Clarkson_WBB,,NY,Liberty League,III
+Wilmington (OH),https://wilmingtonquakers.com/sports/womens-basketball,1461,,DubC_LQB,,OH,OAC,III
+Wingate,https://wingatebulldogs.com/sports/womens-basketball,1462,,WingateWBB,,NC,SAC,II
+Goucher,https://athletics.goucher.edu/sports/wbkb,1467,,GoucherWBB,,MD,Landmark,III
+Cedar Crest,https://cedarcrestathletics.com/sports/womens-basketball,14795,,cccwbb,,PA,CSAC,III
+Catholic,https://catholicathletics.com/sports/womens-basketball,124,,CatholicU_WBB,,DC,Landmark,III
+Coe,https://kohawkathletics.com/sports/womens-basketball,150,,CoeCollegeWBB,,IA,American Rivers,III
+Colby,https://colbyathletics.com/sports/womens-basketball,151,,ColbyWBB,,ME,NESCAC,III
+Colorado Col.,https://cctigers.com/sports/womens-basketball,154,,cc_wbb,,CO,SCAC,III
+Colo. Sch. of Mines,https://minesathletics.com/sports/womens-basketball,155,Colo. Sch. of Mines,MinesWBB,,CO,RMAC,II
+Colorado St.,https://csurams.com/sports/womens-basketball,156,Colorado St.,CSUWBasketball,,CO,Mountain West,I
+Rosemont,https://rosemont-ravens.com/sports/womens-basketball,15882,Rosemont,_rosemontwbb,,PA,CSAC,III
+Columbus St.,https://csucougars.com/sports/womens-basketball,159,Columbus State,CSUCougarsWBB,,GA,Peach Belt,II
+Albright,https://albrightathletics.com/sports/womens-basketball,16,,AlbrightWBB,,PA,MAC Commonwealth,III
+Concordia Chicago,https://www.cucougars.com/sports/womens-basketball,160,Concordia Chicago,CUCWBball,,IL,NACC,III
+Misericordia,https://athletics.misericordia.edu/sports/womens-basketball,16142,,MisericordiaWBB,,PA,MAC Freedom,III
+Connecticut Col.,https://camelathletics.com/sports/womens-basketball,163,Connecticut Col.,conncollegewbb,,CT,NESCAC,III
+Cornell College,https://cornellrams.com/sports/womens-basketball,166,,CornellRamsWBB,,IA,MWC,III
+William Peace,https://gopeacepacers.com/sports/womens-basketball,17094,William Peace,gopeacewbb,,NC,USA South,III
+Davis & Elkins,https://senatornation.com/sports/womens-basketball,174,Davis & Elkins,Senator_WBB,,WV,MEC,II
+Claremont-M-S,https://cmsathletics.org/sports/womens-basketball,142,Claremont-M-S,cmswbasketball,,CA,SCIAC,III
+Delaware Valley,https://athletics.delval.edu/sports/womens-basketball,179,,DVUwbb,,PA,MAC Freedom,III
+Alfred,https://gosaxons.com/sports/womens-basketball,18,,AU_WBB,,NY,Empire 8,III
+Delta St.,https://gostatesmen.com/sports/womens-basketball,181,Delta St.,DeltaStateWBB,,MS,Gulf South,II
+DePauw,https://depauwtigers.com/sports/womens-basketball/,177,,DePauw_WBB,,IN,NCAC,III
+Denver,https://denverpioneers.com/sports/womens-basketball,183,Denver,DU_WHoops,,CO,Summit League,I
+Dickinson,https://dickinsonathletics.com/sports/womens-basketball,185,,DickinsonWBB,,PA,Centennial,III
+Dist. Columbia,https://www.udcfirebirds.com/sports/wbkb,186,,UDC_WBB,,DC,ECC,II
+Denison,https://denisonbigred.com/sports/womens-basketball,182,Denison,DUWBB,,OH,NCAC,III
+Drew,https://drewrangers.com/sports/womens-basketball,190,Drew,Rangers_WBB,,NJ,Landmark,III
+Salem (WV),https://salemtigers.com/sports/womens-basketball,19117,Salem (WV),SU_WBBHoops,,WV,DII Independent,II
+Dubuque,https://udspartans.com/sports/womens-basketball,192,,UD_WBB,,IA,American Rivers,III
+Earlham,https://goearlham.com/sports/womens-basketball,195,Earlham,EarlhamWBB,,IN,HCAC,III
+East Carolina,https://ecupirates.com/sports/womens-basketball,196,East Carolina,ECUWBB,,NC,AAC,I
+East Stroudsburg,https://esuwarriors.com/sports/womens-basketball,197,East Stroudsburg,ESU_WBB,,PA,PSAC,II
+Tex. A&M-Commerce,https://lionathletics.com/sports/womens-basketball,199,,Lion_WBB,,TX,Southland,I
+DeSales,https://athletics.desales.edu/sports/womens-basketball,20,DeSales,desales_wbb,,PA,MAC Freedom,III
+Eastern Conn. St.,https://gowarriorathletics.com/sports/womens-basketball,200,,EasternWBB,,CT,Little East,III
+MSOE,https://msoeraiders.com/sports/womens-basketball,20220,,MSOEwbb,,WI,NACC,III
+East. Mennonite,https://emuroyals.com/sports/womens-basketball,203,,emu_wbb,,VA,ODAC,III
+Mont. St. Billings,https://msubsports.com/sports/womens-basketball,205,Montana St. Billings,MSUBWBB,,MT,Great Northwest,II
+Eastern N.M.,https://goeasternathletics.com/sports/womens-basketball,206,Eastern N.M.,ENMUWBB,,NM,Lone Star,II
+Eckerd,https://eckerdtritons.com/sports/womens-basketball,208,Eckerd,EC_WBB,,FL,Sunshine State,II
+Edinboro,https://gofightingscots.com/sports/womens-basketball,209,Edinboro,BoroWBB,,PA,PSAC,II
+Alma,https://almascots.com/sports/womens-basketball,21,,AlmaScotsWBB,,MI,Michigan Intercol. Ath. Assn.,III
+Elizabethtown,https://etownbluejays.com/sports/womens-basketball,211,Elizabethtown,BlueJaysWBB,,PA,Landmark,III
+Elmhurst,https://elmhurstbluejays.com/sports/womens-basketball,212,Elmhurst,ElmhurstU_WBB,,IL,CCIW,III
+Elmira,https://athletics.elmira.edu/sports/womens-basketball,213,,ElmiraWBB,,NY,Empire 8,III
+Chestnut Hill,https://griffinathletics.com/sports/womens-basketball,21323,Chestnut Hill,CHC_WBB,,PA,CACC,II
+Emerson,https://emersonlions.com/sports/womens-basketball,214,,EmersonWBBall,,MA,NEWMAC,III
+Emmanuel (MA),https://goecsaints.com/sports/womens-basketball,215,,EmmanuelHoops,TRUE,MA,Great Northeast,III
+Emory & Henry,https://www.gowasps.com/sports/wbkb,216,Emory & Henry,EHCWBB,,VA,SAC,II
+Emory,https://emoryathletics.com/sports/womens-basketball,217,,EmoryWBB,,GA,UAA,III
+Eureka,http://www.eurekareddevils.com/sports/wbkb,218,,wildcatwmnhoops,,IL,SLIAC,III
+Piedmont,https://piedmontlions.com/sports/womens-basketball,21830,,PiedmontWBB,FALSE,GA,CCS,III
+Stevenson,https://gomustangsports.com/sports/womens-basketball,21852,,StevensonU_WBB,,MD,MAC Commonwealth,III
+American International,https://aicyellowjackets.com/sports/womens-basketball,22,,AICWBB,,MA,NE10,II
+FDU-Florham,https://fdudevils.com/sports/womens-basketball,221,FDU-Florham,DevilsWBB,,NJ,MAC Freedom,III
+Ferris St.,https://www.ferrisstatebulldogs.com/sports/wbkb,224,,FerrisWBBall,,MI,GLIAC,II
+Ferrum,https://ferrumpanthers.com/sports/womens-basketball,225,,FerrumWBB,,VA,ODAC,III
+JWU (Providence),https://providence.jwuathletics.com/sports/womens-basketball,22626,,JWUWBasketball,,RI,Great Northeast,III
+Fitchburg St.,https://www.fitchburgfalcons.com/sports/wbkb,227,,FSU_FalconsWBB,,MA,MASCAC,III
+Florida A&M,https://famuathletics.com/sports/womens-basketball,228,Florida A&M,FAMU_WBB,,FL,SWAC,I
+American,https://aueagles.com/sports/womens-basketball,23,American,American_WBB,,DC,Patriot,I
+Florida Tech,https://floridatechsports.com/sports/womens-basketball,230,Florida Tech,FloridaTechWBB,,FL,Sunshine State,II
+FIU,https://fiusports.com/sports/womens-basketball,231,Fiu,FIUWBB,,FL,C-USA,I
+Texas-Dallas,https://utdcomets.com/sports/womens-basketball,23121,UT Dallas,UTDALLAS_WBB,,TX,ASC,III
+Felician,https://felicianuathletics.com/sports/womens-basketball,23157,,FelicianU_WBB,,NJ,CACC,II
+Fla. Southern,https://fscmocs.com/sports/womens-basketball,233,Fla. Southern,FSC_WBB,,FL,Sunshine State,II
+Florida,https://floridagators.com/sports/womens-basketball,235,Florida,GatorsWBK,,FL,SEC,I
+Medaille,https://medaillesports.com/sports/womens-basketball,23725,Medaille,MedailleWBB,,NY,Empire 8,III
+Franklin & Marshall,https://godiplomats.com/sports/womens-basketball,239,,FandMWBB,,PA,Centennial,III
+Franklin Pierce,https://fpuravens.com/sports/womens-basketball,241,,FPURavensWBB,,NH,NE10,II
+Fredonia,https://fredoniabluedevils.com/sports/womens-basketball,242,,FredoniaWHoops,,NY,SUNYAC,III
+Frostburg St.,https://frostburgsports.com/sports/womens-basketball,243,Frostburg St.,FROSTBURG_WBB,,MD,MEC,II
+Lesley,https://lesleyathletics.com/sports/wbkb,24317,,Lesley_WBB,,MA,NECC,III
+Concordia (TX),https://athletics.concordia.edu/sports/womens-basketball,24400,Concordia (TX),ctxwomensbball,,TX,ASC,III
+Gannon,https://gannonsports.com/sports/womens-basketball,246,Gannon,GannonWBB,,PA,PSAC,II
+Nova Southeastern,https://nsusharks.com/sports/womens-basketball,24639,Nova Southeastern,NSU_WBasketball,,FL,Sunshine State,II
+SUNY Geneseo,https://geneseoknights.com/sports/wbball,247,,GeneseoWBB,,NY,SUNYAC,III
+Angelo St.,https://angelosports.com/sports/womens-basketball,25,Angelo St.,Belle_Hoops,,TX,Lone Star,II
+Penn St.-Altoona,https://www.psaltoonalions.com/sports/wbkb,25719,,PSAltoonaWBB,,PA,AMCC,III
+Gettysburg,https://gettysburgsports.com/sports/womens-basketball,258,,GburgWBB,,PA,Centennial,III
+Rowan,https://www.rowanathletics.com/sports/womens-basketball,259,Rowan,RowanWBB,,NJ,NJAC,III
+Grambling,https://gsutigers.com/sports/womens-basketball,261,Grambling,WBB_LadyTigers,,LA,SWAC,I
+Becker,https://beckerhawks.com/sports/wbkb,26107,,BCLadyhoopHawks,,MA,NECC,III
+A&M-Corpus Christi,https://goislanders.com/sports/womens-basketball,26172,A&M-Corpus Christi,Islanders_WBB,,TX,Southland,I
+Grand Valley St.,https://gvsulakers.com/sports/womens-basketball,262,,gvsuwbb,,MI,GLIAC,II
+Grinnell,https://pioneers.grinnell.edu/sports/womens-basketball,264,,GrinnellWBB,,IA,MWC,III
+Grove City,https://athletics.gcc.edu/sports/womens-basketball,265,Grove City,GCC_WBB,,PA,PAC,III
+Gust. Adolphus,https://gogusties.com/sports/womens-basketball,266,,GustavusWBB,,MN,MIAC,III
+Geneva,https://athletics.geneva.edu/sports/womens-basketball,30084,Geneva,genevawbb,,PA,PAC,III
+Hamline,https://hamlineathletics.com/sports/womens-basketball,268,Hamline University,HamlineWBB,,MN,MIAC,III
+Belmont Abbey,https://abbeyathletics.com/sports/womens-basketball,2683,Belmont Abbey,AbbeyWBB,,NC,Conference Carolinas,II
+Franklin,https://franklingrizzlies.com/sports/womens-basketball,2694,,FCGrizWBB,,IN,HCAC,III
+IUPUI,https://iupuijags.com/sports/womens-basketball,2699,Iupui,IUPUILadyJags,FALSE,IN,Horizon,I
+Kansas City,https://kcroos.com/sports/womens-basketball,2707,Kansas City,KCRoosWBB,,MO,Summit League,I
+Hardin-Simmons,https://hsuathletics.com/sports/womens-basketball,271,,cowgirl_bball,,TX,ASC,III
+Oglethorpe,https://gopetrels.com/sports/womens-basketball,2713,,GoPetrelsWBB,,GA,SAA,III
+Colorado St.-Pueblo,https://gothunderwolves.com/sports/womens-basketball,2720,Colorado St.-Pueblo,CSUPuebloWBB,,CO,RMAC,II
+Hartwick,https://www.hartwickhawks.com/sports/womens-basketball,273,,hartwickwbb,,NY,Empire 8,III
+Howard Payne,https://hpusports.com/sports/womens-basketball,2741,Howard Payne,HPUWBasketball,,TX,ASC,III
+Lake Erie,https://lakeeriestorm.com/sports/womens-basketball,2746,,lakeeriewbb,,OH,G-MAC,II
+Pacific (OR),https://goboxers.com/sports/womens-basketball,2751,,PACUWBB,TRUE,OR,NWC,III
+Southwest Baptist,https://www.sbubearcats.com/sports/womens-basketball,2755,Southwest Baptist,SBUbearcatsWBB,,MO,GLVC,II
+Western Colo.,https://gomountaineers.com/sports/womens-basketball,2759,Western Colo.,westerncowbb,,CO,RMAC,II
+Heidelberg,https://www.bergathletics.com/sports/womens-basketball,278,,bergwbb,,OH,OAC,III
+Minn.-Crookston,https://goldeneaglesports.com/sports/womens-basketball,27854,Minn.-Crookston,UMNCrookstonWBB,,MN,NSIC,II
+Farmingdale St.,https://farmingdalesports.com/sports/womens-basketball,27892,,fscwbb_,,NY,Skyline,III
+Albertus Magnus,https://www.albertusfalcons.com/sports/wbkb,2798,,AlbertusWBB,,CT,Great Northeast,III
+Hillsdale,https://hillsdalechargers.com/sports/womens-basketball,280,Hillsdale,ChargersWBB,,MI,G-MAC,II
+Hamilton,https://athletics.hamilton.edu/sports/womens-basketball,267,Hamilton College,HamCollWBBall,,NY,NESCAC,III
+St. Thomas (TX),https://ustcelts.com/sports/womens-basketball,2810,,USTWBB,,TX,SCAC,III
+Washburn,https://wusports.com/sports/womens-basketball,2814,Washburn,IchabodWBB,,KS,Mid-America Intercollegiate,II
+Hollins,https://hollinssports.com/sports/womens-basketball,284,,HollinsHoops,,VA,ODAC,III
+Birmingham-Southern,https://bscsports.net/sports/womens-basketball,28593,Birmingham-Southern,SOUTHERNWBB,,AL,SAA,III
+USciences,https://www.devilsathletics.com/sports/wbkb,28594,,USciencesWBB,,PA,CACC,II
+Hiram,https://hiramterriers.com/sports/womens-basketball,281,Hiram,HiramCollegeWBB,,OH,NCAC,III
+Transylvania,http://www.transysports.com/sports/womens-basketball,28749,Transylvania,TUWBX,,KY,HCAC,III
+Cal Poly Humboldt,https://humboldtathletics.com/sports/womens-basketball,291,Humboldt St.,humboldtwbb,,CA,CCAA,II
+Hunter,https://www.huntercollegeathletics.com/sports/womens-basketball,292,Hunter College,HunterCollegeW1,,NY,CUNYAC,III
+Idaho St.,https://isubengals.com/sports/womens-basketball,294,Idaho St.,HeartofaBengal,,ID,Big Sky,I
+Hope,https://athletics.hope.edu/sports/wbball,286,,HopeCollegeWBB,,MI,Michigan Intercol. Ath. Assn.,III
+Illinois Col.,https://illinoiscollegeathletics.com/sports/womens-basketball,297,Illinois College,ICWBB,,IL,MWC,III
+Adelphi,https://aupanthers.com/sports/womens-basketball,3,,AdelphiWBB,,NY,NE10,II
+Arkansas St.,https://astateredwolves.com/sports/womens-basketball,30,Arkansas St.,AStateWB,,AR,Sun Belt,I
+Ill. Wesleyan,https://www.iwusports.com/sports/womens-basketball,300,Ill. Wesleyan,IWUWomensBball,,IL,CCIW,III
+Trevecca Nazarene,https://tnutrojans.com/sports/womens-basketball,30002,,TNUwBasketball,,TN,G-MAC,II
+Lee,https://leeuflames.com/sports/womens-basketball,30013,Lee,LeeUWBB,,TN,Gulf South,II
+Texas-Tyler,https://uttylerpatriots.com/sports/womens-basketball,30028,Texas-Tyler,UTTylerWBB,,TX,Lone Star,II
+Northwestern-St. Paul,https://unweagles.com/sports/womens-basketball,30031,,unwwbb,,MN,UMAC,III
+Crown (MN),https://athletics.crown.edu/sports/womens-basketball,30035,Crown (MN),BasketballCrown,,MN,UMAC,III
+Mount Aloysius,https://mountieathletics.com/sports/womens-basketball,30036,Mount Aloysius,MountieHoops,,PA,AMCC,III
+Trine,https://trinethunder.com/sports/wbball,30037,,TrineWBB,,IN,Michigan Intercol. Ath. Assn.,III
+Bethany Lutheran,https://blcvikings.com/sports/womens-basketball,30038,Bethany Lutheran,BethanyWbb,,MN,UMAC,III
+North Central (MN),https://ncurams.com/sports/womens-basketball,30039,North Central (MN),NCU_WBB,FALSE,MN,UMAC,III
+Mitchell,https://www.mitchellathletics.com/sports/wbkb,30042,,mitchellcollwbb,,CT,NECC,III
+Palm Beach Atl.,https://pbasailfish.com/sports/womens-basketball,30045,Palm Beach Atl.,SailfishWBB,,FL,Sunshine State,II
+JWU (Denver),,30046,,,,CO,,
+Keystone,https://www.gokcgiants.com/sports/womens-basketball,30047,,KeystoneWBB,,PA,CSAC,III
+Ill. Springfield,https://uisprairiestars.com/sports/womens-basketball,30050,Ill. Springfield,UISWBB,,IL,GLVC,II
+North Georgia,https://ungathletics.com/sports/womens-basketball,30052,University of North GeorgiaW,UNGWBB,,GA,Peach Belt,II
+Newman,https://newmanjets.com/sports/womens-basketball,30054,Newman,NewmanJetsWBB,,KS,Mid-America Intercollegiate,II
+Cal St. Monterey Bay,https://otterathletics.com/sports/womens-basketball,30055,Cal St. Monterey Bay,CSUMBwbb,,CA,CCAA,II
+Seton Hill,https://athletics.setonhill.edu/sports/womens-basketball,30063,Seton Hill,SetonHillWBB,,PA,PSAC,II
+Saint Vincent,https://athletics.stvincent.edu/sports/womens-basketball,30064,Saint Vincent,SVC_WomensBball,,PA,PAC,III
+NVU-Lyndon,https://lyndonhornets.com/sports/womens-basketball,30065,,LyndonWBB,,VT,North Atlantic,III
+SUNY Morrisville,https://morrisvillemustangs.com/sports/womens-basketball,30067,,MorrisvilleWBB,,NY,United East,III
+Franciscan,https://franciscanathletics.com/sports/womens-basketball,30069,Franciscan,FranciscanWBB,,OH,PAC,III
+William Smith,https://hwsathletics.com/sports/womens-basketball,30073,William Smith,HeronHoops,,NY,Liberty League,III
+Penn St. Harrisburg,https://psuharrisburgsports.com/sports/womens-basketball,30081,,PSHbgWBBall,,PA,United East,III
+Montclair St.,https://montclairathletics.com/sports/womens-basketball,442,,montclairstwbb,,NJ,NJAC,III
+Lancaster Bible,https://lbcchargers.com/sports/womens-basketball,30085,,lbc_wbb,,PA,United East,III
+Tex. Permian Basin,https://utpbfalcons.com/sports/womens-basketball,30088,Tex. Permian Basin,UTPB_WBB,,TX,Lone Star,II
+Flagler,https://flaglerathletics.com/sports/womens-basketball,30092,Flagler,Flagler_WBB,,FL,Peach Belt,II
+AUM,https://aumathletics.com/sports/womens-basketball,30093,Aum,AUMWarhawksWBB,,AL,Gulf South,II
+Utah Tech,https://utahtechtrailblazers.com/sports/womens-basketball,30095,Utah Tech,UtahTech_WBB,,UT,WAC,I
+Ark.-Fort Smith,https://uafortsmithlions.com/sports/womens-basketball,30105,Ark.-Fort Smith,UAFSWBB,,AR,Lone Star,II
+Covenant,https://athletics.covenant.edu/sports/womens-basketball,30111,,CovenantWBB,,GA,CCS,III
+Moravian,https://www.moraviansports.com/sports/wbkb,443,,MoravianWBB,,PA,Landmark,III
+Ohio Dominican,https://ohiodominicanpanthers.com/sports/womens-basketball,30119,,ODUPANTHERS_WBB,,OH,G-MAC,II
+William Jewell,https://jewellcardinals.com/sports/womens-basketball,30120,William Jewell,Jewell_WBB,FALSE,MO,GLVC,II
+Academy of Art,https://artuathletics.com/sports/womens-basketball,30123,Academy of Art,ARTUWBB,,CA,PacWest,II
+Cedarville,https://yellowjackets.cedarville.edu/sports/womens-basketball,30124,Cedarville,CedarvilleWBB,,OH,G-MAC,II
+Minot St.,https://msubeavers.com/sports/womens-basketball,30125,Minot St.,MSUBeaversWBB,,ND,NSIC,II
+Notre Dame (OH),https://notredamefalcons.com/sports/womens-basketball,30126,Notre Dame (OH),NDCWBB,,OH,MEC,II
+Simon Fraser,https://athletics.sfu.ca/sports/womens-basketball,30127,Simon Fraser,SFU_WBB,,,Great Northwest,II
+Sioux Falls,https://usfcougars.com/sports/womens-basketball,30128,Sioux Falls,USFcougars_wbb,,SD,NSIC,II
+Black Hills St.,https://bhsuathletics.com/sports/womens-basketball,30134,Black Hills St.,BHSUWBB,,SD,RMAC,II
+Lindenwood (MO),https://lindenwoodlions.com/sports/womens-basketball,30136,Lindenwood (MO),LindenwoodWBB,,MO,OVC,I
+McKendree,https://mckbearcats.com/sports/womens-basketball,30138,McKendree,McKendreeWBB,,IL,GLVC,II
+South Dakota Mines,https://gorockers.com/sports/womens-basketball,30139,South Dakota Mines,hardrockerwbb,,SD,RMAC,II
+Ursuline,https://ursulinearrows.com/sports/womens-basketball,30140,Ursuline,ursuline_wbb,,OH,G-MAC,II
+Walsh,https://athletics.walsh.edu/sports/womens-basketball,30141,,WalshCavsWBB,,OH,G-MAC,II
+Fresno Pacific,https://www.fpuathletics.com/sports/womens-basketball,30147,Fresno Pacific,FPUwbb,,CA,PacWest,II
+Point Loma,https://plnusealions.com/sports/womens-basketball,30149,Point Loma,PLNU_WBB,,CA,PacWest,II
+Shorter,https://goshorterhawks.com/sports/womens-basketball,30151,Shorter,Shorter_WBB,,GA,Gulf South,II
+Southern Nazarene,https://snuathletics.com/sports/womens-basketball,30152,Southern Nazarene,SNUwbb,,OK,GAC,II
+Union (TN),https://uuathletics.com/sports/womens-basketball,30153,Union (TN),UUAthleticsWB,,TN,Gulf South,II
+Young Harris,https://yhcathletics.com/sports/womens-basketball,30154,Young Harris,YHC_Wbb,,GA,Peach Belt,II
+Houghton,https://athletics.houghton.edu/sports/womens-basketball,30160,Houghton,houghtonwbb,,NY,Empire 8,III
+Sarah Lawrence,https://gogryphons.com/sports/womens-basketball,30163,Sarah Lawrence,GryphonsWBB,,NY,Skyline,III
+Southern Va.,https://knightathletics.com/sports/womens-basketball,30164,,svuwbb,,VA,USA South,III
+SUNY Canton,https://rooathletics.com/sports/womens-basketball,30165,SUNY Canton,RoosWBB,,NY,North Atlantic,III
+Berea,https://bereaathletics.com/sports/womens-basketball,30171,Berea,BereaWBBALL,,KY,CCS,III
+Daemen,https://daemenwildcats.com/sports/womens-basketball,30174,,DaemenWBB,,NY,ECC,II
+Holy Names,https://hnuhawks.com/sports/womens-basketball,30175,Holy Names,HNUWBB,,CA,PacWest,II
+Lubbock Christian,https://lcuchaps.com/sports/womens-basketball,30177,Lubbock Christian,LCUWomensBball,,TX,Lone Star,II
+Northwestern Okla.,https://riderangersride.com/sports/womens-basketball,30178,Northwestern Okla.,NWOSUWBB,,OK,GAC,II
+Rogers St.,https://rsuhillcats.com/sports/womens-basketball,30180,Rogers St.,rsuwbb,,OK,Mid-America Intercollegiate,II
+UVa-Wise,https://uvawisecavs.com/sports/womens-basketball,30181,UVA Wise,UVAWISEWBB,,VA,SAC,II
+Bryn Athyn,https://brynathynathletics.com/sports/womens-basketball,30188,,BrynAthynWBB,,PA,CSAC,III
+Penn College,https://pctwildcats.com/sports/womens-basketball,30190,,PCTWBasketball,,PA,United East,III
+Southern Wesleyan,https://swuathletics.com/sports/womens-basketball,30192,Southern Wesleyan,SWUWomensBB,,SC,Conference Carolinas,II
+Belhaven,https://blazers.belhaven.edu/sports/womens-basketball,30197,,BelhavenWbb,,MS,CCS,III
+Cal St. San Marcos,https://csusmcougars.com/sports/womens-basketball,30198,Cal St. San Marcos,CSUSM_WBB,,CA,CCAA,II
+Concordia (CA),https://cuieagles.com/sports/womens-basketball,30199,Concordia (CA),cuiwbasketball,,CA,PacWest,II
+Concordia Portland,,30200,,gocugowbb,,OR,,
+Okla. Baptist,https://obubison.com/sports/womens-basketball,30202,Okla. Baptist,OBU_WBBall,,OK,GAC,II
+Westminster (UT),https://westminstergriffins.com/sports/womens-basketball,30209,Westminster (UT),westminsterwbb,,UT,RMAC,II
+Dean,https://deanbulldogs.com/sports/womens-basketball,30219,,DeanWBB,,MA,Great Northeast,III
+Biola,https://athletics.biola.edu/sports/womens-basketball,30220,Biola,biolawbb,,CA,PacWest,II
+Davenport,https://dupanthers.com/sports/womens-basketball,30221,Davenport,DU_WBB,,MI,GLIAC,II
+Purdue Northwest,https://pnwathletics.com/sports/womens-basketball,30222,Purdue Northwest,PNWWBB,,IN,GLIAC,II
+SUNY Delhi,https://delhibroncos.com/sports/wbkb,30225,,SUNYDelhiWBB,,NY,North Atlantic,III
+Indiana (PA),https://iupathletics.com/sports/womens-basketball,307,Indiana (PA),IUP_WBB,,PA,PSAC,II
+UIndy,https://athletics.uindy.edu/sports/womens-basketball,309,UIndy,UIndyWBB,,IN,GLVC,II
+Ithaca,https://athletics.ithaca.edu/sports/womens-basketball,313,Ithaca,ithacawbb,,NY,Liberty League,III
+Jackson St.,https://gojsutigers.com/sports/womens-basketball,314,Jackson St.,GoJSUTigersWBB,,MS,SWAC,I
+Jacksonville St.,https://jsugamecocksports.com/sports/womens-basketball,315,,JSUGamecocksWBB,,AL,ASUN,I
+James Madison,https://jmusports.com/sports/womens-basketball,317,James Madison,JMUWBasketball,,VA,Sun Belt,I
+John Carroll,https://jcusports.com/sports/womens-basketball,320,John Carroll,JohnCarroll_WBB,FALSE,OH,OAC,III
+John Jay,https://johnjayathletics.com/sports/womens-basketball,321,John Jay,JJCWBasketball,,NY,CUNYAC,III
+Johns Hopkins,https://hopkinssports.com/sports/womens-basketball,322,Johns Hopkins,JHUwbb,,MD,Centennial,III
+Johnson C. Smith,https://goldenbullsports.com/sports/womens-basketball,323,Johnson C. Smith,jcsmith_wbb,,NC,CIAA,II
+Juniata,https://www.juniatasports.net/sports/wbkb,325,,JuniataWBB,,PA,Landmark,III
+Kalamazoo,https://hornets.kzoo.edu/sports/womens-basketball,326,,KzooWBball,,MI,Michigan Intercol. Ath. Assn.,III
+Keene St.,https://keeneowls.com/sports/womens-basketball,330,Keene St.,KeeneWBB,,NH,Little East,III
+Kentucky St.,https://ksuthorobreds.com/sports/womens-basketball,332,Kentucky St.,KYSUWBB,,KY,SIAC,II
+Ky. Wesleyan,https://kwcpanthers.com/sports/womens-basketball,333,Ky. Wesleyan,kwcwomenshoops,,KY,G-MAC,II
+Kenyon,https://athletics.kenyon.edu/sports/womens-basketball,335,Kenyon,KenyonWBB,,OH,NCAC,III
+King's (PA),https://kingscollegeathletics.com/sports/womens-basketball,336,King's (PA),Monarchs_KCWB,,PA,MAC Freedom,III
+Knox,https://prairiefire.knox.edu/sports/womens-basketball,337,Knox,KnoxWomensBBall,,IL,MWC,III
+Kutztown,https://kubears.com/sports/womens-basketball,339,Kutztown,KUBearsWBB,,PA,PSAC,II
+La Verne,https://leopardathletics.com/sports/womens-basketball,341,,ULVLeopardsWBB,,CA,SCIAC,III
+Lake Forest,https://goforesters.com/sports/womens-basketball,344,,LFC_WBB,,IL,MWC,III
+Lake Superior St.,https://lssulakers.com/sports/womens-basketball,345,,LakeStateWBB,,MI,GLIAC,II
+Lawrence,https://vikings.lawrence.edu/sports/womens-basketball,348,Lawrence University,LUVikingsWBB,,WI,MWC,III
+Le Moyne,https://lemoynedolphins.com/sports/womens-basketball,349,,LeMoyneWBB,,NY,NE10,II
+Ashland,https://goashlandeagles.com/sports/womens-basketball,35,,AshlandWBB,,OH,G-MAC,II
+Lebanon Valley,https://godutchmen.com/sports/womens-basketball,351,,lvcwbb,,PA,MAC Commonwealth,III
+Lewis,https://lewisflyers.com/sports/womens-basketball,354,Lewis,LewisWBBall,,IL,GLVC,II
+West Alabama,https://uwaathletics.com/sports/womens-basketball,358,West Ala.,UWA_WBB,,AL,Gulf South,II
+Assumption,https://assumptiongreyhounds.com/sports/womens-basketball,36,,AssumptionWBB,,MA,NE10,II
+Lock Haven,https://www.golhu.com/sports/womens-basketball,360,Lock Haven,LHUWBB,,PA,PSAC,II
+Loras,https://duhawks.com/sports/womens-basketball,364,Loras,DuhawkWBB,,IA,American Rivers,III
+LSU,https://lsusports.net/sports/wbball,365,Lsu,LSUwbkb,,LA,SEC,I
+Louisiana Tech,https://latechsports.com/sports/womens-basketball,366,Louisiana Tech,LATechWBB,,LA,C-USA,I
+Loyola Marymount,https://lmulions.com/sports/womens-basketball,370,Loyola Marymount,lmulionswb,,CA,WCC,I
+Luther,https://luthernorse.com/sports/womens-basketball,372,,LutherWBB,,IA,American Rivers,III
+Lycoming,https://lycomingathletics.com/sports/womens-basketball,373,,lycowomensbb,,PA,MAC Freedom,III
+Lynchburg,https://lynchburgsports.com/sports/womens-basketball,374,,lynchburg_wbb,,VA,ODAC,III
+Macalester,https://athletics.macalester.edu/sports/womens-basketball,376,Macalester College,MacalesterWBB,,MN,MIAC,III
+MacMurray,https://mcmurrysports.com/sports/womens-basketball,377,,MacWHoops,,IL,,
+Me.-Farmington,https://goumfbeavers.com/sports/womens-basketball,379,,UMFwomenshoops,,ME,North Atlantic,III
+Augsburg,https://athletics.augsburg.edu/sports/womens-basketball,38,Augsburg,AugsburgWBB,,MN,MIAC,III
+Manhattanville,https://govaliants.com/sports/womens-basketball,382,,valiantswbb,FALSE,NY,Skyline,III
+Minnesota St.,https://msumavericks.com/sports/womens-basketball,383,,MinnStWBB,,MN,NSIC,II
+Mansfield,https://gomounties.com/sports/womens-basketball,384,Mansfield,MansfieldWBB,,PA,PSAC,II
+Marietta,https://pioneers.marietta.edu/sports/womens-basketball,385,Marietta,Marietta_WBB,,OH,OAC,III
+Mary Baldwin,https://marybaldwinathletics.com/sports/womens-basketball,389,,MBaldwinWBB,,VA,USA South,III
+Augusta,https://augustajags.com/sports/womens-basketball,39,Augusta,AUG_WBB,,GA,Peach Belt,II
+Mary Washington,https://umweagles.com/sports/womens-basketball,390,,umwwbasketball,,VA,C2C,III
+Marymount (VA),https://marymountsaints.com/sports/womens-basketball,394,,Marymount_WBB,,VA,Atlantic East,III
+Maryville (MO),https://maryvillesaints.com/sports/womens-basketball,395,Maryville (MO),MaryvilleWBB,FALSE,MO,GLVC,II
+Marywood,https://marywoodpacers.com/sports/womens-basketball,397,Marywood,MarywoodWBB,,PA,Atlantic East,III
+MIT,https://mitathletics.com/sports/womens-basketball,398,,mitwbball,,MA,NEWMAC,III
+Augustana (IL),https://athletics.augustana.edu/sports/womens-basketball,40,Augustana (IL),AugustanaWBBall,,IL,CCIW,III
+Mercy,https://mercyathletics.com/sports/womens-basketball,407,Mercy,WbbMercy,,NY,ECC,II
+Mercyhurst,https://hurstathletics.com/sports/womens-basketball,408,Mercyhurst,HurstWBB,,PA,PSAC,II
+Meredith,https://goavengingangels.com/sports/womens-basketball,409,,MeredithCBB,,NC,USA South,III
+Augustana (SD),https://goaugie.com/sports/womens-basketball,41,,AugieWBB,,SD,NSIC,II
+Messiah,https://gomessiah.com/sports/womens-basketball,411,,messiahwbball,,PA,MAC Commonwealth,III
+MSU Denver,https://roadrunnersathletics.com/sports/womens-basketball,413,MSU Denver,MSUDenverWBB,,MN,RMAC,II
+Michigan Tech,https://michigantechhuskies.com/sports/womens-basketball,417,,mtuwbb,,MI,GLIAC,II
+Aurora,https://athletics.aurora.edu/sports/womens-basketball,42,Aurora University,AUSpartanWBB,,IL,NACC,III
+Middlebury,https://athletics.middlebury.edu/sports/wbball,420,,middwbball,,VT,NESCAC,III
+Miles,https://milesgoldenbears.com/sports/womens-basketball,422,Miles College,Miles_wbb,,AL,SIAC,II
+Millersville,https://millersvilleathletics.com/sports/womens-basketball,423,Millersville,millersvillewbb,,PA,PSAC,II
+Millikin,https://athletics.millikin.edu/sports/womens-basketball,424,Millikin,MillikinWBB,,IL,CCIW,III
+Millsaps,https://gomajors.com/sports/womens-basketball,426,Millsaps,MillsapsWBB,,MS,SAA,III
+Minn. Duluth,https://umdbulldogs.com/sports/womens-basketball,427,Minn. Duluth,UMDWomensBBall,,MN,NSIC,II
+Mississippi College,https://www.gochoctaws.com/sports/womens-basketball,429,Mississippi Col.,GoChoctaws_WBB,,MS,Gulf South,II
+Mississippi Valley State,https://mvsusports.com/sports/womens-basketball,432,Mississippi Val.,ValleyStateWBB,,MS,SWAC,I
+Missouri S&T,https://minerathletics.com/sports/womens-basketball,435,Missouri S&T,Miners_WBB,,MO,GLVC,II
+Missouri-St. Louis,https://umsltritons.com/sports/womens-basketball,436,Mo.-St. Louis,UMSLWBB,,MO,GLVC,II
+Monmouth (IL),https://monmouthscots.com/sports/womens-basketball,438,,ScotsWHoops,,IL,MWC,III
+Averett,https://averettcougars.com/sports/womens-basketball,44,,AverettWBB,,VA,ODAC,III
+Pitt.-Bradford,https://athletics.pittbradford.org/sports/wbkb,1315,,upb_wbb,,PA,AMCC,III
+Penn St.-Abington,https://abingtonsports.com/sports/womens-basketball,30114,,PSUA_WBB,,PA,United East,III
+Morgan St.,https://morganstatebears.com/sports/womens-basketball,446,Morgan St.,,TRUE,MD,MEAC,I
+Mount Holyoke,https://athletics.mtholyoke.edu/sports/wbkb,449,,mhc_basketball,TRUE,MA,NEWMAC,III
+Babson,https://babsonathletics.com/sports/womens-basketball,45,,babsonwhoops,,MA,NEWMAC,III
+CMSV,https://cmsvathletics.com/sports/womens-basketball,451,,CMSVWBB,,NY,Skyline,III
+Mount Union,https://athletics.mountunion.edu/sports/womens-basketball,452,Mount Union,MountUnionWbb,,OH,OAC,III
+Muhlenberg,https://muhlenbergsports.com/sports/womens-basketball,453,Muhlenberg,Muhl_wbb,,PA,Centennial,III
+Muskingum,https://www.fightingmuskies.com/sports/wbkb,455,,MuskingumWBB,,OH,OAC,III
+Baldwin Wallace,https://bwyellowjackets.com/sports/womens-basketball,46,,BW_wbasketball,,OH,OAC,III
+UNCW,https://uncwsports.com/sports/womens-basketball,460,Uncw,UNCWwomenshoops,,NC,CAA,I
+Nazareth,https://nazathletics.com/sports/womens-basketball,461,,Nazareth_WBB,,NY,Empire 8,III
+Neb. Wesleyan,https://nwusports.com/sports/womens-basketball,462,Neb. Wesleyan,NWU_WomensBB,,NE,American Rivers,III
+UNLV,https://unlvrebels.com/sports/womens-basketball,465,Unlv,UNLVLadyRebels,,NV,Mountain West,I
+New England Col.,https://athletics.nec.edu/sports/womens-basketball,467,,NEC_WBB,,NH,NECC,III
+Southern N.H.,https://snhupenmen.com/sports/womens-basketball,468,,SNHUWBB,,NH,NE10,II
+New Haven,https://newhavenchargers.com/sports/womens-basketball,470,New Haven,UNewHavenWBB,,CT,NE10,II
+NYU,https://gonyuathletics.com/sports/womens-basketball,479,Nyu,nyuwomenshoops,,NY,UAA,III
+CCNY,https://ccnyathletics.com/sports/womens-basketball,480,Ccny,ccnywbb,,NY,CUNYAC,III
+Nichols,https://nicholsathletics.com/sports/womens-basketball,484,,ncbison_wbball,,MA,CCC,III
+MCLA,https://athletics.mcla.edu/sports/wbkb,486,,MCLAWbasketball,,MA,MASCAC,III
+North Alabama,http://www.roarlions.com/sports/womens-basketball,487,North Ala.,UNAHOOPS,,AL,ASUN,I
+N.C. A&T,https://ncataggies.com/sports/womens-basketball,488,N.C. A&T,LadyAggieBall,,NC,CAA,I
+Barry,https://gobarrybucs.com/sports/womens-basketball,49,Barry,BarryUWBB,,FL,Sunshine State,II
+NC State,https://gopack.com/sports/womens-basketball,490,NC State,PackWomensBball,,NC,ACC,I
+N.C. Wesleyan,https://ncwsports.com/sports/womens-basketball,491,,NCWU_WBB,,NC,USA South,III
+North Dakota,https://fightinghawks.com/sports/womens-basketball,494,North Dakota,UNDwbasketball,,ND,Summit League,I
+North Park,https://athletics.northpark.edu/sports/womens-basketball,496,North Park,NPU_womenshoops,,IL,CCIW,III
+Truman State,https://trumanbulldogs.com/sports/womens-basketball,499,Truman,Truman_WBB,,MO,GLVC,II
+Bates,https://gobatesbobcats.com/sports/womens-basketball,50,,Bates_WBB,,ME,NESCAC,III
+Northeastern,https://nuhuskies.com/sports/womens-basketball,500,Northeastern,GoNUwbasketball,,MA,CAA,I
+Northern Michigan,https://nmuwildcats.com/sports/womens-basketball,506,Northern Mich.,NMU_WBBall,,MI,GLIAC,II
+Northwest Missouri State,https://bearcatsports.com/sports/womens-basketball,507,Northwest Mo. St.,nwbearcatwbb,,MO,Mid-America Intercollegiate,II
+Northwood,https://www.gonorthwood.com/sports/wbkb,510,,NorthwoodWBB,,MI,G-MAC,II
+Norwich,https://norwichathletics.com/sports/womens-basketball,511,,NorwichWBB,,VT,Great Northeast,III
+Oakland,https://goldengrizzlies.com/sports/womens-basketball,514,Oakland,OaklandWBBall,,MI,Horizon,I
+Oberlin,https://goyeo.com/sports/womens-basketball,515,Oberlin,Yeo_WBB,,OH,NCAC,III
+Occidental,https://oxyathletics.com/sports/womens-basketball,516,Occidental,tigerswbb,,CA,SCIAC,III
+Ohio Northern,https://www.onusports.com/sports/wbkb,517,,Onuwomensbball,,OH,OAC,III
+Ohio,https://ohiobobcats.com/sports/wbball,519,,OhioWBasketball,,OH,MAC,I
+Olivet,https://www.olivetcomets.com/sports/wbkb,525,,olivet_wbb,,MI,Michigan Intercol. Ath. Assn.,III
+SUNY Oneonta,https://oneontaathletics.com/sports/womens-basketball,526,,OState_WBB,,NY,SUNYAC,III
+Oswego St.,https://oswegolakers.com/sports/womens-basketball,530,,OswegoWBball,,NY,SUNYAC,III
+Otterbein,https://otterbeincardinals.com/sports/womens-basketball,531,Otterbein,Otterbein_WBB,,OH,OAC,III
+Elms,https://www.ecblazers.com/sports/wbkb,532,,ElmsBlazersWBB,,MA,Great Northeast,III
+Pace,https://paceuathletics.com/sports/womens-basketball,533,,PaceWBB,,NY,NE10,II
+UNC Pembroke,https://uncpbraves.com/sports/wbball,537,UNC Pembroke,UNCP_WBB,,NC,Conference Carolinas,II
+Penn St.-Behrend,https://www.psblions.com/sports/wbkb,538,,PSB_WBB,,PA,AMCC,III
+Bemidji St.,https://bsubeavers.com/sports/womens-basketball,54,Bemidji St.,BSUBeaversWBB,,MN,NSIC,II
+Pepperdine,https://pepperdinewaves.com/sports/womens-basketball,541,Pepperdine,WavesHoops,,CA,WCC,I
+Jefferson,https://jeffersonrams.com/sports/womens-basketball,543,Jefferson,Jefferson_WBB,,PA,CACC,II
+Pine Manor,https://pmcathletics.com/sports/wbkb,544,,PineManorWBB,,MA,DIII Independent,III
+Pitt.-Johnstown,https://pittjohnstownathletics.com/sports/womens-basketball,546,Pitt-Johnstown,MountainCatsWBB,,PA,PSAC,II
+Plattsburgh St.,https://gocardinalsports.com/sports/womens-basketball,547,,Cardinals_WBB,,NY,SUNYAC,III
+Pomona-Pitzer,https://sagehens.com/sports/wbball,549,,pomonapitzerwbb,,CA,SCIAC,III
+Benedict,https://benedicttigers.com/sports/womens-basketball,55,Benedict,BenedictWBB,,SC,SIAC,II
+SUNY Potsdam,https://potsdambears.com/sports/womens-basketball,552,,PotsdamWbb,,NY,SUNYAC,III
+Prairie View A&M,https://pvpanthers.com/sports/womens-basketball,553,Prairie View,PVAMUwbb,,TX,SWAC,I
+Puget Sound,https://loggerathletics.com/sports/womens-basketball,557,Puget Sound,PSwbasketball,,WA,NWC,III
+Bentley,https://bentleyfalcons.com/sports/womens-basketball,56,,BentleyWBball,,MA,NE10,II
+Queens (NY),https://queensknights.com/sports/womens-basketball,560,,QCKNIGHTS_WBB,,NY,ECC,II
+Quincy,https://quhawks.com/sports/womens-basketball,561,Quincy,QUHawksWBB,,IL,GLVC,II
+Ramapo,https://ramapoathletics.com/sports/womens-basketball,564,,RCNJWBB,,NJ,NJAC,III
+Randolph-Macon,https://rmcathletics.com/sports/womens-basketball,565,,RMCWBB,,VA,ODAC,III
+Randolph,https://randolphwildcats.com/sports/womens-basketball,566,,RCWomensHoop,,VA,ODAC,III
+Redlands,https://goredlands.com/sports/womens-basketball,567,,RedlandsWBB,,CA,SCIAC,III
+Regis (CO),https://regisrangers.com/sports/womens-basketball,568,Regis (CO),RegisRangersWBB,,CO,RMAC,II
+Regis (MA),https://www.goregispride.com/sports/wbkb,569,,RegisWBB,,MA,Great Northeast,III
+Rhode Island College,https://goanchormen.com/sports/womens-basketball,571,,Go_AnchorWBB,,RI,Little East,III
+Rhodes,https://rhodeslynx.com/sports/womens-basketball,573,Rhodes,Rhodes_WBB,,TN,SAA,III
+Ripon,https://riponredhawks.com/sports/womens-basketball,577,Ripon College,RiponCollegeWBB,TRUE,WI,MWC,III
+Baruch,https://athletics.baruch.cuny.edu/sports/womens-basketball,58,Baruch,BaruchWBB,,NY,CUNYAC,III
+Rochester (NY),https://uofrathletics.com/sports/womens-basketball,581,Rochester,RochesterWBB,,NY,UAA,III
+Rockford,https://rockfordregents.com/sports/womens-basketball,582,Rockford,RockfordWbb,,IL,NACC,III
+Roger Williams,https://rwuhawks.com/sports/womens-basketball,583,,RWUHoops,,RI,CCC,III
+Rollins,https://rollinssports.com/sports/womens-basketball,584,Rollins,RollinsWBB,,FL,Sunshine State,II
+Rose-Hulman,https://athletics.rose-hulman.edu/sports/womens-basketball,585,Rose-Hulman,RoseHulmanWBB,,IN,HCAC,III
+Rutgers-Newark,https://rutgersnewarkathletics.com/sports/womens-basketball,589,,RN_WBB,,NJ,NJAC,III
+Bethany (WV),https://bethanybison.com/sports/womens-basketball,59,,BCWBB,,WV,PAC,III
+Saginaw Valley,https://www.svsucardinals.com/sports/wbkb,591,,svsuwbb,,MI,GLIAC,II
+St. Anselm,https://saintanselmhawks.com/sports/womens-basketball,593,,STAHawksWBB,,NH,NE10,II
+Saint Benedict,https://gobennies.com/sports/womens-basketball,595,Saint Benedict,CSBBasketball,,MN,MIAC,III
+St. Catherine,https://stkatesathletics.com/sports/womens-basketball,597,St. Catherine,StKatesWBB,,MN,MIAC,III
+St. Cloud St.,https://scsuhuskies.com/sports/womens-basketball,598,,SCSUHUSKIES_WBB,,MN,NSIC,II
+Alabama A&M,https://aamusports.com/sports/womens-basketball,6,Alabama A&M,aamuwbb,,AL,SWAC,I
+Bethel (MN),https://athletics.bethel.edu/sports/womens-basketball,60,Bethel University,Bethel_WBB,,MN,MIAC,III
+St. John Fisher,https://athletics.sjfc.edu/sports/womens-basketball,601,St. John Fisher,SJFWBB,,NY,Empire 8,III
+St. Lawrence,https://saintsathletics.com/sports/womens-basketball,607,St. Lawrence,SLUWBBall,,NY,Liberty League,III
+Saint Leo,https://saintleolions.com/sports/womens-basketball,608,Saint Leo,SaintLeoWBB,,FL,Sunshine State,II
+St. Mary's (MD),https://smcmathletics.com/sports/womens-basketball,611,,SMCM_WBB,,MD,United East,III
+Saint Mary's (MN),https://saintmaryssports.com/sports/womens-basketball,612,,saintmarys_wbb,,MN,MIAC,III
+Saint Michael's,https://smcathletics.com/sports/womens-basketball,613,,SMC_wbb,,VT,NE10,II
+St. Norbert,https://athletics.snc.edu/sports/womens-basketball,614,St. Norbert College,SNCWBB,,WI,NACC,III
+Stevens,https://stevensducks.com/sports/womens-basketball,679,Stevens,StevensWBBALL,,NJ,MAC Freedom,III
+St. Scholastica,https://csssaints.com/sports/womens-basketball,618,,CSSWBBall,,MN,MIAC,III
+St. Olaf,https://athletics.stolaf.edu/sports/womens-basketball,615,St. Olaf College,StOlafWBB,,MN,MIAC,III
+Salisbury,https://suseagulls.com/sports/womens-basketball,622,,SalisburyWBB,,MD,C2C,III
+Salve Regina,https://salveathletics.com/sports/womens-basketball,623,,salvewbb,,RI,CCC,III
+San Fran. St.,https://sfstategators.com/sports/womens-basketball,628,San Fran. St.,SFState_WBB,,CA,CCAA,II
+Scranton,https://athletics.scranton.edu/sports/womens-basketball,633,,ScrantonWBB,,PA,Landmark,III
+Seattle Pacific,https://spufalcons.com/sports/womens-basketball,634,Seattle Pacific,SpuWbb,,WA,Great Northwest,II
+Shenandoah,https://suhornets.com/sports/womens-basketball,637,Shenandoah,SUHornetsWBB,,VA,ODAC,III
+Shippensburg,https://shipraiders.com/sports/womens-basketball,638,Shippensburg,ShipWBB,,PA,PSAC,II
+Siena,https://sienasaints.com/sports/womens-basketball,639,Siena,Siena_WBB,,NY,MAAC,I
+TCNJ,https://tcnjathletics.com/sports/womens-basketball,712,,tcnjwb,,NJ,NJAC,III
+Simpson,https://www.simpsonathletics.com/sports/wbkb,641,,SCStorm_WBB,,CA,American Rivers,III
+Skidmore,https://skidmoreathletics.com/sports/womens-basketball,642,Skidmore College,SkidmoreWBB,,NY,Liberty League,III
+Smith,https://smithpioneers.com/sports/womens-basketball,644,,SC_BBall,,MA,NEWMAC,III
+Sonoma St.,https://sonomaseawolves.com/sports/womens-basketball,645,Sonoma St.,SonomaStWBBall,,CA,CCAA,II
+South Alabama,https://usajaguars.com/sports/womens-basketball,646,South Alabama,SouthAlabamaWBB,,AL,Sun Belt,I
+South Carolina St.,https://www.scsuathletics.com/sports/womens-basketball,647,SC State Lady Bulldogs,ScstateWBB,,SC,MEAC,I
+Bloomsburg,https://buhuskies.com/sports/womens-basketball,65,Bloomsburg,buwbb_huskies,,PA,PSAC,II
+Sewanee,https://sewaneetigers.com/sports/womens-basketball,652,Sewanee,SewaneeWBB,,TN,SAA,III
+UMass Dartmouth,https://corsairathletics.com/sports/womens-basketball,656,,UMassDwbkb,,MA,Little East,III
+Southern Conn. St.,https://scsuowls.com/sports/womens-basketball,658,Southern Conn. St.,SCSU_WBB,,CT,NE10,II
+Southern Ill.,https://siusalukis.com/sports/womens-basketball,659,Southern Ill.,SIU_WBasketball,,IL,MVC,I
+SIUE,https://siuecougars.com/sports/womens-basketball,660,Siue,SIUEWBB,,IL,OVC,I
+Southern Ind.,https://gousieagles.com/sports/womens-basketball,661,Southern Ind.,usiwbb,,IN,OVC,I
+Southern Me.,https://southernmainehuskies.com/sports/womens-basketball,662,,USMwbb,,ME,Little East,III
+Southern Utah,https://suutbirds.com/sports/womens-basketball,667,Southern Utah,SUUWBasketball,,UT,WAC,I
+Missouri St.,https://missouristatebears.com/sports/womens-basketball,669,Missouri St.,MSULadyBears,,MO,MVC,I
+Springfield,https://springfieldcollegepride.com/sports/womens-basketball,673,,SCWBB,,MA,NEWMAC,III
+Staten Island,https://csidolphins.com/sports/womens-basketball,675,Staten Island,CsiWbb,,NY,ECC,II
+Texas Lutheran,https://tlubulldogs.com/sports/womens-basketball,1400,Texas Lutheran,TLUwbb,,TX,SCAC,III
+Stonehill,https://stonehillskyhawks.com/sports/womens-basketball,682,,StonehillWBB,,MA,NEC,I
+Suffolk,https://www.gosuffolkrams.com/sports/wbkb,684,,SuffolkWbb,,MA,CCC,III
+Susquehanna,https://suriverhawks.com/sports/womens-basketball,685,,SusquehannaWBB,,PA,Landmark,III
+Swarthmore,https://swarthmoreathletics.com/sports/womens-basketball,686,,SwatWBasketball,,PA,Centennial,III
+Tampa,https://www.tampaspartans.com/sports/wbkb,689,Tampa,TampaWBB,,FL,Sunshine State,II
+Bowdoin,https://athletics.bowdoin.edu/sports/womens-basketball,69,Bowdoin,BowdoinWBB,,ME,NESCAC,III
+Tennessee St.,https://tsutigers.com/sports/womens-basketball,691,,TSUTigersWBB,,TN,OVC,I
+Chattanooga,https://gomocs.com/sports/womens-basketball,693,,GoMocsWBK,,TN,SoCon,I
+Tex. A&M-Kingsville,https://javelinaathletics.com/sports/womens-basketball,696,Tex. A&M-Kingsville,Javelina_WBB,,TX,Lone Star,II
+Texas Southern,https://tsusports.com/sports/womens-basketball,699,Texas Southern,TSUWomensHoops,,TX,SWAC,I
+Bowie St.,https://bsubulldogs.com/sports/womens-basketball,70,Bowie St.,BowieStatewbb,,MD,CIAA,II
+Texas Woman's,https://twuathletics.com/sports/womens-basketball,701,,TWU_Basketball,,TX,Lone Star,II
+Thiel,https://thielathletics.com/sports/womens-basketball,707,Thiel,thiel_wb,,PA,PAC,III
+Chicago,https://athletics.uchicago.edu/sports/womens-basketball,137,,UChicagoWBB,,IL,UAA,III
+Trinity (CT),https://bantamsports.com/sports/womens-basketball,713,,trincollwbb,,CT,NESCAC,III
+Trinity (TX),https://trinitytigers.com/sports/womens-basketball,715,,TUWBB,,TX,SCAC,III
+Tufts,https://gotuftsjumbos.com/sports/womens-basketball,717,,TuftsWbball,,MA,NESCAC,III
+Tulsa,https://tulsahurricane.com/sports/womens-basketball,719,Tulsa,TUWBasketball,,OK,AAC,I
+Tuskegee,https://goldentigersports.com/sports/womens-basketball,720,Tuskegee University,tuskegee_WBB,,AL,SIAC,II
+Coast Guard,https://coastguardathletics.com/sports/womens-basketball,722,,uscga_wbb,,CT,NEWMAC,III
+Union (NY),https://unionathletics.com/sports/womens-basketball,727,Union (NY),UnionCollegeWBB,,NY,Liberty League,III
+Upper Iowa,https://uiupeacocks.com/sports/womens-basketball,728,Upper Iowa,UIU_WBB,,IA,NSIC,II
+Brandeis,https://brandeisjudges.com/sports/womens-basketball,73,Brandeis,BrandeisWBB,,MA,UAA,III
+Ursinus,https://ursinusathletics.com/sports/womens-basketball,730,,UrsinusWBB,TRUE,PA,Centennial,III
+Utah St.,https://utahstateaggies.com/sports/womens-basketball,731,Utah St.,USUWBasketball,,UT,Mountain West,I
+Valdosta St.,https://vstateblazers.com/sports/womens-basketball,734,Valdosta St.,VSULadyBlazers,,GA,Gulf South,II
+Vassar,https://www.vassarathletics.com/sports/womens-basketball,737,Vassar College,VassarWBB,,NY,Liberty League,III
+Bridgeport,https://www.ubknights.com/sports/wbkb,74,,ub_wbb,,CT,CACC,II
+Va. Wesleyan,https://vwuathletics.com/sports/womens-basketball,745,,VWUWBB,,VA,ODAC,III
+Virginia,https://virginiasports.com/sports/wbball/,746,Virginia,UVAWomensHoops,,VA,ACC,I
+Wagner,https://wagnerathletics.com/sports/womens-basketball,748,Wagner,WagnerWHoops,,NY,NEC,I
+Bridgewater (VA),https://bridgewatereagles.com/sports/womens-basketball,75,,BridgewaterWBB,,VA,ODAC,III
+Wartburg,https://go-knights.net/sports/womens-basketball,750,,WartburgWBBALL,,IA,American Rivers,III
+Washington & Jefferson,https://gopresidents.com/sports/womens-basketball,751,Wash. & Jeff.,WJ_WBB,,PA,PAC,III
+Washington Col.,https://washcollsports.com/sports/womens-basketball,753,,washcollwbb,,MD,Centennial,III
+WashU,https://washubears.com/sports/womens-basketball,755,,WashU_WBB,,MO,UAA,III
+Wayne St. (MI),https://wsuathletics.com/sports/womens-basketball,757,Wayne St. (MI),WSUWarriorsWBB,,MI,GLIAC,II
+Webster,https://websterathletics.com/sports/womens-basketball,759,Webster University,GorlokWBB,,MO,SLIAC,III
+Wellesley,https://wellesleyblue.com/sports/womens-basketball,760,,WellesleyBB,,MA,NEWMAC,III
+Wentworth,https://www.wentworthathletics.com/sports/wbkb,762,,WITWomensBball,,MA,CCC,III
+Wesley,,763,,,,,,
+Wesleyan (CT),https://athletics.wesleyan.edu/sports/womens-basketball,764,,wes_wbball,,CT,NESCAC,III
+West Texas A&M,https://gobuffsgo.com/sports/womens-basketball,767,,ladybuffhoops,,TX,Lone Star,II
+Western Connecticut St.,https://westconnathletics.com/sports/womens-basketball,770,,WestConnWBB,TRUE,CT,Little East,III
+Western Ky.,https://wkusports.com/sports/womens-basketball,772,Western Ky.,LadyTopperHoops,,KY,C-USA,I
+McDaniel,https://mcdanielathletics.com/sports/womens-basketball,773,,McDaniel_WBB,,MD,Centennial,III
+Western New Eng.,https://wnegoldenbears.com/sports/womens-basketball,775,,WNEwbasketball,,MA,CCC,III
+Wheaton (IL),https://athletics.wheaton.edu/sports/womens-basketball,778,Wheaton (IL),Wheaton_WBB,,IL,CCIW,III
+Wheaton (MA),https://wheatoncollegelyons.com/sports/womens-basketball,779,,WheatonWBB,,MA,NEWMAC,III
+St. Thomas (MN),https://tommiesports.com/sports/wbball,620,St. Thomas (MN),USTTommiesWBB,,MN,Summit League,I
+Whitman,https://athletics.whitman.edu/sports/womens-basketball,780,Whitman,WhitmanWBB,,WA,NWC,III
+Widener,https://widenerpride.com/sports/womens-basketball,783,,WUWBB,,PA,MAC Freedom,III
+Wilkes,https://gowilkesu.com/sports/womens-basketball,784,,WilkesWBB,,PA,MAC Freedom,III
+Willamette,https://www.wubearcats.com/sports/wbkb,785,,WillametteWBB,,OR,NWC,III
+William Paterson,https://www.wpupioneers.com/sports/womens-basketball,787,,WPUWBB,,NJ,NJAC,III
+Winona St.,https://winonastatewarriors.com/sports/womens-basketball,790,,WinonaStateWBB,,MN,NSIC,II
+Winston-Salem,https://wssurams.com/sports/womens-basketball,791,,wssuwhoops,,NC,CIAA,II
+Wis.-Eau Claire,https://blugolds.com/sports/womens-basketball,793,,UWECWBB,,WI,WIAC,III
+Wisconsin-La Crosse,https://uwlathletics.com/sports/womens-basketball,795,Wis.-La Crosse,uwleagleswbb,,WI,WIAC,III
+Wis.-Oshkosh,https://uwoshkoshtitans.com/sports/womens-basketball,798,,UWOWBB1,,WI,WIAC,III
+Wisconsin-Parkside,https://parksiderangers.com/sports/womens-basketball,799,Wis.-Parkside,RangersWBB,,WI,GLIAC,II
+Brown,https://brownbears.com/sports/womens-basketball,80,Brown,BrownU_WBB,,RI,Ivy League,I
+Wis.-Platteville,https://letsgopioneers.com/sports/womens-basketball,800,,UWPLATTWBB,,WI,WIAC,III
+Wisconsin-River Falls,https://uwrfsports.com/sports/womens-basketball,801,Wis.-River Falls,UWRFWomensBball,,WI,WIAC,III
+Wisconsin-Stevens Point,https://athletics.uwsp.edu/sports/womens-basketball,802,Wis.-Stevens Point,UWSPWBB,,WI,WIAC,III
+Wisconsin-Stout,https://stoutbluedevils.com/sports/womens-basketball,803,,BlueDevilsWBB,,WI,WIAC,III
+Wisconsin-Superior,https://uwsyellowjackets.com/sports/womens-basketball,804,,UWSWBB,,WI,UMAC,III
+Wisconsin-Whitewater,https://uwwsports.com/sports/womens-basketball,805,Wis.-Whitewater,UWWWomensHoops,,WI,WIAC,III
+Wittenberg,https://www.wittenbergtigers.com/sports/wbkb,806,,wittwbb,,OH,NCAC,III
+Wooster,https://woosterathletics.com/sports/womens-basketball,807,,WoosterWBB,,OH,NCAC,III
+WPI,https://athletics.wpi.edu/sports/womens-basketball,808,,WPIWBasketball,,MA,NEWMAC,III
+Westminster (PA),https://athletics.westminster.edu/sports/womens-basketball,1451,Westminster (PA),WC_WBB,,PA,PAC,III
+Wright St.,https://wsuraiders.com/sports/womens-basketball,810,Wright St.,WSUWBasketball,,OH,Horizon,I
+Yale,https://yalebulldogs.com/sports/womens-basketball,813,Yale,YaleWBasketball,,CT,Ivy League,I
+York (PA),https://ycpspartans.com/sports/womens-basketball,815,,YCPWBasketball,,PA,MAC Commonwealth,III
+Youngstown St.,https://ysusports.com/sports/womens-basketball,817,Youngstown St.,YSUWomensHoops,,OH,Horizon,I
+Hilbert,https://hilberthawks.com/sports/womens-basketball,8398,Hilbert,HilbertWBB,,NY,AMCC,III
+Buena Vista,https://bvuathletics.com/sports/womens-basketball,84,,BVU_WBBALL,,IA,American Rivers,III
+Hood,https://hoodathletics.com/sports/womens-basketball,8404,Hood,Hood_wbb,,MD,MAC Commonwealth,III
+Ark.-Monticello,https://www.uamsports.com/sports/womens-basketball,8411,,UAMwbkb,,AR,GAC,II
+LeTourneau,https://letuathletics.com/sports/womens-basketball,8490,,LETUWBB,,TX,ASC,III
+McMurry,https://mcmurrysports.com/sports/womens-basketball,8530,,McMurry_WBB,,TX,ASC,III
+Buffalo,https://ubbulls.com/sports/womens-basketball,86,Buffalo,UBwomenshoops,,NY,MAC,I
+St. Mary's (IN),https://belles.saintmarys.edu/sports/wbball,8688,,SMC_Basketball,,IN,Michigan Intercol. Ath. Assn.,III
+Southwest Minn. St.,https://smsumustangs.com/sports/womens-basketball,8736,,SMSUWomensHoops,,MN,NSIC,II
+Southwestern Okla.,https://swosuathletics.com/sports/womens-basketball,8744,,SWOSUW,,OK,GAC,II
+Southwestern (TX),https://southwesternpirates.com/sports/womens-basketball,8746,,SUPiratesWBB,,TX,SCAC,III
+Worcester St.,https://www.wsulancers.com/sports/wbkb,809,,WSUWBBall,,MA,MASCAC,III
+Chowan,https://gocuhawks.com/sports/womens-basketball,8875,,ChowanWBB,,NC,Conference Carolinas,II
+Caltech,https://gocaltech.com/sports/womens-basketball,89,,caltechwbb,,CA,SCIAC,III
+Wis. Lutheran,https://wlcsports.com/sports/womens-basketball,8911,,WLC_WBB,,WI,NACC,III
+Converse,https://govalkyries.com/sports/womens-basketball,8935,,Converse_wbb,FALSE,SC,Conference Carolinas,II
+East Central,https://ecutigers.com/sports/womens-basketball,8965,,ECUTigersWBB,,OK,GAC,II
+Endicott,https://www.ecgulls.com/sports/wbkb,8981,,EndicottWBB,,MA,CCC,III
+Georgian Court,https://gculions.com/sports/womens-basketball,9004,Georgian Court,GCULionswbb,,NJ,CACC,II
+Fort Hays St.,https://fhsuathletics.com/sports/womens-basketball,9011,Fort Hays St.,FHSUWBB,,KS,Mid-America Intercollegiate,II
+Mo. Southern St.,https://mssulions.com/sports/womens-basketball,9012,,MssuWbb,,MO,Mid-America Intercollegiate,II
+Missouri Western,https://gogriffons.com/sports/womens-basketball,9013,,GriffonWBB,,MO,Mid-America Intercollegiate,II
+Concordia-St. Paul,https://cspbears.com/sports/womens-basketball,9081,,CSPBearsWBB,,MN,NSIC,II
+Cal Poly Pomona,https://broncoathletics.com/sports/womens-basketball,91,Cal Poly Pomona,cppwbb,,CA,CCAA,II
+Cal St. Dom. Hills,https://gotoros.com/sports/womens-basketball,92,,CSUDHwbb,,CA,CCAA,II
+Adams St.,https://asugrizzlies.com/sports/womens-basketball,929,,AdamsStateU_WBB,,CO,RMAC,II
+Cal St. San Bernardino,https://www.csusbathletics.com/sports/womens-basketball,93,,CSUSBWBB,,CA,CCAA,II
+Alvernia,https://auwolves.com/sports/womens-basketball,938,Alvernia,AlverniaWbb,,PA,MAC Commonwealth,III
+Anderson (IN),https://aua.prestosports.com/sports/wbkb,939,,AURavensWBB,,IN,HCAC,III
+Arkansas Tech,https://arkansastechsports.com/sports/womens-basketball,947,Arkansas Tech,ATUWBasketball,,AR,GAC,II
+Chico St.,https://chicowildcats.com/sports/womens-basketball,95,Chico St.,ChicoWbb,,CA,CCAA,II
+Austin,https://www.acroos.com/sports/wbkb,953,,roos_hoops,,TX,SCAC,III
+Bard,https://bardathletics.com/sports/womens-basketball,962,Bard,BardCollegeWBB,,NY,Liberty League,III
+West Va. Wesleyan,https://wesleyanbobcats.com/sports/womens-basketball,9630,,wvwcwbb,,WV,MEC,II
+Arcadia,https://arcadiaknights.com/sports/womens-basketball,966,,Arcadia_WBB,,PA,MAC Freedom,III
+Embry-Riddle (FL),https://erauathletics.com/sports/womens-basketball,9680,,erau_wbb,,FL,Sunshine State,II
+St. Elizabeth,https://seueagles.com/sports/womens-basketball,9684,,CSEWBB,,NJ,CSAC,III
+Berry,https://www.berryvikings.com/sports/womens-basketball,973,,BerryWBB,,GA,SAA,III
+UC-Colo. Springs,https://gomountainlions.com/sports/womens-basketball,9754,UC-Colo. Springs,UCCSWBB,,CA,RMAC,II
+Cal St. East Bay,https://eastbaypioneers.com/sports/womens-basketball,98,,EastBayWBB,,CA,CCAA,II
+Bluefield St.,https://gobstate.com/sports/womens-basketball,985,Bluefield St.,BluefieldWbb,,WV,DII Independent,II
+Caldwell,https://caldwellathletics.com/sports/womens-basketball,995,Caldwell,CaldwellWBB,,NJ,CACC,II
+Cameron,https://cameronaggies.com/sports/womens-basketball,996,Cameron,AggiesWBB,,OK,Lone Star,II
+Valley Forge,https://uvfpatriots.com/sports/womens-basketball,30166,Valley Forge,uvf_wbb,,PA,CSAC,III
+Talladega,https://talladegatornadoes.com/sports/womens-basketball,505160,Talladega,,TRUE,AL,,NAIA
+Edward Waters,https://ewutigerpride.com/sports/womens-basketball,30244,Edward Waters,,TRUE,FL,SIAC,II
+Pfeiffer,https://gofalconsports.com/sports/womens-basketball,542,Pfeiffer,,TRUE,NC,USA South,III
+Allen,https://auyellowjackets.com/sports/womens-basketball,30240,Allen,,,SC,SIAC,II
+Azusa Pacific,https://athletics.apu.edu/sports/womens-basketball,30146,Azusa Pacific,,,CA,PacWest,II
+Bryn Mawr,https://gobrynmawr.com/sports/womens-basketball,82,Bryn Mawr,,,PA,Centennial,III
+Stanislaus St.,https://warriorathletics.com/sports/womens-basketball,103,Stanislaus St.,,,CA,PacWest,II
+Claflin,https://athletics.claflin.edu/sports/womens-basketball,30058,Claflin,,,SC,CIAA,II
+Clarion,https://clariongoldeneagles.com/sports/womens-basketball,143,Clarion,,,PA,PSAC,II
+Clayton State,https://claytonstatesports.com/sports/wbball,20576,Clayton State,,,GA,Peach Belt,II
+Colby-Sawyer College,https://www.colby-sawyerathletics.com/sports/womens-basketball,152,Colby-Sawyer College,,,NH,Great Northeast,III
+Dominican (CA),https://dominicanathletics.com/sports/womens-basketball,30118,Dominican (CA),,,CA,PacWest,II
+Elizabeth City St.,https://ecsuvikings.com/sports/womens-basketball,210,Elizabeth City St.,,,NC,CIAA,II
+Fayetteville St.,https://fsubroncos.com/sports/womens-basketball,223,Fayetteville St.,,,NC,CIAA,II
+Fort Valley St.,https://fvsusports.com/sports/womens-basketball,237,Fort Valley St.,,,GA,SIAC,II
+Gallaudet,https://gallaudetbison.com/sports/womens-basketball,245,Gallaudet,,,DC,United East,III
+Ga. Southwestern,https://gswcanes.com/sports/wbball,1097,Ga. Southwestern,,,GA,Peach Belt,II
+Agnes Scott College,https://ascscotties.com/sports/womens-basketball,11324,Agnes Scott College,,,GA,CCS,III
+Salem (NC),https://salemspirits.com/sports/womens-basketball,30041,Salem (NC),,,NC,USA South,III
+Brevard College,https://bctornados.com/sports/womens-basketball,30094,Brevard College,,,NC,USA South,III
+Buffalo State,https://buffalostateathletics.com/sports/womens-basketball,85,SUNY Buffalo,,,NY,SUNYAC,III
+Illinois-Springfield,https://uisprairiestars.com/sports/womens-basketball,30050,Illinois-Springfield,UISWBB,,IL,GLVC,II
+Vanguard,https://vanguardlions.com/sports/womens-basketball,30263,Vanguard,,,CA,PacWest,II
+Mary,https://goumary.com/sports/womens-basketball,30075,Mary,,,ND,NSIC,II
+Salem St.,https://salemstatevikings.com/sports/wbkb,621,Salem St.,,,MA,MASCAC,III
+Minnesota-Morris,https://morriscougars.com/sports/womens-basketball,1226,Minnesota-Morris,,,MN,UMAC,III
+Savannah St.,https://ssuathletics.com/sports/womens-basketball,632,Savannah St.,,,GA,SIAC,II
+Ozarks,https://uofoathletics.com/sports/womens-basketball,23008,Ozarks,,,AR,SCAC,III
+Shaw,https://shawbears.com/sports/womens-basketball,636,Shaw,,,NC,CIAA,II
+Texas A&M-International,https://godustdevils.com/sports/womens-basketball,30090,Texas A&M-International,,,TX,Lone Star,II
+Thomas More,https://thomasmoresaints.com/sports/womens-basketball,1402,Thomas More,,,KY,G-MAC,II
+Pacific,https://pacifictigers.com/sports/womens-basketball,534,Pacific,,,CA,WCC,I
+Slippery Rock,https://rockathletics.com/sports/womens-basketball,643,Slippery Rock,,,PA,PSAC,II
+U.S. Merchant Marine,https://www.usmmasports.com/sports/wbball,724,U.S. Merchant Marine,,,NY,Skyline,III
+UMass Boston,https://beaconsathletics.com/sports/womens-basketball,401,UMass Boston,,,MA,Little East,III
+Virginia State,https://govsutrojans.com/sports/womens-basketball,743,Virginia State,,,VA,CIAA,II
+Virginia Union,https://vuusports.com/sports/womens-basketball,744,Virginia Union,,,VA,CIAA,II
+Dominican (IL),https://dustars.com/sports/womens-basketball,1332,Dominican (IL),,,IL,NACC,III
+Spring Hill,https://shcbadgers.com/sports/womens-basketball,31091,Spring Hill,,,AL,SIAC,II
+Lynchburg,https://lynchburgsports.com/sports/womens-basketball,374,Lynchburg,lynchburg_wbb,,VA,ODAC,III
+Williams College,https://ephsports.williams.edu/sports/womens-basketball,789,Williams College,,,MA,NESCAC,III
+Westmont,https://athletics.westmont.edu/sports/womens-basketball,30260,Westmont,,,CA,PacWest,II
+West Virginia Wesleyan,https://wesleyanbobcats.com/sports/womens-basketball,9630,West Virginia Wesleyan,wvwcwbb,,WV,MEC,II
+West Georgia,https://uwgathletics.com/sports/womens-basketball,766,West Georgia,,,GA,ASUN,I
+West Chester,https://wcupagoldenrams.com/sports/womens-basketball,765,West Chester,,,PA,PSAC,II
+Lynn,https://lynnfightingknights.com/sports/womens-basketball,20794,Lynn,,,FL,Sunshine State,II
+SUNY Cobleskill,https://fightingtigers.cobleskill.edu/sports/womens-basketball,30083,SUNY Cobleskill,,,NY,North Atlantic,III

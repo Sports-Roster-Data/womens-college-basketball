@@ -6,6 +6,7 @@ library(tidyverse)
 wbb_rosters23 <- read_csv("wbb_rosters_2022_23.csv") |> mutate(player_id = as.character(player_id))
 wbb_rosters24 <- read_csv("wbb_rosters_2023_24.csv") |> mutate(player_id = as.character(player_id))
 wbb_rosters25 <- read_csv("wbb_rosters_2024_25.csv") |> mutate(player_id = as.character(player_id))
+wbb_rosters26 <- read_csv("wbb_rosters_2025_26.csv") |> mutate(player_id = as.character(player_id))
 
 combined_rosters <- bind_rows(list(wbb_rosters23, wbb_rosters24, wbb_rosters25))
 ```

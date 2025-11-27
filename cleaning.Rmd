@@ -494,5 +494,15 @@ conference_transfers <- d1_transfer_analysis %>%
   arrange(desc(transfer_pct))
 
 print("Top conferences by transfer percentage:")
-print(head(conference_transfers, 10))
+print(head(conference_transfers, 20))
 ```
+
+
+```{r}
+wbb_rosters_final |> 
+  filter(state_clean == 'MD') |> 
+  group_by(hometown_clean) |> 
+  summarize(count = n()) |> 
+  arrange(desc(count))
+```
+
