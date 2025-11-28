@@ -12,7 +12,7 @@ library(usdata)
 library(rvest)
 
 # Configuration
-INPUT_FILE <- "~/code/wbb-rosters/rosters_2025-26.csv"
+INPUT_URL <- "https://raw.githubusercontent.com/dwillis/wbb-rosters/refs/heads/main/rosters_2025-26.csv"
 OUTPUT_FILE <- "wbb_rosters_2025_26.csv"
 TEAMS_URL <- "https://raw.githubusercontent.com/Sports-Roster-Data/womens-college-basketball/main/teams.csv"
 POSITIONS_URL <- "https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/wbb_positions.csv"
@@ -24,7 +24,7 @@ FIBA_URL <- "https://www.fiba.basketball/rankingwomen"
 
 ```{r load-data, message=FALSE}
 # Load roster data and rename team_id column
-wbb_rosters <- read_csv(INPUT_FILE) %>% 
+wbb_rosters <- read_csv(INPUT_URL) %>% 
   rename(ncaa_id = team_id) %>%
   mutate(team = str_squish(team))
 
@@ -32,16 +32,10 @@ wbb_rosters <- read_csv(INPUT_FILE) %>%
 teams <- read_csv(TEAMS_URL) %>% 
   select(-url, -twitter, -stats_name) |> distinct()
 
-ncaa_teams <- read_csv("~/code/wbb/ncaa/ncaa_teams.csv")
-
-
 # Create roster availability indicator
 roster_teams <- wbb_rosters %>% 
   distinct(ncaa_id) %>% 
   mutate(has_roster = 1)
-
-
-missing <- ncaa_teams |> anti_join(roster_teams, join_by(school_id == ncaa_id)) 
 
 teams <- teams %>% 
   left_join(roster_teams, by = "ncaa_id") %>% 
