@@ -16,7 +16,7 @@ This dataset contains coaching history information for women's college basketbal
 
 ## Data Source
 
-The data was created using information for current NCAA Division I, II, and III women's basketball coaches as recorded on official team sites. Coaching histories were compiled using the official biographies from those sites ([an example](https://umterps.com/sports/womens-basketball/roster/coaches/brenda-frese/2642)). The class used Claude Haiku 4.5, a large language model, to parse information from coaching biographies into structured data, and students provided research assistance.
+The [data](coaches_with_history.csv) was created using information for current NCAA Division I, II, and III women's basketball coaches as recorded on official team sites. Coaching histories were compiled using the official biographies from those sites ([an example](https://umterps.com/sports/womens-basketball/roster/coaches/brenda-frese/2642)). The class used Claude Haiku 4.5, a large language model, to parse information from coaching biographies into structured data, and students provided research assistance.
 
 ## Basic Analysis
 
@@ -62,3 +62,5 @@ This is a best-effort compilation based on publicly available information. Users
 - Coaching histories may be incomplete for some individuals
 - Start and end dates may have some uncertainty
 - Position titles and classifications represent interpretations of source data
+
+Contributions to add to or improve the data are welcomed via pull requests, and reports of any problems can be made by creating an [issue](https://github.com/Sports-Roster-Data/womens-college-basketball/issues).
