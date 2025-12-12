@@ -2,17 +2,31 @@
 
 ## Overview
 
-This dataset contains coaching history information for women's college basketball programs, compiled from data on current NCAA coaches. The dataset tracks coaches' career progressions across different institutions and roles.
+This dataset contains coaching history information for women's college basketball programs, compiled from data on current NCAA coaches. The dataset tracks coaches' career progressions across different institutions and roles. This dataset was compiled and edited by students in JOUR479X, Sports Data Analysis and Visualization, a journalism class at the University of Maryland taught by Derek Willis. The following students contributed to the project:
+
+* Andrew Breza
+* Nyla Cherry
+* Matthew Cohen
+* Trevor Gomes
+* Michael Howes
+* Sam Jane
+* Max Schaeffer
+* Dylan Schmidt
+* Tahlia Williams
 
 ## Data Source
 
-The data was created using information for current NCAA Division I, II, and III women's basketball coaches. Coaching histories were compiled by tracking these coaches' previous positions at various institutions.
+The data was created using information for current NCAA Division I, II, and III women's basketball coaches as recorded on official team sites. Coaching histories were compiled using the official biographies from those sites ([an example](https://umterps.com/sports/womens-basketball/roster/coaches/brenda-frese/2642)). The class used Claude Haiku 4.5, a large language model, to parse information from coaching biographies into structured data, and students provided research assistance.
+
+## Basic Analysis
+
+Included in this repository is a RMarkdown notebook that explores the data using R.
 
 ## Important Limitations
 
-- **Incomplete histories**: Not all teams have complete coaching histories for all coaches or staff members. The dataset primarily reflects the career paths of coaches who are currently active in NCAA programs.
-- **Current coach bias**: Historical coaches who are no longer active in NCAA programs may not be fully represented in this dataset.
-- **Staff coverage**: Assistant coaches and other staff members may have less complete historical records than head coaches.
+- **Incomplete histories**: Not all teams have complete coaching histories for all coaches or staff members. The dataset reflects the career paths of coaches who are currently active in NCAA programs.
+- **Current coach bias**: Historical coaches who are no longer active in NCAA programs are represented in this dataset.
+- **Staff coverage**: Assistant coaches and other staff members often may have less complete historical records than head coaches, or are missing work histories.
 
 ## Data Structure
 
@@ -21,30 +35,16 @@ The data was created using information for current NCAA Division I, II, and III 
 - `coach`: Coach name
 - `college`: Institution name
 - `title`: Original position title
-- `team_id`: Unique identifier for the team (see ID system below)
+- `team_id`: Unique identifier for the team (NCAA teams only)
 - `start_year`: Year the position began
 - `end_year`: Year the position ended (empty for current positions)
 - `position_title_standardized`: Standardized version of the position title
 - `college_clean`: Standardized institution name
-- `category`: Type of institution (e.g., College, NAIA, Community College)
-- `team_state`: State where the institution is located
-- `conference`: Athletic conference
-- `division`: NCAA division (I, II, III) or other classification
-- `gender`: Gender identifier
-
-## Team Identification System
-
-The dataset uses two different systems for identifying schools:
-
-### NCAA Schools
-- **Identifier**: `team_id` field contains the official NCAA organization ID
-- **Consistency**: These IDs are stable and unique across all NCAA Division I, II, and III institutions
-- **Use case**: Reliable for joining with other NCAA datasets
-
-### Non-NCAA Schools
-- **Identifier**: No unique ID available
-- **Identification method**: NAIA schools, community colleges, and other non-NCAA institutions are identified only by their standardized name in the `college_clean` field
-- **Limitation**: Joining with other datasets may require careful name matching
+- `category`: Type of organization (e.g., College, Professional, Community College)
+- `team_state`: State where the college is located
+- `conference`: Athletic conference ((NCAA teams only))
+- `division`: NCAA division (I, II, III) classification
+- `gender`: Gender identifier (derived from pronouns used in bio; not available for all coaches)
 
 ## Usage Notes
 

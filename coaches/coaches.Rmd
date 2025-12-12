@@ -1,0 +1,540 @@
+---
+title: "Coaching Networks and Career Pathways Analysis"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(igraph)
+library(ggraph)
+library(tidygraph)
+library(lubridate)
+```
+
+# Overview
+
+This analysis explores coaching networks and career pathways in NCAA women's basketball, focusing on which schools produce future head coaches and identifying coaching "trees."
+---
+
+# Data Loading
+
+Load the CSV file and check out the data to see what you're working with.
+
+```{r load-data}
+coaching <- read_csv("coaches_with_history.csv")
+
+
+cat("\nDataset summary:\n")
+cat("Total records:", nrow(coaching), "\n")
+cat("Unique coaches:", n_distinct(coaching$coach), "\n")
+cat("Unique schools:", n_distinct(coaching$college), "\n")
+cat("Division I records:", sum(coaching$division == "I", na.rm = TRUE), "\n")
+```
+
+---
+
+# Analysis 1: Head Coach Production Pipeline
+
+## DECISION POINT 1: Defining "Future Head Coaches"
+
+**Question for you**: Should we focus only on coaches who became D1 head coaches, or also include those who became head coaches at D2, D3, or other levels? How does this choice affect the story? Does it matter if someone became a D3 head coach vs. stayed in D1 as an assistant?
+
+```{r head-coach-pipeline}
+# Option A: Only D1 head coaches (current setting)
+# Option B: All NCAA head coaches (remove division filter)
+# Option C: D1 + D2 only (division %in% c("I", "II"))
+
+d1_head_coaches <- coaching |>
+  distinct(coach) |>
+  pull(coach)
+
+cat("Number of head coaches identified:", length(d1_head_coaches), "\n")
+```
+
+## Finding Previous Positions
+
+```{r previous-positions}
+# Find their previous positions (before becoming head coach)
+future_hc_positions <- coaching |>
+  filter(coach %in% d1_head_coaches, position_title_standardized != 'Head Coach') |>
+  arrange(coach, start_year) |>
+  group_by(coach) |>
+  mutate(
+    is_head_coach = position_title_standardized == "Head Coach",
+    first_hc_year = min(start_year[is_head_coach], na.rm = TRUE),
+    before_hc = start_year < first_hc_year | is.na(first_hc_year)
+  ) |>
+  ungroup() 
+
+cat("Total positions held by future head coaches:", nrow(future_hc_positions), "\n")
+```
+
+## DECISION POINT 2: Which Division Matters for Training?
+
+**Question for you**: When looking at which schools produce future head coaches, should we only count their D1 experience, or also their D2/D3/other experience?
+
+```{r production-schools}
+
+future_hc_positions |> 
+  filter(college_clean == "Virginia Commonwealth") |> distinct(coach)
+
+# STUDENT DECISION: Modify the division filter
+# Current: Only counting D1 positions
+# Alternative: Remove division filter to count all positions
+
+hc_production_schools <- future_hc_positions |>
+  group_by(college_clean, position_title_standardized) |>
+  summarize(
+    future_hcs = n_distinct(coach),
+    .groups = "drop"
+  ) |>
+  arrange(desc(future_hcs))
+
+cat("\nTop 20 D1 schools producing future head coaches (all positions):\n")
+hc_production_schools |>
+  group_by(college_clean) |>
+  summarize(total_future_hcs = sum(future_hcs), .groups = "drop") |>
+  arrange(desc(total_future_hcs)) |>
+  head(20) |>
+  print(n = 20)
+```
+
+**Think about**: Does a stint at a D3 school early in someone's career "count" as part of their development?
+
+## Position Type Breakdown
+
+```{r position-breakdown}
+cat("\n\nTop schools by position type:\n")
+hc_production_schools |>
+  filter(position_title_standardized %in% c("Assistant Coach", "Associate Head Coach")) |>
+  group_by(position_title_standardized) |>
+  slice_max(future_hcs, n = 10) |>
+  arrange(position_title_standardized, desc(future_hcs))
+```
+---
+
+# Analysis 2: Career Ladder Analysis
+
+## DECISION POINT 3: Minimum Position Threshold
+
+**Question for you**: Should we require a minimum number of positions before someone counts as having a "career ladder"? (e.g., exclude people who went straight from 1 assistant job to head coach?)
+
+```{r career-ladder}
+MIN_POSITIONS <- 1  # CHANGE THIS NUMBER (try 2, 3, or keep at 1)
+
+# Sequence of positions before becoming head coach
+career_sequences <- future_hc_positions |>
+  filter(before_hc, division == "I") |>
+  arrange(coach, start_year) |>
+  group_by(coach) |>
+  summarize(
+    positions_held = list(position_title_standardized),
+    n_positions = n(),
+    final_position = last(position_title_standardized),
+    .groups = "drop"
+  ) |>
+  filter(n_positions >= MIN_POSITIONS)  # APPLIES YOUR THRESHOLD
+
+cat("Coaches meeting threshold:", nrow(career_sequences), "\n")
+
+cat("\nMost common final position before becoming D1 head coach:\n")
+career_sequences |>
+  count(final_position, sort = TRUE) |>
+  mutate(pct = n / sum(n) * 100) |>
+  head(10)
+
+# Average number of positions held before head coach role
+cat("\n\nAverage D1 positions held before becoming head coach:",
+    round(mean(career_sequences$n_positions, na.rm = TRUE), 1))
+```
+
+## Common Career Pathways
+
+```{r pathways}
+# How many positions should we examine?
+PATHWAY_LENGTH <- 3  # CHANGE THIS (2, 3, 4, or 5)
+
+cat("\n\nCommon", PATHWAY_LENGTH, "-position pathways to head coach:\n")
+career_sequences |>
+  filter(n_positions == PATHWAY_LENGTH) |>
+  mutate(pathway = map_chr(positions_held, ~paste(.x, collapse = " → "))) |>
+  count(pathway, sort = TRUE) |>
+  head(15) |>
+  print(n = 15)
+```
+---
+
+# Analysis 3: Coaching Trees and Mentorship Networks
+
+## DECISION POINT 4: Time Overlap Requirements
+
+**Question for you**: How should we define "worked under"? Should we require they overlapped for at least one full year, or is any overlap sufficient?
+
+```{r coaching-trees}
+# Set minimum overlap threshold
+MIN_OVERLAP_YEARS <- 1  # CHANGE THIS (0 = any overlap, 1, 2, 3 for stricter definition)
+
+# Create edges: assistant coaches who worked under head coaches
+coaching_relationships <- coaching |>
+  filter(division == "I") |>
+  select(coach, college_clean, position_title_standardized, start_year, end_year) |>
+  # For each school/timeframe, find head coaches
+  left_join(
+    coaching |>
+      filter(division == "I", position_title_standardized == "Head Coach") |>
+      select(hc_name = coach, college_clean, 
+             hc_start = start_year, hc_end = end_year),
+    by = "college_clean",
+    relationship = "many-to-many"
+  ) |>
+  # Keep only overlapping tenures (assistant worked under this head coach)
+  filter(
+    !is.na(hc_start),
+    coach != hc_name,
+    position_title_standardized %in% c("Assistant Coach", "Associate Head Coach"),
+    # Check for time overlap
+    start_year <= coalesce(hc_end, 2025),
+    coalesce(end_year, 2025) >= hc_start
+  ) |>
+  # STUDENT DECISION: Add minimum overlap requirement
+  mutate(
+    overlap_years = pmin(coalesce(end_year, 2025), coalesce(hc_end, 2025)) - 
+                    pmax(start_year, hc_start)
+  ) |>
+  filter(overlap_years >= MIN_OVERLAP_YEARS) |>  # APPLIES YOUR THRESHOLD
+  distinct(coach, hc_name, college_clean)
+
+cat("Coaching relationships identified:", nrow(coaching_relationships), "\n")
+```
+
+## Top Mentors
+
+```{r mentors}
+# Most prolific mentors (head coaches who produced assistants who became HCs)
+prolific_mentors <- coaching_relationships |>
+  filter(coach %in% d1_head_coaches) |>
+  count(hc_name, sort = TRUE) |>
+  rename(mentor = hc_name, proteges_who_became_hc = n)
+
+cat("\nTop 20 mentors (head coaches whose assistants became D1 head coaches):\n")
+print(prolific_mentors |> head(20), n = 20)
+```
+
+## DECISION POINT 5: Network Visualization Scope
+
+**Question for you**: How many top mentors should we include in the visualization? Too many = cluttered, too few = missing important connections.
+
+```{r network-visualization, fig.width=12, fig.height=10}
+# Number of top mentors to visualize
+N_MENTORS_TO_SHOW <- 10  # CHANGE THIS (try 10, 15, 20, or 25)
+
+# Create network of top mentors (for visualization clarity)
+top_mentors <- prolific_mentors |>
+  head(N_MENTORS_TO_SHOW) |>
+  pull(mentor)
+
+network_edges <- coaching_relationships |>
+  filter(
+    hc_name %in% top_mentors,
+    coach %in% d1_head_coaches
+  ) |>
+  select(from = hc_name, to = coach, school = college_clean)
+
+# Build network graph
+coaching_network <- as_tbl_graph(network_edges, directed = TRUE)
+
+# Plot
+ggraph(coaching_network, layout = 'fr') +
+  geom_edge_link(aes(alpha = 0.3), arrow = arrow(length = unit(2, 'mm'))) +
+  geom_node_point(size = 5, color = "steelblue") +
+  geom_node_text(aes(label = name), repel = TRUE, size = 3) +
+  theme_void() +
+  labs(
+    title = "Coaching Trees: Top Mentors and Their Protégés",
+    subtitle = paste("Top", N_MENTORS_TO_SHOW, "D1 head coaches who mentored future D1 head coaches")
+  )
+```
+
+---
+
+# Analysis 4: School-to-School Coaching Pipelines
+
+```{r school-pipelines}
+# Track coach movement between schools
+coach_movements <- coaching |>
+  filter(division == "I") |>
+  arrange(coach, start_year) |>
+  group_by(coach) |>
+  mutate(
+    next_school = lead(college_clean),
+    next_position = lead(position_title_standardized),
+    next_start = lead(start_year)
+  ) |>
+  filter(!is.na(next_school), college_clean != next_school) |>
+  ungroup()
+
+# Most common school-to-school transitions
+cat("\nTop 30 school-to-school coaching pipelines:\n")
+coach_movements |>
+  count(college_clean, next_school, sort = TRUE) |>
+  rename(from_school = college_clean, to_school = next_school, coaches = n) |>
+  head(30) |>
+  print(n = 30)
+```
+
+## Schools that Export to Head Coaching
+
+```{r exports}
+# Schools that "export" coaches to D1 head coaching jobs
+coach_exports <- coach_movements |>
+  filter(next_position == "Head Coach") |>
+  count(college_clean, sort = TRUE) |>
+  rename(school = college_clean, coaches_to_hc = n)
+
+cat("\n\nTop 20 schools that export coaches to D1 head coaching positions:\n")
+print(coach_exports |> head(20), n = 20)
+```
+---
+
+# Analysis 5: Conference-Level Analysis
+
+## DECISION POINT 6: Conference Focus
+
+**Question for you**: Should we analyze all conferences equally, or focus on major/Power 5 conferences? Should we combine some smaller conferences?
+
+```{r conference-analysis}
+# Define which conferences to highlight
+# Option A: Analyze all conferences (current)
+# Option B: Create a "Power 5" vs "Mid-Major" vs "Small" grouping
+# Option C: Focus only on specific conferences
+
+# Conferences producing future head coaches
+conference_production <- future_hc_positions |>
+  filter(before_hc, division == "I") |>
+  count(conference, position_title_standardized) |>
+  arrange(desc(n))
+
+cat("\nTop conferences producing future D1 head coaches:\n")
+conference_production |>
+  group_by(conference) |>
+  summarize(total = sum(n), .groups = "drop") |>
+  arrange(desc(total)) |>
+  head(15) |>
+  print(n = 15)
+```
+
+## Conference Loyalty
+
+```{r loyalty}
+# Conference loyalty: coaches who stay within conference
+conference_loyalty <- coach_movements |>
+  left_join(
+    coaching |> 
+      filter(division == "I") |>
+      select(coach, college_clean, conference),
+    by = c("next_school" = "college_clean", "coach" = "coach"),
+    relationship = "many-to-many"
+  ) |>
+  filter(!is.na(conference.x), !is.na(conference.y)) |>
+  mutate(same_conference = conference.x == conference.y) |>
+  group_by(conference.x) |>
+  summarize(
+    total_moves = n(),
+    same_conference_moves = sum(same_conference),
+    loyalty_rate = same_conference_moves / total_moves * 100,
+    .groups = "drop"
+  ) |>
+  arrange(desc(loyalty_rate))
+
+cat("\n\nConference retention rates (coaches staying within conference):\n")
+print(conference_loyalty |> head(15), n = 15)
+```
+---
+
+# Analysis 6: Time to Head Coach Role
+
+## DECISION POINT 7: Career Start Definition
+
+**Question for you**: When calculating "time to head coach," should we count ALL positions (including high school, community college) or only college-level positions?
+
+```{r time-to-hc}
+# Filter on category
+# Current: All positions included
+# Alternative: Add filter like "category == 'College'" to exclude high school, etc.
+
+time_to_hc <- coaching |>
+  filter(coach %in% d1_head_coaches) |>
+  # filter(category == "College") |>  # UNCOMMENT THIS LINE TO EXCLUDE NON-COLLEGE
+  arrange(coach, start_year) |>
+  group_by(coach) |>
+  summarize(
+    first_position_year = min(start_year, na.rm = TRUE),
+    first_hc_year = min(start_year[position_title_standardized == "Head Coach" & 
+                                     division == "I"], na.rm = TRUE),
+    years_to_hc = first_hc_year - first_position_year,
+    .groups = "drop"
+  ) |>
+  filter(is.finite(years_to_hc), years_to_hc >= 0)
+
+cat("\nTime to D1 head coach position:\n")
+cat("Mean:", round(mean(time_to_hc$years_to_hc, na.rm = TRUE), 1), "years\n")
+cat("Median:", median(time_to_hc$years_to_hc, na.rm = TRUE), "years\n")
+cat("Min:", min(time_to_hc$years_to_hc, na.rm = TRUE), "years\n")
+cat("Max:", max(time_to_hc$years_to_hc, na.rm = TRUE), "years\n")
+
+# Distribution
+ggplot(time_to_hc, aes(x = years_to_hc)) +
+  geom_histogram(binwidth = 2, fill = "steelblue", alpha = 0.7) +
+  geom_vline(xintercept = median(time_to_hc$years_to_hc, na.rm = TRUE), 
+             linetype = "dashed", color = "red", size = 1) +
+  labs(
+    title = "Years to First D1 Head Coaching Position",
+    subtitle = "From first coaching role to D1 head coach",
+    x = "Years",
+    y = "Count of coaches"
+  ) +
+  theme_minimal()
+```
+---
+
+# Analysis 7: Elite Program "Finishing Schools"
+
+## DECISION POINT 8: Defining "Elite Programs"
+
+**Question for you**: Which schools should count as "elite" or "blue blood" programs? 
+This is subjective - modify the list based on your knowledge or research.
+
+```{r finishing-schools}
+# Modify this list of top programs
+# Consider: recent success, historical success, resources, national profile
+
+top_programs <- c("UConn", "Tennessee", "Stanford", "Notre Dame", "Baylor",
+                  "South Carolina", "LSU", "Texas", "Duke", "UCLA",
+                  "Louisville", "Maryland", "Ohio St.", "Iowa", "North Carolina")
+# ADD OR REMOVE SCHOOLS AS YOU SEE FIT
+
+cat("Analyzing", length(top_programs), "programs\n")
+
+# Assistant coaches from top programs who became head coaches
+finishing_school_analysis <- future_hc_positions |>
+  filter(
+    before_hc,
+    division == "I",
+    college_clean %in% top_programs,
+    position_title_standardized %in% c("Assistant Coach", "Associate Head Coach")
+  ) |>
+  group_by(college_clean) |>
+  summarize(
+    future_head_coaches = n_distinct(coach),
+    .groups = "drop"
+  ) |>
+  arrange(desc(future_head_coaches))
+
+cat("\n'Finishing schools' - top programs producing future head coaches:\n")
+print(finishing_school_analysis, n = Inf)
+
+# Average years spent at top program before becoming HC
+years_at_top_programs <- future_hc_positions |>
+  filter(
+    before_hc,
+    division == "I",
+    college_clean %in% top_programs,
+    position_title_standardized %in% c("Assistant Coach", "Associate Head Coach")
+  ) |>
+  mutate(years_at_school = coalesce(end_year, 2025) - start_year) |>
+  group_by(college_clean) |>
+  summarize(
+    avg_years = mean(years_at_school, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  arrange(desc(avg_years))
+
+cat("\n\nAverage years spent at top programs (for future HCs):\n")
+print(years_at_top_programs, n = Inf)
+```
+
+---
+
+# Analysis 8: "Stepping Stone" Schools
+
+```{r stepping-stones}
+# Head coaches who left for another D1 head coaching job
+stepping_stone_moves <- coaching |>
+  filter(division == "I", position_title_standardized == "Head Coach") |>
+  arrange(coach, start_year) |>
+  group_by(coach) |>
+  mutate(
+    next_school = lead(college_clean),
+    next_position = lead(position_title_standardized),
+    moved_to_hc = next_position == "Head Coach" & !is.na(next_school)
+  ) |>
+  filter(moved_to_hc) |>
+  ungroup()
+
+cat("\nSchools most commonly serving as stepping stones (HC → HC moves):\n")
+stepping_stone_moves |>
+  count(college_clean, sort = TRUE) |>
+  rename(school = college_clean, hc_departures = n) |>
+  head(20) |>
+  print(n = 20)
+
+# Most common destination schools
+cat("\n\nMost common destination schools for head coaches:\n")
+stepping_stone_moves |>
+  count(next_school, sort = TRUE) |>
+  rename(destination = next_school, hc_arrivals = n) |>
+  head(20) |>
+  print(n = 20)
+```
+
+---
+
+# Analysis 9: Position Mobility Analysis
+
+```{r position-mobility}
+# Years spent in each position before moving up
+position_duration <- coaching |>
+  filter(division == "I") |>
+  mutate(years_in_position = coalesce(end_year, 2025) - start_year) |>
+  group_by(position_title_standardized) |>
+  summarize(
+    n_positions = n(),
+    avg_duration = mean(years_in_position, na.rm = TRUE),
+    median_duration = median(years_in_position, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  arrange(desc(n_positions))
+
+cat("\nAverage years in each position type:\n")
+print(position_duration, n = Inf)
+
+# Promotion rates by position
+promotions <- coaching |>
+  filter(division == "I") |>
+  arrange(coach, start_year) |>
+  group_by(coach) |>
+  mutate(
+    next_position = lead(position_title_standardized),
+    promoted = case_when(
+      position_title_standardized == "Staff" & 
+        next_position %in% c("Assistant Coach", "Associate Head Coach", "Head Coach") ~ TRUE,
+      position_title_standardized == "Assistant Coach" & 
+        next_position %in% c("Associate Head Coach", "Head Coach") ~ TRUE,
+      position_title_standardized == "Associate Head Coach" & 
+        next_position == "Head Coach" ~ TRUE,
+      TRUE ~ FALSE
+    )
+  ) |>
+  filter(!is.na(next_position)) |>
+  group_by(position_title_standardized) |>
+  summarize(
+    total_moves = n(),
+    promotions = sum(promoted),
+    promotion_rate = promotions / total_moves * 100,
+    .groups = "drop"
+  ) |>
+  arrange(desc(promotion_rate))
+
+cat("\n\nPromotion rates by position:\n")
+print(promotions, n = Inf)
+```
