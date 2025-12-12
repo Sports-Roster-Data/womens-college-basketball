@@ -20,7 +20,7 @@ The data was created using information for current NCAA Division I, II, and III 
 
 ## Basic Analysis
 
-Included in this repository is a RMarkdown notebook that explores the data using R.
+Included in this repository is a [RMarkdown notebook](coaches.Rmd) that explores the data using R.
 
 ## Important Limitations
 
