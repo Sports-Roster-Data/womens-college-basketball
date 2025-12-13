@@ -25,7 +25,7 @@ Included in this repository is a [RMarkdown notebook](coaches.Rmd) that explores
 ## Important Limitations
 
 - **Incomplete histories**: Not all teams have complete coaching histories for all coaches or staff members. The dataset reflects the career paths of coaches who are currently active in NCAA programs.
-- **Current coach bias**: Historical coaches who are no longer active in NCAA programs are represented in this dataset.
+- **Current coach bias**: Historical coaches who are no longer active in NCAA programs are not represented in this dataset.
 - **Staff coverage**: Assistant coaches and other staff members often may have less complete historical records than head coaches, or are missing work histories.
 
 ## Data Structure
