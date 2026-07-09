@@ -1,0 +1,226 @@
+---
+title: "Building Stable Cross-Season Player IDs"
+output: html_document
+---
+
+This notebook builds `wbb_id`, a stable identifier that links the same
+player across seasons and teams. The roster files' own `player_id` is just
+the team-website roster number and changes every season (and is missing
+entirely from 2025-26), so it cannot be used to track a player over time.
+See `scripts/player_id_functions.R` for the matching logic; this notebook
+runs the pipeline, writes the output files, and reports validation checks.
+
+## How matching works
+
+Each season is matched against a cumulative table of previously-seen
+players, in three tiers:
+
+1. **Tier 1 (returning players):** same normalized name on the same team,
+   with a sane class-year progression (redshirts and the 2020-21 -> 2021-22
+   COVID eligibility freeze allow a repeated class) and no height/state
+   conflict.
+2. **Tier 2 (transfers):** same normalized name on a *different* team,
+   corroborated by `previous_school_clean` matching the prior team, or a
+   matching hometown/high school.
+3. **Tier 3 (fuzzy, review-only):** name-distance candidates blocked by team
+   or by last-name + hometown/high-school. These are never auto-merged --
+   they're written to `wbb_id_review_queue.csv` for a human decision.
+
+Anything left unmatched is a new person (freshman, transfer from outside the
+dataset, or a genuine miss) and gets a freshly minted `wbb_id`.
+
+Decisions recorded in `player_id_overrides.csv` (season/team/name pairs
+marked `same` or `different`) are applied after matching and are honored on
+every re-run, so manual adjudication persists.
+
+## Setup
+
+```{r setup, message=FALSE, warning=FALSE}
+source("scripts/player_id_functions.R")
+```
+
+## Load and prepare all six seasons
+
+```{r load}
+all_rows <- load_all_seasons()
+cat("Total rows loaded:", nrow(all_rows), "\n")
+print(all_rows %>% count(season, season_order))
+
+dedup <- resolve_within_season_dupes(all_rows)
+all_rows_d <- dedup$rows
+cat("\nWithin-season duplicate (same name + team) groups flagged as the same",
+    "person (scraper double-listing):", sum(!is.na(all_rows_d$dup_of)), "\n")
+cat("Within-season duplicate groups flagged as genuinely distinct players",
+    "(sent to review queue):", nrow(dedup$review), "\n")
+```
+
+## Run the tiered matcher across all seasons
+
+```{r match}
+result <- build_player_ids(all_rows_d)
+
+assignments <- propagate_dup_assignments(all_rows_d, result$assignments)
+assignments <- apply_overrides(assignments, all_rows_d)
+
+stopifnot(nrow(assignments) == nrow(all_rows_d))
+cat("Assigned a wbb_id to all", nrow(assignments), "rows\n")
+cat("Distinct players (wbb_id) across all seasons:", n_distinct(assignments$wbb_id), "\n")
+```
+
+## Validation
+
+```{r validate}
+val <- validate_ids(all_rows_d, assignments)
+
+cat("Match-tier funnel by season:\n")
+print(val$funnel)
+
+if (length(val$issues) > 0) {
+  warning("Validation issues found -- review before publishing:")
+  print(val$issues)
+} else {
+  cat("\nNo validation issues: no wbb_id spans two teams in one season,",
+      "and no wbb_id spans more than 6 seasons.\n")
+}
+```
+
+### GUID crosswalk cross-check (2022-23)
+
+`wbb_rosters23_crosswalk.csv` carries a persistent NCAA/Sidearm person GUID
+for the 2022-23 season only. It can't link seasons by itself, but it is
+strong independent ground truth for within-season distinctness: two rows we
+assigned the same `wbb_id` should share a GUID (precision), and two rows
+sharing a GUID should have gotten the same `wbb_id` (recall).
+
+```{r guid-check}
+guid_check <- check_against_guids(all_rows_d, assignments)
+cat("Precision (same wbb_id -> same GUID):", round(guid_check$precision, 4), "\n")
+cat("Recall (same GUID -> same wbb_id):", round(guid_check$recall, 4), "\n")
+cat("Precision violations:", nrow(guid_check$precision_violations), "\n")
+cat("Recall violations:", nrow(guid_check$recall_violations), "\n")
+```
+
+### Spot checks
+
+```{r spot-checks}
+joined <- all_rows_d %>% left_join(assignments, by = "row_id")
+
+cat("Payton Hull (Abilene Christian) -- should be one wbb_id across three seasons:\n")
+print(joined %>% filter(str_detect(name, "Payton Hull")) %>%
+        select(season, team, name, season_player_id, wbb_id, match_tier) %>%
+        arrange(season))
+
+cat("\nKamryn Mraz (Abilene Christian) -- redshirt Sophomore -> redshirt Junior,",
+    "should be one wbb_id:\n")
+print(joined %>% filter(str_detect(name, "Kamryn Mraz")) %>%
+        select(season, team, name, year_clean, redshirt, wbb_id, match_tier) %>%
+        arrange(season))
+
+cat("\nDaugherty sisters, Abilene Christian 2025-26 -- same team/hometown/high",
+    "school but different jersey/height, must stay two distinct wbb_ids:\n")
+print(joined %>% filter(str_detect(name, "Daugherty"), season == "2025-26") %>%
+        select(season, team, name, jersey, total_inches_num, wbb_id, match_tier))
+```
+
+## Build output files
+
+```{r build-players}
+mode_value <- function(x) {
+  x <- x[!is.na(x)]
+  if (length(x) == 0) return(NA_character_)
+  names(sort(table(x), decreasing = TRUE))[1]
+}
+
+guid_map <- guid_check$joined %>%
+  filter(!is.na(hhs_person_id_text)) %>%
+  distinct(wbb_id, hhs_person_id_text) %>%
+  group_by(wbb_id) %>%
+  slice(1) %>%
+  ungroup()
+
+players <- joined %>%
+  arrange(wbb_id, season_order) %>%
+  group_by(wbb_id) %>%
+  summarise(
+    canonical_name = tail(name[order(season_order)], 1),
+    first_season = head(season[order(season_order)], 1),
+    last_season = tail(season[order(season_order)], 1),
+    n_seasons = n_distinct(season),
+    hometown_clean = mode_value(hometown_clean),
+    state_clean = mode_value(state_clean),
+    country_clean = mode_value(country_clean),
+    hs_clean = mode_value(hs_clean),
+    height_total_inches_mode = suppressWarnings(as.numeric(mode_value(total_inches_num))),
+    position_mode = mode_value(position_clean),
+    match_confidence = case_when(
+      n_distinct(season) == 1 ~ "single_season",
+      any(match_tier %in% c("tier2", "tier2_dup")) ~ "medium",
+      TRUE ~ "high"
+    ),
+    .groups = "drop"
+  ) %>%
+  left_join(guid_map, by = "wbb_id") %>%
+  rename(hhs_person_id = hhs_person_id_text)
+
+write_csv(players, "players.csv", quote = "all", na = "")
+cat("Wrote players.csv:", nrow(players), "players\n")
+print(table(players$match_confidence))
+```
+
+```{r build-player-seasons}
+player_seasons <- joined %>%
+  arrange(wbb_id, season_order) %>%
+  select(wbb_id, season, ncaa_id, team, name, season_player_id, url,
+         year_clean, redshirt, match_tier)
+
+write_csv(player_seasons, "wbb_player_seasons.csv", quote = "all", na = "")
+cat("Wrote wbb_player_seasons.csv:", nrow(player_seasons), "rows\n")
+```
+
+```{r build-combined}
+wbb_rosters_combined <- joined %>%
+  select(-name_norm, -last_name_norm, -url_norm, -year_rank, -redshirt_num,
+         -total_inches_num, -dup_of, -is_dup_representative, -row_id,
+         -season_order, -match_tier) %>%
+  arrange(season, ncaa_id, jersey)
+
+stopifnot(nrow(wbb_rosters_combined) == nrow(all_rows_d))
+stopifnot(sum(is.na(wbb_rosters_combined$wbb_id)) == 0)
+
+write_csv(wbb_rosters_combined, "wbb_rosters_combined.csv", quote = "all", na = "")
+cat("Wrote wbb_rosters_combined.csv:", nrow(wbb_rosters_combined), "rows\n")
+```
+
+```{r build-review-queue}
+review_queue_final <- bind_rows(result$review_queue, dedup$review) %>%
+  mutate(decision = NA_character_) %>%
+  arrange(desc(score))
+
+write_csv(review_queue_final, "wbb_id_review_queue.csv", quote = "all", na = "")
+cat("Wrote wbb_id_review_queue.csv:", nrow(review_queue_final), "candidate rows",
+    "for manual review\n")
+```
+
+```{r overrides-template}
+if (!file.exists("player_id_overrides.csv")) {
+  tibble(
+    season_a = character(), team_a = character(), name_a = character(),
+    season_b = character(), team_b = character(), name_b = character(),
+    decision = character(), note = character()
+  ) %>% write_csv("player_id_overrides.csv", quote = "all")
+  cat("Created empty player_id_overrides.csv template\n")
+} else {
+  cat("player_id_overrides.csv already exists -- left untouched\n")
+}
+```
+
+## Maintenance loop for a new season
+
+1. Add the new season's file to `SEASON_FILES` in
+   `scripts/player_id_functions.R` and re-knit this notebook.
+2. Open `wbb_id_review_queue.csv`, fill in the blank `decision` column
+   (`same` or `different`) for rows you can resolve, and copy those
+   decisions into `player_id_overrides.csv` using the natural-key columns
+   (`season_a/team_a/name_a` vs `season_b/team_b/name_b`).
+3. Re-knit. Overrides are applied on every run, so adjudicated decisions
+   persist across seasons.
