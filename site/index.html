@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Women's College Basketball Rosters — Sports Roster Data</title>
+<meta name="description" content="Cleaned NCAA women's college basketball rosters (2020-21 onward) with a stable cross-season player ID. Search single seasons, follow players across teams, and explore where players come from, how they move, and how the game has changed.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏀</text></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/css/tabulator_simple.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#app">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-row wrap">
+    <a class="brand" href="#/">
+      <span class="brand-name">Women's College Basketball Rosters</span>
+      <span class="brand-sub">Sports Roster Data · University of Maryland</span>
+    </a>
+    <div class="search-box">
+      <input id="global-search" type="search" placeholder="Search players by name…" autocomplete="off"
+             role="combobox" aria-expanded="false" aria-controls="search-results"
+             aria-autocomplete="list" aria-label="Search players across all seasons">
+      <ul id="search-results" class="search-results" role="listbox" hidden></ul>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#/roster" data-nav="roster">Roster</a>
+      <a href="#/geography" data-nav="geography">Geography</a>
+      <a href="#/transfers" data-nav="transfers">Transfers</a>
+      <a href="#/trends" data-nav="trends">Trends</a>
+      <a href="#/about" data-nav="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="app" class="wrap">
+
+  <!-- Home -->
+  <section id="view-home" class="view" aria-label="Home">
+    <div class="card hero">
+      <p class="hero-label">players tracked across <span id="hero-seasons">six seasons of NCAA rosters</span></p>
+      <p class="hero-figure" id="hero-players">39,170</p>
+      <p class="hero-sub">Cleaned, standardized rosters for NCAA women's basketball — divisions I, II and III.
+        Look up a season, follow one player across every team she played for, download any view as CSV.
+        Maintained by the <a href="#/about">Sports Roster Data project at the University of Maryland</a>.</p>
+    </div>
+    <div class="tiles">
+      <div class="card tile"><div class="t-value" id="tile-pseasons">83,977</div><div class="t-label">player-seasons</div></div>
+      <div class="card tile"><div class="t-value" id="tile-teams">1,096</div><div class="t-label">teams</div></div>
+      <div class="card tile"><div class="t-value" id="tile-countries">133</div><div class="t-label">countries &amp; territories</div></div>
+      <div class="card tile"><div class="t-value" id="tile-span">6</div><div class="t-label" id="tile-span-label">seasons, 2020-21 – 2025-26</div></div>
+    </div>
+    <div class="entry-cards">
+      <a class="card entry-card" href="#/roster">
+        <h2>Roster explorer</h2>
+        <p>One season at a time: filter 15,000+ rows by team, conference, state, position, class year and division — then download exactly what you filtered as CSV.</p>
+      </a>
+      <a class="card entry-card" id="home-search-link" href="#/roster">
+        <h2>Search a player across years</h2>
+        <p>Type a name in the search box to get every season she played, with each team and class year. Transfer moves show up in the timeline.</p>
+      </a>
+      <a class="card entry-card" href="#/geography">
+        <h2>Geography</h2>
+        <p>Where players come from: hometowns by state and per capita, international recruiting over time, hometown hotbeds and in-state recruiting rates.</p>
+      </a>
+      <a class="card entry-card" href="#/transfers">
+        <h2>Transfers</h2>
+        <p>Who moved where, season over season, joined by the stable cross-season player ID: conference and team flows, most-traveled players, feeder programs, roster turnover.</p>
+      </a>
+      <a class="card entry-card" href="#/trends">
+        <h2>Trends over time</h2>
+        <p>Class-year mix (the COVID eligibility freeze is visible), height distributions, position mix and how the rosters themselves have grown.</p>
+      </a>
+      <a class="card entry-card" href="#/about">
+        <h2>About &amp; downloads</h2>
+        <p>Attribution, a data dictionary for every column, known caveats, and links to download the underlying CSVs.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Roster explorer (roster.js) -->
+  <section id="view-roster" class="view" hidden aria-label="Roster explorer"></section>
+
+  <!-- Player card (roster.js) -->
+  <section id="view-player" class="view" hidden aria-label="Player page"></section>
+
+  <!-- Team page (roster.js) -->
+  <section id="view-team" class="view" hidden aria-label="Team page"></section>
+
+  <!-- Geography bundle (geography.js) -->
+  <section id="view-geography" class="view" hidden aria-label="Geography"></section>
+
+  <!-- Transfers bundle (transfers.js) -->
+  <section id="view-transfers" class="view" hidden aria-label="Transfers"></section>
+
+  <!-- Trends bundle (trends.js) -->
+  <section id="view-trends" class="view" hidden aria-label="Trends"></section>
+
+  <!-- About (static; core.js fills the download list from meta.json) -->
+  <section id="view-about" class="view prose" hidden aria-label="About">
+    <div class="page-head">
+      <h1>About this data &amp; this site</h1>
+      <p class="lede">Cleaned NCAA women's college basketball rosters, a stable cross-season player ID, and the aggregates built on them.</p>
+    </div>
+
+    <div class="card">
+      <h2>What this is</h2>
+      <p>The <a href="https://github.com/Sports-Roster-Data/womens-college-basketball">repository</a> behind this site holds one cleaned roster CSV per season
+        (2020-21 onward) plus a cross-season player identifier, <code>wbb_id</code>, that follows a player across teams and seasons.
+        The original roster information is scraped from team websites and augmented by individual research and editing;
+        team information comes from the NCAA.</p>
+      <p><em>This data is a project of the JOUR479X class, Sports Data Analysis &amp; Visualization, at the Philip Merrill
+        College of Journalism at the University of Maryland. Please credit the Sports Roster Data project at the University of Maryland.</em></p>
+      <p>Student contributors: Ben Baruch, Michael Charles, Shane Connuck, Ian Decker, Jetson Ku, Tanner Malinowski,
+        Varun Shankar, Rina Torchinsky and Dylan Manfre.
+        This project was supervised and edited by Derek Willis, lecturer in data and computational journalism.</p>
+    </div>
+
+    <div class="card">
+      <h2>Download the data</h2>
+      <ul class="dl-list" id="about-downloads"></ul>
+      <p class="note">All files live in the repository, are rebuilt by the cleaning pipeline, and carry one row per player per season.
+        The <a href="#/roster">roster explorer</a> can also export any filtered view as CSV.
+        This site is rebuilt automatically whenever the underlying data changes.</p>
+    </div>
+
+    <div class="card">
+      <h2>Data dictionary</h2>
+      <p>The site's roster explorer and downloads use these columns:</p>
+      <dl>
+        <dt>wbb_id</dt><dd>Stable cross-season player identifier (<code>wbb-######</code>). The same player keeps her ID across seasons and teams; built in <code>player_ids.Rmd</code>.</dd>
+        <dt>ncaa_id</dt><dd>The team's NCAA id — the stable team key. Team names change over the years; ids don't.</dd>
+        <dt>team</dt><dd>Team name, standardized against <code>teams.csv</code>.</dd>
+        <dt>name</dt><dd>Player name as listed on the team's roster.</dd>
+        <dt>jersey</dt><dd>Jersey number, when the roster lists one.</dd>
+        <dt>year_clean</dt><dd>Standardized class year (Freshman … Sixth Year). Rosters may mean either academic year or athletic eligibility by this field, and COVID eligibility rules added extra years — read it as the roster presented it.</dd>
+        <dt>redshirt</dt><dd>1 when the roster marks the player as a redshirt.</dd>
+        <dt>position_clean</dt><dd>Standardized position; may be a combination such as GUARD/FORWARD.</dd>
+        <dt>primary_position</dt><dd>GUARD, FORWARD, CENTER or WING, derived from the position field.</dd>
+        <dt>total_inches</dt><dd>Height in total inches, so comparisons are possible. Roster values outside 58–90 inches are treated as parse errors and left blank.</dd>
+        <dt>hometown_clean</dt><dd>Hometown as printed on the roster, uppercased. Parsed, not normalized — spelling variants remain.</dd>
+        <dt>state_clean</dt><dd>US state or territory abbreviation; blank for hometowns outside the US.</dd>
+        <dt>country_clean</dt><dd>Country, standardized against a FIBA-derived list; USA for US hometowns.</dd>
+        <dt>hs_clean</dt><dd>Standardized high school, where one was matched (~44% of US player-seasons; see <a href="https://github.com/Sports-Roster-Data/womens-college-basketball/blob/main/HIGH_SCHOOL_STANDARDIZATION.md">HIGH_SCHOOL_STANDARDIZATION.md</a>).</dd>
+        <dt>previous_school_clean</dt><dd>Previous school as listed by the roster — sparse, and the least consistent field in the data.</dd>
+        <dt>conference</dt><dd>The team's conference, from <code>teams.csv</code>.</dd>
+        <dt>division</dt><dd>NCAA division (I, II, III), plus NAIA where identified.</dd>
+        <dt>url</dt><dd>The roster page this row was taken from.</dd>
+      </dl>
+      <p>Player pages add:</p>
+      <dl>
+        <dt>match confidence</dt><dd>How the cross-season ID was assigned: <strong>high</strong> or <strong>medium</strong> confidence for matched players,
+          or a single-season record when the player appears in only one season's data.</dd>
+        <dt>seasons</dt><dd>The player's season-by-season timeline — season, team, class year, redshirt flag and roster URL.</dd>
+      </dl>
+    </div>
+
+    <div class="card">
+      <h2>Known limitations</h2>
+      <ul>
+        <li><strong>Transfer counts are a floor.</strong> Cross-season matching is automatic for clear cases; borderline matches wait for human adjudication
+          (<code>wbb_id_review_queue.csv</code> in the repository) and are not yet counted as moves. Counts can only rise.</li>
+        <li><strong>Season coverage</strong> runs through what <code>wbb_rosters_combined.csv</code> contains — currently 2020-21 through 2025-26.
+          The newest season file appears here once the annual cross-season ID pipeline is re-run.</li>
+        <li><strong>Hometowns</strong> are parsed but not normalized ("CHICAGO, ILL" can appear next to "CHICAGO, IL");
+          city tabulations on the geography page are best-effort.</li>
+        <li><strong>Class years</strong> may reflect academic or athletic standing — the COVID eligibility freeze makes them noisier than usual.</li>
+        <li><strong>Previous school</strong> is filled for only a minority of rows and its formatting varies.</li>
+        <li><strong>Heights</strong> outside 58–90 inches are treated as scrape/parse errors and excluded from aggregates.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Methodology &amp; credits</h2>
+      <ul>
+        <li>Cleaning and standardization: <a href="https://github.com/Sports-Roster-Data/womens-college-basketball/blob/main/cleaning.Rmd">cleaning.Rmd</a> —
+          heights, positions, class years, hometowns, high schools and previous schools.</li>
+        <li>Cross-season player IDs: <a href="https://github.com/Sports-Roster-Data/womens-college-basketball/blob/main/player_ids.Rmd">player_ids.Rmd</a> —
+          the tiers, corroborating evidence and human review queue behind <code>wbb_id</code>.</li>
+        <li>Known data-quality issues in the source scrapes: <a href="https://github.com/Sports-Roster-Data/womens-college-basketball/blob/main/DATA_QUALITY_ISSUES.md">DATA_QUALITY_ISSUES.md</a>.</li>
+        <li>The original scraper: <a href="https://github.com/dwillis/wbb/blob/master/ncaa/rosters.py">dwillis/wbb</a>.</li>
+      </ul>
+      <p class="note">The site is hand-built HTML/CSS/JS — tables by <a href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/">Tabulator</a>,
+        charts by <a href="https://cdnjs.cloudflare.com/ajax/libs/echarts/6.1.0/">ECharts</a>, US map geometry derived from US Census Cartographic Boundary files.
+        Light theme only for now. Data and code are released under the
+        <a href="https://github.com/Sports-Roster-Data/womens-college-basketball/blob/main/LICENSE">MIT License</a>.
+        Spotted an error? <a href="https://github.com/Sports-Roster-Data/womens-college-basketball/issues">File an issue</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Data: <a href="https://github.com/Sports-Roster-Data/womens-college-basketball">Sports Roster Data project at the University of Maryland</a></span>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/Sports-Roster-Data/womens-college-basketball/blob/main/LICENSE">MIT License</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/Sports-Roster-Data/womens-college-basketball/issues">Issues</a>
+    <span aria-hidden="true">·</span>
+    <a href="#/about">About &amp; data dictionary</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/6.1.0/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/js/tabulator.min.js"></script>
+<script src="js/core.js"></script>
+<script src="js/roster.js"></script>
+<script src="js/geography.js"></script>
+<script src="js/transfers.js"></script>
+<script src="js/trends.js"></script>
+</body>
+</html>
