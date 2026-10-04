@@ -428,16 +428,6 @@
       return 'Women’s College Basketball Rosters — Sports Roster Data';
     },
     render: function (sec) {
-      var m = App.meta;
-      document.getElementById('hero-players').textContent = App.fmtNum(m.players);
-      document.getElementById('hero-seasons').textContent =
-        m.seasons.length + ' seasons of NCAA rosters (' + App.seasonSpan(0, m.seasons.length - 1) + ')';
-      document.getElementById('tile-pseasons').textContent = App.fmtNum(m.player_seasons);
-      document.getElementById('tile-teams').textContent = App.fmtNum(m.teams);
-      document.getElementById('tile-countries').textContent = App.fmtNum(m.countries);
-      document.getElementById('tile-span').textContent = m.seasons.length;
-      document.getElementById('tile-span-label').textContent =
-        'seasons, ' + App.seasonSpan(0, m.seasons.length - 1);
       var link = document.getElementById('home-search-link');
       if (!link.dataset.wired) {
         link.dataset.wired = '1';

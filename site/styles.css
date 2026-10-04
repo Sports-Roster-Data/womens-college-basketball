@@ -147,14 +147,7 @@ main { padding: 24px 0 48px; }
 /* ---------- Home ---------- */
 
 .hero { padding: 28px 22px; }
-.hero-label { color: var(--muted); margin: 0 0 2px; font-size: 14px; }
-.hero-figure { font-size: 52px; font-weight: 600; line-height: 1.05; margin: 0; letter-spacing: -0.5px; }
-.hero-sub { color: var(--muted); margin: 8px 0 0; max-width: 70ch; }
-
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px; }
-.tile { padding: 14px 16px; }
-.tile .t-value { font-size: 28px; font-weight: 600; line-height: 1.1; }
-.tile .t-label { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.hero-sub { color: var(--muted); margin: 0; max-width: 70ch; }
 
 .entry-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
 .entry-card { display: block; padding: 16px; color: var(--text); }
@@ -264,6 +257,5 @@ main { padding: 24px 0 48px; }
   .header-row { padding: 12px 16px; gap: 12px; }
   .search-box { max-width: none; flex-basis: 100%; order: 3; }
   .site-nav { order: 2; }
-  .hero-figure { font-size: 40px; }
   main { padding: 16px 0 40px; }
 }
