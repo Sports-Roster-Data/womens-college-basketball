@@ -1,7 +1,7 @@
 /* geography.js — five views of where players come from:
    1. US hometown choropleth (count ↔ per-1M-residents, season radio) + all-states table
    2. International players over time (count ↔ share of all players)
-   3. Country treemap (USA excluded)
+   3. Country treemap (USA excluded; season + division dropdowns)
    4. Hometown hotbeds (top 25 US cities, distinct players ↔ player-seasons) + full city table
    5. In-state recruiting % by season and division (top/bottom 25)
    Views 1-4 take a Division dropdown (All / I / II / III) fed by the
@@ -343,21 +343,25 @@
     /* ---------- 3. Country treemap ---------- */
 
     var treeDiv = 'all';
+    var treeSeason = -1; // -1 = all seasons
     var treeEl = App.h('div', { class: 'chart', style: 'height:420px', role: 'img',
       'aria-label': 'Treemap of players by country' });
     var treeTakeaway = App.h('p', { class: 'takeaway' });
     var treeSub = chartSub('');
     var treeInst;
 
+    function treeVal(c) {
+      var arr = countryMatrix(treeDiv)[c] || [];
+      return treeSeason < 0 ? arr.reduce(function (a, b) { return a + b; }, 0) : (arr[treeSeason] || 0);
+    }
+
     function treeUpdate() {
-      var m = countryMatrix(treeDiv); // helper defined with view 2
-      var divTxt = treeDiv === 'all' ? '' : ' — Division ' + treeDiv + ' rosters';
-      treeSub.textContent = 'Tile area is player-seasons across all seasons' + divTxt +
+      var seasonTxt = treeSeason < 0 ? ' across all seasons' : ' in ' + seasons[treeSeason];
+      treeSub.textContent = 'Tile area is player-seasons' + seasonTxt +
+        (treeDiv === 'all' ? '' : ' — Division ' + treeDiv + ' rosters') +
         '; darker blue means more. US players are not shown; small tiles are unlabeled — hover or use the CSV.';
-      var data = Object.keys(m).filter(function (c) { return c !== 'USA'; })
-        .map(function (c) {
-          return { name: c, value: (m[c] || []).reduce(function (a, b) { return a + b; }, 0) };
-        })
+      var data = Object.keys(countryMatrix(treeDiv)).filter(function (c) { return c !== 'USA'; })
+        .map(function (c) { return { name: c, value: treeVal(c) }; })
         .sort(function (a, b) { return b.value - a.value; });
       var grand = data.reduce(function (a, d) { return a + d.value; }, 0);
       var maxV = data[0].value;
@@ -397,15 +401,21 @@
       }, true);
 
       var lead = data[0];
-      treeTakeaway.textContent = lead.name +
-        ' leads' + (treeDiv === 'all' ? '' : ' in Division ' + treeDiv) + ' with ' + App.fmtNum(lead.value) +
-        ' player-seasons' +
+      treeTakeaway.textContent = (treeSeason < 0 ? 'Across all seasons, ' : 'In ' + seasons[treeSeason] + ', ') +
+        lead.name + ' leads' + (treeDiv === 'all' ? '' : ' in Division ' + treeDiv) + ' with ' +
+        App.fmtNum(lead.value) + ' player-seasons' +
         (data.length > 1 ? ', followed by ' + data[1].name + ' (' + App.fmtNum(data[1].value) + ')' : '') +
         '. Click a tile to open its players in the latest season’s roster.';
     }
 
     sec.append(group(
-      divSelect(treeDiv, function (v) { treeDiv = v; treeUpdate(); }),
+      [App.select({
+         label: 'Season', value: String(treeSeason),
+         options: [{ value: '-1', label: 'All seasons' }].concat(
+           seasons.map(function (s, i) { return { value: String(i), label: s }; })),
+         onchange: function (v) { treeSeason = +v; treeUpdate(); }
+       }),
+       divSelect(treeDiv, function (v) { treeDiv = v; treeUpdate(); })],
       App.h('section', { class: 'card chart-card' },
         App.h('h2', { text: 'Where international players come from' }),
         treeSub,
@@ -413,14 +423,13 @@
         treeTakeaway,
         App.h('div', { class: 'card-foot' },
           App.csvBtn('countries_players.csv', function () {
-            var m = countryMatrix(treeDiv);
-            return [['division', 'country', 'player_seasons']]
-              .concat(Object.keys(m)
+            return [['division', 'season', 'country', 'player_seasons']]
+              .concat(Object.keys(countryMatrix(treeDiv))
                 .map(function (c) {
-                  return [treeDiv === 'all' ? 'all' : treeDiv, c,
-                          (m[c] || []).reduce(function (a, b) { return a + b; }, 0)];
+                  return [treeDiv === 'all' ? 'all' : treeDiv,
+                          treeSeason < 0 ? 'all' : seasons[treeSeason], c, treeVal(c)];
                 })
-                .sort(function (a, b) { return b[2] - a[2]; }));
+                .sort(function (a, b) { return b[3] - a[3]; }));
           })))));
 
     /* ---------- 4. Hometown hotbeds + full city table ---------- */
