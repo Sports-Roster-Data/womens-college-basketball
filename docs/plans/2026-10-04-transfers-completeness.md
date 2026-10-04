@@ -33,6 +33,8 @@ Windows (matched pairs / moves / stays, computed from `wbb_player_seasons.csv`):
 
 The 2025-26 damage sits in **stays** (same-name, same-team players left unlinked), not in moves — and the season is ~2,100 rows larger than 2024-25, so part of its `new` growth is genuine newcomers.
 
+**Amendment from Task 0 (2026-10-04):** the committed `wbb_id_review_queue.csv` was a stale artifact — a deterministic re-knit of HEAD reproduces the three data CSVs byte-identically but yields 2,609 queue rows vs the stale 3,385 (no `decision` data lost; row ids are load-order-dependent). Task 0's follow-up commit re-syncs it, so the queue baseline for Task 3 is **2,609**, and the parity guard rests on the three CSVs only. Also: knits on this machine need `RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64` alongside the UTF-8 locale (no system pandoc). All knit commands below carry it.
+
 ---
 
 ### Task 0: Baseline checksums
@@ -53,7 +55,8 @@ in-flight editor work — leave those alone, don't stage them).
 **Step 2: Baseline reproduction run**
 
 ```bash
-LC_ALL=en_US.UTF-8 Rscript -e "rmarkdown::render('player_ids.Rmd')"
+LC_ALL=en_US.UTF-8 RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64 \
+  Rscript -e "rmarkdown::render('player_ids.Rmd')"
 shasum -a 256 -c /tmp/tr_baseline.sum
 ```
 
@@ -62,6 +65,15 @@ mismatches, STOP and diagnose that before any edit; the task-3 parity guard depe
 on this baseline being reproducible.
 
 **Step 3: No commit (nothing changed).**
+
+**Resolution as executed (2026-10-04):** the knit reproduced the three CSVs
+byte-identically (checksums OK; funnel and GUID checks clean), but
+`git diff` showed `wbb_id_review_queue.csv` drifted: the committed copy is a
+stale artifact from an earlier pipeline state (3,385 committed rows → 2,609 on
+re-knit; all 30 duplicate-watcher rows identical; zero `decision` cells in
+either version). Resolution: committed the freshly regenerated queue plus the
+header-only `player_id_overrides.csv` the pipeline expects, as a dedicated
+re-sync commit. Queue baseline after the sync: **2,609 rows**.
 
 ---
 
@@ -211,7 +223,8 @@ inline `mutate` outside the house pattern.
 **Step 3: Verify the funnel recovers**
 
 ```bash
-LC_ALL=en_US.UTF-8 Rscript -e "rmarkdown::render('player_ids.Rmd')"
+LC_ALL=en_US.UTF-8 RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64 \
+  Rscript -e "rmarkdown::render('player_ids.Rmd')"
 ```
 
 Expected in the printed validation output:
@@ -368,7 +381,8 @@ queue_transfer_candidates <- function(season_rows, player_table) {
 **Step 3: Byte-parity check (the inertness guarantee)**
 
 ```bash
-LC_ALL=en_US.UTF-8 Rscript -e "rmarkdown::render('player_ids.Rmd')"
+LC_ALL=en_US.UTF-8 RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64 \
+  Rscript -e "rmarkdown::render('player_ids.Rmd')"
 shasum -a 256 -c /tmp/tr_baseline.sum
 ```
 
@@ -383,9 +397,10 @@ print('queue rows:', len(q))
 print(c.most_common())
 ```
 
-Expected: ~5,000–6,000 rows total; `same_name_unconfirmed_transfer` ≈ 1,000–1,500
-(the one-to-one share of the measured B1+B2 pool of 1,409); `corroborated_blocked`
-smaller (today these rows drop silently in tier 2); `decision` blank everywhere.
+Expected: ≈4,300–4,700 rows total (Task 0's re-sync put the queue baseline at
+2,609); `same_name_unconfirmed_transfer` ≈ 1,000–1,500 (the one-to-one share of
+the measured B1+B2 pool of 1,409); `corroborated_blocked` smaller (these rows
+drop silently in tier 2 today); `decision` blank everywhere.
 
 **Step 4: Update "How matching works" in `player_ids.Rmd`** — insert after the
 tier-3 paragraph (line ~27):
@@ -736,7 +751,8 @@ The string path stays as the fallback for values the mapping hasn't seen.
 legitimately adds matches). Verify by metrics:
 
 ```bash
-LC_ALL=en_US.UTF-8 Rscript -e "rmarkdown::render('player_ids.Rmd')"
+LC_ALL=en_US.UTF-8 RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64 \
+  Rscript -e "rmarkdown::render('player_ids.Rmd')"
 ```
 
 Expected in the printed output:
