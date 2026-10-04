@@ -1,7 +1,7 @@
 /* geography.js — five views of where players come from:
    1. US hometown choropleth (count ↔ per-1M-residents, season radio) + all-states table
    2. International players over time (count ↔ share of all players)
-   3. Country treemap (USA excluded by default)
+   3. Country treemap (USA excluded)
    4. Hometown hotbeds (top 25 US cities, distinct players ↔ player-seasons) + full city table
    5. In-state recruiting % by season and division (top/bottom 25)
    Views 1-4 take a Division dropdown (All / I / II / III) fed by the
@@ -342,7 +342,6 @@
 
     /* ---------- 3. Country treemap ---------- */
 
-    var inclUSA = false;
     var treeDiv = 'all';
     var treeEl = App.h('div', { class: 'chart', style: 'height:420px', role: 'img',
       'aria-label': 'Treemap of players by country' });
@@ -354,8 +353,8 @@
       var m = countryMatrix(treeDiv); // helper defined with view 2
       var divTxt = treeDiv === 'all' ? '' : ' — Division ' + treeDiv + ' rosters';
       treeSub.textContent = 'Tile area is player-seasons across all seasons' + divTxt +
-        '; darker blue means more. Small tiles are unlabeled — hover or use the CSV.';
-      var data = Object.keys(m).filter(function (c) { return inclUSA || c !== 'USA'; })
+        '; darker blue means more. US players are not shown; small tiles are unlabeled — hover or use the CSV.';
+      var data = Object.keys(m).filter(function (c) { return c !== 'USA'; })
         .map(function (c) {
           return { name: c, value: (m[c] || []).reduce(function (a, b) { return a + b; }, 0) };
         })
@@ -398,22 +397,15 @@
       }, true);
 
       var lead = data[0];
-      treeTakeaway.textContent = (inclUSA ? 'Including the US, ' : 'Excluding the US, ') + lead.name +
+      treeTakeaway.textContent = lead.name +
         ' leads' + (treeDiv === 'all' ? '' : ' in Division ' + treeDiv) + ' with ' + App.fmtNum(lead.value) +
         ' player-seasons' +
-        (data.length > 1 && !inclUSA ? ', followed by ' + data[1].name + ' (' + App.fmtNum(data[1].value) + ')' : '') +
+        (data.length > 1 ? ', followed by ' + data[1].name + ' (' + App.fmtNum(data[1].value) + ')' : '') +
         '. Click a tile to open its players in the latest season’s roster.';
     }
 
-    var usaToggle = App.h('input', {
-      type: 'checkbox', id: 'usa-toggle',
-      onchange: function (e) { inclUSA = e.target.checked; treeUpdate(); }
-    });
     sec.append(group(
-      [App.h('div', { class: 'control' },
-         App.h('span', { class: 'control-label', text: 'United States' }),
-         App.h('label', { class: 'radio-row' }, usaToggle, ' include')),
-       divSelect(treeDiv, function (v) { treeDiv = v; treeUpdate(); })],
+      divSelect(treeDiv, function (v) { treeDiv = v; treeUpdate(); }),
       App.h('section', { class: 'card chart-card' },
         App.h('h2', { text: 'Where international players come from' }),
         treeSub,
