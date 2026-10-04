@@ -352,8 +352,10 @@
       sec.textContent = '';
       var id = params[0] || '';
       if (!/^wbb-\d{6}$/.test(id)) return Promise.resolve(notFound(sec, 'That link has no player id.'));
-      sec.append(App.loading());
+      var note = App.loading();
+      sec.append(note);
       return App.getJSON('data/cards/' + id.slice(0, 7) + '.json').then(function (shard) {
+        note.remove();
         var card = shard[id];
         if (!card) {
           notFound(sec, 'No player with id ' + id + ' — check the id, or search by name at the top of the page.');
@@ -444,11 +446,13 @@
       sec.textContent = '';
       var id = params[0] || '';
       if (!/^\d+$/.test(id)) return Promise.resolve(notFound(sec, 'That link has no team id.'));
-      sec.append(App.loading());
+      var note = App.loading();
+      sec.append(note);
       return Promise.all([
         App.getObjects('data/teams.json'),
         App.getObjects('data/team_seasons.json')
       ]).then(function (res) {
+        note.remove();
         var team = res[0].find(function (t) { return t.id === id; });
         if (!team) {
           notFound(sec, 'No team with ncaa_id ' + id + ' — try searching its name from the roster explorer.');
