@@ -443,6 +443,27 @@ names(state_season) <- state_levels
 stopifnot("state matrix doesn't reconcile with US rows that have a state" =
             sum(unlist(state_season)) == sum(us_w & !is.na(w$state_clean)))
 
+# Per-division state matrix, bucketed by the row's own division (blank ->
+# "Unknown"; "NAIA" passes through but is not offered in the UI). The overall
+# state_season above stays the "all divisions" source, so overall figures
+# never shift.
+division_of <- ifelse(is.na(us_state_rows$division) | us_state_rows$division == "",
+                      "Unknown", us_state_rows$division)
+div_levels <- sort(unique(division_of))
+state_season_division <- lapply(div_levels, function(dv) {
+  keep <- division_of == dv
+  # setNames() gives the inner list state-code keys for the client (lapply
+  # over a bare character vector yields an unnamed list, and unnamed elements
+  # serialize as a plain array).
+  setNames(lapply(state_levels, function(st) {
+    as.integer(table(factor(us_state_rows$season_idx[us_state_rows$state_clean == st & keep],
+                            levels = 0:(n_season - 1))))
+  }), state_levels)
+})
+names(state_season_division) <- div_levels
+stopifnot("division state matrices don't reconcile with overall state rows" =
+            sum(unlist(state_season_division)) == nrow(us_state_rows))
+
 country_of <- ifelse(is.na(w$country_clean) | w$country_clean == "", "Unknown", w$country_clean)
 country_levels <- sort(unique(country_of))
 country_season <- lapply(country_levels, function(co) {
@@ -451,6 +472,22 @@ country_season <- lapply(country_levels, function(co) {
 names(country_season) <- country_levels
 stopifnot("country matrix doesn't reconcile with total rows" =
             sum(unlist(country_season)) == n_rows)
+
+# Per-division country matrix over ALL countries; the client derives per-
+# division leaders from it.
+division_of_all <- ifelse(is.na(w$division) | w$division == "", "Unknown", w$division)
+div_levels_all <- sort(unique(division_of_all))
+country_season_division <- lapply(div_levels_all, function(dv) {
+  keep <- division_of_all == dv
+  # setNames() as above: keeps country-code keys intact in JSON.
+  setNames(lapply(country_levels, function(co) {
+    as.integer(table(factor(w$season_idx[country_of == co & keep],
+                            levels = 0:(n_season - 1))))
+  }), country_levels)
+})
+names(country_season_division) <- div_levels_all
+stopifnot("division country matrices don't reconcile with total rows" =
+            sum(unlist(country_season_division)) == n_rows)
 
 # Hometown cities: US rows with a parsed state; keyed by (city, state).
 us_h <- w[us_w & !is.na(w$state_clean) & !is.na(w$hometown_clean), ]
@@ -471,11 +508,37 @@ rownames(cities) <- NULL
 cat(sprintf("Cities: %d with >= %d distinct players (from %d distinct city+state combos)\n",
             nrow(cities), CITY_MIN_PLAYERS, length(levels(city_f))))
 
+# Per-division city lists: threshold applied within each division, so a city
+# that passes overall but not within one division drops from that division's
+# view. Same [city, state, players, rows] shape as `cities`.
+us_h_div <- ifelse(is.na(us_h$division) | us_h$division == "", "Unknown", us_h$division)
+cities_division <- lapply(sort(unique(us_h_div)), function(dv) {
+  hd <- us_h[us_h_div == dv, ]
+  city_d <- vapply(hd$hometown_clean, city_from, "", USE.NAMES = FALSE)
+  key_d <- paste(city_d, hd$state_clean, sep = "\r")
+  f_d <- factor(key_d)
+  out <- data.frame(
+    city = vapply(strsplit(levels(f_d), "\r", fixed = TRUE), `[[`, "", 1),
+    state = vapply(strsplit(levels(f_d), "\r", fixed = TRUE), `[[`, "", 2),
+    players = as.integer(tapply(hd$wbb_id, f_d, function(v) length(unique(v)))),
+    rows = as.integer(table(f_d)),
+    stringsAsFactors = FALSE
+  )
+  out <- out[out$players >= CITY_MIN_PLAYERS, ]
+  out <- out[order(-out$players, out$city, method = "radix"), ]
+  rownames(out) <- NULL
+  out
+})
+names(cities_division) <- sort(unique(us_h_div))
+
 wj(list(
   state_season = state_season,
   country_season = country_season,
   season_totals = season_rows,
-  cities = cities
+  cities = cities,
+  state_season_division = state_season_division,
+  country_season_division = country_season_division,
+  cities_division = cities_division
 ), "site/data/geography.json")
 
 ## ---------------------------------------------------------------- transfers
