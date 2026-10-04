@@ -38,6 +38,18 @@
     return App.h('p', { class: 'chart-sub', text: text });
   }
 
+  // Division dropdown shared by views 1-4. NAIA (35 roster rows) and the blank
+  // "Unknown" bucket from the build are deliberately not offered here; both
+  // appear only under All, matching the overall figures.
+  function divOptions() {
+    return [{ value: 'all', label: 'All' }].concat(
+      App.meta.filter_options.division.filter(function (d) { return d === 'I' || d === 'II' || d === 'III'; })
+        .map(function (d) { return { value: d, label: 'Division ' + d }; }));
+  }
+  function divSelect(value, onch) {
+    return App.select({ label: 'Division', value: value, options: divOptions(), onchange: onch });
+  }
+
   App.register('geography', {
     title: function () { return App.titled('Geography'); },
     cleanup: function () {
@@ -85,25 +97,28 @@
       return statesMeta[code] && !featureNames[statesMeta[code].name];
     });
 
-    var mapState = { mode: 'percap', season: -1 }; // -1 = all seasons; per-capita is the default measure
+    var mapState = { mode: 'percap', season: -1, division: 'all' }; // -1 = all seasons; per-capita is the default measure
     var mapEl = App.h('div', { class: 'chart', style: 'height:440px', role: 'img',
       'aria-label': 'Choropleth map of players by home state' });
     var mapTable = App.h('div', { class: 'table-wrap max-h' });
     var mapTakeaway = App.h('p', { class: 'takeaway' });
+    var mapSub = chartSub('');
     var mapInst; // created after attach — ECharts measures the container at init
 
-    function stateCount(code, seasonIdx) {
-      var arr = geo.state_season[code];
+    function stateCount(code, seasonIdx, division) {
+      var m = (division && division !== 'all') ? geo.state_season_division[division] : geo.state_season;
+      var arr = m[code];
       if (!arr) return 0;
       if (seasonIdx < 0) return arr.reduce(function (a, b) { return a + b; }, 0);
       return arr[seasonIdx] || 0;
     }
 
     // Per 1M residents — NaN for codes with no population (AE), which sort
-    // last and shade as no-data.
-    function statePercap(code, seasonIdx) {
+    // last and shade as no-data. Whatever the division, the denominator stays
+    // the full-state population (Division I players per 1M residents).
+    function statePercap(code, seasonIdx, division) {
       var pop = statesMeta[code] ? statesMeta[code].pop : null;
-      return pop ? stateCount(code, seasonIdx) / pop * 1e6 : NaN;
+      return pop ? stateCount(code, seasonIdx, division) / pop * 1e6 : NaN;
     }
 
     // Sort by the shaded measure so the table twin always mirrors the map:
@@ -111,18 +126,23 @@
     // count mode.
     function measureSort(a, b) {
       if (mapState.mode === 'percap') {
-        var pa = statePercap(a, mapState.season), pb = statePercap(b, mapState.season);
+        var pa = statePercap(a, mapState.season, mapState.division);
+        var pb = statePercap(b, mapState.season, mapState.division);
         if (isNaN(pa) !== isNaN(pb)) return isNaN(pa) ? 1 : -1;
         if (!isNaN(pa) && pa !== pb) return pb - pa;
       }
-      return (stateCount(b, mapState.season) - stateCount(a, mapState.season)) ||
+      return (stateCount(b, mapState.season, mapState.division) - stateCount(a, mapState.season, mapState.division)) ||
              (a < b ? -1 : a > b ? 1 : 0);
     }
 
     function mapUpdate() {
+      mapSub.textContent = 'Players whose hometown has a US state, by state, ' +
+        (mapState.division === 'all' ? 'all divisions' : 'Division ' + mapState.division) +
+        (unmapped.length ? ' — * marks ' + unmapped.map(function (c) { return statesMeta[c].name; }).join(', ') +
+          ', which are not drawn on the map' : '') + '.';
       var rows = geojson.features.map(function (f) {
         var code = nameToCode[f.properties.name];
-        var count = code ? stateCount(code, mapState.season) : 0;
+        var count = code ? stateCount(code, mapState.season, mapState.division) : 0;
         var pop = code && statesMeta[code] ? statesMeta[code].pop : null;
         var v = (mapState.mode === 'percap')
           ? (pop ? Math.round(count / pop * 1e6 * 10) / 10 : NaN)
@@ -161,7 +181,7 @@
       mapTable.textContent = '';
       var tbody = App.h('tbody', {});
       allCodes.forEach(function (code) {
-        var count = stateCount(code, mapState.season);
+        var count = stateCount(code, mapState.season, mapState.division);
         var pop = statesMeta[code] ? statesMeta[code].pop : null;
         tbody.append(App.h('tr', {},
           App.h('td', { text: (statesMeta[code] ? statesMeta[code].name : code) +
@@ -175,8 +195,8 @@
           App.h('th', { text: 'Per 1M' }))), tbody));
 
       var leadCode = allCodes[0];
-      var leadCount = stateCount(leadCode, mapState.season);
-      var leadPc = statePercap(leadCode, mapState.season);
+      var leadCount = stateCount(leadCode, mapState.season, mapState.division);
+      var leadPc = statePercap(leadCode, mapState.season, mapState.division);
       var lead = (mapState.mode === 'percap' && !isNaN(leadPc))
         ? Math.round(leadPc * 10) / 10 + ' players per 1M residents (' + App.fmtNum(leadCount) + ' on rosters)'
         : App.fmtNum(leadCount) + ' players' +
@@ -188,6 +208,7 @@
 
     sec.append(group(
       [
+        divSelect(mapState.division, function (v) { mapState.division = v; mapUpdate(); }),
         radios('Measure', 'geo-map-measure', [{ value: 'count', label: 'Players' },
                                               { value: 'percap', label: 'Per 1M residents' }],
                mapState.mode, function (v) { mapState.mode = v; mapUpdate(); }),
@@ -198,41 +219,61 @@
       ],
       App.h('section', { class: 'card chart-card' },
         App.h('h2', { text: 'Where US players come from' }),
-        chartSub('Players whose hometown has a US state, by state' +
-          (unmapped.length ? ' — * marks ' + unmapped.map(function (c) { return statesMeta[c].name; }).join(', ') +
-            ', which are not drawn on the map' : '') + '.'),
+        mapSub,
         App.h('div', { class: 'geo-grid' }, mapEl, mapTable),
         mapTakeaway,
         App.h('div', { class: 'card-foot' },
           App.csvBtn('states_players.csv', function () {
-            return [['state', 'name', 'players', 'per_1m_residents']]
+            return [['division', 'state', 'name', 'players', 'per_1m_residents']]
               .concat(Object.keys(geo.state_season).sort(measureSort).map(function (code) {
-                var count = stateCount(code, mapState.season);
+                var count = stateCount(code, mapState.season, mapState.division);
                 var pop = statesMeta[code] ? statesMeta[code].pop : null;
-                return [code, statesMeta[code] ? statesMeta[code].name : code, count,
+                return [mapState.division === 'all' ? 'all' : mapState.division,
+                        code, statesMeta[code] ? statesMeta[code].name : code, count,
                         pop ? Math.round(count / pop * 1e6 * 10) / 10 : null];
               }));
           })))));
 
     /* ---------- 2. International players over time ---------- */
 
-    var nonUSA = Object.keys(geo.country_season).filter(function (c) { return c !== 'USA'; });
-    nonUSA.sort(function (a, b) {
-      return geo.country_season[b].reduce(function (x, y) { return x + y; }, 0) -
-             geo.country_season[a].reduce(function (x, y) { return x + y; }, 0);
-    });
-    var top8 = nonUSA.slice(0, 8);
     var intMode = 'count';
+    var intDiv = 'all';
     var intlEl = App.h('div', { class: 'chart', style: 'height:400px', role: 'img',
       'aria-label': 'Line chart of international players over time' });
     var intlTakeaway = App.h('p', { class: 'takeaway' });
+    var intlSub = chartSub('');
     var intlInst;
 
+    // The active country matrix follows the Division dropdown: 'all' reads the
+    // overall one (which also spans NAIA/Unknown), a division reads its own.
+    function countryMatrix(div) {
+      return (div && div !== 'all') ? geo.country_season_division[div] : geo.country_season;
+    }
+    function countryCount(c) {
+      return (countryMatrix(intDiv)[c] || []).reduce(function (a, b) { return a + b; }, 0);
+    }
+    // Share-mode denominator: every rostered player in this division that season.
+    function seasonTotal(i) {
+      if (intDiv !== 'all') {
+        var m = countryMatrix(intDiv);
+        return Object.keys(m).reduce(function (a, c) { return a + m[c][i]; }, 0);
+      }
+      return geo.season_totals[i];
+    }
+    function top8Now() {
+      return Object.keys(countryMatrix(intDiv)).filter(function (c) { return c !== 'USA'; })
+        .sort(function (a, b) { return countryCount(b) - countryCount(a); }).slice(0, 8);
+    }
     function allIntl(i) {
-      return nonUSA.reduce(function (acc, c) { return acc + geo.country_season[c][i]; }, 0);
+      var m = countryMatrix(intDiv);
+      return Object.keys(m).filter(function (c) { return c !== 'USA'; })
+        .reduce(function (a, c) { return a + m[c][i]; }, 0);
     }
 
     function intlUpdate() {
+      var top8 = top8Now();
+      intlSub.textContent = 'The eight most common home countries outside the US, plus every international player combined (dashed)' +
+        (intDiv === 'all' ? '.' : ' — Division ' + intDiv + ' rosters.');
       var fmt = intMode === 'share'
         ? function (v) { return (v === null || v === undefined) ? '' : v + '%'; }
         : App.fmtNum;
@@ -242,8 +283,8 @@
           itemStyle: { color: App.palette[i], borderColor: '#fff', borderWidth: 2 },
           lineStyle: { width: 2, color: App.palette[i] },
           endLabel: i === 0 ? { show: true, formatter: '{c}', color: '#1c1917' } : { show: false },
-          data: geo.country_season[c].map(function (n, i) {
-            return intMode === 'share' ? Math.round(n / geo.season_totals[i] * 1000) / 10 : n;
+          data: (countryMatrix(intDiv)[c] || []).map(function (n, i) {
+            return intMode === 'share' ? Math.round(n / seasonTotal(i) * 1000) / 10 : n;
           })
         };
       });
@@ -254,7 +295,7 @@
         lineStyle: { width: 2, color: App.feederGray, type: 'dashed' },
         data: seasons.map(function (s, i) {
           var n = allIntl(i);
-          return intMode === 'share' ? Math.round(n / geo.season_totals[i] * 1000) / 10 : n;
+          return intMode === 'share' ? Math.round(n / seasonTotal(i) * 1000) / 10 : n;
         }),
         endLabel: { show: true, formatter: '{c}', color: '#78716c' }
       });
@@ -268,49 +309,62 @@
         },
         grid: { left: 56, right: 48, top: 36, bottom: 30 },
         xAxis: { type: 'category', data: seasons, boundaryGap: false },
-        yAxis: { type: 'value', name: intMode === 'share' ? '% of all players' : 'players' },
+        yAxis: { type: 'value', name: intMode === 'share'
+          ? (intDiv === 'all' ? '% of all players' : '% of Division ' + intDiv + ' players') : 'players' },
         series: series
       }, true);
 
       var all = series[series.length - 1].data;
       intlTakeaway.textContent = 'International players ' +
         (intMode === 'share'
-          ? 'rose from ' + all[0] + '% to ' + all[all.length - 1] + '% of all rostered players.'
+          ? 'rose from ' + all[0] + '% to ' + all[all.length - 1] + '% of ' +
+            (intDiv === 'all' ? 'all rostered players.' : 'Division ' + intDiv + ' rostered players.')
           : 'grew from ' + App.fmtNum(all[0]) + ' in ' + seasons[0] + ' to ' + App.fmtNum(all[all.length - 1]) +
             ' in ' + lastSeason + '.') +
-        ' ' + top8[0] + ' leads countries.';
+        ' ' + top8[0] + ' leads countries' + (intDiv === 'all' ? '.' : ' in Division ' + intDiv + '.');
     }
 
     sec.append(group(
-      radios('Measure', 'geo-intl-measure', [{ value: 'count', label: 'Players' },
-                                             { value: 'share', label: 'Share of all players' }],
-             intMode, function (v) { intMode = v; intlUpdate(); }),
+      [radios('Measure', 'geo-intl-measure', [{ value: 'count', label: 'Players' },
+                                              { value: 'share', label: 'Share of all players' }],
+              intMode, function (v) { intMode = v; intlUpdate(); }),
+       divSelect(intDiv, function (v) { intDiv = v; intlUpdate(); })],
       App.h('section', { class: 'card chart-card' },
         App.h('h2', { text: 'International players over time' }),
-        chartSub('The eight most common home countries outside the US, plus every international player combined (dashed).'),
+        intlSub,
         intlEl,
         intlTakeaway,
         App.h('div', { class: 'card-foot' },
           App.csvBtn('international_by_season.csv', function () {
-            return [['season'].concat(top8).concat(['all_international'])]
+            var top8 = top8Now(); // freshly derived so the CSV matches what's on screen
+            return [['division', 'season'].concat(top8).concat(['all_international'])]
               .concat(seasons.map(function (s, i) {
-                return [s].concat(top8.map(function (c) { return geo.country_season[c][i]; })).concat([allIntl(i)]);
+                return [intDiv === 'all' ? 'all' : intDiv, s]
+                  .concat(top8.map(function (c) { return countryMatrix(intDiv)[c][i]; }))
+                  .concat([allIntl(i)]);
               }));
           })))));
 
     /* ---------- 3. Country treemap ---------- */
 
     var inclUSA = false;
+    var treeDiv = 'all';
     var treeEl = App.h('div', { class: 'chart', style: 'height:420px', role: 'img',
       'aria-label': 'Treemap of players by country' });
     var treeTakeaway = App.h('p', { class: 'takeaway' });
+    var treeSub = chartSub('');
     var treeInst;
 
     function treeUpdate() {
-      var list = nonUSA.concat(inclUSA ? ['USA'] : []);
-      var data = list.map(function (c) {
-        return { name: c, value: geo.country_season[c].reduce(function (a, b) { return a + b; }, 0) };
-      }).sort(function (a, b) { return b.value - a.value; });
+      var m = countryMatrix(treeDiv); // helper defined with view 2
+      var divTxt = treeDiv === 'all' ? '' : ' — Division ' + treeDiv + ' rosters';
+      treeSub.textContent = 'Tile area is player-seasons across all seasons' + divTxt +
+        '; darker blue means more. Small tiles are unlabeled — hover or use the CSV.';
+      var data = Object.keys(m).filter(function (c) { return inclUSA || c !== 'USA'; })
+        .map(function (c) {
+          return { name: c, value: (m[c] || []).reduce(function (a, b) { return a + b; }, 0) };
+        })
+        .sort(function (a, b) { return b.value - a.value; });
       var grand = data.reduce(function (a, d) { return a + d.value; }, 0);
       var maxV = data[0].value;
 
@@ -350,7 +404,8 @@
 
       var lead = data[0];
       treeTakeaway.textContent = (inclUSA ? 'Including the US, ' : 'Excluding the US, ') + lead.name +
-        ' leads with ' + App.fmtNum(lead.value) + ' player-seasons' +
+        ' leads' + (treeDiv === 'all' ? '' : ' in Division ' + treeDiv) + ' with ' + App.fmtNum(lead.value) +
+        ' player-seasons' +
         (data.length > 1 && !inclUSA ? ', followed by ' + data[1].name + ' (' + App.fmtNum(data[1].value) + ')' : '') +
         '. Click a tile to open its players in the latest season’s roster.';
     }
@@ -360,37 +415,64 @@
       onchange: function (e) { inclUSA = e.target.checked; treeUpdate(); }
     });
     sec.append(group(
-      App.h('div', { class: 'control' },
-        App.h('span', { class: 'control-label', text: 'United States' }),
-        App.h('label', { class: 'radio-row' }, usaToggle, ' include')),
+      [App.h('div', { class: 'control' },
+         App.h('span', { class: 'control-label', text: 'United States' }),
+         App.h('label', { class: 'radio-row' }, usaToggle, ' include')),
+       divSelect(treeDiv, function (v) { treeDiv = v; treeUpdate(); })],
       App.h('section', { class: 'card chart-card' },
         App.h('h2', { text: 'Where international players come from' }),
-        chartSub('Tile area is player-seasons across all seasons; darker blue means more. Small tiles are unlabeled — hover or use the CSV.'),
+        treeSub,
         treeEl,
         treeTakeaway,
         App.h('div', { class: 'card-foot' },
           App.csvBtn('countries_players.csv', function () {
-            return [['country', 'player_seasons']]
-              .concat(Object.keys(geo.country_season)
+            var m = countryMatrix(treeDiv);
+            return [['division', 'country', 'player_seasons']]
+              .concat(Object.keys(m)
                 .map(function (c) {
-                  return [c, geo.country_season[c].reduce(function (a, b) { return a + b; }, 0)];
+                  return [treeDiv === 'all' ? 'all' : treeDiv, c,
+                          (m[c] || []).reduce(function (a, b) { return a + b; }, 0)];
                 })
-                .sort(function (a, b) { return b[1] - a[1]; }));
+                .sort(function (a, b) { return b[2] - a[2]; }));
           })))));
 
     /* ---------- 4. Hometown hotbeds + full city table ---------- */
 
     var hbMode = 'players';
+    var hbDiv = 'all';
     var hbEl = App.h('div', { class: 'chart', style: 'height:640px', role: 'img',
       'aria-label': 'Bar chart of the top US hometowns' });
     var hbTakeaway = App.h('p', { class: 'takeaway' });
+    var hbSub = chartSub('');
     var hbInst;
+    var cityTable; // full city table (below), created after attach
+
+    // Per-division city lists come pre-thresholded by the build (>= 10 distinct
+    // players within that division), so a city can appear in one division's
+    // list but not another's.
+    function citiesNow() {
+      return (hbDiv !== 'all') ? (geo.cities_division[hbDiv] || []) : geo.cities;
+    }
+    function cityRows() {
+      return citiesNow().map(function (c) {
+        return { key: c[0] + '|' + c[1], city: c[0], state: c[1], players: c[2], rows: c[3] };
+      });
+    }
+    function refreshCityTable() {
+      cityCountSub.textContent = citiesNow().length + ' US cities' +
+        (hbDiv === 'all' ? '' : ' with 10+ Division ' + hbDiv + ' players') +
+        ', best-effort parsed from hometown strings.';
+      if (cityTable) cityTable.setData(cityRows());
+    }
 
     function hbUpdate() {
-      var list = geo.cities.slice().sort(function (a, b) {
+      var list = citiesNow().slice().sort(function (a, b) {
         return hbMode === 'rows' ? b[3] - a[3] : b[2] - a[2];
       }).slice(0, 25);
       var labelKey = hbMode === 'rows' ? 3 : 2;
+      hbSub.textContent = 'US cities that have sent at least 10 distinct players to ' +
+        (hbDiv === 'all' ? 'these rosters' : 'Division ' + hbDiv + ' rosters (a player who crossed divisions counts in both)') +
+        ', top 25.';
 
       hbInst.setOption({
         aria: { show: true },
@@ -421,31 +503,38 @@
 
       hbTakeaway.textContent = list[0][0] + ' leads with ' + App.fmtNum(list[0][labelKey]) + ' ' +
         (hbMode === 'rows' ? 'player-seasons' : 'distinct players') +
-        ' across these rosters. Click a bar to open that hometown in the latest season’s roster.';
+        ' across ' + (hbDiv === 'all' ? 'these rosters' : 'Division ' + hbDiv + ' rosters') +
+        '. Click a bar to open that hometown in the latest season’s roster.';
     }
 
+    var cityCountSub = chartSub('');
     sec.append(group(
-      radios('Measure', 'geo-hb-measure', [{ value: 'players', label: 'Distinct players' },
-                                           { value: 'rows', label: 'Player-seasons' }],
-             hbMode, function (v) { hbMode = v; hbUpdate(); }),
+      [radios('Measure', 'geo-hb-measure', [{ value: 'players', label: 'Distinct players' },
+                                            { value: 'rows', label: 'Player-seasons' }],
+              hbMode, function (v) { hbMode = v; hbUpdate(); }),
+       divSelect(hbDiv, function (v) { hbDiv = v; hbUpdate(); refreshCityTable(); })],
       App.h('section', { class: 'card chart-card' },
         App.h('h2', { text: 'Hometown hotbeds' }),
-        chartSub('US cities that have sent at least 10 distinct players to these rosters, top 25.'),
+        hbSub,
         hbEl,
         hbTakeaway,
         App.h('div', { class: 'card-foot' },
           App.csvBtn('cities_players.csv', function () {
-            return [['city', 'state', 'distinct_players', 'player_seasons']].concat(geo.cities);
+            var dv = hbDiv === 'all' ? 'all' : hbDiv;
+            return [['division', 'city', 'state', 'distinct_players', 'player_seasons']]
+              .concat(citiesNow().map(function (c) { return [dv].concat(c); }));
           })))));
 
     var cityTableEl = App.h('div', { id: 'city-table' });
     sec.append(App.h('section', { class: 'card' },
       App.h('h2', { style: 'font-size:15px;font-weight:600;margin:0 0 8px', text: 'Every city with 10+ players' }),
-      chartSub(geo.cities.length + ' US cities, best-effort parsed from hometown strings.'),
+      cityCountSub,
       cityTableEl,
       App.h('div', { class: 'card-foot' },
         App.csvBtn('cities_all.csv', function () {
-          return [['city', 'state', 'distinct_players', 'player_seasons']].concat(geo.cities);
+          var dv = hbDiv === 'all' ? 'all' : hbDiv;
+          return [['division', 'city', 'state', 'distinct_players', 'player_seasons']]
+            .concat(citiesNow().map(function (c) { return [dv].concat(c); }));
         }))));
 
     /* ---------- 5. In-state recruiting % ---------- */
@@ -578,9 +667,6 @@
     inUpdate();
 
     var cityTable = new Tabulator(cityTableEl, {
-      data: geo.cities.map(function (c) {
-        return { key: c[0] + '|' + c[1], city: c[0], state: c[1], players: c[2], rows: c[3] };
-      }),
       index: 'key',
       columns: [
         { title: 'City', field: 'city', minWidth: 140, maxWidth: 260, headerFilter: 'input', headerFilterPlaceholder: 'filter' },
@@ -595,5 +681,6 @@
       initialSort: [{ column: 'players', dir: 'desc' }]
     });
     geoTables.push(cityTable);
+    refreshCityTable(); // fills the count line + data now that the table exists
   }
 })();
