@@ -131,6 +131,10 @@ main { padding: 24px 0 48px; }
   padding: 6px 8px; border: 1px solid var(--border); border-radius: var(--radius);
   background: var(--panel); color: var(--text); font: inherit; min-height: 32px;
 }
+/* Selects must stand level with the radio-pill rows they sit beside: the pill
+   label is 46px tall (32px radio box + its own 6px padding and border), and
+   .controls bottom-aligns, so a bare select's label hangs below the others. */
+.control select { min-height: 46px; }
 .radio-row { display: flex; gap: 2px; align-items: center; flex-wrap: wrap; }
 .radio-row label {
   display: inline-flex; align-items: center; gap: 5px; padding: 6px 10px;
