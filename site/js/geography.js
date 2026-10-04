@@ -275,7 +275,7 @@
 
     function intlUpdate() {
       var top8 = top8Now();
-      intlSub.textContent = 'The eight most common home countries outside the US, plus every international player combined (dashed)' +
+      intlSub.textContent = 'The eight most common home countries outside the US, by season' +
         (intDiv === 'all' ? '.' : ' — Division ' + intDiv + ' rosters.');
       var fmt = intMode === 'share'
         ? function (v) { return (v === null || v === undefined) ? '' : v + '%'; }
@@ -291,18 +291,8 @@
           })
         };
       });
-      // All international: a muted context line, not a palette slot
-      series.push({
-        name: 'All international', type: 'line', symbolSize: 8,
-        itemStyle: { color: App.feederGray, borderColor: '#fff', borderWidth: 2 },
-        lineStyle: { width: 2, color: App.feederGray, type: 'dashed' },
-        data: seasons.map(function (s, i) {
-          var n = allIntl(i);
-          return intMode === 'share' ? Math.round(n / seasonTotal(i) * 1000) / 10 : n;
-        }),
-        endLabel: { show: true, formatter: '{c}', color: '#78716c' }
-      });
-
+      // No All-international line: the total's scale flattens the individual
+      // countries; the takeaway cites the totals instead.
       intlInst.setOption({
         aria: { show: true },
         legend: { top: 0, type: 'scroll' },
@@ -317,7 +307,9 @@
         series: series
       }, true);
 
-      var all = series[series.length - 1].data;
+      var all = seasons.map(function (s, i) {
+        return intMode === 'share' ? Math.round(allIntl(i) / seasonTotal(i) * 1000) / 10 : allIntl(i);
+      });
       intlTakeaway.textContent = 'International players ' +
         (intMode === 'share'
           ? 'rose from ' + all[0] + '% to ' + all[all.length - 1] + '% of ' +
