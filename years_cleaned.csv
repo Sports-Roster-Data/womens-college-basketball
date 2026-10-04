@@ -25,6 +25,7 @@ Fr.,Freshman,0
 FR.,Freshman,0
 Fr. - RS,Freshman,1
 Fr.-HS,Freshman,0
+Fr.-R,Freshman,1
 Fr.-RS,Freshman,1
 Freshman,Freshman,0
 FY,Freshman,0
@@ -134,6 +135,7 @@ So.,Sophomore,0
 SO.,Sophomore,0
 So. - RS,Sophomore,1
 So.-1L,Sophomore,0
+So.-R,Sophomore,1
 So.-Tr.,Sophomore,0
 Sophmore,Sophomore,0
 Sophomore,Sophomore,0
@@ -146,6 +148,7 @@ Sr.-1L,Senior,0
 Sr.-2L,Senior,0
 Sr.-3L,Senior,0
 Sr.-5,Senior,0
+Sr.-R5,Senior,1
 Sr.-Tr.,Senior,0
 Sr./Jr.,Senior,0
 Sr.+,Senior,0
