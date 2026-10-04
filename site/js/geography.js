@@ -4,8 +4,11 @@
    3. Country treemap (USA excluded by default)
    4. Hometown hotbeds (top 25 US cities, distinct players ↔ player-seasons) + full city table
    5. In-state recruiting % by season and division (top/bottom 25)
-   Chart instances are created once per view render; controls update via setOption.
-   Every view has a CSV download; every chart has a takeaway line. */
+   Views 1-4 take a Division dropdown (All / I / II / III) fed by the
+   per-division aggregates in geography.json; the NAIA and blank-division
+   buckets are not offered and appear only under All. Every view has a CSV
+   download; every chart has a takeaway line. Chart instances are created once
+   per view render; controls update via setOption. */
 (function () {
   'use strict';
   var App = window.App;
