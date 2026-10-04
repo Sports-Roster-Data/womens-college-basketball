@@ -85,7 +85,7 @@
       return statesMeta[code] && !featureNames[statesMeta[code].name];
     });
 
-    var mapState = { mode: 'count', season: -1 }; // -1 = all seasons
+    var mapState = { mode: 'percap', season: -1 }; // -1 = all seasons; per-capita is the default measure
     var mapEl = App.h('div', { class: 'chart', style: 'height:440px', role: 'img',
       'aria-label': 'Choropleth map of players by home state' });
     var mapTable = App.h('div', { class: 'table-wrap max-h' });
@@ -97,6 +97,26 @@
       if (!arr) return 0;
       if (seasonIdx < 0) return arr.reduce(function (a, b) { return a + b; }, 0);
       return arr[seasonIdx] || 0;
+    }
+
+    // Per 1M residents — NaN for codes with no population (AE), which sort
+    // last and shade as no-data.
+    function statePercap(code, seasonIdx) {
+      var pop = statesMeta[code] ? statesMeta[code].pop : null;
+      return pop ? stateCount(code, seasonIdx) / pop * 1e6 : NaN;
+    }
+
+    // Sort by the shaded measure so the table twin always mirrors the map:
+    // per 1M residents in percap mode (ties by count, then code), count in
+    // count mode.
+    function measureSort(a, b) {
+      if (mapState.mode === 'percap') {
+        var pa = statePercap(a, mapState.season), pb = statePercap(b, mapState.season);
+        if (isNaN(pa) !== isNaN(pb)) return isNaN(pa) ? 1 : -1;
+        if (!isNaN(pa) && pa !== pb) return pb - pa;
+      }
+      return (stateCount(b, mapState.season) - stateCount(a, mapState.season)) ||
+             (a < b ? -1 : a > b ? 1 : 0);
     }
 
     function mapUpdate() {
@@ -136,9 +156,8 @@
         }]
       });
 
-      // Table twin: every state/territory in the data, sorted by count
-      var allCodes = Object.keys(geo.state_season);
-      allCodes.sort(function (a, b) { return stateCount(b, mapState.season) - stateCount(a, mapState.season); });
+      // Table twin: every state/territory in the data, sorted by the shaded measure
+      var allCodes = Object.keys(geo.state_season).sort(measureSort);
       mapTable.textContent = '';
       var tbody = App.h('tbody', {});
       allCodes.forEach(function (code) {
@@ -157,11 +176,14 @@
 
       var leadCode = allCodes[0];
       var leadCount = stateCount(leadCode, mapState.season);
-      var leadPop = statesMeta[leadCode] ? statesMeta[leadCode].pop : null;
-      var pct = leadPop ? ' (' + Math.round(leadCount / leadPop * 1e6 * 10) / 10 + ' per 1M residents)' : '';
+      var leadPc = statePercap(leadCode, mapState.season);
+      var lead = (mapState.mode === 'percap' && !isNaN(leadPc))
+        ? Math.round(leadPc * 10) / 10 + ' players per 1M residents (' + App.fmtNum(leadCount) + ' on rosters)'
+        : App.fmtNum(leadCount) + ' players' +
+          (isNaN(leadPc) ? '' : ' (' + Math.round(leadPc * 10) / 10 + ' per 1M residents)');
       mapTakeaway.textContent = (mapState.season < 0 ? 'Across all seasons, ' : 'In ' + seasons[mapState.season] + ', ') +
-        (statesMeta[leadCode] ? statesMeta[leadCode].name : leadCode) + ' leads with ' +
-        App.fmtNum(leadCount) + ' players' + pct + '. Click a state to open its players in the latest season’s roster.';
+        (statesMeta[leadCode] ? statesMeta[leadCode].name : leadCode) + ' leads with ' + lead +
+        '. Click a state to open its players in the latest season’s roster.';
     }
 
     sec.append(group(
@@ -184,9 +206,7 @@
         App.h('div', { class: 'card-foot' },
           App.csvBtn('states_players.csv', function () {
             return [['state', 'name', 'players', 'per_1m_residents']]
-              .concat(Object.keys(geo.state_season).sort(function (a, b) {
-                return stateCount(b, mapState.season) - stateCount(a, mapState.season);
-              }).map(function (code) {
+              .concat(Object.keys(geo.state_season).sort(measureSort).map(function (code) {
                 var count = stateCount(code, mapState.season);
                 var pop = statesMeta[code] ? statesMeta[code].pop : null;
                 return [code, statesMeta[code] ? statesMeta[code].name : code, count,
