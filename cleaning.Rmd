@@ -149,7 +149,7 @@ grad_year_map <- tibble(
 )
 
 wbb_rosters <- wbb_rosters |>
-  rename(year = academic_year) |>
+  rename(any_of(c(year = "academic_year"))) |>
   left_join(years_cleaned, by = "year", relationship = "many-to-one") |>
   left_join(grad_year_map, by = "year", relationship = "many-to-one") |>
   mutate(
@@ -255,7 +255,7 @@ parsed <- wbb_rosters %>%
 # Join parsed results
 wbb_rosters <- wbb_rosters %>%
   left_join(parsed, by = "pm.uid") %>%
-  separate(hometown, c("hometown", "homestate"), sep = ",", extra = "merge") %>%
+  separate(hometown, c("hometown", "homestate"), sep = ",", extra = "merge", fill = "right") %>%
   mutate(
     homestate = str_trim(homestate),
     homestate = str_replace(homestate, "\\.", ""),
@@ -506,7 +506,65 @@ stopifnot(
   "rows were lost beyond duplicate players" = nrow(wbb_rosters_final) == n_distinct(wbb_rosters$ncaa_id, wbb_rosters$team, wbb_rosters$name, wbb_rosters$jersey),
   "wrong season" = all(wbb_rosters_final$season == SEASON)
 )
+```
 
+## Manual Corrections
+
+Edits made in the browser editor (`python editor/app.py --season 2026-27`) are logged in `corrections/corrections_<season>.csv`, one row per changed cell or deleted player. They are re-applied here on every knit. Players are matched on the as-scraped `ncaa_id`, `team`, `name` and `jersey`, so a corrected name doesn't break later corrections. The uncorrected output is saved as `corrections/baseline_<season>.csv`; the editor rebuilds the season file from it the same way.
+
+```{r apply-corrections}
+CORRECTIONS_FILE <- paste0("corrections/corrections_", SEASON_TAG, ".csv")
+BASELINE_FILE    <- paste0("corrections/baseline_", SEASON_TAG, ".csv")
+
+dir.create("corrections", showWarnings = FALSE)
+write_csv(wbb_rosters_final, BASELINE_FILE, quote = "all", na = "")
+
+if (file.exists(CORRECTIONS_FILE)) {
+  corrections <- read_csv(CORRECTIONS_FILE, col_types = cols(.default = "c"), na = character())
+
+  # Character copy of the baseline as written, so keys and old values compare as the editor sees them
+  baseline_chr <- read_csv(BASELINE_FILE, col_types = cols(.default = "c"), na = "")
+  key_of <- \(d) paste(d$ncaa_id, d$team, d$name, replace_na(d$jersey, ""), sep = "\t")
+  corrections$row <- match(key_of(corrections), key_of(baseline_chr))
+  corrections$row[corrections$action == "set" & !corrections$column %in% names(baseline_chr)] <- NA
+
+  stale <- list()
+  drop_rows <- integer()
+  for (i in which(!is.na(corrections$row))) {
+    cr <- corrections[i, ]
+    if (cr$action == "delete_row") {
+      drop_rows <- c(drop_rows, cr$row)
+      next
+    }
+    current <- replace_na(baseline_chr[[cr$column]][cr$row], "")
+    if (current != cr$old_value) stale[[length(stale) + 1]] <- mutate(cr, current = current)
+    new_chr <- na_if(cr$new_value, "")
+    baseline_chr[[cr$column]][cr$row] <- new_chr
+    target <- wbb_rosters_final[[cr$column]]
+    # An all-NA column is text as far as the editor is concerned
+    if (all(is.na(target))) wbb_rosters_final[[cr$column]] <- target <- as.character(target)
+    wbb_rosters_final[[cr$column]][cr$row] <- if (is.logical(target)) as.logical(new_chr)
+                                              else if (is.numeric(target)) as.numeric(new_chr)
+                                              else new_chr
+  }
+  if (length(drop_rows)) wbb_rosters_final <- wbb_rosters_final[-unique(drop_rows), ]
+
+  unmatched <- filter(corrections, is.na(row))
+  stale <- bind_rows(stale)
+  cat(sprintf("Applied %d corrections from %s (%d unmatched, %d stale)\n",
+              sum(!is.na(corrections$row)), CORRECTIONS_FILE, nrow(unmatched), nrow(stale)))
+  # Player renamed or dropped upstream since the correction was made
+  if (nrow(unmatched)) print(select(unmatched, team, name, jersey, action, column, new_value, note), n = Inf)
+  # Scraped value changed since the correction was made; the correction was still applied
+  if (nrow(stale)) print(select(stale, team, name, column, old_value, current, new_value, note), n = Inf)
+} else {
+  cat("No corrections file", CORRECTIONS_FILE, "\n")
+}
+```
+
+## Write Output
+
+```{r write-output}
 write_csv(wbb_rosters_final, OUTPUT_FILE, quote = "all", na = "")
 
 cat("Final dataset written to", OUTPUT_FILE)
@@ -589,11 +647,24 @@ wbb_rosters_final |> filter(!is.na(position), is.na(primary_position)) |> count(
 wbb_rosters_final |> filter(!is.na(year), is.na(year_clean)) |> count(year, sort = TRUE)
 ```
 
+```{r check-high-school-na}
+# Teams with at least one player missing high_school, worst first
+teams_missing_hs <- wbb_rosters_final |>
+  filter(country_clean == "USA") |> 
+  group_by(ncaa_id, team, conference, division) |>
+  summarize(players = n(), missing_high_school = sum(is.na(high_school)), .groups = "drop") |>
+  filter(missing_high_school > 0) |>
+  mutate(pct_missing = round(missing_high_school / players * 100, 1)) |>
+  arrange(desc(pct_missing), desc(missing_high_school))
+
+teams_missing_hs
+```
+
 ```{r check-duplicates}
 # Same player listed twice on one roster
 wbb_rosters_final |> count(ncaa_id, team, name, jersey) |> filter(n > 1)
 ```
 
 ```{r check-countries}
-wbb_rosters_final |> count(country_clean, sort = TRUE)
+missing_countries <- wbb_rosters_final |> filter(is.na(country_clean))
 ```
