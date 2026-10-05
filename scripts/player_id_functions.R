@@ -66,6 +66,39 @@ normalize_team <- function(x) {
     str_squish()
 }
 
+PREV_SCHOOL_MAP_FILE <- "data/previous_school_mapping.csv"
+
+# Load the previous-school mapping (built by
+# scripts/build_prev_school_mapping.py). A missing file is fine: the canonical
+# columns still exist downstream and fall back to the cleaned value.
+load_prev_school_map <- function() {
+  if (!file.exists(PREV_SCHOOL_MAP_FILE)) return(NULL)
+  read_csv(PREV_SCHOOL_MAP_FILE, show_col_types = FALSE,
+           col_types = cols(.default = "c")) %>%
+    arrange(confidence != "manual") %>%   # FALSE sorts first, so manual rows win ties
+    distinct(previous_school, .keep_all = TRUE)
+}
+
+# One field (canonical / ncaa_id / category) of the previous-school mapping
+# for a vector of lookup strings; NA where there is no entry.
+ps_map_lookup <- function(ps_map, lookup, field) {
+  if (is.null(ps_map) || all(is.na(lookup))) {
+    return(rep(NA_character_, length(lookup)))
+  }
+  idx <- match(lookup, str_squish(ps_map$previous_school))
+  vals <- str_squish(ps_map[[field]])
+  out <- vals[idx]
+  out[!is.na(out) & out == ""] <- NA_character_
+  out
+}
+
+# "" and NA mean the same thing (blank) downstream, but coalesce() doesn't
+# treat "" as missing -- normalize keys before joining.
+blank_to_na <- function(x) {
+  x[is.na(x) | x == ""] <- NA_character_
+  x
+}
+
 # ---------------------------------------------------------------------------
 # Step 0: load and standardize all six season files
 # ---------------------------------------------------------------------------
@@ -81,7 +114,7 @@ derive_height_from_clean <- function(height_clean) {
   list(height_ft = ft, height_in = inch, total_inches = ft * 12 + inch)
 }
 
-load_one_season <- function(file, season_label) {
+load_one_season <- function(file, season_label, ps_map = NULL) {
   df <- read_csv(file, show_col_types = FALSE, col_types = cols(.default = "c"))
 
   if (!"player_id" %in% names(df)) df$player_id <- NA_character_
@@ -108,13 +141,23 @@ load_one_season <- function(file, season_label) {
       last_name_norm = last_token(name_norm),
       year_rank = unname(YEAR_RANK[year_clean]),
       redshirt_num = replace_na(suppressWarnings(as.numeric(redshirt)), 0),
-      total_inches_num = suppressWarnings(as.numeric(total_inches))
+      total_inches_num = suppressWarnings(as.numeric(total_inches)),
+      previous_school_lookup =
+        coalesce(blank_to_na(previous_school), blank_to_na(previous_school_clean)),
+      previous_school_canonical =
+        coalesce(ps_map_lookup(ps_map, previous_school_lookup, "canonical"),
+                 previous_school_lookup),
+      previous_school_ncaa_id =
+        ps_map_lookup(ps_map, previous_school_lookup, "ncaa_id"),
+      previous_school_category =
+        ps_map_lookup(ps_map, previous_school_lookup, "category")
     )
 }
 
-load_all_seasons <- function(season_files = SEASON_FILES) {
+load_all_seasons <- function(season_files = SEASON_FILES,
+                             ps_map = load_prev_school_map()) {
   seasons_in_order <- names(season_files)
-  all_rows <- imap_dfr(season_files, ~ load_one_season(.x, .y))
+  all_rows <- imap_dfr(season_files, ~ load_one_season(.x, .y, ps_map = ps_map))
   all_rows %>%
     mutate(
       season_order = match(season, seasons_in_order),
@@ -351,6 +394,89 @@ mint_ids <- function(rows, next_id) {
 }
 
 # ---------------------------------------------------------------------------
+# Step 3c: queue transfer candidates tier 2 declined (never auto-merged)
+# ---------------------------------------------------------------------------
+
+# Same-name candidates on a different team that tier 2 declined, labeled by why:
+# consistent year+height but no corroborating evidence at all
+# (same_name_unconfirmed_transfer), or corroboration that failed a screen
+# (corroborated_blocked -- which screen and what evidence are both columns).
+# Queuing only: the candidate keeps its own freshly minted wbb_id; merging
+# happens only when a human resolves the review-queue row and copies it into
+# player_id_overrides.csv. With an empty overrides file this function changes
+# no output except the review queue itself.
+queue_transfer_candidates <- function(season_rows, player_table) {
+  if (nrow(player_table) == 0 || nrow(season_rows) == 0) return(tibble())
+
+  candidates <- season_rows %>%
+    inner_join(player_table, by = "name_norm", suffix = c("", ".prev"),
+               relationship = "many-to-many") %>%
+    filter(ncaa_id != ncaa_id.prev) %>%
+    mutate(
+      prev_school_norm = normalize_team(previous_school_clean),
+      prev_team_norm = normalize_team(last_team),
+      evidence = case_when(
+        (!is.na(previous_school_ncaa_id) & !is.na(ncaa_id.prev) &
+           previous_school_ncaa_id == ncaa_id.prev) |
+          (!is.na(prev_school_norm) & !is.na(prev_team_norm) &
+             prev_school_norm == prev_team_norm) ~ "previous_school",
+        !is.na(hometown_clean) & !is.na(hometown_clean.prev) &
+          hometown_clean == hometown_clean.prev &
+          !is.na(state_clean) & !is.na(state_clean.prev) &
+          state_clean == state_clean.prev ~ "hometown",
+        !is.na(hs_clean) & !is.na(hs_clean.prev) & hs_clean == hs_clean.prev ~ "high_school",
+        TRUE ~ "none"
+      ),
+      height_close = is.na(total_inches_num.prev) | is.na(total_inches_num) |
+        abs(total_inches_num - total_inches_num.prev) <= 3
+    )
+  if (nrow(candidates) == 0) return(tibble())
+
+  ok <- pmap_lgl(
+    candidates %>% select(year_rank, season_order, redshirt_num,
+                          year_rank.prev, last_season_order, redshirt_num.prev),
+    function(year_rank, season_order, redshirt_num, year_rank.prev, last_season_order,
+             redshirt_num.prev) {
+      year_progression_ok(year_rank.prev, last_season_order, redshirt_num.prev,
+                          year_rank, season_order, redshirt_num)
+    }
+  )
+  candidates <- candidates %>% mutate(year_ok = unname(ok))
+
+  queueable <- candidates %>%
+    group_by(row_id) %>%
+    mutate(n_arrival = n(),          # n_ok_ev counts only evidence-bearing
+           n_ok_ev = sum(year_ok & height_close & evidence != "none")) %>%
+    ungroup() %>%
+    filter(n_ok_ev == 0) %>%         # rows with an evidence-bearing screen-passing
+                                     # candidate are tier 2's business (matched or
+                                     # ambiguous); rows tier 2 declined stay queued
+    group_by(wbb_id) %>% mutate(n_prior = n()) %>% ungroup() %>%
+    filter(evidence != "none" |      # corroborated-but-screen-failing always queue
+             (year_ok & height_close &   # no-evidence rows: only the consistent,
+              n_arrival == 1 & n_prior == 1))  # unambiguous ones are candidates
+
+  queueable %>%
+    transmute(
+      row_id, season, team, name,
+      candidate_wbb_id = wbb_id,
+      candidate_name = name_norm,      # join key: prior row's name_norm is identical
+      candidate_team = last_team,
+      candidate_team = last_team,
+      block = if_else(evidence == "none",
+                      "same_name_unconfirmed_transfer", "corroborated_blocked"),
+      reason = case_when(
+        evidence == "none" ~ "no_evidence",
+        !year_ok ~ "failed_year_progression",
+        TRUE ~ "height_conflict"
+      ),
+      evidence, year_ok, height_close,
+      name_dist = NA_real_, hometown_match = NA, hs_match = NA,
+      height_match = NA, score = NA_real_
+    )
+}
+
+# ---------------------------------------------------------------------------
 # Orchestration: process seasons in order against a cumulative player table
 # ---------------------------------------------------------------------------
 
@@ -380,6 +506,11 @@ build_player_ids <- function(all_rows_with_dupes) {
                   block = "ambiguous_transfer", name_dist = NA_real_,
                   hometown_match = tier2b_hometown, hs_match = tier2b_hs,
                   height_match = NA, score = NA_real_)
+    }
+
+    step3_queue <- queue_transfer_candidates(step2$remaining, player_table)
+    if (nrow(step3_queue) > 0) {
+      review_queue[[length(review_queue) + 1]] <- step3_queue
     }
 
     matched_this_season <- bind_rows(

@@ -26,6 +26,11 @@ players, in three tiers:
    or by last-name + hometown/high-school. These are never auto-merged --
    they're written to `wbb_id_review_queue.csv` for a human decision.
 
+Cross-team same-name pairs with **no** corroborating evidence that still pass the
+same year and height screens are also queued now (`same_name_unconfirmed_transfer`),
+as are corroborated pairs that fail a screen (`corroborated_blocked`, with the
+evidence and the failing screen in their columns). Neither is ever auto-merged.
+
 Anything left unmatched is a new person (freshman, transfer from outside the
 dataset, or a genuine miss) and gets a freshly minted `wbb_id`.
 
