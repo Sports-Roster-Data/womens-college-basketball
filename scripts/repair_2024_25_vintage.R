@@ -39,7 +39,7 @@
 # SHA):  Rscript scripts/repair_2024_25_vintage.R
 
 suppressPackageStartupMessages({
-  library(readr); library(dplyr); library(tidyr); library(tibble)
+  library(readr); library(dplyr); library(tibble)
 })
 
 OLD_SHA <- "f1a5ba0"  # last commit carrying the pre-refresh 2024-25 file
