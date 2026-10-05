@@ -3,7 +3,8 @@
    1. Conference-flow Sankey (pair selector, top 12 conferences by degree)
    2. Team-flow Sankey (pair + min-players selectors; click a team → team page)
    3. Most-traveled players (everyone with 3+ distinct teams, with every stop)
-   4. Feeder programs (top 25; blue = four-year program, gray = JuCO/prep)
+   4. Feeder programs (top 25; four-year vs JuCo/prep/other via the canonical
+      previous-school mapping — tail slots [4] category, [5] ncaa_id)
    5. Roster turnover (pair selector, top/bottom 15 retained %, + full table)
    A Sankey requires a DAG, but transfer graphs contain cycles (players move
    both ways), so both Sankeys keep edges largest-first and skip any edge that
@@ -339,7 +340,7 @@
 
     /* ---------- 4. Feeder programs ---------- */
 
-    var feeders = tr.feeders; // [previous_school, players, mentions, is_team], players desc
+    var feeders = tr.feeders; // [previous_school, players, mentions, is_team, category, ncaa_id], players desc
     var fdEl = App.h('div', { class: 'chart', style: 'height:640px', role: 'img',
       'aria-label': 'Bar chart of the most common previous schools' });
     var fdTakeaway = App.h('p', { class: 'takeaway' });
@@ -353,7 +354,7 @@
 
     sec.append(App.h('section', { class: 'card chart-card' },
       App.h('h2', { text: 'Feeder programs' }),
-      chartSub('The previous schools named most often on these rosters (minimum 5 distinct players), top 25. From the roster’s previous-school field — sparse and inconsistently formatted, so this undercounts.'),
+      chartSub('The previous schools named most often on these rosters (minimum 5 distinct players), top 25. About 85% of rows simply don’t name a previous school at all, so counts are a floor.'),
       swatchLegend([
         { color: ACCENT, label: 'Four-year program' },
         { color: App.feederGray, label: 'JuCO, prep or other' }
@@ -362,8 +363,8 @@
       fdTakeaway,
       App.h('div', { class: 'card-foot' },
         App.csvBtn('feeder_programs.csv', function () {
-          return [['previous_school', 'distinct_players', 'roster_mentions', 'is_four_year_program']]
-            .concat(feeders.map(function (f) { return [f[0], f[1], f[2], f[3] ? 'TRUE' : 'FALSE']; }));
+          return [['previous_school', 'distinct_players', 'roster_mentions', 'is_four_year_program', 'category']]
+            .concat(feeders.map(function (f) { return [f[0], f[1], f[2], f[3] ? 'TRUE' : 'FALSE', f[4] || 'other']; }));
         }))));
 
     /* ---------- 5. Roster turnover ---------- */
@@ -507,8 +508,14 @@
         formatter: function (p) {
           var f = p.data && p.data.raw;
           if (!f) return '';
+          var feedCat = {
+            juco: 'Junior college', prep: 'Prep school',
+            four_year_other: 'Four-year program (not on our rosters)',
+            international: 'International', other: 'Other'
+          };
           return App.esc(f[0]) + '<br/><strong>' + App.fmtNum(f[1]) + '</strong> distinct players · ' +
-            App.fmtNum(f[2]) + ' roster mentions · ' + (f[3] ? 'four-year program' : 'JuCO / prep / other');
+            App.fmtNum(f[2]) + ' roster mentions · ' +
+            (f[3] ? 'Four-year program' : (feedCat[f[4]] || 'Other'));
         }
       },
       grid: { left: 150, right: 56, top: 10, bottom: 28 },
