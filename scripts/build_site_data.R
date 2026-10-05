@@ -712,6 +712,31 @@ cat("Writing meta.json and players.json...\n")
 sort_unique <- function(x) sort(unique(na.omit(blank_na(x))))
 with_unknown <- function(x) c(sort_unique(x), "Unknown")
 
+## Featured players for the home page: real multi-team careers that show
+## what the cross-season wbb_id does. Deterministic: 2-3 distinct teams, at
+## least 4 seasons, most recent season in Division I; ordered by seasons
+## played, then teams, then name. Each entry carries its season/team path so
+## the home page can draw a timeline without fetching a card shard.
+ft_split <- split(wo[, c("season_idx", "ncaa_id", "team", "division")], wo$wbb_id)
+ft_teams <- vapply(ft_split, function(px) length(unique(px$ncaa_id)), 1L)
+ft_seas <- vapply(ft_split, nrow, 1L)
+ft_lastdiv <- vapply(ft_split, function(px) {
+  d <- px$division[nrow(px)]; if (is.na(d)) "" else d
+}, "")
+ft_ids <- names(ft_split)[ft_teams >= 2 & ft_teams <= 3 & ft_seas >= 4 & ft_lastdiv == "I"]
+ft_names <- players$canonical_name[match(ft_ids, players$wbb_id)]
+ft_ord <- order(-ft_seas[ft_ids], -ft_teams[ft_ids], ft_names, method = "radix")
+ft_ids <- head(ft_ids[ft_ord], 5)
+stopifnot("no featured players found for the home page" = length(ft_ids) >= 1)
+featured <- lapply(ft_ids, function(id) {
+  px <- ft_split[[id]]
+  list(
+    wbb_id = id,
+    name = players$canonical_name[match(id, players$wbb_id)],
+    seasons = data.frame(idx = px$season_idx, team = px$team, stringsAsFactors = FALSE)
+  )
+})
+
 meta <- list(
   built = format(Sys.Date()),
   seasons = seasons,
@@ -720,6 +745,7 @@ meta <- list(
   player_seasons = n_rows,
   teams = nrow(teams_out),
   countries = length(sort_unique(w$country_clean)),
+  featured_players = featured,
   states = STATE_INFO,
   filter_options = list(
     year = YEAR_ORDER,

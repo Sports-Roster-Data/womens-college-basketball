@@ -425,19 +425,170 @@
 
   /* ---------- Home view ---------- */
 
+  // US map GeoJSON is registered once and shared by the home tile and the
+  // geography page.
+  var mapRegistered = false;
+  App.registerUSMap = function (geojson) {
+    if (!mapRegistered) { echarts.registerMap('USA', geojson); mapRegistered = true; }
+  };
+
+  var HOME_YEAR_ORDER = ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate Student',
+    'Fifth Year', 'Sixth Year', 'Unknown'];
+  var homeToken = 0;
+
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    Object.keys(attrs).forEach(function (k) {
+      if (k === 'text') el.textContent = attrs[k]; else el.setAttribute(k, attrs[k]);
+    });
+    return el;
+  }
+
+  // Thumbnail timeline for the featured player: one dot per season, a new
+  // colour each time the team changes, team labels above the line.
+  function homeTimeline(box, player) {
+    box.textContent = '';
+    var path = player.seasons.map(function (sx) {
+      return Array.isArray(sx) ? { idx: sx[0], team: sx[1] } : sx;
+    });
+    var n = path.length;
+    if (!n) return;
+    var W = 240, H = 100, x0 = 22, x1 = W - 22;
+    var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, preserveAspectRatio: 'xMidYMid meet' });
+    var xs = path.map(function (_, i) { return n === 1 ? W / 2 : x0 + (x1 - x0) * i / (n - 1); });
+    svg.append(svgEl('line', { x1: xs[0], y1: 62, x2: xs[n - 1], y2: 62, stroke: '#bfdbfe', 'stroke-width': 3, 'stroke-linecap': 'round' }));
+    var stint = -1, lastTeam = null;
+    path.forEach(function (p, i) {
+      if (p.team !== lastTeam) {
+        stint += 1; lastTeam = p.team;
+        var runEnd = i;
+        while (runEnd + 1 < n && path[runEnd + 1].team === p.team) runEnd += 1;
+        var cx = (xs[i] + xs[runEnd]) / 2;
+        var label = p.team.length > 16 ? p.team.slice(0, 15) + '…' : p.team;
+        // Edge stints anchor inward so long names stay inside the viewBox.
+        var anchor = cx < 50 ? 'start' : cx > W - 50 ? 'end' : 'middle';
+        var tx = anchor === 'start' ? Math.max(4, xs[i] - 8) : anchor === 'end' ? Math.min(W - 4, xs[runEnd] + 8) : cx;
+        // Alternate label rows so short back-to-back stints don't collide.
+        svg.append(svgEl('text', { x: tx, y: stint % 2 ? 32 : 46, 'font-size': 10, 'font-weight': 600,
+          'text-anchor': anchor, fill: App.palette[stint % App.palette.length], text: label }));
+      }
+      svg.append(svgEl('circle', { cx: xs[i], cy: 62, r: 6.5, fill: App.palette[stint % App.palette.length], stroke: '#fff', 'stroke-width': 2 }));
+      svg.append(svgEl('text', { x: xs[i], y: 86, 'font-size': 9, 'text-anchor': 'middle', fill: '#78716c',
+        text: (App.seasons[p.idx] || '').replace(/^20/, '') }));
+    });
+    svg.append(svgEl('text', { x: W / 2, y: 14, 'font-size': 11, 'text-anchor': 'middle', fill: '#1c1917', 'font-weight': 600, text: player.name }));
+    box.append(svg);
+  }
+
+  function homeStatic() {
+    var meta = App.meta;
+    var sec = document.getElementById('view-home');
+    if (sec.dataset.built) return;
+    sec.dataset.built = '1';
+
+    var title = document.getElementById('home-title');
+    title.textContent = 'Every NCAA women’s basketball roster since ' + meta.seasons[0];
+
+    var stats = { player_seasons: meta.player_seasons, players: meta.players, teams: meta.teams,
+      seasons: meta.seasons.length, countries: meta.countries };
+    sec.querySelectorAll('[data-stat]').forEach(function (el) {
+      var v = stats[el.dataset.stat];
+      el.textContent = v === undefined ? '—' : App.fmtNum(v);
+    });
+    document.getElementById('home-stat-players').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('global-search').focus();
+    });
+
+    // Roster thumb: three real filter values (first non-Unknown of each list).
+    var fo = meta.filter_options || {};
+    function firstReal(list) {
+      return (list || []).filter(function (v) { return v !== 'Unknown'; })[0];
+    }
+    var chips = document.getElementById('home-roster-chips');
+    [firstReal(fo.conference), 'Guard', firstReal(fo.year)].forEach(function (v) {
+      if (v) chips.append(App.h('span', { class: 'chip filter-chip', text: v }));
+    });
+
+    // Downloads thumb: the latest season's file name.
+    var last = meta.seasons[meta.seasons.length - 1];
+    document.getElementById('home-file-a').textContent = 'wbb_rosters';
+    document.getElementById('home-file-b').textContent = '_' + last.replace(/-/g, '_') + '.csv';
+
+    // Featured multi-team players (meta.featured_players), timeline from the first.
+    var featured = meta.featured_players || [];
+    var row = document.getElementById('home-featured');
+    featured.forEach(function (p) {
+      row.append(App.h('a', { class: 'chip', href: '#/player/' + p.wbb_id, text: p.name }));
+    });
+    if (featured.length) homeTimeline(document.getElementById('home-timeline'), featured[0]);
+
+    var link = document.getElementById('home-search-link');
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('global-search').focus();
+    });
+  }
+
+  // Non-interactive mini charts for the Geography and Trends tiles. Charts are
+  // disposed by App.clearCharts() on every route change, so they are rebuilt
+  // on each home render; a missing data file leaves the tile blank.
+  function homeCharts() {
+    var token = ++homeToken;
+    var mapEl = document.getElementById('home-map');
+    var classEl = document.getElementById('home-class');
+
+    App.getJSON('data/trends.json').then(function (tr) {
+      if (token !== homeToken) return;
+      var inst = App.chart(classEl);
+      inst.setOption({
+        animation: false, silent: true,
+        grid: { left: 6, right: 6, top: 6, bottom: 6 },
+        xAxis: { type: 'category', data: App.seasons, show: false },
+        yAxis: { type: 'value', show: false },
+        series: HOME_YEAR_ORDER.filter(function (k) { return tr.class_season[k]; }).map(function (key, i) {
+          return { name: key, type: 'bar', stack: 'total', barWidth: '55%',
+            itemStyle: { color: App.palette[i], borderColor: '#ffffff', borderWidth: 1, borderRadius: 2 },
+            data: tr.class_season[key] };
+        })
+      });
+    }).catch(function (err) { console.warn('home trends tile', err); });
+
+    Promise.all([App.getJSON('data/geography.json'), App.getJSON('data/us-states.json')]).then(function (res) {
+      if (token !== homeToken) return;
+      var geo = res[0];
+      App.registerUSMap(res[1]);
+      var statesMeta = App.meta.states;
+      var rows = [], maxV = 0;
+      Object.keys(geo.state_season).forEach(function (code) {
+        var st = statesMeta[code];
+        if (!st || !st.pop) return;
+        var count = geo.state_season[code].reduce(function (a, b) { return a + b; }, 0);
+        var v = count / st.pop * 1e6;
+        maxV = Math.max(maxV, v);
+        rows.push({ name: st.name, value: v });
+      });
+      var inst = App.chart(mapEl);
+      inst.setOption({
+        animation: false, silent: true,
+        visualMap: { show: false, min: 0, max: maxV, inRange: { color: App.seqRamp }, outOfRange: { color: App.noData } },
+        // Lower 48 only: at thumbnail size Alaska would swallow the frame.
+        series: [{ type: 'map', map: 'USA', data: rows, selectedMode: false, roam: false,
+          boundingCoords: [[-125, 49.5], [-66.5, 24.5]],
+          top: 2, bottom: 2, left: 2, right: 2,
+          itemStyle: { borderColor: '#ffffff', borderWidth: 0.6 },
+          emphasis: { disabled: true } }]
+      });
+    }).catch(function (err) { console.warn('home map tile', err); });
+  }
+
   App.register('home', {
     title: function () {
       return 'Women’s College Basketball Rosters — Sports Roster Data';
     },
-    render: function (sec) {
-      var link = document.getElementById('home-search-link');
-      if (!link.dataset.wired) {
-        link.dataset.wired = '1';
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.getElementById('global-search').focus();
-        });
-      }
+    render: function () {
+      homeStatic();
+      homeCharts();
       return Promise.resolve();
     }
   });

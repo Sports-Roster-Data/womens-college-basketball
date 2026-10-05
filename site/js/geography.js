@@ -76,7 +76,7 @@
   });
 
   function build(sec, geo, geojson, teamsList, teamSeasons) {
-    echarts.registerMap('USA', geojson);
+    App.registerUSMap(geojson);
     var seasons = App.seasons;
     var lastSeason = seasons[seasons.length - 1];
     var statesMeta = App.meta.states;
