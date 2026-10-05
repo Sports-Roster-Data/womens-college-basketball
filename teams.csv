@@ -345,7 +345,7 @@ Calvin,https://calvinknights.com/sports/womens-basketball,114,,CalvinWBball,MI,M
 Colo. Christian,https://ccucougars.com/sports/womens-basketball,11403,,ccu_wbb,CO,RMAC,II
 Colorado Mesa,https://cmumavericks.com/sports/womens-basketball,11416,,CMUWBasketball,CO,RMAC,II
 Queens (NC),https://queensathletics.com/sports/womens-basketball,11504,,QueensWBB,NC,ASUN,I
-Fontbonne,https://fontbonnegriffins.com/sports/wbkb,11538,,fontbonnewbb,MO,SLIAC,III
+Fontbonne,https://fontbonnegriffins.com/sports/wbkb,11538,Fontbonne,fontbonnewbb,MO,SLIAC,III
 Neb.-Kearney,https://lopers.com/sports/womens-basketball,1156,Neb.-Kearney,UNKWBB,NE,Mid-America Intercollegiate,II
 Keuka,https://keukaathletics.com/sports/womens-basketball,1159,,KeukaWBB,NY,Empire 8,III
 LaGrange,https://lagrangepanthers.com/sports/womens-basketball,1162,,LCPanthers_WBB,GA,CCS,III
@@ -658,7 +658,7 @@ Louisiana Tech,https://latechsports.com/sports/womens-basketball,366,Louisiana T
 Loyola Marymount,https://lmulions.com/sports/womens-basketball,370,Loyola Marymount,lmulionswb,CA,WCC,I
 Luther,https://luthernorse.com/sports/womens-basketball,372,,LutherWBB,IA,American Rivers,III
 Lycoming,https://lycomingathletics.com/sports/womens-basketball,373,,lycowomensbb,PA,MAC Freedom,III
-Lynchburg,https://lynchburgsports.com/sports/womens-basketball,374,,lynchburg_wbb,VA,ODAC,III
+Lynchburg,https://lynchburgsports.com/sports/womens-basketball,374,Lynchburg,lynchburg_wbb,VA,ODAC,III
 Macalester,https://athletics.macalester.edu/sports/womens-basketball,376,Macalester College,MacalesterWBB,MN,MIAC,III
 Me.-Farmington,https://goumfbeavers.com/sports/womens-basketball,379,,UMFwomenshoops,ME,North Atlantic,III
 Augsburg,https://athletics.augsburg.edu/sports/womens-basketball,38,Augsburg,AugsburgWBB,MN,MIAC,III
@@ -977,7 +977,6 @@ Virginia State,https://govsutrojans.com/sports/womens-basketball,743,Virginia St
 Virginia Union,https://vuusports.com/sports/womens-basketball,744,Virginia Union,,VA,CIAA,II
 Dominican (IL),https://dustars.com/sports/womens-basketball,1332,Dominican (IL),,IL,NACC,III
 Spring Hill,https://shcbadgers.com/sports/womens-basketball,31091,Spring Hill,,AL,SIAC,II
-Lynchburg,https://lynchburgsports.com/sports/womens-basketball,374,Lynchburg,lynchburg_wbb,VA,ODAC,III
 Williams College,https://ephsports.williams.edu/sports/womens-basketball,789,Williams College,,MA,NESCAC,III
 Westmont,https://athletics.westmont.edu/sports/womens-basketball,30260,Westmont,,CA,PacWest,II
 West Virginia Wesleyan,https://wesleyanbobcats.com/sports/womens-basketball,9630,West Virginia Wesleyan,wvwcwbb,WV,MEC,II
@@ -1013,7 +1012,6 @@ Lincoln (MO),https://lubluetigers.com/sports/womens-basketball,356,Lincoln (MO),
 Lincoln (PA),https://lulions.com/sports/womens-basketball,357,Lincoln (PA),,PA,CIAA,II
 Livingstone,https://bluebearathletics.com/sports/womens-basketball,359,Livingstone,,NC,CIAA,II
 Molloy,https://molloylions.com/sports/womens-basketball,437,Molloy,,NY,ECC,II
-Limestone,https://golimestonesaints.com/sports/womens-basketball,1174,Limestone,,SC,SAC,II
 Lincoln Memorial,https://lmurailsplitters.com/sports/womens-basketball,1176,Lincoln Memorial,,TN,SAC,II
 Midwestern St.,https://msumustangs.com/sports/womens-basketball,1222,Midwestern St.,,TX,Lone Star,II
 USC Beaufort,https://uscbathletics.com/sports/womens-basketball,30259,USC Beaufort,,SC,Peach Belt,II
@@ -1074,7 +1072,6 @@ Kean,https://keanathletics.com/sports/womens-basketball,329,Kean,,NJ,NJAC,III
 Maryville (TN),https://mcscots.com/sports/womens-basketball,396,Maryville (TN),,TN,CCS,III
 Rutgers-Camden,https://scarletraptors.com/sports/womens-basketball,588,Rutgers-Camden,,NJ,NJAC,III
 SUNY Poly,https://wildcats.sunypoly.edu/sports/womens-basketball,9500,SUNY Poly,,NY,Empire 8,III
-Fontbonne,https://www.fontbonnegriffins.com/sports/wbkb/index,11538,Fontbonne,,MO,SLIAC,III
 Gwynedd Mercy,https://gwyneddathletics.com/sports/womens-basketball,12399,Gwynedd Mercy,,PA,Atlantic East,III
 Wilson,https://wilsonphoenix.com/sports/womens-basketball,12973,Wilson,,PA,United East,III
 Wesleyan (GA),https://wesleyanathletics.com/sports/womens-basketball,14718,Wesleyan (GA),,GA,CCS,III
@@ -1091,7 +1088,6 @@ St. Joseph's (Brkln),https://sjbkathletics.com/sports/womens-basketball,30072,St
 Alfred St.,https://alfredstateathletics.com/sports/womens-basketball,30170,Alfred St.,,NY,AMCC,III
 IIT,https://illinoistechathletics.com/sports/womens-basketball,502260,IIT,,IL,NACC,III
 U New England,https://athletics.une.edu/sports/womens-basketball,1255,U New England,,ME,CNE,III
-Northland,https://northlandcollegesports.com/sports/womens-basketball,1267,Northland,,WI,UMAC,III
 Pacific Lutheran,https://golutes.com/sports/womens-basketball,1297,Pacific Lutheran,,WA,NWC,III
 Stockton,https://stocktonathletics.com/sports/womens-basketball,681,Stockton,,NJ,NJAC,III
 Utica,https://uticapioneers.com/sports/womens-basketball,733,Utica,,NY,Empire 8,III
