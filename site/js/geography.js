@@ -382,11 +382,13 @@
           }
         },
         visualMap: {
-          type: 'continuous', min: 0, max: maxV, left: 8, bottom: 8, itemWidth: 12,
+          type: 'continuous', min: 0, max: maxV, orient: 'horizontal', left: 'center', bottom: 6,
+          itemWidth: 12, itemHeight: 150,
           inRange: { color: App.seqRamp }, outOfRange: { color: App.noData }, text: ['most', '0']
         },
         series: [{
           type: 'treemap', data: data, roam: false, nodeClick: false,
+          left: 0, right: 0, top: 0, bottom: 52,
           breadcrumb: { show: false },
           itemStyle: { borderColor: '#fff', borderWidth: 2, gapWidth: 2 },
           label: {

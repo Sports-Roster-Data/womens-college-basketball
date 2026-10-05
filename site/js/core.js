@@ -429,7 +429,16 @@
   // geography page.
   var mapRegistered = false;
   App.registerUSMap = function (geojson) {
-    if (!mapRegistered) { echarts.registerMap('USA', geojson); mapRegistered = true; }
+    if (!mapRegistered) {
+      // Shrink and tuck Alaska, Hawaii and Puerto Rico under the lower 48
+      // (map-coordinate boxes; left/top are the top-left corner in degrees).
+      echarts.registerMap('USA', geojson, {
+        Alaska: { left: -127, top: 29, width: 9 },
+        Hawaii: { left: -113, top: 27, width: 4.5 },
+        'Puerto Rico': { left: -78, top: 26, width: 2.5 }
+      });
+      mapRegistered = true;
+    }
   };
 
   var HOME_YEAR_ORDER = ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate Student',
@@ -552,9 +561,7 @@
       inst.setOption({
         animation: false, silent: true,
         visualMap: { show: false, min: 0, max: maxV, inRange: { color: App.seqRamp }, outOfRange: { color: App.noData } },
-        // Lower 48 only: at thumbnail size Alaska would swallow the frame.
         series: [{ type: 'map', map: 'USA', data: rows, selectedMode: false, roam: false,
-          boundingCoords: [[-125, 49.5], [-66.5, 24.5]],
           top: 2, bottom: 2, left: 2, right: 2,
           itemStyle: { borderColor: '#ffffff', borderWidth: 0.6 },
           emphasis: { disabled: true } }]

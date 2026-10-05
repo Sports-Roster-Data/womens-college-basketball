@@ -97,7 +97,7 @@ main { padding: 24px 0 48px; }
 .view[hidden] { display: none; }
 
 .page-head { margin-bottom: 16px; }
-.page-head h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+.page-head h1 { font-size: clamp(16px, 5vw, 22px); font-weight: 600; margin: 0 0 4px; white-space: nowrap; }
 .page-head .lede { color: var(--muted); margin: 0; max-width: 72ch; }
 
 .card {
@@ -125,6 +125,16 @@ main { padding: 24px 0 48px; }
 .geo-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .table-wrap.max-h { max-height: 420px; overflow-y: auto; }
+/* Classic (space-taking) scrollbar so it never overlays the last column and
+   the rounded border stays intact; the thumb is rounded to match the site. */
+.table-wrap { scrollbar-gutter: stable; }
+.table-wrap::-webkit-scrollbar { width: 12px; height: 12px; }
+.table-wrap::-webkit-scrollbar-track { background: transparent; }
+.table-wrap::-webkit-scrollbar-thumb {
+  background: #d6d3d1; border-radius: 999px; border: 3px solid var(--panel);
+}
+.table-wrap::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
+.table-wrap th:last-child, .table-wrap td:last-child { padding-right: 14px; }
 @media (max-width: 900px) {
   .geo-grid, .two-col { grid-template-columns: 1fr; }
 }
@@ -154,7 +164,7 @@ main { padding: 24px 0 48px; }
 /* ---------- Home ---------- */
 
 .hero { padding: 10px 2px 22px; }
-.hero h1 { font-size: 28px; font-weight: 600; line-height: 1.15; margin: 0 0 8px; max-width: 30ch; letter-spacing: -0.01em; }
+.hero h1 { font-size: clamp(14px, 4vw, 28px); font-weight: 600; line-height: 1.15; margin: 0 0 8px; white-space: nowrap; letter-spacing: -0.01em; }
 .hero .lede { color: var(--muted); margin: 0 0 18px; max-width: 70ch; font-size: 15px; }
 
 .entry-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
@@ -218,7 +228,7 @@ a.entry-card:hover { text-decoration: none; border-color: var(--accent); transfo
 /* ---------- Player card / team page ---------- */
 
 .detail-head { display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
-.detail-head h1 { font-size: 24px; font-weight: 600; margin: 0; }
+.detail-head h1 { font-size: clamp(16px, 5vw, 24px); font-weight: 600; margin: 0; white-space: nowrap; }
 .badge {
   display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px;
   background: var(--accent-soft); color: var(--accent); font-weight: 600;
@@ -309,7 +319,6 @@ a.entry-card:hover { text-decoration: none; border-color: var(--accent); transfo
 
 @media (max-width: 600px) {
   .hero { padding: 4px 0 20px; }
-  .hero h1 { font-size: 22px; }
   .hero .lede { font-size: 14px; }
   .entry-spacer { display: none; }
   .entry-cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
