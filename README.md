@@ -40,4 +40,17 @@ We have *not* completely standardized the following data:
 * Hometown (parsed but not normalized)
 * Previous School (inconsistent formatting remains)
 
+## Correcting data
+
+Individual fixes (one player's hometown, a bulk fix across filtered rows, deleting a bad row) are made in a small browser editor rather than by editing the season CSV directly:
+
+```bash
+python3 -m venv editor/.venv && editor/.venv/bin/pip install -r editor/requirements.txt
+editor/.venv/bin/python editor/app.py
+```
+
+Then open http://127.0.0.1:5050 and pick a season from the menu (it opens on 2026-27; `--season` changes that). Every save is recorded with a note in `corrections/corrections_<season>.csv` and the season CSV is rewritten immediately. `cleaning.Rmd` re-applies the same corrections on every knit, so they survive new scrapes; its **Manual Corrections** output lists any corrections whose player can no longer be found or whose scraped value has changed since the edit. Each batch can be undone from the editor's side panel.
+
+The editor rebuilds the season CSV from `corrections/baseline_<season>.csv`, the uncorrected output that `cleaning.Rmd` writes on each knit (not committed). A season that has never been corrected gets its baseline copied from the season CSV on the first save; on a fresh checkout, knit `cleaning.Rmd` before editing a season that already has corrections. Older season files contain a few rows that repeat the same team, name and jersey; the editor greys these out and won't correct them, since a correction couldn't tell the copies apart.
+
 We welcome comments, corrections and questions. Please use [this repository's Issues](https://github.com/Sports-Roster-Data/womens-college-basketball/issues) to let us know about any errors or omissions, or submit a pull request with any changes.

@@ -211,7 +211,9 @@
 
   App.titled = function (main) { return main + ' — Sports Roster Data'; };
 
-  var ROUTES = ['roster', 'player', 'team', 'geography', 'transfers', 'trends', 'about'];
+  // 'transfers' is parked: its view is built (js/transfers.js, data/transfers.json)
+  // but unlinked and unreachable until the previous-school adjudication is done.
+  var ROUTES = ['roster', 'player', 'team', 'geography', 'trends', 'about'];
 
   function parseRoute() {
     var raw = location.hash.replace(/^#/, '') || '/';

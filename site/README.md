@@ -23,6 +23,13 @@ site/
     us-states.json      # the one committed data file — Census-derived map geometry
 ```
 
+`transfers.js` is currently **parked**: the transfers view is wired and its
+data still builds, but it is deliberately unlinked from the nav and removed
+from the router's route list (see the `ROUTES` comment in `core.js`) until
+the previous-school adjudication work is finished. To bring it back, load
+the script and reopen the section in `index.html`, and re-add `'transfers'`
+to `ROUTES`.
+
 The committed CSVs in the repository root are the single source of truth;
 the generated JSON under `site/data/` is never committed — the Pages workflow
 rebuilds it on every deploy. Design decisions and the reasoning behind each

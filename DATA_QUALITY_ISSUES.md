@@ -64,9 +64,11 @@ same-player stay rows (12,438 same-label, 25 school label-drift):
 `scripts/repair_2024_25_vintage.R` applied the owner-approved repair: the
 pre-refresh vintage (`f1a5ba0`) is historical truth wherever it has a value;
 strong-mirror fabrications were deleted (892); dropped rows were restored
-(1,252, including one duplicate pair collapsed to its single distinct copy).
-Post-repair, the shared-stay class==2025-26 rate fell from 46.8% to 6.9%
-(honest-era control ~6.5%).
+(1,252, including one duplicate pair collapsed to its single distinct copy);
+the repaired `wbb_rosters_2024_25.csv` carries 16,170 rows, with `height_clean`
+agreeing with `total_inches` on every parseable row. Post-repair, the
+shared-stay class==2025-26 rate fell from 46.8% to 6.9% (honest-era control
+~6.5%).
 
 **Rule: season files older than the live season must only ever be re-knit
 against an archived/raw source frozen at that season's vintage.** Re-knitting

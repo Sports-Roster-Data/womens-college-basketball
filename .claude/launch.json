@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "roster-editor",
+      "runtimeExecutable": "editor/.venv/bin/python",
+      "runtimeArgs": [
+        "editor/app.py"
+      ],
+      "port": 5050
+    }
+  ]
+}

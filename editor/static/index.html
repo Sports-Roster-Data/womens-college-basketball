@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roster Editor</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/css/tabulator_simple.min.css">
+<style>
+  :root {
+    --bg: #fafaf9; --panel: #ffffff; --text: #1c1917; --muted: #78716c; --border: #e7e5e4;
+    --accent: #1d4ed8; --corrected: #ecfdf5; --pending: #fef9c3; --danger: #b91c1c; --warn: #fffbeb;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.4 system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--panel); flex-wrap: wrap; }
+  header h1 { font-size: 16px; margin: 0 8px 0 0; }
+  header .count { color: var(--muted); }
+  header .spacer { flex: 1; }
+  button { font: inherit; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--panel); cursor: pointer; }
+  button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  button.danger { color: var(--danger); }
+  button:disabled { opacity: .45; cursor: default; }
+  main { display: flex; height: calc(100vh - 54px); }
+  #grid-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  #report { display: none; padding: 8px 16px; background: var(--warn); border-bottom: 1px solid var(--border); }
+  #report summary { cursor: pointer; }
+  #report table { border-collapse: collapse; margin-top: 6px; font-size: 13px; }
+  #report td, #report th { padding: 2px 8px; border-bottom: 1px solid var(--border); text-align: left; }
+  #grid { flex: 1; }
+  aside { width: 300px; border-left: 1px solid var(--border); background: var(--panel); overflow-y: auto; padding: 12px; }
+  aside h2 { font-size: 14px; margin: 0 0 8px; }
+  .batch { border: 1px solid var(--border); border-radius: 6px; padding: 8px; margin-bottom: 8px; }
+  .batch .meta { color: var(--muted); font-size: 12px; }
+  .batch .note { margin: 4px 0; }
+  .batch button { padding: 2px 8px; font-size: 12px; }
+  .tabulator-row.corrected { background: var(--corrected) !important; }
+  .tabulator-row.ambiguous { color: var(--muted); font-style: italic; }
+  header select { font: inherit; padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--panel); }
+  .tabulator-cell.pending { background: var(--pending) !important; }
+  dialog { border: 1px solid var(--border); border-radius: 8px; padding: 16px; width: min(440px, 92vw); }
+  dialog h3 { margin: 0 0 12px; font-size: 15px; }
+  dialog label { display: block; margin: 8px 0 4px; font-weight: 600; }
+  dialog input, dialog select, dialog textarea { width: 100%; font: inherit; padding: 6px; border: 1px solid var(--border); border-radius: 6px; }
+  dialog .hint { color: var(--muted); font-size: 13px; margin-top: 8px; }
+  dialog .actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+  @media (max-width: 900px) {
+    main { flex-direction: column; height: auto; }
+    #grid-wrap { height: 70vh; }
+    aside { width: auto; border-left: 0; border-top: 1px solid var(--border); }
+  }
+  #toast { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); background: var(--text); color: #fff; padding: 8px 14px; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Roster Editor</h1>
+  <select id="season" aria-label="Season"></select>
+  <span class="count" id="count"></span>
+  <span class="spacer"></span>
+  <button id="save-pending" class="primary" disabled>Save edits</button>
+  <button id="discard-pending" disabled>Discard</button>
+  <button id="bulk">Bulk set filtered…</button>
+  <button id="delete" class="danger" disabled>Delete selected</button>
+  <button id="clear-filters">Clear filters</button>
+</header>
+<main>
+  <div id="grid-wrap">
+    <div id="report"></div>
+    <div id="grid"></div>
+  </div>
+  <aside>
+    <h2>Correction batches</h2>
+    <div id="batches"></div>
+  </aside>
+</main>
+
+<dialog id="note-dialog">
+  <form method="dialog">
+    <h3 id="note-title"></h3>
+    <div id="note-extra"></div>
+    <label for="note-input">Note (why)</label>
+    <textarea id="note-input" rows="2" required></textarea>
+    <div class="hint" id="note-hint"></div>
+    <div class="actions">
+      <button value="cancel" formnovalidate>Cancel</button>
+      <button value="ok" class="primary" id="note-ok">Save</button>
+    </div>
+  </form>
+</dialog>
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/6.3.1/js/tabulator.min.js"></script>
+<script>
+let table, meta, season, pending = new Map();   // "key\u0000column" -> {_key, column, new_value}
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.style.display = "block";
+  clearTimeout(toast.timer); toast.timer = setTimeout(() => (t.style.display = "none"), 3500);
+}
+
+// Every call is scoped to the season being edited
+async function api(method, path, body) {
+  const url = new URL(path, location.href);
+  if (season) url.searchParams.set("season", season);
+  const res = await fetch(url, { method, headers: { "Content-Type": "application/json" }, body: body && JSON.stringify(body) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || res.statusText);
+  return data;
+}
+
+// Ask for a note; extra is optional HTML placed above the note box. Resolves to {note, form} or null.
+function askNote(title, hint, extraHtml = "", onOpen) {
+  const d = $("note-dialog");
+  $("note-title").textContent = title;
+  $("note-hint").textContent = hint || "";
+  $("note-extra").innerHTML = extraHtml;
+  $("note-input").value = "";
+  if (onOpen) onOpen(d);
+  d.showModal();
+  return new Promise((resolve) => {
+    d.addEventListener("close", () => {
+      resolve(d.returnValue === "ok" && $("note-input").value.trim() ? { note: $("note-input").value.trim(), form: d } : null);
+    }, { once: true });
+  });
+}
+
+function editableColumns() {
+  return meta.columns.filter((c) => !meta.locked.includes(c));
+}
+
+function buildColumns() {
+  const cols = [{ formatter: "rowSelection", titleFormatter: "rowSelection", hozAlign: "center", headerSort: false, width: 36, frozen: true,
+                  cellClick: (e, cell) => cell.getRow().toggleSelect() }];
+  for (const c of meta.columns) {
+    const def = { title: c, field: c, headerFilter: "input", headerFilterPlaceholder: "filter", minWidth: 70, maxWidth: 320,
+                  sorter: meta.numeric.includes(c) ? "number" : "string" };
+    if (!meta.locked.includes(c)) {
+      def.editor = "input";
+      def.editable = (cell) => !cell.getRow().getData()._ambiguous;
+      def.editorParams = { selectContents: true };
+    }
+    if (c === "team") def.frozen = true;
+    if (c === "division") def.headerFilterFunc = "=";  // "I" would otherwise match II and III
+    cols.push(def);
+  }
+  return cols;
+}
+
+function rowFormatter(row) {
+  const el = row.getElement();
+  el.classList.toggle("corrected", !!row.getData()._corrected);
+  el.classList.toggle("ambiguous", !!row.getData()._ambiguous);
+  if (row.getData()._ambiguous) el.title = "Same team, name and jersey as another row in this season: can't be corrected here";
+  for (const cell of row.getCells()) {
+    const f = cell.getField();
+    if (f) cell.getElement().classList.toggle("pending", pending.has(row.getData()._key + "\u0000" + f));
+  }
+}
+
+function updateButtons() {
+  $("save-pending").disabled = $("discard-pending").disabled = pending.size === 0;
+  $("save-pending").textContent = pending.size ? `Save ${pending.size} edit${pending.size > 1 ? "s" : ""}` : "Save edits";
+  $("delete").disabled = !table || table.getSelectedRows().length === 0;
+  if (table) $("count").textContent = `${table.getDataCount("active").toLocaleString()} of ${table.getDataCount().toLocaleString()} rows`;
+}
+
+function showReport(report) {
+  const el = $("report");
+  const { unmatched = [], stale = [] } = report || {};
+  if (!unmatched.length && !stale.length) { el.style.display = "none"; return; }
+  const rows = (list, extra) => list.map((e) =>
+    `<tr><td>${esc(e.team)}</td><td>${esc(e.name)}</td><td>${esc(e.action)}</td><td>${esc(e.column)}</td><td>${esc(e.old_value)}</td>${extra ? `<td>${esc(e.current)}</td>` : ""}<td>${esc(e.new_value)}</td><td>${esc(e.note)}</td></tr>`).join("");
+  el.innerHTML = `
+    ${unmatched.length ? `<details><summary><b>${unmatched.length}</b> correction(s) don't match any player in the baseline (player renamed or dropped upstream)</summary>
+      <table><tr><th>team</th><th>name</th><th>action</th><th>column</th><th>old</th><th>new</th><th>note</th></tr>${rows(unmatched)}</table></details>` : ""}
+    ${stale.length ? `<details><summary><b>${stale.length}</b> correction(s) are stale: the scraped value changed since the edit</summary>
+      <table><tr><th>team</th><th>name</th><th>action</th><th>column</th><th>old</th><th>now</th><th>new</th><th>note</th></tr>${rows(stale, true)}</table></details>` : ""}`;
+  el.style.display = "block";
+}
+
+async function loadBatches() {
+  const batches = await api("GET", "/api/batches");
+  $("batches").innerHTML = batches.length ? batches.map((b) => `
+    <div class="batch">
+      <div class="meta">${esc(b.edited_at.replace("T", " "))} · ${b.count} change${b.count > 1 ? "s" : ""} · ${esc(b.actions.join(", "))}${b.columns.length ? " · " + esc(b.columns.join(", ")) : ""}</div>
+      <div class="note">${esc(b.note)}</div>
+      <div class="meta">${esc(b.players.join("; "))}${b.count > b.players.length ? " …" : ""}</div>
+      <button data-batch="${esc(b.batch_id)}">Undo</button>
+    </div>`).join("") : `<div class="meta">No corrections yet.</div>`;
+}
+
+async function reload(report) {
+  const data = await api("GET", "/api/rows");
+  meta = data;
+  pending.clear();
+  await table.replaceData(data.rows);
+  showReport(report || data.report);
+  updateButtons();
+  loadBatches();
+}
+
+async function save(rows, note, force = false) {
+  try {
+    const res = await api("POST", "/api/corrections", { note, rows, force });
+    toast(`Saved ${res.saved} change${res.saved > 1 ? "s" : ""}`);
+    await reload(res.report);
+  } catch (err) {
+    if (/exceeds/.test(err.message) && confirm(err.message.replace("resend with force to confirm", "save anyway?"))) {
+      return save(rows, note, true);
+    }
+    alert(err.message);
+  }
+}
+
+function buildTable() {
+  if (table) table.destroy();
+  table = new Tabulator("#grid", {
+    data: meta.rows,
+    index: "_row",
+    columns: buildColumns(),
+    layout: "fitDataStretch",
+    height: "100%",
+    selectableRows: false,
+    rowFormatter,
+    placeholder: "No rows match",
+  });
+  table.on("cellEdited", (cell) => {
+    const row = cell.getRow().getData();
+    const k = row._key + "\u0000" + cell.getField();
+    const original = cell.getOldValue();
+    const existing = pending.get(k);
+    const startValue = existing ? existing.original : original;
+    if ((cell.getValue() ?? "") === (startValue ?? "")) pending.delete(k);
+    else pending.set(k, { _key: row._key, column: cell.getField(), new_value: cell.getValue() ?? "", original: startValue });
+    rowFormatter(cell.getRow());
+    updateButtons();
+  });
+  table.on("dataFiltered", () => setTimeout(updateButtons));
+  table.on("rowSelectionChanged", updateButtons);
+  table.on("tableBuilt", updateButtons);
+}
+
+// Columns differ between seasons, so switching rebuilds the grid
+async function loadSeason(next) {
+  season = next;
+  $("season").value = season;
+  const url = new URL(location.href);
+  url.searchParams.set("season", season);
+  history.replaceState(null, "", url);
+  document.title = `Roster Editor ${season}`;
+  meta = await api("GET", "/api/rows");
+  pending.clear();
+  buildTable();
+  showReport(meta.report);
+  loadBatches();
+}
+
+async function init() {
+  const { seasons, default: fallback } = await api("GET", "/api/seasons");
+  $("season").innerHTML = seasons.map((s) => `<option value="${esc(s)}">${esc(s)}</option>`).join("");
+  const requested = new URLSearchParams(location.search).get("season");
+  await loadSeason(seasons.includes(requested) ? requested : fallback);
+}
+
+$("season").onchange = async (e) => {
+  if (pending.size && !confirm(`Discard ${pending.size} unsaved edit(s) and switch seasons?`)) {
+    e.target.value = season;
+    return;
+  }
+  try { await loadSeason(e.target.value); } catch (err) { alert(err.message); }
+};
+
+$("save-pending").onclick = async () => {
+  const n = pending.size;
+  const renames = [...pending.values()].some((p) => p.column === "name" || p.column === "jersey");
+  const r = await askNote(`Save ${n} edit${n > 1 ? "s" : ""}`, "All of these edits are saved as one batch with this note." +
+    (renames ? " Name/jersey changes keep tracking the player by the scraped name and jersey." : ""));
+  if (!r) return;
+  save([...pending.values()].map(({ original, ...p }) => ({ ...p, action: "set" })), r.note);
+};
+
+$("discard-pending").onclick = () => { if (confirm("Discard unsaved edits?")) reload(); };
+
+$("bulk").onclick = async () => {
+  const active = table.getData("active");
+  const rows = active.filter((row) => !row._ambiguous);
+  const skipped = active.length - rows.length;
+  const options = editableColumns().map((c) => `<option>${esc(c)}</option>`).join("");
+  const r = await askNote(`Bulk set ${rows.length.toLocaleString()} filtered row${rows.length === 1 ? "" : "s"}`,
+    "Leave the value empty to set NA. Rows that already have this value are skipped." +
+    (skipped ? ` ${skipped} duplicate row${skipped > 1 ? "s" : ""} (same team, name and jersey) can't be corrected and will be skipped.` : ""),
+    `<label for="bulk-col">Column</label><select id="bulk-col">${options}</select>
+     <label for="bulk-val">New value</label><input id="bulk-val" autocomplete="off">`);
+  if (!r) return;
+  const column = $("bulk-col").value, value = $("bulk-val").value;
+  const changes = rows.filter((row) => (row[column] ?? "") !== value.trim()).map((row) => ({ _key: row._key, column, new_value: value, action: "set" }));
+  if (!changes.length) return toast("No rows would change");
+  save(changes, r.note);
+};
+
+$("delete").onclick = async () => {
+  const rows = table.getSelectedData();
+  if (rows.some((row) => row._ambiguous)) return alert("Some selected rows share a team, name and jersey with another row, so they can't be deleted here.");
+  const names = rows.slice(0, 5).map((r) => `${esc(r.name)} (${esc(r.team)})`).join("<br>");
+  const r = await askNote(`Delete ${rows.length} row${rows.length > 1 ? "s" : ""}`, "Deleted rows can be restored with Undo.",
+    `<div>${names}${rows.length > 5 ? "<br>…" : ""}</div>`);
+  if (!r) return;
+  save(rows.map((row) => ({ _key: row._key, action: "delete_row" })), r.note);
+};
+
+$("clear-filters").onclick = () => table.clearHeaderFilter();
+
+$("batches").onclick = async (e) => {
+  const id = e.target.dataset.batch;
+  if (!id || !confirm("Undo this batch? Its corrections are removed from the log.")) return;
+  if (pending.size && !confirm("Unsaved edits will be discarded. Continue?")) return;
+  try {
+    const res = await api("DELETE", `/api/batches/${encodeURIComponent(id)}`);
+    toast(`Removed ${res.removed} correction${res.removed > 1 ? "s" : ""}`);
+    reload(res.report);
+  } catch (err) { alert(err.message); }
+};
+
+window.addEventListener("beforeunload", (e) => { if (pending.size) e.preventDefault(); });
+
+init().catch((err) => { document.body.innerHTML = `<p style="padding:16px">Failed to load: ${esc(err.message)}</p>`; });
+</script>
+</body>
+</html>

@@ -5,9 +5,8 @@
 # "rosters_2024-25.csv" from LIVE pages for many schools, so the refreshed
 # vintage carries a later season's class years (3,449 of 12,463 shared same-
 # player stay rows changed class with zero +1 deltas — only +2/+3 jumps, the
-# signature of fetching a future season's page; 12,434 pairs once duplicate-
-# keyed rows are excluded from matching), 1,251 real 2024-25 rows were
-# dropped (mostly closed schools), and 891 rows were fabricated by mirroring
+# signature of fetching a future season's page), 1,252 real 2024-25 rows were
+# dropped (mostly closed schools), and 892 rows were fabricated by mirroring
 # players' 2025-26 records backward (e.g. a 2024-25 "Virginia" row for a
 # transfer whose 2024-25 team was elsewhere).
 #
@@ -257,7 +256,7 @@ tot3 <- chk3 |> filter(!is.na(o_tot), !is.na(f_tot))
 # rows stay out of this comparison; the global parse-consistency check below
 # still covers whatever NEW kept.
 str3 <- chk3 |> filter(!is.na(o_h), !is.na(f_h), !is.na(o_tot))
-hm <- str_match(final$height_clean, "^([0-9]+)'([0-9]+(?:\\.[0-9]+)?)\"?$")
+hm <- str_match(final$height_clean, "^([0-9]+)['-]\\s*([0-9]+(?:\\.[0-9]+)?)\\s*(?:''|\")?$")
 stopifnot("overlaid total_inches must match the old vintage" = all(tot3$f_tot == tot3$o_tot),
           "overlaid height strings must match the old vintage" = all(str3$f_h == str3$o_h),
           "height_clean must agree with total_inches wherever the string parses" =

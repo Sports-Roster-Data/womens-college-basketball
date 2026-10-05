@@ -1,0 +1,26 @@
+```{r}
+library(tidyverse)
+```
+
+```{r}
+roster_teams <- read_csv("~/Downloads/roster_teams.csv")
+teams <- read_csv("~/Downloads/teams.csv")
+
+teams_enhanced <- roster_teams |> 
+  left_join(teams, join_by(ncaa_id)) |> 
+  select(-url.y, -stats_name.y, -team.y) |> 
+  rename(url = url.x, stats_name = stats_name.x, team = team.x)
+
+write_csv(teams_enhanced, "teams.csv", na = "")
+
+```
+
+```{r}
+prev2425 <- read_csv("~/Downloads/rosters_2024-25.csv") |> distinct()
+current2425 <- read_csv("~/code/wbb-rosters/rosters_2024-25.csv")
+
+prev2425 |> anti_join(current2425, join_by(team_id)) 
+
+
+```
+
