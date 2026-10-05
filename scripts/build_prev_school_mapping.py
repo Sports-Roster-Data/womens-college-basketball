@@ -9,7 +9,7 @@ column when present, else `previous_school_clean`), with:
                      the curated list's spelling for JuCos, the title-cased
                      value for prep schools, else blank (manual work pending)
     ncaa_id          the matching teams.csv id for roster teams, else blank
-    category         roster_team / juco / prep / four_year_other / other
+    category         roster_team / juco / prep, blank when unjudged
     confidence       high_auto / low_fuzzy / manual
 
 Stages, in order:
@@ -110,6 +110,16 @@ AUDIT_BLANKS = [
 ]
 assert len(AUDIT_BLANKS) == len(set(AUDIT_BLANKS)), "duplicate audit keys"
 
+# Homograph audit (2026-10-04, post-execution review): token-stage EXACT
+# matches whose raw string names two different institutions — one a roster
+# team, one not. Nothing statistical distinguishes the two readings, so the
+# AUDIT_BLANKS low_fuzzy demotion does not apply; these rows keep the
+# canonical string (the string path still works) but drop ncaa_id/category
+# until a human attributes them. Found by tracing a wrong tier2a canonical
+# match through FDU-Florham players.
+HOMOGRAPH_BLANKS = ["Fairleigh Dickinson"]
+assert len(HOMOGRAPH_BLANKS) == len(set(HOMOGRAPH_BLANKS)), "duplicate homograph keys"
+
 
 def norm(s):
     s = re.sub(r"[.'’`-]", " ", (s or "").lower())
@@ -195,10 +205,27 @@ def main():
         else:
             out[v] = ("", "", "", "manual")
             counts["manual"] += 1
-        if v in AUDIT_BLANKS and out[v][3] == "low_fuzzy":
+
+    # Demotions (2026-10-04 audit), applied AFTER the assignment loop: each
+    # high_auto branch ends in `continue`, so audit checks living inside the
+    # loop would be dead code for exactly the rows they must reach (an exact
+    # token match is precisely what the FDU homograph is).
+    for v, row in out.items():
+        # AUDIT_BLANKS stays stage-gated to low_fuzzy: these keys were flagged
+        # by the fuzzy-stage audit, and a token-exact match to a roster team is
+        # genuinely high_auto even if the same text once fuzzy-matched wrongly.
+        if v in AUDIT_BLANKS and row[3] == "low_fuzzy":
             out[v] = ("", "", "", "manual")
             counts["manual"] += 1
             counts["low_fuzzy"] -= 1
+        # HOMOGRAPH_BLANKS applies to any live stage: the string names two
+        # different institutions, so only the canonical text survives and
+        # ncaa_id/category wait for a human.
+        if v in HOMOGRAPH_BLANKS and out[v][3] != "manual":
+            prev_stage = out[v][3]          # capture before the tuple is replaced
+            out[v] = (out[v][0], "", "", "manual")
+            counts["manual"] += 1
+            counts[prev_stage] -= 1
 
     rows_out = []
     for v in sorted(values, key=lambda k: (-values[k], k.lower())):

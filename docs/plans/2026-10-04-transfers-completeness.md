@@ -1092,3 +1092,75 @@ fuller detail in the per-task commit messages:
   5,041 with ~1,780 corroborate-able pairs still queued
   (1,972 transfer_name_variant + 1,078 same_name_unconfirmed_transfer);
   adjudication of those pushes it toward the ~6,000+ the plan projected.
+
+## Fix round (review findings, 2026-10-05)
+
+Both review agents returned findings after Tasks 0–8's commits. Each was
+verified against actual code/data before acting; every fix root-caused first.
+Rebuild numbers below are from the completed re-run chain (repair script →
+mapping builder → `player_ids.Rmd` knit → `build_site_data.R`).
+
+- **Repair guards re-scoped to uniquely-matched keys.** First re-run tripped
+  "overlaid classes must match the old vintage": the guard joined FULL `O`,
+  whose 16 duplicate-keyed rows (8 keys, all Lewis) collide with NEW's
+  representation. Diagnosis: three OLD keys self-contradict (e.g. Tara
+  Gugliuzza {Junior, Senior}; Lewis scraped two class years for the same
+  player); NEW's representation agrees with one copy, the final file
+  legitimately carries it, so the guarantee's domain is keys unique in BOTH
+  vintages (`O_match`), not `O`. Added a second guard pinning the weaker
+  property for duplicate-OLD keys NEW represents: NEW's class must equal at
+  least one OLD copy's class.
+- **Height trio overlay + global parse invariant.** The first repair
+  overlaid only `total_inches`, leaving `height_clean`/`height_ft`/`height_in`
+  describing NEW's measurement while inches described OLD's. Now the whole
+  trio overlays together, gated on OLD's parsed inches (`o_in` non-NA —
+  guarantees the OLD string parses and is self-consistent; an unparseable OLD
+  string must not overwrite NEW's: 3 keys, kept NEW by design). New global
+  guard: wherever `height_clean` parses, it must agree with `total_inches`
+  (0 violations in the rebuilt file; the committed intermediate had 3,050
+  affected rows).
+- **teams.csv section made a true re-run no-op.** The byte-roundtrip check
+  used reader `write_csv` output (LF + trailing newline), but this script's
+  own convention is CRLF with no trailing newline — the committed (already
+  collapsed) file could never roundtrip. Also the duplicate-key detection now
+  precedes the roundtrip check, which runs only on the editing path; a no-op
+  run leaves teams.csv untouched and unvalidated-transformed.
+- **HOMOGRAPH_BLANKS demotion was dead code — fixed.** First builder re-run
+  produced a byte-identical mapping: the demotion checks lived inside the
+  assignment loop, but each high_auto branch ends in `continue`, so an exact
+  token match (precisely what the FDU homograph is) could never reach them.
+  Demotions moved to a post-loop pass; AUDIT_BLANKS keeps its deliberate
+  stage gate (fuzzy-only). Result: `Fairleigh Dickinson` keeps its canonical
+  string but loses `ncaa_id`/`category` (confidence → manual; ledger now
+  716 high_auto / 142 low_fuzzy / 2,986 manual, 3,844 rows), tier2a loses
+  canonical-evidence authority for those players
+  (combined: exactly 15 rows lose `previous_school_ncaa_id`; `wbb_id` sets
+  unchanged), and the feeder row renders gray.
+- **Homograph first re-run was byte-identical**: the demotion checks lived
+  inside the assignment loop where each high_auto branch `continue`s over
+  them — dead code for exactly the rows they target; caught because the file
+  diff was empty after the code shipped.
+- **Loader squish-before-blank_to_na.** Raw scrapes carry non-breaking-space
+  previous_school values (2022-23 La Verne rows whose previous_school is only
+  `\xa0`); `str_squish` must precede `blank_to_na` or a junk feeder row
+  renders. Loader also now asserts the mapping's squished keys are unique. In
+  the rebuilt transfers.json: 0 junk rows.
+- **`to_logical` hardening (cleaning.Rmd corrections chunk):** the editor
+  serializes checkboxes as "true"/"false"; hand-written "1"/"0" in the log
+  would silently become NA under bare `as.logical()`. Accepts both + numeric
+  fallback; corrections_2026_27.csv carries zero boolean rows, so prophylactic.
+- **check-countries chunk** now prints which teams carry unparsed countries
+  (was a bare "N rows" print with no names).
+- **Reviewer-accepted-as-documented (no code change):** the queuer's
+  evidence-only under-collection (a pair passing tier 1/3 screens with zero
+  corroborating evidence is queued, but tier-2-eligible evidence-bearing pairs
+  that fail a screen are NOT re-queued — documented); `which.max`/`feeder_ncaa`
+  determinism (first-row-wins on ties) — deliberate, single-writer build.
+- **Rebuild gate results:** 2024-25 rows 16,168 → 16,170 (+2: Marley Freeman's
+  passed-through duplicate and Samantha Campanelli's restored row, each
+  gaining a wbb_id; 0 rows removed); `players.csv` count unchanged (40,251);
+  per-group `wbb_id` SETS unchanged across all 86,428 (season, team, name)
+  groups; review queue 3,842 rows / 3,504 unique pairs, pairs IDENTICAL to
+  baseline (only row_id ordering churned); GUID crosswalk precision/recall
+  0.9996 / 0.9994; moves total 5,041 unchanged; feeders 504 rows, sort holds
+  (moves desc, tie name asc); FDU feeder row now gray.

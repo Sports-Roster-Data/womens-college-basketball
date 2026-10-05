@@ -530,6 +530,15 @@ if (file.exists(CORRECTIONS_FILE)) {
 
   stale <- list()
   drop_rows <- integer()
+  # The editor serializes checkboxes as "true"/"false" strings; also accept
+  # hand-written "1"/"0" in the log, which R's bare as.logical() would NA
+  # (review-round finding). Unparseable non-blank values warn twice and stay NA.
+  to_logical <- function(x) {
+    x <- str_squish(x)
+    words <- suppressWarnings(as.logical(x))
+    nums  <- suppressWarnings(as.numeric(x))
+    if_else(is.na(words) & !is.na(nums), nums != 0, words)
+  }
   for (i in which(!is.na(corrections$row))) {
     cr <- corrections[i, ]
     if (cr$action == "delete_row") {
@@ -543,7 +552,7 @@ if (file.exists(CORRECTIONS_FILE)) {
     target <- wbb_rosters_final[[cr$column]]
     # An all-NA column is text as far as the editor is concerned
     if (all(is.na(target))) wbb_rosters_final[[cr$column]] <- target <- as.character(target)
-    wbb_rosters_final[[cr$column]][cr$row] <- if (is.logical(target)) as.logical(new_chr)
+    wbb_rosters_final[[cr$column]][cr$row] <- if (is.logical(target)) to_logical(new_chr)
                                               else if (is.numeric(target)) as.numeric(new_chr)
                                               else new_chr
   }
@@ -667,4 +676,9 @@ wbb_rosters_final |> count(ncaa_id, team, name, jersey) |> filter(n > 1)
 
 ```{r check-countries}
 missing_countries <- wbb_rosters_final |> filter(is.na(country_clean))
+if (nrow(missing_countries)) {
+  cat(sprintf("%d rows have no parsed country, where they come from:\n",
+              nrow(missing_countries)))
+  print(count(missing_countries, team, sort = TRUE), n = 30)
+}
 ```

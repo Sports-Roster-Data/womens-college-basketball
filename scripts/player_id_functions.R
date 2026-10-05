@@ -73,10 +73,13 @@ PREV_SCHOOL_MAP_FILE <- "data/previous_school_mapping.csv"
 # columns still exist downstream and fall back to the cleaned value.
 load_prev_school_map <- function() {
   if (!file.exists(PREV_SCHOOL_MAP_FILE)) return(NULL)
-  read_csv(PREV_SCHOOL_MAP_FILE, show_col_types = FALSE,
-           col_types = cols(.default = "c")) %>%
-    arrange(confidence != "manual") %>%   # FALSE sorts first, so manual rows win ties
-    distinct(previous_school, .keep_all = TRUE)
+  out <- read_csv(PREV_SCHOOL_MAP_FILE, show_col_types = FALSE,
+                  col_types = cols(.default = "c"))
+  # The builder squishes keys and writes each lookup string once, so no
+  # duplicate keys can survive; assert that rather than silently resolving it.
+  stopifnot("previous-school mapping keys must be unique" =
+              !any(duplicated(str_squish(out$previous_school))))
+  out
 }
 
 # One field (canonical / ncaa_id / category) of the previous-school mapping
@@ -143,7 +146,11 @@ load_one_season <- function(file, season_label, ps_map = NULL) {
       redshirt_num = replace_na(suppressWarnings(as.numeric(redshirt)), 0),
       total_inches_num = suppressWarnings(as.numeric(total_inches)),
       previous_school_lookup =
-        coalesce(blank_to_na(previous_school), blank_to_na(previous_school_clean)),
+        # Squish first: raw scrapes carry non-breaking spaces and padding
+        # (e.g. 2022-23 La Verne rows whose previous_school is only a nbsp),
+        # which would otherwise survive as a junk lookup string.
+        coalesce(blank_to_na(str_squish(previous_school)),
+                 blank_to_na(str_squish(previous_school_clean))),
       previous_school_canonical =
         coalesce(ps_map_lookup(ps_map, previous_school_lookup, "canonical"),
                  previous_school_lookup),
@@ -466,7 +473,6 @@ queue_transfer_candidates <- function(season_rows, player_table) {
       row_id, season, team, name,
       candidate_wbb_id = wbb_id,
       candidate_name = name_norm,      # join key: prior row's name_norm is identical
-      candidate_team = last_team,
       candidate_team = last_team,
       block = if_else(evidence == "none",
                       "same_name_unconfirmed_transfer", "corroborated_blocked"),
