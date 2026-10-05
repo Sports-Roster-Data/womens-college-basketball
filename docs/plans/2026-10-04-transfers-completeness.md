@@ -188,39 +188,80 @@ git commit -m "Diagnose 2025-26 tier1 collapse (failure buckets + sample pairs)"
 
 ### Task 2: Fix the diagnosed root cause
 
-**Files:** whichever Task 1 implicates. Most likely
-`scripts/player_id_functions.R`'s per-season load patches — that file already
-carries this pattern (2021-22 height derivation, 2025-26 `season_player_id` recovery
-in `load_one_season`).
+**RESOLVED BY TASK 1 (2026-10-04, verified at commit 38c5957):** the collapse is a
+**baseline-vintage mismatch**, not a parse problem. Our `wbb_rosters_2024_25.csv`
+was cleaned 2025-10-01 from upstream's Dec-2024 snapshot (13,730 rows / 13,722
+distinct (team,name) keys, 933 schools); upstream has since overhauled that
+season's raw file (feecac5 11/28, fec3f38 12/15 "better 2024-25 rosters",
+15,799 keys). 9,453/15,864 (59.6%) of 2025-26 rows have no same-name/same-team
+candidate because their prior-season row was never covered (39.9% in the
+2023-24→2024-25 control). Substituting the Dec-15 vintage lifts exact stay pairs
+6,365 → 8,239. Year tokens shifted to abbreviations but map cleanly (0 NA);
+screens fail only 14 rows; 77 pair rows across 21 row_ids are pre-existing
+ambiguous duplicates (secondary, not the mechanism). So the branch is:
 
-**Step 1: Pick the branch by what Task 1 printed:**
+**Branch R — refresh the 2024-25 baseline** (was "not planned"; Task 1's verdict).
 
-- **Branch A — class-year tokens:** raw `year_clean` strings parse to wrong/missing
-  `year_rank`. Preferred fix site is the load layer: a per-season token→token patch
-  in `load_one_season` alongside the existing ones, e.g.
-  `year_clean = if_else(season == "2025-26" & year_clean == "<wrong token>", "<right token>", year_clean)`,
-  so `YEAR_RANK` sees standard names. Only fix in `cleaning.Rmd`'s class-year
-  scaffolding (`years_cleaned.csv` / pattern fallback, per CLAUDE.md's "extend the
-  tables" rule) if the season file truly needs re-knitting — a re-knit re-downloads
-  raw rosters from the external repo. If you take the re-knit route: diff the rebuilt
-  `wbb_rosters_2025_26.csv` against the committed one; any change outside the year
-  column = upstream drift = STOP and fall back to the load-layer patch.
-- **Branch B — heights:** 2025-26 height columns parse differently. Extend
-  `derive_height_from_clean` or add the matching per-season patch in
-  `load_one_season`.
-- **Branch C — ambiguous_multiple_candidates dominates:** two same-name same-team
-  `wbb_id`s were minted in an earlier window. Find where (the funnel table in
-  player_ids.Rmd's output; check earlier seasons' `new` vs `tier1`), and identify
-  the cause — typically a within-season double-listing whose hometown/height differ
-  enough to defeat `resolve_within_season_dupes`, i.e. genuinely two rows for one
-  person. That is a roster-data problem: record it in the commit message for the
-  editor-corrections workflow; do NOT widen the dedupe to auto-merge on names
-  alone.
+**Files:**
+- Rebuild: `wbb_rosters_2024_25.csv`, then `wbb_rosters_2025_26.csv` (PREV_FILE
+  cascade), then `players.csv`, `wbb_player_seasons.csv`, `wbb_rosters_combined.csv`,
+  `wbb_id_review_queue.csv` (full re-knit).
+- Do NOT edit `cleaning.Rmd` in place — it carries the user's uncommitted
+  in-flight work. Re-knit via a temp copy instead (Step 1).
 
-**Step 2: Whatever the fix, extend the existing tables/patterns** — no one-off
-inline `mutate` outside the house pattern.
+**Step 1: Re-clean 2024-25 from the current upstream raw**
 
-**Step 3: Verify the funnel recovers**
+copy `cleaning.Rmd` (working-tree version, user edits retained) to
+`/tmp/cleaning_2024_25.Rmd`, change its `SEASON <- "2026-27"` line to
+`SEASON <- "2024-25"`, render it with the repo as knit root so all relative
+paths and outputs (incl. `corrections/baseline_2024_25.csv`) land in the repo:
+
+```bash
+LC_ALL=en_US.UTF-8 RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64 \
+  Rscript -e "rmarkdown::render('/tmp/cleaning_2024_25.Rmd', knit_root_dir = getwd())"
+```
+
+The knit needs internet (INPUT_URL pulls upstream's current `rosters_2024-25.csv`).
+The correction chunk re-applies `corrections/corrections_2024_25.csv` and prints
+Applied/Unmatched/Stale counts — **record them** and read the unmatched list:
+unmatched = the upstream re-scrape renamed/dropped a row an editor correction
+was keyed on. If unmatched > 25 rows, STOP and report to the controller before
+committing (data-governance issue: past manual fixes may need re-keying).
+
+**Step 2: Containment-check the rebuilt 2024-25 CSV vs committed**
+
+Key-level comparison `(ncaa_id, team, name, jersey)`:
+- Rows grow 13,730 → ~15,7xx (that IS the fix; upstream coverage jump).
+- For keys present in BOTH vintages: changed cells should be upstream's own
+  fixes (heights, class years, hometowns) plus columns our pipeline derives;
+  spot-check a sample. Manual-correction columns on matching keys must still
+  hold (corrections re-apply).
+- Old-vintage-only keys ≈ 45 upstream dropped — check how many had editor
+  corrections attached (they will be lost); report in the commit message.
+
+**Step 3: Cascade — re-clean 2025-26** the same way (`/tmp/cleaning_2025_26.Rmd`,
+`SEASON <- "2025-26"`, same render command). Its raw vintage is the Dec-13 file
+(already current), so the rebuilt CSV must differ from committed ONLY in
+hs-derived columns (`hs_clean`, `backfilled`) for some rows. Any other changed
+column or row-count change = STOP and diagnose before proceeding.
+
+**Step 4: Re-knit the ID pipeline**
+
+```bash
+LC_ALL=en_US.UTF-8 RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64 \
+  Rscript -e "rmarkdown::render('player_ids.Rmd')"
+```
+
+**Step 5: Verify the funnel recovers**
+
+Expected in the printed validation output (grounded by Task 1):
+- 2025-26 `tier1` back to ≈8,000+; `new` falls correspondingly; window 4 linked
+  pairs ≈9,000+, stays ≈8,100+; moves ≈1,318 or a bit higher.
+- Window 3 (2023-24→2024-25) also grows (the +726 keys at already-covered
+  schools + 1,192 at newly covered schools); windows 1–2 byte-identical
+  (seasons processed before the refreshed one); GUID precision and recall
+  unchanged.
+- Re-derive the window table to confirm:
 
 ```bash
 LC_ALL=en_US.UTF-8 RSTUDIO_PANDOC=/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64 \
@@ -255,16 +296,27 @@ for w in range(5):
 EOF
 ```
 
-**Step 4: Commit (rebuilt outputs + whichever files the fix touched)**
+**Step 6: Commit (rebuilt outputs only)**
 
 ```bash
-git add player_ids.Rmd wbb_player_seasons.csv wbb_rosters_combined.csv \
-        players.csv wbb_id_review_queue.csv
-git commit -m "Fix 2025-26 tier1 collapse per diagnosis"
+git add wbb_rosters_2024_25.csv wbb_rosters_2025_26.csv player_ids.Rmd
+git add players.csv wbb_player_seasons.csv wbb_rosters_combined.csv wbb_id_review_queue.csv
+git commit -m "Refresh 2024-25 baseline from upstream overhaul; fix 2025-26 tier1 collapse"
 ```
 
-(Include season-CSV / cleaning.Rmd paths only if Branch A chose the re-knit route;
-the load-layer route touches none.)
+(Never `git add` the user's in-flight files — README.md, cleaning.Rmd,
+wbb_rosters_2026_27.csv, editor/, corrections/, prep.qmd, non_us_*.csv,
+.gitignore — or the player_ids.html knit byproduct. `player_ids.Rmd` itself
+should only change if the knit writes a `SEASON_FILES`-adjacent edit — otherwise
+leave it out and adjust the add list accordingly.)
+
+**Branch C (secondary, 77 pair rows):** the pre-existing ambiguous duplicates
+(21 row_ids with 2-4 same-name same-team wbb_ids, e.g. Aaliyah Seuell at Fresno
+Pacific: one id minted season 1 at Cal State Bakersfield, linked by a failed
+tier-2 claim). Do NOT widen the dedupe. They permanently block tier-1 relinking
+for their row_ids; the queue machinery already routes them
+(`duplicate_wbb_id_claim`). Record their count in the commit message; fixing
+them = editor-corrections work, not this task.
 
 ---
 
@@ -992,3 +1044,51 @@ Mechanics only — the decisions are yours:
 4. `corroborated_blocked` rows: check whether `reason` + `evidence` name a fixable
    data error (a misparsed `year_clean` — fix via the editor/corrections workflow)
    or a genuine mismatch (`decision` = `different`, or leave blank).
+
+---
+
+## As-executed amendments (Tasks 2–7, 2026-10-04)
+
+Task 2's replacement text above (Branch R, the vintage-overlay repair) was
+amended inline by the controller at execution time. Later tasks amended
+code-vs-plan as follows; each was verified against the data before use, with
+fuller detail in the per-task commit messages:
+
+- **Task 3 (queuer):** the plan's transmute referenced `name_norm.prev`, but a
+  join keyed on `name_norm` never suffixes the key column — `candidate_name`
+  reads plain `name_norm`. And `filter(n_ok == 0)` would have made
+  `same_name_unconfirmed_transfer` unreachable (tier 2's pool is
+  evidence-only, so no-evidence pass-both pairs are never tier 2's business);
+  the executed filter is `n_ok_ev == 0` (evidence-bearing pass-both only).
+  Result: 1,200 new queue rows, zero assignment changes.
+- **Task 4 (builder):** the asserted invariant is "ncaa_id present implies
+  canonical" (`not r[2] or r[1]` — the plan's direction fired on every
+  juco/prep row). The Step 3 fuzzy audit blanked 118 wrong ≥0.85 matches
+  (difflib inflates on generic suffixes: "... community college",
+  "... state"; and accepts D1/D2 homographs), embedded as `AUDIT_BLANKS` so
+  re-runs reproduce the audited file.
+- **Task 5 (canonical columns in the ID layer + tier2a):** the four
+  `previous_school_*` columns land mid-table in `wbb_rosters_combined`
+  (after `season_player_id`), not appended at the end — they are union
+  extras of some season files under `imap_dfr`. All Step 5 gates passed
+  (GUID precision unchanged; tier2 +80, tier1/tier3 unchanged, new down;
+  moves +80; players −80; queue 3,944 → 3,842, all decision blank).
+- **Task 6 (feeder view):** the plan's `which.max` feeder category assumed
+  canonical implies category; the loader coalesces canonical back to the raw
+  lookup for unmapped strings, so all-NA groups exist and got category `""`
+  (unadjudicated mapping row; the known-set guard accepts `""`).
+  `moves_per_pair` was specified "unchanged from Task 5's value": not so —
+  4,965 → 5,041 on the site's consecutive-season metric, because Task 5's
+  merges connect id chains `is_move` can now see (the feeder edit itself
+  cannot affect moves). The four-year share expectation ("rises sharply")
+  also over-estimated: the old lowercase-name-match already caught most
+  four-year strings, so the share moved 64% → 65%; the actual gains are
+  category accuracy and variant consolidation.
+- **Task 7 (site display):** executed as written; 11/11 harness assertions
+  against independently computed data passed.
+- **Re-baselined governance numbers:** Task 9 Step 3's "from 4,756 toward
+  ~6,000+" was written before the Task 2 repair round. With the refreshed
+  baseline and the +80 merges, the site's consecutive-season move total is
+  5,041 with ~1,780 corroborate-able pairs still queued
+  (1,972 transfer_name_variant + 1,078 same_name_unconfirmed_transfer);
+  adjudication of those pushes it toward the ~6,000+ the plan projected.
