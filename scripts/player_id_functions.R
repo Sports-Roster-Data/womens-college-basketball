@@ -294,8 +294,13 @@ match_tier2 <- function(season_rows, player_table) {
     mutate(
       prev_school_norm = normalize_team(previous_school_clean),
       prev_team_norm = normalize_team(last_team),
-      tier2a = !is.na(prev_school_norm) & !is.na(prev_team_norm) &
-        prev_school_norm == prev_team_norm,
+      # Canonical previous-school path first (resolves abbreviations the string
+      # path can't, e.g. "Utah State" vs team "Utah St."); string path stays as
+      # the fallback for values the mapping hasn't seen.
+      tier2a = (!is.na(previous_school_ncaa_id) & !is.na(ncaa_id.prev) &
+                  previous_school_ncaa_id == ncaa_id.prev) |
+        (!is.na(prev_school_norm) & !is.na(prev_team_norm) &
+           prev_school_norm == prev_team_norm),
       tier2b_hometown = !is.na(hometown_clean) & !is.na(hometown_clean.prev) &
         hometown_clean == hometown_clean.prev &
         !is.na(state_clean) & !is.na(state_clean.prev) & state_clean == state_clean.prev,
