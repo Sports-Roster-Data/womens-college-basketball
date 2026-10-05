@@ -1,0 +1,3845 @@
+previous_school,canonical,ncaa_id,category,confidence
+Mississippi State,Mississippi State,430,roster_team,high_auto
+Oklahoma State,Oklahoma State,521,roster_team,high_auto
+Penn State,Penn State,539,roster_team,high_auto
+Auburn,Auburn,37,roster_team,high_auto
+College of Southern Idaho,College of Southern Idaho,,juco,high_auto
+Arizona,Arizona,29,roster_team,high_auto
+Oregon,Oregon,529,roster_team,high_auto
+Northern Colorado,Northern Colorado,502,roster_team,high_auto
+Syracuse,Syracuse,688,roster_team,high_auto
+LSU,LSU,365,roster_team,high_auto
+Old Dominion,Old Dominion,523,roster_team,high_auto
+Utah State,Utah St.,731,roster_team,high_auto
+Ole Miss,,,,manual
+Shelton State CC,Shelton State Community College,,juco,high_auto
+Boston College,Boston College,67,roster_team,high_auto
+Trinity Valley CC,Trinity Valley Community College,,juco,high_auto
+Wisconsin,Wisconsin,796,roster_team,high_auto
+New Mexico,New Mexico,473,roster_team,high_auto
+St. Bonaventure,St. Bonaventure,596,roster_team,high_auto
+Buffalo,Buffalo,86,roster_team,high_auto
+Illinois,Illinois,301,roster_team,high_auto
+Louisville,Louisville,367,roster_team,high_auto
+Murray State,Murray State,454,roster_team,high_auto
+Chipola College,Chipola College,,juco,high_auto
+Florida,Florida,235,roster_team,high_auto
+Jones College,Jones College,,juco,high_auto
+Michigan,Michigan,418,roster_team,high_auto
+Purdue,Purdue,559,roster_team,high_auto
+Washington,Washington,756,roster_team,high_auto
+Xavier,Xavier,812,roster_team,high_auto
+Arizona State,Arizona State,28,roster_team,high_auto
+Cincinnati,Cincinnati,140,roster_team,high_auto
+Colorado,Colorado,157,roster_team,high_auto
+Georgia Tech,Georgia Tech,255,roster_team,high_auto
+Minnesota,Minnesota,428,roster_team,high_auto
+Sacramento State,Sacramento State,102,roster_team,high_auto
+Texas Tech,Texas Tech,700,roster_team,high_auto
+Fresno State,Fresno State,96,roster_team,high_auto
+Georgetown,Georgetown,251,roster_team,high_auto
+Kansas,Kansas,328,roster_team,high_auto
+Alabama,Alabama,8,roster_team,high_auto
+Fordham,Fordham,236,roster_team,high_auto
+Indiana,Indiana,306,roster_team,high_auto
+Oklahoma,Oklahoma,522,roster_team,high_auto
+South Plains College,South Plains College,,juco,high_auto
+Western Kentucky,,,,manual
+Oral Roberts,Oral Roberts,527,roster_team,high_auto
+Oregon State,Oregon State,528,roster_team,high_auto
+UT Martin,UT Martin,695,roster_team,high_auto
+Vanderbilt,Vanderbilt,736,roster_team,high_auto
+Virginia,Virginia,746,roster_team,high_auto
+West Virginia,West Virginia,768,roster_team,high_auto
+Wichita State,Wichita State,782,roster_team,high_auto
+Wright State,Wright St.,810,roster_team,high_auto
+Butler,Butler,87,roster_team,high_auto
+BYU,,,,manual
+Northwest Florida State College,Northwest Florida State College,,juco,high_auto
+Texas,Texas,703,roster_team,high_auto
+USC Upstate,USC Upstate,10411,roster_team,high_auto
+Virginia Tech,Virginia Tech,742,roster_team,high_auto
+Colorado State,Colorado St.,156,roster_team,high_auto
+Georgia,Georgia,257,roster_team,high_auto
+Idaho State,Idaho St.,294,roster_team,high_auto
+Maryland,Maryland,392,roster_team,high_auto
+Notre Dame,Notre Dame,513,roster_team,high_auto
+Seton Hall,Seton Hall,635,roster_team,high_auto
+TCU,,,,manual
+Western Nebraska CC,Western Nebraska Community College,,juco,high_auto
+Arkansas,Arkansas,31,roster_team,high_auto
+Central Michigan,Central Michigan,129,roster_team,high_auto
+DePaul,DePaul,176,roster_team,high_auto
+Furman,Furman,244,roster_team,high_auto
+Kentucky,Kentucky,334,roster_team,high_auto
+Ohio State,Ohio State,518,roster_team,high_auto
+Chicago State,Chicago State,136,roster_team,high_auto
+East Carolina,East Carolina,196,roster_team,high_auto
+Iowa State,Iowa State,311,roster_team,high_auto
+Louisiana Tech,Louisiana Tech,366,roster_team,high_auto
+Memphis,Memphis,404,roster_team,high_auto
+NC State,NC State,490,roster_team,high_auto
+Temple,Temple,690,roster_team,high_auto
+Tulsa,Tulsa,719,roster_team,high_auto
+UC Riverside,UC Riverside,111,roster_team,high_auto
+UTEP,,,,manual
+Blinn College,Blinn College,,juco,high_auto
+Bradley,Bradley,72,roster_team,high_auto
+Gardner-Webb,Gardner-Webb,1092,roster_team,high_auto
+Marquette,Marquette,387,roster_team,high_auto
+Moberly Area CC,,,,manual
+Morehead State,Morehead State,444,roster_team,high_auto
+Rutgers,Rutgers,587,roster_team,high_auto
+USC,,,,manual
+Central Arkansas,Central Arkansas,1004,roster_team,high_auto
+Eastern Arizona College,,,,manual
+Eastern Washington,Eastern Washington,207,roster_team,high_auto
+Kansas State,Kansas State,327,roster_team,high_auto
+Kilgore College,Kilgore College,,juco,high_auto
+Long Beach State,Long Beach State,99,roster_team,high_auto
+Michigan State,Michigan State,416,roster_team,high_auto
+Midland College,Midland College,,juco,high_auto
+North Carolina,North Carolina,457,roster_team,high_auto
+Odessa College,Odessa College,,juco,high_auto
+Pittsburgh,Pittsburgh,545,roster_team,high_auto
+Salt Lake CC,Salt Lake Community College,,juco,high_auto
+San Jose State,San Jose State,630,roster_team,high_auto
+SMU,,,,manual
+Texas A&M,Texas A&M,697,roster_team,high_auto
+Arkansas State,Arkansas St.,30,roster_team,high_auto
+Casper College,Casper College,,juco,high_auto
+Denver,Denver,183,roster_team,high_auto
+Duke,Duke,193,roster_team,high_auto
+Evansville,Evansville,219,roster_team,high_auto
+Johnson County CC,,,,manual
+Middle Tennessee,Middle Tennessee,419,roster_team,high_auto
+Missouri,Missouri,434,roster_team,high_auto
+Pepperdine,Pepperdine,541,roster_team,high_auto
+Tyler JC,Tyler Junior College,,juco,high_auto
+Akron,Akron,5,roster_team,high_auto
+Cal State Fullerton,Cal State Fullerton,97,roster_team,high_auto
+Cleveland State,Cleveland State,148,roster_team,high_auto
+Delaware State,Delaware State,178,roster_team,high_auto
+Detroit Mercy,Detroit Mercy,184,roster_team,high_auto
+Eastern Kentucky,Eastern Kentucky,202,roster_team,high_auto
+Georgia State,Georgia State,254,roster_team,high_auto
+Hutchinson CC,Hutchinson Community College,,juco,high_auto
+Indiana State,Indiana State,305,roster_team,high_auto
+Kirkwood CC,,,,manual
+La Salle,LaSalle,340,roster_team,low_fuzzy
+McLennan CC,McLennan Community College,,juco,high_auto
+Mercer,Mercer,406,roster_team,high_auto
+Nevada,Nevada,466,roster_team,high_auto
+Oakland,Oakland,514,roster_team,high_auto
+Purdue Fort Wayne,Purdue-Fort Wayne,308,roster_team,high_auto
+Radford,Radford,563,roster_team,high_auto
+Robert Morris,Robert Morris,579,roster_team,high_auto
+South Alabama,South Alabama,646,roster_team,high_auto
+South Dakota,South Dakota,650,roster_team,high_auto
+Stanford,Stanford,674,roster_team,high_auto
+Tennessee,Tennessee,694,roster_team,high_auto
+UNC Asheville,UNC Asheville,456,roster_team,high_auto
+USAFA Prep,Usafa Prep,,prep,high_auto
+Western Colorado,Western Colo.,2759,roster_team,low_fuzzy
+Western Michigan,Western Michigan,774,roster_team,high_auto
+Western Texas College,,,,manual
+Austin Peay,Austin Peay,43,roster_team,high_auto
+Coastal Carolina,Coastal Carolina,149,roster_team,high_auto
+Collin College,,,,manual
+George Washington,George Washington,249,roster_team,high_auto
+Gulf Coast State College,Gulf Coast State College,,juco,high_auto
+Liberty,Liberty,355,roster_team,high_auto
+North Florida,North Florida,2711,roster_team,high_auto
+North Texas,North Texas,497,roster_team,high_auto
+Panola College,,,,manual
+St. John's,St. John's,603,roster_team,high_auto
+St. Petersburg College,,,,manual
+Tallahassee CC,,,,manual
+Towson,Towson,711,roster_team,high_auto
+Utah,Utah,732,roster_team,high_auto
+California Baptist,California Baptist,30135,roster_team,high_auto
+Charlotte,Charlotte,458,roster_team,high_auto
+East Tennessee State,East Tennessee State,198,roster_team,high_auto
+Florida State,Florida St,234,roster_team,high_auto
+Independence CC,,,,manual
+Longwood,Longwood,363,roster_team,high_auto
+Marshall,Marshall,388,roster_team,high_auto
+McNeese State,McNeese State,402,roster_team,high_auto
+Miami,Miami,415,roster_team,high_auto
+Mount St. Mary's,Mount St. Mary's,450,roster_team,high_auto
+Pearl River CC,,,,manual
+Rhode Island,Rhode Island,572,roster_team,high_auto
+Siena,Siena,639,roster_team,high_auto
+Tarleton State,Tarleton St.,1395,roster_team,high_auto
+UCF,,,,manual
+UMass Lowell,UMass Lowell,368,roster_team,high_auto
+UNLV,UNLV,465,roster_team,high_auto
+Winthrop,Winthrop,792,roster_team,high_auto
+Baylor,Baylor,51,roster_team,high_auto
+Clemson,Clemson,147,roster_team,high_auto
+Garden City CC,Garden City Community College,,juco,high_auto
+James Madison,James Madison,317,roster_team,high_auto
+Little Rock,,,,manual
+Montana State,Montana State,440,roster_team,high_auto
+Portland State,Portland State,550,roster_team,high_auto
+Providence,Providence,556,roster_team,high_auto
+Seward County CC,,,,manual
+UNC Wilmington,,,,manual
+Butler CC,,,,manual
+California,California,107,roster_team,high_auto
+Canisius,Canisius,116,roster_team,high_auto
+Cochise College,,,,manual
+Daytona State,,,,manual
+Dodge City CC,,,,manual
+Fairleigh Dickinson,Fairleigh Dickinson,222,roster_team,high_auto
+Georgia Southern,Georgia Southern,253,roster_team,high_auto
+Illinois State,Illinois State,299,roster_team,high_auto
+Monmouth,Monmouth,439,roster_team,high_auto
+Quinnipiac,Quinnipiac,562,roster_team,high_auto
+Richmond,Richmond,575,roster_team,high_auto
+Saint Louis,Saint Louis,609,roster_team,high_auto
+Tennessee State,Tennessee St.,691,roster_team,high_auto
+Texas State,Texas State,670,roster_team,high_auto
+UT Arlington,,,,manual
+Wabash Valley CC,,,,manual
+Abilene Christian,Abilene Christian,2,roster_team,high_auto
+Boise State,Boise State,66,roster_team,high_auto
+Cal Poly,Cal Poly,90,roster_team,high_auto
+Charleston Southern,Charleston Southern,48,roster_team,high_auto
+Eastern Michigan,Eastern Michigan,204,roster_team,high_auto
+Florida Atlantic,Florida Atlantic,229,roster_team,high_auto
+Fresno City College,,,,manual
+Grand Canyon,Grand Canyon,1104,roster_team,high_auto
+Iona,Iona,310,roster_team,high_auto
+Labette CC,,,,manual
+Miami (Ohio),Miami Ohio,414,roster_team,low_fuzzy
+New Hampshire,New Hampshire,469,roster_team,high_auto
+New Mexico JC,,,,manual
+New Mexico State,New Mexico State,472,roster_team,high_auto
+New Orleans,New Orleans,474,roster_team,high_auto
+Presbyterian,,,,manual
+Samford,Samford,625,roster_team,high_auto
+San Francisco,San Francisco,629,roster_team,high_auto
+Stephen F. Austin,Stephen F. Austin,676,roster_team,high_auto
+Stetson,Stetson,678,roster_team,high_auto
+Stony Brook,Stony Brook,683,roster_team,high_auto
+UC Irvine,UC Irvine,109,roster_team,high_auto
+UCLA,UCLA,110,roster_team,high_auto
+Valparaiso,Valparaiso,735,roster_team,high_auto
+Wabash Valley College,Wabash Valley College,,juco,high_auto
+Washington State,Washington State,754,roster_team,high_auto
+Western Carolina,Western Carolina,769,roster_team,high_auto
+Bethune-Cookman,Bethune-Cookman,61,roster_team,high_auto
+Cal Poly Humboldt,Cal Poly Humboldt,291,roster_team,high_auto
+Cal State Bakersfield,Cal State Bakersfield,94,roster_team,high_auto
+Coffeyville CC,,,,manual
+Eastern Florida State College,Eastern Florida State College,,juco,high_auto
+Florida International,,,,manual
+George Mason,George Mason,248,roster_team,high_auto
+Hartford,Hartford,272,roster_team,high_auto
+Highland CC,,,,manual
+Howard College,,,,manual
+Indian River State College,,,,manual
+Kennesaw State,Kennesaw State,1157,roster_team,high_auto
+Miami Dade College,,,,manual
+Moorpark College,,,,manual
+Northeastern,Northeastern,500,roster_team,high_auto
+Pitt,,,,manual
+Saint Peter's,Saint Peter's,617,roster_team,high_auto
+Southern Miss,Southern Miss,664,roster_team,high_auto
+UAB,UAB,9,roster_team,high_auto
+UC Santa Barbara,UC Santa Barbara,104,roster_team,high_auto
+Weber State,Weber State,758,roster_team,high_auto
+Wyoming,Wyoming,811,roster_team,high_auto
+Bowling Green,Bowling Green,71,roster_team,high_auto
+Central Arizona College,,,,manual
+College of Charleston,College of Charleston,1014,roster_team,high_auto
+CSU Bakersfield,,,,manual
+CSUN,CSUN,101,roster_team,high_auto
+Delaware,Delaware,180,roster_team,high_auto
+Duquesne,Duquesne,194,roster_team,high_auto
+East Los Angeles College,,,,manual
+Hampton,Hampton,270,roster_team,high_auto
+Harcum College,,,,manual
+Incarnate Word,Incarnate Word,2743,roster_team,high_auto
+Iowa Western CC,Iowa Western Community College,,juco,high_auto
+Jacksonville,Jacksonville,316,roster_team,high_auto
+New Mexico Highlands,,,,manual
+North Dakota,North Dakota,494,roster_team,high_auto
+Saint Joseph's,,,,manual
+Texas Southern,Texas Southern,699,roster_team,high_auto
+Three Rivers CC,,,,manual
+Tulane,Tulane,718,roster_team,high_auto
+UMass,,,,manual
+UTSA,,,,manual
+VCU,,,,manual
+Vermont,Vermont,738,roster_team,high_auto
+Wabash Valley,,,,manual
+Weatherford College,,,,manual
+Wheeling,Wheeling,12799,roster_team,high_auto
+Bucknell,Bucknell,83,roster_team,high_auto
+CCBC Essex,,,,manual
+Chattanooga,Chattanooga,693,roster_team,high_auto
+Dayton,Dayton,175,roster_team,high_auto
+FIU,FIU,231,roster_team,high_auto
+Hill College,,,,manual
+Jackson State,Jackson St.,314,roster_team,high_auto
+Laramie County CC,,,,manual
+Maine,Maine,380,roster_team,high_auto
+Morgan State,Morgan St.,446,roster_team,high_auto
+Morton College,,,,manual
+Murray State College,,,,manual
+Nebraska,Nebraska,463,roster_team,high_auto
+Omaha,Omaha,464,roster_team,high_auto
+Pensacola State,,,,manual
+Presbyterian College,Presbyterian College,1320,roster_team,high_auto
+San Joaquin Delta College,,,,manual
+Southern Utah,Southern Utah,667,roster_team,high_auto
+Troy,Troy,716,roster_team,high_auto
+UNC Greensboro,UNC Greensboro,459,roster_team,high_auto
+Utah Valley,Utah Valley,30024,roster_team,high_auto
+UTRGV,,,,manual
+Villanova,Villanova,739,roster_team,high_auto
+Wake Forest,Wake Forest,749,roster_team,high_auto
+Wayland Baptist,,,,manual
+Wofford,Wofford,2915,roster_team,high_auto
+Youngstown State,Youngstown St.,817,roster_team,high_auto
+Alabama A&M,Alabama A&M,6,roster_team,high_auto
+Belmont,Belmont,14927,roster_team,high_auto
+Daytona State College,,,,manual
+Eastern Illinois,Eastern Illinois,201,roster_team,high_auto
+Florida SouthWestern State,Florida SouthWestern State College,,juco,low_fuzzy
+Florida Southwestern State,Florida SouthWestern State College,,juco,low_fuzzy
+Gulf Coast State,,,,manual
+Hillsborough CC,,,,manual
+Iowa,Iowa,312,roster_team,high_auto
+Jacksonville State,Jacksonville St.,315,roster_team,high_auto
+Lamar CC,,,,manual
+Lindenwood,,,,manual
+Miami (OH),,,,manual
+Miles CC,,,,manual
+Monroe College,Monroe College,,juco,high_auto
+North Alabama,North Alabama,487,roster_team,high_auto
+North Dakota State College of Science,,,,manual
+Northern Arizona,Northern Arizona,501,roster_team,high_auto
+Northern Kentucky,Northern Kentucky,505,roster_team,high_auto
+Palomar College,,,,manual
+Pima CC,,,,manual
+Portland,Portland,551,roster_team,high_auto
+Ranger College,,,,manual
+Saint Francis,,,,manual
+San Diego State,San Diego State,626,roster_team,high_auto
+Sonoma State,Sonoma St.,645,roster_team,high_auto
+South Carolina,South Carolina,648,roster_team,high_auto
+Southern Idaho,,,,manual
+Tennessee Tech,Tennessee Tech,692,roster_team,high_auto
+Toledo,Toledo,709,roster_team,high_auto
+ULM,,,,manual
+USF,,,,manual
+Wagner,Wagner,748,roster_team,high_auto
+Albany,Albany,14,roster_team,high_auto
+American,American,23,roster_team,high_auto
+Appalachian State,Appalachian State,27,roster_team,high_auto
+Arizona Western,,,,manual
+Binghamton,Binghamton,62,roster_team,high_auto
+Bishop State CC,,,,manual
+Bryant,Bryant,81,roster_team,high_auto
+Cal State East Bay,Cal St. East Bay,98,roster_team,high_auto
+Central Florida,Central Florida,128,roster_team,high_auto
+Coahoma CC,,,,manual
+Coppin State,Coppin State,165,roster_team,high_auto
+Eastern Florida State,,,,manual
+Eastern New Mexico,,,,manual
+Elon,Elon,1068,roster_team,high_auto
+Florida A&M,Florida A&M,228,roster_team,high_auto
+Florida Gulf Coast,Florida Gulf Coast,28755,roster_team,high_auto
+Irvine Valley College,,,,manual
+IUPUI,IUPUI,2699,roster_team,high_auto
+Missouri State,Missouri St.,669,roster_team,high_auto
+Montana,Montana,441,roster_team,high_auto
+Niagara,Niagara,482,roster_team,high_auto
+North Dakota State,North Dakota State,493,roster_team,high_auto
+North Iowa Area CC,,,,manual
+Santa Fe College,,,,manual
+South Florida,South Florida,651,roster_team,high_auto
+South Georgia Tech,,,,manual
+Southeast Missouri State,Southeast Missouri State,654,roster_team,high_auto
+Stanislaus State,Stanislaus St.,103,roster_team,high_auto
+Tyler Junior College,Tyler Junior College,,juco,high_auto
+Walters State CC,,,,manual
+Wenatchee Valley College,,,,manual
+Western Illinois,Western Illinois,771,roster_team,high_auto
+Alabama State,Alabama State,7,roster_team,high_auto
+Alderson Broaddus,,,,manual
+Augustana,,,,manual
+Ball State,Ball State,47,roster_team,high_auto
+Barton CC,,,,manual
+Butte College,,,,manual
+Clarion,Clarion,143,roster_team,high_auto
+Colgate,Colgate,153,roster_team,high_auto
+Creighton,Creighton,169,roster_team,high_auto
+Eastern Wyoming,,,,manual
+Franklin Pierce,Franklin Pierce,241,roster_team,high_auto
+Georgia Southwestern State,,,,manual
+Grambling State,,,,manual
+Houston,Houston,288,roster_team,high_auto
+Houston Christian,Houston Christian,287,roster_team,high_auto
+Itawamba CC,,,,manual
+Kent State,Kent State,331,roster_team,high_auto
+Laney College,,,,manual
+Louisiana,Louisiana,671,roster_team,high_auto
+Lower Columbia College,,,,manual
+Loyola Chicago,Loyola-Chicago,371,roster_team,high_auto
+Mercyhurst,Mercyhurst,408,roster_team,high_auto
+Merrimack,Merrimack,410,roster_team,high_auto
+Mineral Area College,,,,manual
+Mississippi College,Mississippi College,429,roster_team,high_auto
+Mississippi Valley State,Mississippi Valley State,432,roster_team,high_auto
+North Carolina A&T,,,,manual
+North Carolina Central,North Carolina Central,489,roster_team,high_auto
+Northern Illinois,Northern Illinois,503,roster_team,high_auto
+Orange Coast College,,,,manual
+Prairie View A&M,Prairie View A&M,553,roster_team,high_auto
+Queens,,,,manual
+SAGU,,,,manual
+San Diego,San Diego,627,roster_team,high_auto
+Santa Clara,Santa Clara,631,roster_team,high_auto
+Shelton State,,,,manual
+SIUE,SIUE,660,roster_team,high_auto
+South Carolina State,South Carolina St.,647,roster_team,high_auto
+South Georgia Technical College,,,,manual
+St. Mary's,,,,manual
+UC San Diego,UC San Diego,112,roster_team,high_auto
+UConn,UConn,164,roster_team,high_auto
+Utah Tech,Utah Tech,30095,roster_team,high_auto
+Boston University,,,,manual
+Cal State Northridge,,,,manual
+Colby CC,,,,manual
+Davidson,Davidson,173,roster_team,high_auto
+East Mississippi CC,,,,manual
+Eastern Wyoming College,,,,manual
+Fairfield,Fairfield,220,roster_team,high_auto
+Florida Southern,Fla. Southern,233,roster_team,low_fuzzy
+Frostburg State,Frostburg St.,243,roster_team,high_auto
+Georgia Southwestern,,,,manual
+Glenville State,Glenville St.,1098,roster_team,high_auto
+Hawaii,Hawaii,277,roster_team,high_auto
+Hawaii Pacific,Hawaii Pacific,2696,roster_team,high_auto
+Hinds CC,,,,manual
+Hofstra,Hofstra,283,roster_team,high_auto
+Hostos CC,,,,manual
+Howard,Howard,290,roster_team,high_auto
+Idaho,Idaho,295,roster_team,high_auto
+Kansas City,Kansas City,2707,roster_team,high_auto
+Lafayette College,,,,manual
+Lamar,Lamar,346,roster_team,high_auto
+Lipscomb,Lipscomb,28600,roster_team,high_auto
+Long Island,Long Island,361,roster_team,high_auto
+Loyola Marymount,Loyola Marymount,370,roster_team,high_auto
+Manhattan,Manhattan,381,roster_team,high_auto
+Mississippi Gulf Coast CC,,,,manual
+Monroe University,,,,manual
+Nicholls State,Nicholls State,483,roster_team,high_auto
+Northern Iowa,Northern Iowa,504,roster_team,high_auto
+Oakton College,,,,manual
+Pearl River Community College,,,,manual
+Pensacola State College,,,,manual
+SEMO,,,,manual
+Snow College,,,,manual
+Three Rivers College,,,,manual
+UC Merced,UC Merced,30266,roster_team,high_auto
+Wayne State,,,,manual
+Western Wyoming CC,,,,manual
+William Jewell,William Jewell,30120,roster_team,high_auto
+Alaska Anchorage,Alas. Anchorage,11,roster_team,low_fuzzy
+Allen CC,,,,manual
+Black Hills State,Black Hills St.,30134,roster_team,high_auto
+Campbell,Campbell,115,roster_team,high_auto
+Campbellsville,,,,manual
+Central Wyoming College,,,,manual
+Charleston,,,,manual
+Cisco College,,,,manual
+College of Saint Rose,,,,manual
+Cypress College,,,,manual
+Georgian Court,Georgian Court,9004,roster_team,high_auto
+Gillette College,,,,manual
+High Point,High Point,19651,roster_team,high_auto
+Holy Cross,Holy Cross,285,roster_team,high_auto
+Lander,Lander,1167,roster_team,high_auto
+LIU,,,,manual
+Louisiana-Monroe,Louisiana Monroe,498,roster_team,high_auto
+Mars Hill University,,,,manual
+McCook CC,,,,manual
+Merced College,,,,manual
+MSU Moorhead,MSU Moorhead,1240,roster_team,high_auto
+Newman,Newman,30054,roster_team,high_auto
+Norfolk State,Norfolk State,485,roster_team,high_auto
+Northwestern,Northwestern,509,roster_team,high_auto
+Northwestern State,Northwestern State,508,roster_team,high_auto
+NYIT,,,,manual
+Pacific,Pacific,534,roster_team,high_auto
+Penn,,,,manual
+Pratt CC,,,,manual
+Princeton,Princeton,554,roster_team,high_auto
+Rice,Rice,574,roster_team,high_auto
+Saint Peter's University,,,,manual
+Sam Houston State,Sam Houston State,624,roster_team,high_auto
+Samford University,,,,manual
+Schoolcraft College,,,,manual
+Seton Hill,Seton Hill,30063,roster_team,high_auto
+Sioux Falls,Sioux Falls,30128,roster_team,high_auto
+South Dakota State,South Dakota State,649,roster_team,high_auto
+Texas A&M-Kingsville,Tex. A&M-Kingsville,696,roster_team,low_fuzzy
+Union College,,,,manual
+University of Delaware,,,,manual
+University of Denver,,,,manual
+University of South Florida,,,,manual
+USC Aiken,S.C. Aiken,11276,roster_team,low_fuzzy
+Wingate,Wingate,1462,roster_team,high_auto
+Angelo State,Angelo St.,25,roster_team,high_auto
+Arizona Western College,,,,manual
+Azusa Pacific,Azusa Pacific,30146,roster_team,high_auto
+Barton Community College,,,,manual
+Catawba Valley CC,,,,manual
+Clarendon College,,,,manual
+Coastal Bend College,,,,manual
+College of Central Florida,,,,manual
+Davenport,Davenport,30221,roster_team,high_auto
+Drexel,Drexel,191,roster_team,high_auto
+East Central CC,,,,manual
+Eastern Oklahoma State,,,,manual
+Frank Phillips College,,,,manual
+Grayson College,Grayson College,,juco,high_auto
+Hawai'i,Hawaii,277,roster_team,low_fuzzy
+Lane CC,,,,manual
+Longwood University,,,,manual
+Marist,Marist,386,roster_team,high_auto
+Maryland Eastern Shore,Maryland-Eastern Shore,393,roster_team,high_auto
+Mesa CC,,,,manual
+Middle Tennessee State,,,,manual
+Minnesota Crookston,,,,manual
+Minot State,Minot St.,30125,roster_team,high_auto
+MSU Denver,MSU Denver,413,roster_team,high_auto
+Mt. San Antonio College,,,,manual
+Mt. San Jacinto College,,,,manual
+New Mexico Junior College,,,,manual
+North Greenville,North Greenville,9223,roster_team,high_auto
+Northeastern Oklahoma A&M,,,,manual
+Northern State,Northern St.,1266,roster_team,high_auto
+Notre Dame College,,,,manual
+Otero Junior College,,,,manual
+Palm Beach State College,,,,manual
+Parkland College,,,,manual
+Radford University,,,,manual
+Rider,Rider,576,roster_team,high_auto
+Saint Leo,Saint Leo,608,roster_team,high_auto
+Seattle,Seattle,1356,roster_team,high_auto
+Shoreline CC,,,,manual
+Sierra College,,,,manual
+Southeast Missouri,Southeast Missouri State,654,roster_team,low_fuzzy
+Southern,Southern,665,roster_team,high_auto
+St. Francis (PA),,,,manual
+St. Francis Brooklyn,,,,manual
+Tennessee-Martin,,,,manual
+Trevecca Nazarene University,,,,manual
+UAlbany,Albany,14,roster_team,low_fuzzy
+UMBC,UMBC,391,roster_team,high_auto
+UNCW,UNCW,460,roster_team,high_auto
+University of Bridgeport,,,,manual
+Wallace State CC,,,,manual
+Wayne State College,,,,manual
+West Texas A&M,West Texas A&M,767,roster_team,high_auto
+William & Mary,William & Mary,786,roster_team,high_auto
+Alderson Broaddus University,,,,manual
+Angelina College,,,,manual
+Arkansas-Pine Bluff,Arkansas-Pine Bluff,2678,roster_team,high_auto
+Bellarmine,Bellarmine,52,roster_team,high_auto
+Bethel College,,,,manual
+Blinn College (Texas),,,,manual
+Bridgeport,Bridgeport,74,roster_team,high_auto
+Brown,Brown,80,roster_team,high_auto
+Cape Fear CC,,,,manual
+CCSF,,,,manual
+Central Connecticut State,Central Connecticut,127,roster_team,low_fuzzy
+Central Connecticut State University,,,,manual
+Chattahoochee Valley CC,,,,manual
+Chipola CC,,,,manual
+College of Sequoias,,,,manual
+College of Southern Nevada,,,,manual
+Colorado Mesa,Colorado Mesa,11416,roster_team,high_auto
+Colorado Northwestern CC,,,,manual
+Columbia,Columbia,158,roster_team,high_auto
+Connors State,,,,manual
+Converse,Converse,8935,roster_team,high_auto
+Cornell,Cornell,167,roster_team,high_auto
+Daemen University,,,,manual
+Davis & Elkins,Davis & Elkins,174,roster_team,high_auto
+Dawson CC,,,,manual
+East Georgia State,,,,manual
+East Georgia State College,,,,manual
+Eastern Connecticut State,,,,manual
+Emporia State,Emporia St.,1071,roster_team,high_auto
+ETSU,,,,manual
+FDU,,,,manual
+Frederick CC,,,,manual
+Georgetown College,,,,manual
+Glendale CC,,,,manual
+Harding,Harding,1116,roster_team,high_auto
+Hinds Community College,,,,manual
+Holmes CC,,,,manual
+Hutchinson Community College,Hutchinson Community College,,juco,high_auto
+Iowa Lakes CC,,,,manual
+Jacksonville University,,,,manual
+LA Trade Tech,,,,manual
+Lafayette,Lafayette,342,roster_team,high_auto
+Lehigh,Lehigh,352,roster_team,high_auto
+Lenoir-Rhyne University,,,,manual
+Lincoln Land CC,,,,manual
+Los Angeles Valley College,,,,manual
+Loyola Marymount University,,,,manual
+Mars Hill,Mars Hill,1199,roster_team,high_auto
+Maryville University,,,,manual
+Meridian CC,,,,manual
+Miami Dade,,,,manual
+Midwestern State,Midwestern St.,1222,roster_team,high_auto
+Mississippi Delta CC,,,,manual
+Modesto Junior College,,,,manual
+Niagara University,,,,manual
+North Idaho,,,,manual
+North Platte CC,,,,manual
+Northeastern Okla. A&M,,,,manual
+Northern State University,,,,manual
+Northwest Florida State,Northwest Florida State College,,juco,low_fuzzy
+Northwest Mississippi CC,,,,manual
+Oakland University,,,,manual
+Phoenix College,,,,manual
+Post,Post,1318,roster_team,high_auto
+Providence College,,,,manual
+Putnam Science Academy,,,,manual
+Queens College,,,,manual
+Regis,,,,manual
+Rio Hondo College,,,,manual
+Rock Valley College,,,,manual
+Rust College,,,,manual
+Saint Mary's College,,,,manual
+Seattle U,,,,manual
+Seattle University,,,,manual
+Shepherd,Shepherd,10870,roster_team,high_auto
+Siena University,,,,manual
+Simon Fraser,Simon Fraser,30127,roster_team,high_auto
+SIU Edwardsville,,,,manual
+South Dakota Mines,South Dakota Mines,30139,roster_team,high_auto
+Southern Illinois,,,,manual
+Southern Nazarene,Southern Nazarene,30152,roster_team,high_auto
+St. Edwards,St. Edward's,1334,roster_team,low_fuzzy
+Texas A&M-Corpus Christi,A&M-Corpus Christi,26172,roster_team,low_fuzzy
+Tusculum,Tusculum,12830,roster_team,high_auto
+UIC,,,,manual
+University at Buffalo,,,,manual
+University of Northern Colorado,,,,manual
+URI,,,,manual
+UT-Martin,UT Martin,695,roster_team,high_auto
+Utah Valley University,,,,manual
+Victor Valley College,,,,manual
+Vincennes University,,,,manual
+Western Oklahoma State College,,,,manual
+Western Oregon,Western Ore.,1446,roster_team,low_fuzzy
+Western Oregon University,,,,manual
+Western Washington,,,,manual
+Westminster,,,,manual
+Academy of Art,Academy of Art,30123,roster_team,high_auto
+Adams State,Adams St.,929,roster_team,high_auto
+Air Force,Air Force,721,roster_team,high_auto
+Arkansas Tech,Arkansas Tech,947,roster_team,high_auto
+Augusta University,,,,manual
+AUM,AUM,30093,roster_team,high_auto
+Barton College,,,,manual
+Bay College,,,,manual
+Belmont Abbey,Belmont Abbey,2683,roster_team,high_auto
+Benedict College,,,,manual
+Bismarck State College,,,,manual
+Cal Poly SLO,,,,manual
+Cal State Monterey Bay,Cal St. Monterey Bay,30055,roster_team,high_auto
+Cal State San Marcos,Cal St. San Marcos,30198,roster_team,high_auto
+California Baptist University,,,,manual
+Cameron,Cameron,996,roster_team,high_auto
+Carver College,,,,manual
+Central Arizona,,,,manual
+Central Missouri,,,,manual
+Central Oklahoma,Central Okla.,1009,roster_team,low_fuzzy
+Chabot College,,,,manual
+Chaminade University,,,,manual
+Charleston Southern University,,,,manual
+Chesapeake College,,,,manual
+Cincinnati Christian College,,,,manual
+City College of San Francisco,,,,manual
+Cleveland State CC,,,,manual
+College of San Mateo,,,,manual
+Colorado Christian,Colo. Christian,11403,roster_team,low_fuzzy
+Columbus State,Columbus St.,159,roster_team,high_auto
+Concordia Portland,Concordia Portland,30200,roster_team,high_auto
+Cuesta College,,,,manual
+Daytona State CC,,,,manual
+Diablo Valley College,,,,manual
+Dixie State University,,,,manual
+Drury,Drury,1057,roster_team,high_auto
+Eastern Arizona,,,,manual
+Eastern Florida,,,,manual
+Eckerd,Eckerd,208,roster_team,high_auto
+Erskine,Erskine,1072,roster_team,high_auto
+Felician,Felician,23157,roster_team,high_auto
+Folsom Lake College,,,,manual
+Fort Lewis College,,,,manual
+Fort Scott CC,,,,manual
+Georgia Highlands,,,,manual
+Gonzaga,Gonzaga,260,roster_team,high_auto
+Grand Valley State,Grand Valley St.,262,roster_team,high_auto
+Green River College,,,,manual
+Hawai'i Pacific,Hawaii Pacific,2696,roster_team,high_auto
+Highland Community College,,,,manual
+Holy Family,Holy Family,1126,roster_team,high_auto
+Illinois Central,,,,manual
+Illinois Central College,,,,manual
+Illinois State University,,,,manual
+Iona College,,,,manual
+Jacksonville College,,,,manual
+Jamestown,Jamestown,30267,roster_team,high_auto
+Johnson C. Smith,Johnson C. Smith,323,roster_team,high_auto
+Lamar Community College,,,,manual
+Limestone,Limestone,1174,roster_team,high_auto
+Lincoln University,,,,manual
+Long Island University,,,,manual
+Loyola Maryland,Loyola-Maryland,369,roster_team,high_auto
+LSUE,,,,manual
+Marshall University,,,,manual
+Mary Hardin-Baylor,Mary Hardin-Baylor,1203,roster_team,high_auto
+Massachusetts,Massachusetts,400,roster_team,high_auto
+McNeese,,,,manual
+Millersville,Millersville,423,roster_team,high_auto
+Mississippi Delta Community College,,,,manual
+Missouri Western,Missouri Western,9013,roster_team,high_auto
+Mount Saint Mary's,Mount St. Mary's,450,roster_team,low_fuzzy
+NAPS,,,,manual
+Neosho CC,,,,manual
+Niagara County CC,,,,manual
+North Carolina Central University,,,,manual
+North Idaho College,,,,manual
+Northeast CC,,,,manual
+Northeastern JC,,,,manual
+Northeastern Junior College,,,,manual
+Northeastern State,Northeastern St.,12810,roster_team,high_auto
+Northwest College,,,,manual
+Ohio Dominican,Ohio Dominican,30119,roster_team,high_auto
+Oklahoma City,,,,manual
+Ouachita Baptist,Ouachita Baptist,1289,roster_team,high_auto
+Palm Beach State,,,,manual
+Parkland CC,,,,manual
+Pittsburg State,Pittsburg St.,1314,roster_team,high_auto
+Purdue-Fort Wayne,Purdue-Fort Wayne,308,roster_team,high_auto
+Queens (NC),Queens (NC),11504,roster_team,high_auto
+Redlands CC,,,,manual
+Saginaw Valley State,,,,manual
+Saint Mary's,,,,manual
+Saint Rose,,,,manual
+Scottsdale CC,,,,manual
+Seattle Pacific,Seattle Pacific,634,roster_team,high_auto
+Seward CC,,,,manual
+Shorter University,,,,manual
+Siena College,,,,manual
+Skyline College,,,,manual
+Southeast CC,,,,manual
+Southern Arkansas University Tech,,,,manual
+Spartanburg Methodist,,,,manual
+St. Andrews University,,,,manual
+St. Bonaventure University,,,,manual
+St. Louis CC,,,,manual
+State Fair CC,,,,manual
+SUNY Niagara,,,,manual
+Susquehanna,Susquehanna,685,roster_team,high_auto
+Tarleton,,,,manual
+Temple JC,,,,manual
+Trevecca Nazarene,Trevecca Nazarene,30002,roster_team,high_auto
+Trinity Valley C.C.,,,,manual
+Truman State,Truman State,499,roster_team,high_auto
+UC Davis,UC Davis,108,roster_team,high_auto
+UMass-Amherst,,,,manual
+Union County College,,,,manual
+University of Alaska Anchorage,,,,manual
+University of Massachusetts,,,,manual
+University of New Hampshire,,,,manual
+University of Virginia,,,,manual
+Utah State Eastern,,,,manual
+UW-Superior,,,,manual
+Vincennes,,,,manual
+Warner,,,,manual
+West Florida,West Florida,11740,roster_team,high_auto
+West Georgia,West Georgia,766,roster_team,high_auto
+West LA College,,,,manual
+Western Wyoming,,,,manual
+WVU Potomac State,,,,manual
+Young Harris,Young Harris,30154,roster_team,high_auto
+Young Harris College,,,,manual
+Adams State University,,,,manual
+Alliance,,,,manual
+Angelina CC,,,,manual
+Arkansas-Little Rock,Arkansas-Little Rock,32,roster_team,high_auto
+Arkansas-Monticello,,,,manual
+Averett University,,,,manual
+Barton,Barton,15646,roster_team,high_auto
+Baton Rouge CC,,,,manual
+Bay State Jaguars,,,,manual
+Bemidji State University,,,,manual
+Benedictine,,,,manual
+Binghamton University,,,,manual
+Bossier Parish CC,,,,manual
+Boston,Boston,68,roster_team,high_auto
+Bradley University,,,,manual
+Butler County Community College,,,,manual
+Cal Baptist,,,,manual
+Cal State Dominguez Hills,Cal St. Dom. Hills,92,roster_team,low_fuzzy
+Caldwell,Caldwell,995,roster_team,high_auto
+Casper College (Wyo.),,,,manual
+Cedarville University,,,,manual
+Centenary,,,,manual
+Central Connecticut,Central Connecticut,127,roster_team,high_auto
+Central Maine CC,,,,manual
+Central Washington,,,,manual
+Centralia College,,,,manual
+Chadron State,Chadron St.,1012,roster_team,high_auto
+Chattahoochee Valley Community College,,,,manual
+Chattanooga State CC,,,,manual
+Chico State,Chico St.,95,roster_team,high_auto
+Christian Brothers,Christian Brothers,1015,roster_team,high_auto
+Citrus College,,,,manual
+Claflin,Claflin,30058,roster_team,high_auto
+Cloud County (Kan.) CC,,,,manual
+College of Coastal Georgia,,,,manual
+College of Saint Benedict,,,,manual
+Colorado State Pueblo,Colorado St.-Pueblo,2720,roster_team,high_auto
+Columbia University,,,,manual
+Concordia College,,,,manual
+Cowley County CC,,,,manual
+D'Youville,D'Youville,1059,roster_team,high_auto
+Danville Area CC,,,,manual
+Dominican,,,,manual
+East Texas A&M,,,,manual
+East Texas Baptist,East Tex. Baptist,1062,roster_team,low_fuzzy
+Eastern Arizona CC,,,,manual
+Eastern Illinois University,,,,manual
+FAU,,,,manual
+Flagler College,,,,manual
+Florida State College at Jacksonville,,,,manual
+Francis Marion,Francis Marion,1085,roster_team,high_auto
+Francis Marion University,,,,manual
+Garden City Community College,Garden City Community College,,juco,high_auto
+Georgia Highlands College,,,,manual
+Grambling,Grambling,261,roster_team,high_auto
+Green Bay,Green Bay,794,roster_team,high_auto
+Hardin-Simmons University,,,,manual
+Harford Community College,Harford Community College,,juco,high_auto
+Harvard,Harvard,275,roster_team,high_auto
+Howard Payne,Howard Payne,2741,roster_team,high_auto
+Indian River State,,,,manual
+IU Indy,,,,manual
+Jacksonville CC,,,,manual
+James Madison University,,,,manual
+JMU,,,,manual
+John A. Logan College,,,,manual
+John Wood CC,,,,manual
+John Wood Community College,,,,manual
+Johnson County Community College,,,,manual
+Johnson University,,,,manual
+Kentucky State,Kentucky St.,332,roster_team,high_auto
+Kilgore CC,,,,manual
+Lake Region State,,,,manual
+Liberty University,,,,manual
+Life Pacific University,,,,manual
+Lincoln,,,,manual
+Lincoln Trail College,,,,manual
+Long Island Univ.,,,,manual
+Loyola University Chicago,,,,manual
+Lynn University,,,,manual
+Lyon (Ark.),,,,manual
+Madonna,,,,manual
+Malone University,,,,manual
+Mansfield,Mansfield,384,roster_team,high_auto
+McCook Community College,,,,manual
+Merrimack College,,,,manual
+Miami (Fla.),,,,manual
+Milwaukee,Milwaukee,797,roster_team,high_auto
+Minnesota State University-Moorhead,,,,manual
+MiraCosta College,,,,manual
+Mississippi,Mississippi,433,roster_team,high_auto
+Missouri Western State,,,,manual
+Mitchell College,,,,manual
+Moberly CC,,,,manual
+Nebraska-Omaha,,,,manual
+Newberry College,,,,manual
+North Dakota State University,,,,manual
+Northland CC,,,,manual
+Northwest Missouri State,Northwest Missouri State,507,roster_team,high_auto
+Northwestern Ohio,,,,manual
+Northwestern State University,,,,manual
+Nova Southeastern,Nova Southeastern,24639,roster_team,high_auto
+Oklahoma Baptist,Okla. Baptist,30202,roster_team,low_fuzzy
+Oklahoma Christian,Okla. Christian,30179,roster_team,low_fuzzy
+Oregon Tech,,,,manual
+Paris Junior College,,,,manual
+Peninsula College,,,,manual
+Providence School,,,,manual
+Quincy,Quincy,561,roster_team,high_auto
+Randolph College,,,,manual
+Rhode Island College,Rhode Island College,571,roster_team,high_auto
+Rider University,,,,manual
+Riverland CC,,,,manual
+Sacramento City College,,,,manual
+Sacred Heart,Sacred Heart,590,roster_team,high_auto
+Saint Francis (Pa.),Saint Francis (PA),600,roster_team,low_fuzzy
+Saint Francis University,,,,manual
+Saint Leo University,,,,manual
+Saint Peter’s,Saint Peter's,617,roster_team,high_auto
+San Joaquin Delta College/Cal Poly Pomona,,,,manual
+Santa Rosa College,,,,manual
+Savannah State,Savannah St.,632,roster_team,high_auto
+Scottsdale Community College,,,,manual
+Shaw University,,,,manual
+Southern Nevada,,,,manual
+Southwest Mississippi CC,,,,manual
+Spartanburg Methodist College,,,,manual
+St. John's University,,,,manual
+St. Leo University,,,,manual
+St. Louis,,,,manual
+St. Petersburg Coll.,,,,manual
+St. Thomas,,,,manual
+St. Thomas Aquinas College,,,,manual
+Stephen F. Austin State,,,,manual
+Stetson University,,,,manual
+Stonehill,Stonehill,682,roster_team,high_auto
+Tampa,Tampa,689,roster_team,high_auto
+Temple College,Temple College,,juco,high_auto
+Temple University,,,,manual
+Texas A&M Corpus Christi,A&M-Corpus Christi,26172,roster_team,low_fuzzy
+Texas A&M International,Texas A&M-International,30090,roster_team,high_auto
+Texas A&M-Commerce,Tex. A&M-Commerce,199,roster_team,low_fuzzy
+Texas Christian,Texas Christian,698,roster_team,high_auto
+The Master's,,,,manual
+Tiffin,Tiffin,1403,roster_team,high_auto
+Treasure Valley CC,,,,manual
+Trinity Valley Community College,Trinity Valley Community College,,juco,high_auto
+UL-Lafayette,,,,manual
+UMKC,,,,manual
+Umpqua CC,,,,manual
+University of Antelope Valley,,,,manual
+University of Arkansas at Pine Bluff,,,,manual
+University of Florida,,,,manual
+University of Idaho,,,,manual
+University of North Alabama,,,,manual
+University of Toledo,,,,manual
+UT Chattanooga,Chattanooga,693,roster_team,low_fuzzy
+UT Dallas,,,,manual
+UT Tyler,,,,manual
+Utah State University,,,,manual
+Utah State-Eastern,,,,manual
+UW-River Falls,,,,manual
+Vanguard,Vanguard,30263,roster_team,high_auto
+Ventura College,,,,manual
+Wabash Valley/Iowa Western,,,,manual
+Wake Tech Community College,,,,manual
+West Liberty,West Liberty,1438,roster_team,high_auto
+Wichita State University,,,,manual
+Winston-Salem State,,,,manual
+Winthrop University,,,,manual
+Wisconsin-Green Bay,,,,manual
+"Abilene Christian, Tarleton",,,,manual
+Air Force Academy,,,,manual
+Alabama Huntsville,,,,manual
+Alabama-Birmingham,,,,manual
+Alaska Fairbanks,Alas. Fairbanks,12,roster_team,low_fuzzy
+Albany State,,,,manual
+Anderson,,,,manual
+Anoka-Ramsey CC,,,,manual
+App State,,,,manual
+Arkansas-Fort Smith,,,,manual
+Arlington Baptist University,,,,manual
+Ashland (OH) Univ.,,,,manual
+Auburn University at Montgomery,,,,manual
+Auburn-Montgomery,,,,manual
+Austin College,,,,manual
+Barton CC (Kan.),,,,manual
+Bellevue CC,,,,manual
+Belmont Abbey College,,,,manual
+Bemidji State,Bemidji St.,54,roster_team,high_auto
+Big Bend CC,,,,manual
+Biola,Biola,30220,roster_team,high_auto
+Birmingham Southern,Birmingham-Southern,28593,roster_team,high_auto
+Blinn College / Oklahoma Baptist,,,,manual
+Bluefield State,Bluefield St.,985,roster_team,high_auto
+Bluefield State University,,,,manual
+Bluegrass United,,,,manual
+Boet Mataró,,,,manual
+Bowling Green State,,,,manual
+Bowling Green State University,,,,manual
+Bryan College,,,,manual
+Bryant & Stratton College,,,,manual
+Bryant University,,,,manual
+Bucks County CC,,,,manual
+Butler Community College,,,,manual
+Butler County CC,,,,manual
+Cairn University,,,,manual
+Cal,,,,manual
+Cal State University Fullerton,,,,manual
+Cameron University,,,,manual
+Canisius University,,,,manual
+Carolina University,,,,manual
+Central Georgia Tech,,,,manual
+Centralia CC,,,,manual
+Champlain Saint-Lambert,,,,manual
+Chandler-Gilbert Community College,,,,manual
+Chesapeake CC,,,,manual
+Chipola Junior College,,,,manual
+Christian Brothers University,,,,manual
+Cloud County (Kan.),,,,manual
+Cloud County Community College,,,,manual
+Coastal Alabama CC,,,,manual
+Coastal Alabama-North CC,,,,manual
+Cochise College (Ariz.),,,,manual
+College of Lake County,,,,manual
+Collin County Community College,,,,manual
+Colorado Christian University,,,,manual
+Columbia / Seattle U,,,,manual
+Columbia State CC,,,,manual
+Concord,Concord,1028,roster_team,high_auto
+Concordia (NY),,,,manual
+Concordia (OR),,,,manual
+Concordia-Moorhead,Concordia-Moorhead,161,roster_team,high_auto
+Connecticut,,,,manual
+Cowley CC,,,,manual
+Cowley County Community College,,,,manual
+Davis & Elkins (WV) Coll.,,,,manual
+Davis & Elkins College WV,,,,manual
+Des Moines Area CC,,,,manual
+Doane University,,,,manual
+Dominican-Ill.,Dominican (IL),1332,roster_team,low_fuzzy
+Dubuque,Dubuque,192,roster_team,high_auto
+Eckerd College,,,,manual
+ECU,,,,manual
+Edward Waters,Edward Waters,30244,roster_team,high_auto
+Elevate Elite,,,,manual
+Ellsworth CC,,,,manual
+Emmanuel College,,,,manual
+Emporia State University,,,,manual
+Evangel University,,,,manual
+Fayetteville Technical Community College,,,,manual
+FDU Florham,FDU-Florham,221,roster_team,high_auto
+Florida / Vanderbilt,,,,manual
+Florida Memorial,,,,manual
+Florida Southwestern,,,,manual
+Florida Tech,Florida Tech,230,roster_team,high_auto
+Fort Hays State,Fort Hays St.,9011,roster_team,high_auto
+Fort Valley State,Fort Valley St.,237,roster_team,high_auto
+Fullerton College,,,,manual
+Fulton-Montgomery CC,,,,manual
+G,,,,manual
+Garrett County Community College,,,,manual
+Gatlinburg-Pittman HS,,,,manual
+GCSU,,,,manual
+Georgia State University,,,,manual
+Georgia Tech/Gulf Coast State,,,,manual
+Gordon College,,,,manual
+Governors State,,,,manual
+Grand View University,,,,manual
+HBA-Marsky,,,,manual
+Hope International,,,,manual
+Idaho State University,,,,manual
+Illinois Central CC,,,,manual
+IMG Academy,,,,manual
+Indiana Wesleyan,,,,manual
+International School of Geneva - La Chataigneraie,,,,manual
+Iowa Central CC,Iowa Central Community College,,juco,high_auto
+Iowa Lakes Community College,,,,manual
+IUP,,,,manual
+Jackson State CC,,,,manual
+John A. Logan,,,,manual
+Johnson & Wales (Colo.),,,,manual
+Johnson C. Smith University,,,,manual
+Johnson Community CC,,,,manual
+Joliet Junior College,,,,manual
+Kennesaw State University,,,,manual
+Kentucky Wesleyan College,,,,manual
+Keystone,Keystone,30047,roster_team,high_auto
+Keystone College,,,,manual
+Kirkwood,,,,manual
+Kwansei University,,,,manual
+L.A. Valley College,,,,manual
+La Salle University,,,,manual
+Labette Community College,,,,manual
+Lake Erie College,,,,manual
+Lake Superior State,Lake Superior St.,345,roster_team,high_auto
+LaSalle,LaSalle,340,roster_team,high_auto
+Lasalle,LaSalle,340,roster_team,high_auto
+Lemoore College,,,,manual
+Liberty | Collin College | Central Arkansas,,,,manual
+Lincoln (Illinois),,,,manual
+Lindenwood (Mo.) Univ.,,,,manual
+LIU-Brooklyn,,,,manual
+LMU,,,,manual
+Long Beach City College,,,,manual
+Louisburg College,,,,manual
+Louisiana State,,,,manual
+Loyola,,,,manual
+Loyola University,,,,manual
+Lurleen B. Wallace CC,,,,manual
+Lurleen B. Wallace CC-Selma,,,,manual
+Lyon,Lyon,22989,roster_team,high_auto
+Macomb CC,,,,manual
+Mansfield Univ.,,,,manual
+McKendree University,,,,manual
+Memphis / Jones Junior College,,,,manual
+Mesa Community College,,,,manual
+Midland CC,,,,manual
+Miles (Montana) CC,,,,manual
+Minnesota State University Moorhead,,,,manual
+Minnesota-Morris,Minnesota-Morris,1226,roster_team,high_auto
+Mira Costa College,,,,manual
+Missouri Southern,,,,manual
+Missouri Southern State,Mo. Southern St.,9012,roster_team,low_fuzzy
+Missouri State/Duke,,,,manual
+Missouri-St. Louis,Missouri-St. Louis,436,roster_team,high_auto
+Modesto JC,,,,manual
+Montevallo,Montevallo,1238,roster_team,high_auto
+Montreat College,,,,manual
+Motlow State CC,,,,manual
+MSU-Moorhead,MSU Moorhead,1240,roster_team,high_auto
+Mt. Hood CC,,,,manual
+MTSU,,,,manual
+Murray State (Okla.),,,,manual
+Nassau Community College,,,,manual
+Navy,Navy,726,roster_team,high_auto
+NE Mississippi CC,,,,manual
+Nebraska Kearney,,,,manual
+Nelson University,,,,manual
+Neosha CC,,,,manual
+Nevada-Reno,,,,manual
+New Mexico JC/Seward CC,,,,manual
+NOC-Enid,,,,manual
+North Alabama / Northwestern State,,,,manual
+North Arkansas Community College,,,,manual
+Northampton CC,,,,manual
+Northeast C.C.,,,,manual
+Northeast Oklahoma A&M,,,,manual
+Northeastern Oklahoma A&M College,,,,manual
+Northern Oklahoma CC,,,,manual
+Northwest Florida,,,,manual
+Northwest Kansas Technical College,,,,manual
+Notre Dame de Namur,,,,manual
+Occidental College,,,,manual
+Ohio,Ohio,519,roster_team,high_auto
+Oral Roberts U.,,,,manual
+Otero JC,,,,manual
+Palm Beach Atlantic/Chatham,,,,manual
+Panola CC,,,,manual
+Panola JC / SMU,,,,manual
+Paris JC (Texas),,,,manual
+Pasadena City College,,,,manual
+Pennsylvania,Pennsylvania,540,roster_team,high_auto
+Pitt-Johnstown,Pitt.-Johnstown,546,roster_team,high_auto
+Purdue Northwest,Purdue Northwest,30222,roster_team,high_auto
+Queens (N.C.),Queens (NC),11504,roster_team,low_fuzzy
+Queens University of Charlotte,,,,manual
+Raritan Valley CC,,,,manual
+Redlands (Okla.),,,,manual
+Reedley College,,,,manual
+Regis University,,,,manual
+Rend Lake CC,,,,manual
+Richard Bland College,,,,manual
+Robert Morris University,,,,manual
+Roberts Wesleyan (NY) Univ.,,,,manual
+Rock Valley CC,,,,manual
+Rocky Mountain College,,,,manual
+Salem,,,,manual
+Salem University,,,,manual
+Salt Lake City CC,Salt Lake Community College,,juco,low_fuzzy
+Salt Lake Community College,Salt Lake Community College,,juco,high_auto
+San Bernardino Valley College,,,,manual
+San Francisco State,,,,manual
+Santa Fe / Stetson,,,,manual
+Savannah State Univ.,,,,manual
+Schoolcraft CC,,,,manual
+Seminole State CC,,,,manual
+Shaw,Shaw,636,roster_team,high_auto
+Slippery Rock,Slippery Rock,643,roster_team,high_auto
+Solano College,,,,manual
+South Dakota State University,,,,manual
+South Mountain CC,,,,manual
+South Plains CC / Central Arkansas,,,,manual
+Southeastern C.C.,,,,manual
+Southern Arkansas Univ. Tech,,,,manual
+Southern Connecticut State,,,,manual
+Southern Illinois Edwardsville,,,,manual
+Southern Indiana,Southern Ind.,661,roster_team,low_fuzzy
+Southern Mississippi,,,,manual
+Southwest Baptist,Southwest Baptist,2755,roster_team,high_auto
+Southwest Baptist University,,,,manual
+Southwest Tennessee Community College,,,,manual
+Southwestern CC,,,,manual
+St. Francis (Pa.),,,,manual
+St. Francis-Brooklyn,,,,manual
+St. Johns,St. John's,603,roster_team,low_fuzzy
+Stonehill College,,,,manual
+Stony Brook University,,,,manual
+SUNY Sullivan,,,,manual
+SW Oklahoma St. Univ.,,,,manual
+Texas A&M - Commerce,Tex. A&M-Commerce,199,roster_team,low_fuzzy
+Texas A&M - Kingsville,Tex. A&M-Kingsville,696,roster_team,low_fuzzy
+Texas A&M Kingsville,Tex. A&M-Kingsville,696,roster_team,low_fuzzy
+Texas A&M-International,Texas A&M-International,30090,roster_team,high_auto
+Texas Woman's University,,,,manual
+Texas-El Paso,Texas-El Paso,704,roster_team,high_auto
+The George Washington University,,,,manual
+The Master's University,,,,manual
+The University of Tampa,,,,manual
+Three Rivers Community College,,,,manual
+Trinity Valley CC / Wichita State,,,,manual
+Triton College,,,,manual
+U. of Nebraska Omaha,,,,manual
+UC-Riverside,UC Riverside,111,roster_team,high_auto
+UMHB,,,,manual
+University at Buffalo / Eastern Florida State,,,,manual
+University of Bridgeport / Eastern Conn. St.,,,,manual
+University of Dallas,,,,manual
+University of Dubuque,,,,manual
+University of Evansville,,,,manual
+University of Indianapolis,,,,manual
+University of Louisiana at Lafayette,,,,manual
+University of Montevallo,,,,manual
+University of New England,U New England,1255,roster_team,low_fuzzy
+University of New Mexico,,,,manual
+University of New Orleans,,,,manual
+University of North Dakota,,,,manual
+University of North Texas,,,,manual
+University of Portland,,,,manual
+University of San Diego,,,,manual
+University of San Francisco,,,,manual
+University of South Dakota,,,,manual
+University of Southern Indiana,,,,manual
+University of Southern Maine,,,,manual
+University of the Pacific,,,,manual
+University of West Florida,,,,manual
+University of Wyoming,,,,manual
+Upper Iowa,Upper Iowa,728,roster_team,high_auto
+USC-Upstate,USC Upstate,10411,roster_team,high_auto
+UT Permian Basin,Tex. Permian Basin,30088,roster_team,low_fuzzy
+UT-Dallas,,,,manual
+UVA Wise,UVa-Wise,30181,roster_team,high_auto
+UVA-Wise,UVa-Wise,30181,roster_team,high_auto
+Valdosta State,Valdosta St.,734,roster_team,high_auto
+Virginia Commonwealth,Virginia Commonwealth,740,roster_team,high_auto
+Virginia State University,,,,manual
+Virginia Union,Virginia Union,744,roster_team,high_auto
+Viterbo,,,,manual
+Wake Forest University,,,,manual
+Waldorf College,,,,manual
+Walla Walla CC,,,,manual
+Walters State Community College,,,,manual
+Warner (Fla.),,,,manual
+Washburn University,,,,manual
+Wayne State (Neb.),Wayne St. (NE),1433,roster_team,low_fuzzy
+Weber State University,,,,manual
+Wenatchee Valley CC,,,,manual
+West L.A. College,,,,manual
+West Virginia University,,,,manual
+Western Ky.,Western Ky.,772,roster_team,high_auto
+Western Nebraska Community College,Western Nebraska Community College,,juco,high_auto
+Western New Mexico,,,,manual
+Whitworth,Whitworth,1454,roster_team,high_auto
+Williston State College,,,,manual
+Willmington,,,,manual
+Winona State,Winona St.,790,roster_team,high_auto
+Wofford College,,,,manual
+Xavier (La.),,,,manual
+Yakima Valley College,,,,manual
+Abilene Christian University / Cochise College / Odessa College,,,,manual
+Abraham Baldwin Agricultural,,,,manual
+Academic of Art University,,,,manual
+Academy of Art (Calif.) / Fresno City College (Calif.),,,,manual
+Adelphi,Adelphi,3,roster_team,high_auto
+Alabama A&M / Wabash Valley College,,,,manual
+Alabama A&M University,,,,manual
+Alcoa HS,,,,manual
+Alcorn State,Alcorn State,17,roster_team,high_auto
+Allen Hancock College,,,,manual
+American International College,,,,manual
+American University,,,,manual
+Anderson University,,,,manual
+Arizona Western CC,,,,manual
+Arkansas Baptist College,,,,manual
+Arkansas Fort Smith/Blinn JC,,,,manual
+Arkansas Little Rock,Arkansas-Little Rock,32,roster_team,high_auto
+Arkansas Little Rock/New Mexico,,,,manual
+Arkansas Tech University,,,,manual
+Arkansas-Little Rock/Marquette,,,,manual
+ASA College Brooklyn,,,,manual
+Ashland University,,,,manual
+Assumption,Assumption,36,roster_team,high_auto
+Auburn/Gulf Coast State College,Gulf Coast State College,,juco,low_fuzzy
+Augsburg,Augsburg,38,roster_team,high_auto
+Augusta,Augusta,39,roster_team,high_auto
+Augustana [S.D.],,,,manual
+Augustana College,,,,manual
+Austin Peay State,,,,manual
+Avella Area High School,,,,manual
+Baker,,,,manual
+Barry,Barry,49,roster_team,high_auto
+Barton Co.,,,,manual
+Barton County CC,,,,manual
+Bellbrook High School,,,,manual
+Bellvue College,,,,manual
+Belmont University,,,,manual
+Bethany,,,,manual
+Bethany College,,,,manual
+Black Hawk CC,,,,manual
+Blinn,,,,manual
+Blinn College / Texas A&M International,,,,manual
+Bloomfield College,,,,manual
+Bloomsburg,Bloomsburg,65,roster_team,high_auto
+Bryant & Stratton (Va.),,,,manual
+Bryn Athn,Bryn Athyn,30188,roster_team,low_fuzzy
+Bucks County Community College,,,,manual
+Bushnell,,,,manual
+Butler College,,,,manual
+Cal Poly San Luis Obispo,,,,manual
+Cal St. San Marcos,Cal St. San Marcos,30198,roster_team,high_auto
+Cal State LA,Cal State LA,100,roster_team,high_auto
+Cal University of PA,Cal U (PA),106,roster_team,low_fuzzy
+Campbellsville Harrodsburg,,,,manual
+Cankaya University Sports Club,,,,manual
+Cape Fear Community College,,,,manual
+Capital Courts Academy,,,,manual
+Carl Albert (Okla.),,,,manual
+Casper,,,,manual
+CCBC,,,,manual
+CCSU,,,,manual
+Cedarville,Cedarville,30124,roster_team,high_auto
+Cegep De Sainte-Foy,,,,manual
+Central Arizona CC,,,,manual
+Central Arizona JC,,,,manual
+Central Arkansas/Dodge City CC,,,,manual
+Central College,,,,manual
+Central Community College,,,,manual
+Central Georgia Technical College,,,,manual
+Central Michigan/TCU,Central Michigan,129,roster_team,low_fuzzy
+Central State,,,,manual
+Centralia/William Jessup,,,,manual
+Cerro Coso CC,,,,manual
+Chaffey College,,,,manual
+Chaminade,Chaminade,133,roster_team,high_auto
+Chandler-Gilbert CC,,,,manual
+Charleston (WV),Charleston (WV),1013,roster_team,high_auto
+Chattanooga State JC,,,,manual
+Chattanooga State/Angelina College,,,,manual
+Chipola,,,,manual
+Chipola College / Georgia Southern,,,,manual
+Cincinnati / Buffalo,,,,manual
+Cincinnati / Eastern Florida State / Hutchinson C.C.,,,,manual
+Cincinnati Christian,,,,manual
+Clarion Univ.,,,,manual
+Clark Atlanta University,,,,manual
+Clark State CC,,,,manual
+Claymont High School,,,,manual
+Cleveland State Community College,,,,manual
+Cloud City Community College,,,,manual
+Cloud County CC / Garden City CC,,,,manual
+Coahoma Community College,,,,manual
+Coastal Carolina / Jacksonville / Central Methodist,,,,manual
+Cochise CC,,,,manual
+Coffeyville Community College,,,,manual
+Colby College (KS),,,,manual
+Coll. of the Ozarks,,,,manual
+College of Charleston / CCBC Essex,,,,manual
+College of Charleston / North Texas,,,,manual
+College of Charleston/McLennan College,,,,manual
+College of Marin,,,,manual
+College of Saint Scholastica,,,,manual
+College of Staten Island,,,,manual
+College of the Canyons,,,,manual
+College of the Sequoias,,,,manual
+Collin County CC,,,,manual
+Colonie Central HS,,,,manual
+Colorado Northwestern Community College,,,,manual
+Colorado State/Howard College,,,,manual
+Columbia International,,,,manual
+Columbus State CC,,,,manual
+Columbus State Univ. (GA),,,,manual
+Concordia (Calif.),Concordia (CA),30199,roster_team,low_fuzzy
+Concordia (Ore.),,,,manual
+Concordia Irvine,,,,manual
+Concordia University,,,,manual
+Concordia University Irvine,,,,manual
+Copiah-Lincoln CC,,,,manual
+Copiah-Lincoln Community College,,,,manual
+Cornell University,,,,manual
+Cowley College,,,,manual
+CP Elite,,,,manual
+Croatia-Premijer Liga,,,,manual
+CSU Northridge,,,,manual
+CSU Northridge/Utah Valley University,,,,manual
+Culver-Stockton College,,,,manual
+Cypress College (Calif.),,,,manual
+Danville C.C.,,,,manual
+Dartmouth,Dartmouth,172,roster_team,high_auto
+Davis & Elkins College,,,,manual
+Dawson C.C.,,,,manual
+Dawson College,,,,manual
+Daytona State Coll.,,,,manual
+Delta College,,,,manual
+Depaul,DePaul,176,roster_team,high_auto
+DePaul (IL),,,,manual
+DePaul University,,,,manual
+Detroit / Western Michigan,,,,manual
+Detroit Mercy / Providence,,,,manual
+Dickinson,Dickinson,185,roster_team,high_auto
+Dixie State,,,,manual
+Dodge City CC (Kan.),,,,manual
+Dodge City Community College,,,,manual
+Dominican U of CA,,,,manual
+Douglas College,,,,manual
+Drexel University/CVCC,,,,manual
+Drive 4 Stardum,,,,manual
+DSK Levhartice Chomutov,,,,manual
+Dutchess CC,,,,manual
+Dyersburg CC,,,,manual
+East Central C.C.,,,,manual
+East Central CC (Miss.),,,,manual
+East Central CC / ULM,,,,manual
+East Georgia College,,,,manual
+East Tennessee State University,,,,manual
+East Texas Baptist University,,,,manual
+Eastern Arizona Comm. Coll.,,,,manual
+Eastern Illinois / Lake Land College,,,,manual
+Eastern Kentucky University,,,,manual
+Eastern Michigan University,,,,manual
+Eastern Nazarene,Eastern Nazarene,1064,roster_team,high_auto
+Eastern Nazarene College,,,,manual
+Eastern New Mexico / Cal St. Monterey,,,,manual
+Eastern Oklahoma CC,,,,manual
+Eastern Washington University,,,,manual
+Eastern Washington/Bushnell,,,,manual
+Eastern Wyoming CC,,,,manual
+Edinboro,Edinboro,209,roster_team,high_auto
+Edinboro University,,,,manual
+Edison State,,,,manual
+Edmonds CC,,,,manual
+Elizabethtown College,,,,manual
+Elms College,,,,manual
+Embry-Riddle University,,,,manual
+Enterprise State,,,,manual
+Essex CC,,,,manual
+Eureka,Eureka,218,roster_team,high_auto
+Evergreen State,,,,manual
+Evergreen State/Merced College,,,,manual
+Fairleigh Dickinson University,,,,manual
+Ferris State,Ferris St.,224,roster_team,high_auto
+FGCU,,,,manual
+Fisk U.,,,,manual
+FIU / Panola College,,,,manual
+Florida Atlantic University,,,,manual
+Florida Institute of Technology,,,,manual
+Florida International (FIU),,,,manual
+Florida International University,,,,manual
+Florida Southern College,,,,manual
+Florida Southwestern College,Florida SouthWestern State College,,juco,low_fuzzy
+Florida Southwestern State CC,Florida SouthWestern State College,,juco,low_fuzzy
+Florida SouthWestern State College,Florida SouthWestern State College,,juco,high_auto
+Florida State University,,,,manual
+Florida/Clemson,,,,manual
+Fort Hays State U.,,,,manual
+Fort Hays State Univ.,,,,manual
+Frank Phillips CC / Lamar CC,,,,manual
+Fredericksburg HS,,,,manual
+Fresno City,,,,manual
+Georgetown/Georgia,,,,manual
+Georgia College,Georgia College,1096,roster_team,high_auto
+Georgia Southern/Tennessee State,,,,manual
+Georgia State/Clemson,,,,manual
+Georgia/Rutgers,,,,manual
+Gerogian Court,Georgian Court,9004,roster_team,low_fuzzy
+Gillette,,,,manual
+Glendale Community College,,,,manual
+Gogebic CC,,,,manual
+Gogebic Community College / Saint Leo,,,,manual
+Goldey Beacom College,,,,manual
+Goldey-Beacom College,,,,manual
+Grambling State/Loyola Marymount,,,,manual
+Grambling/Grayson,,,,manual
+Grand Canyon University,,,,manual
+Grand Canyon University (GCU),,,,manual
+Greensboro College,,,,manual
+Greenville,Greenville,1111,roster_team,high_auto
+Guilford Tech,,,,manual
+Gulf Coast CC,,,,manual
+Gulf Coast State / Kilgore College,,,,manual
+Gulf Coast State / Vincennes / Presbyterian,,,,manual
+Gulf Coast State Coll.,Gulf Coast State College,,juco,low_fuzzy
+Gwynedd Mercy University,,,,manual
+Hamline University,,,,manual
+Hampton University,,,,manual
+Hampton University/University of South Dakota,,,,manual
+Hanover College,,,,manual
+Harcum / Kennesaw State,,,,manual
+Hardin-Simmons,Hardin-Simmons,271,roster_team,high_auto
+Harford CC,Harford Community College,,juco,high_auto
+Hartford/Sam Houston State,,,,manual
+Hartnell College,,,,manual
+Hawai'i-Hilo,Hawaii Hilo,2697,roster_team,high_auto
+Hawaii Pacific University,,,,manual
+Hawaii-Hilo,Hawaii Hilo,2697,roster_team,high_auto
+Helsinki Basketball Academy,,,,manual
+Henderson St.,Henderson St.,1123,roster_team,high_auto
+Hill College (TX),,,,manual
+Hillsborough Comm. Coll.,,,,manual
+Hollins University,,,,manual
+Holmes Community College,,,,manual
+Hood College,,,,manual
+Houston / Temple College,,,,manual
+Houston Christian University (Texas),,,,manual
+Husson,Husson,1133,roster_team,high_auto
+Hutchinson CC/West Virginia,,,,manual
+Idaho / Cal Poly Humboldt,,,,manual
+Idaho State / Newman University,,,,manual
+Illinois College,Illinois Col.,297,roster_team,low_fuzzy
+Illinois Springfield,Illinois-Springfield,30050,roster_team,high_auto
+Illinois-Springfield,Illinois-Springfield,30050,roster_team,high_auto
+In The Zone,,,,manual
+Indian River [Fla.] State College,,,,manual
+Indian River CC,,,,manual
+Indiana/Vincennes,,,,manual
+Iowa State University,,,,manual
+Iowa Western,,,,manual
+Ipswich Basketball Club,,,,manual
+Itawamba CC (Miss.),,,,manual
+Itawamba Community College,,,,manual
+IU Indy & Butler,,,,manual
+Jackson State / Charlotte,,,,manual
+Jefferson College,,,,manual
+Jefferson Community College,,,,manual
+Jones County JC,,,,manual
+Jones County Junior College,,,,manual
+Kankakee CC,,,,manual
+Kansas / Oklahoma State,,,,manual
+Kansas Wesleyan,,,,manual
+Kaskaskia College,,,,manual
+KC KS Comm. College,,,,manual
+Kean / CCBC Essex,,,,manual
+Kennesaw State (Ga.),,,,manual
+Kent School (CT),,,,manual
+Kentucky / Oregon,,,,manual
+Kilgore,,,,manual
+Kilgore CC / Texas A&M-Commerce,,,,manual
+Kilgore College / Detroit,,,,manual
+King (Tenn.) Univ.,,,,manual
+Kirkwood Community College,,,,manual
+Knox College,,,,manual
+La Lumiere School,,,,manual
+La Sierra University,,,,manual
+LA Trade Tech College,,,,manual
+La Verne,La Verne,341,roster_team,high_auto
+Labette CC/USC Upstate,,,,manual
+Lake Region State College,,,,manual
+Lake Superior State University,,,,manual
+Lakeland Community College,,,,manual
+Lakeland University,,,,manual
+Lamar/Houston,,,,manual
+Lander University,,,,manual
+Lane [Ore.] CC,,,,manual
+Lane College,,,,manual
+Langston,,,,manual
+Lansing CC,,,,manual
+Lansing Community College,,,,manual
+Las Positas Junior College,,,,manual
+Lassen CC,,,,manual
+Lawson State CC,,,,manual
+Lees-McRae College,,,,manual
+LeMoyne,Le Moyne,349,roster_team,low_fuzzy
+Lenior-Rhyne,Lenoir-Rhyne,1170,roster_team,low_fuzzy
+Lenoir-Rhyne,Lenoir-Rhyne,1170,roster_team,high_auto
+LeTourneau,LeTourneau,8490,roster_team,high_auto
+Lewis,Lewis,354,roster_team,high_auto
+Lewiston-Porter HS,,,,manual
+Lexington High School,,,,manual
+Life Pacific,,,,manual
+Limestone University,,,,manual
+Lincoln U. (MO),,,,manual
+Lindenwood University,,,,manual
+Lindenwood/Mineral Area College,,,,manual
+Linn Benton CC,,,,manual
+Lipscomb Univ.,,,,manual
+Little Rock/Highland CC,,,,manual
+LIU Brooklyn,,,,manual
+Livingstone College,,,,manual
+Lloyd Memorial High School,,,,manual
+Loomis Chaffee School,,,,manual
+Los Angeles Trade Tech CC,,,,manual
+Los Angeles Trade-Tech,,,,manual
+Louisiana Monroe,Louisiana Monroe,498,roster_team,high_auto
+Lourdes,,,,manual
+Lower Columbia CC,,,,manual
+Loyola (Md.),,,,manual
+Loyola-Chicago,Loyola-Chicago,371,roster_team,high_auto
+Lyon College,,,,manual
+Manhattan College,,,,manual
+Manhattan University,,,,manual
+Mansfield University,,,,manual
+Marian University,,,,manual
+Marketing,,,,manual
+Marquette University,,,,manual
+Marshalltown CC,,,,manual
+Marshalltown Community College,,,,manual
+Mary Baldwin University,,,,manual
+Mary Hardin Baylor,Mary Hardin-Baylor,1203,roster_team,high_auto
+Maryland-Eastern Shore,Maryland-Eastern Shore,393,roster_team,high_auto
+Maryville,,,,manual
+Maryville (Mo.) University,,,,manual
+Mass Huskies,,,,manual
+Massachusetts/Hawaii,,,,manual
+Mayville State University (N.D.),,,,manual
+McClennan CC / Morgan State,,,,manual
+McHenry County College,,,,manual
+McLennan CC / Sam Houston State,,,,manual
+McLennan Community College,McLennan Community College,,juco,high_auto
+McPherson,,,,manual
+MD Eastern Shore,,,,manual
+Merced College (CA),,,,manual
+Mercer University,,,,manual
+Mercy,Mercy,407,roster_team,high_auto
+Mercy University,,,,manual
+Mercyhurst University,,,,manual
+Mesa CC / Franklin Pierce,,,,manual
+Miami (FL),,,,manual
+Miami (Fla.) / Mississippi State,,,,manual
+Miami Ohio,Miami Ohio,414,roster_team,high_auto
+Michigan State/Mississippi State,,,,manual
+Mid Michigan College,,,,manual
+Mid-America Christian,,,,manual
+Mid-Michigan College,,,,manual
+Middle Tennessee St Univ,,,,manual
+Midland,,,,manual
+Midland College / Panola College,,,,manual
+Midway,,,,manual
+Millikin,Millikin,424,roster_team,high_auto
+Milwaukee School of Engineering,,,,manual
+Mineral Area,,,,manual
+Mineral Area CC,,,,manual
+Minnesota Morris,Minnesota-Morris,1226,roster_team,high_auto
+Misericordia,Misericordia,16142,roster_team,high_auto
+Mississippi State University,,,,manual
+Mississippi Valley State University,,,,manual
+Mississippi Valley State/Dodge City CC,,,,manual
+Mississppi Delta CC,,,,manual
+Missouri S&T,Missouri S&T,435,roster_team,high_auto
+Missouri Southern University,,,,manual
+Missouri State University,,,,manual
+Missouri-Kansas City,,,,manual
+Mohawk Valley CC,,,,manual
+Monmouth College,,,,manual
+Morehead State/Hill,,,,manual
+Morehead/Central Georgia Technical CC,,,,manual
+Mount Olive,Mount Olive,1245,roster_team,high_auto
+Mount Vernon Nazarene,,,,manual
+Mt. SAC,,,,manual
+Mukogawa Women's University,,,,manual
+Muskegon CC,,,,manual
+N.C. A&T,N.C. A&T,488,roster_team,high_auto
+Nassau C.C.,,,,manual
+Nassau CC,,,,manual
+National Park College,,,,manual
+NC Central,,,,manual
+Nebraska-Kearney,,,,manual
+Nebraska-Kearney / Portland State,,,,manual
+Neumann,Neumann,1254,roster_team,high_auto
+New Hampton School,,,,manual
+New Jersey Panthers,,,,manual
+New Mexico College/Wichita State,,,,manual
+New Mexico Highlands / Dodge City CC / Otero JC,,,,manual
+New Mexico St. JC / Texas-Permian Basin,,,,manual
+New Orleans/Salt Lake CC,,,,manual
+Newberry,Newberry,1257,roster_team,high_auto
+Newberry College/Emmanuel (Ga.) University,,,,manual
+Newman College,,,,manual
+NIACC,,,,manual
+Niagara CCC,,,,manual
+Niagara County Community College,,,,manual
+Niagara Prep,Niagara Prep,,prep,high_auto
+Niagara/Longwood,,,,manual
+Niagara/Morgan State,,,,manual
+Nicholls,,,,manual
+NJIT,,,,manual
+NOC Tonkawa,,,,manual
+North Alabama/Jones College,,,,manual
+North Carolina / Virginia,,,,manual
+North Central Michigan Community College,,,,manual
+North Country CC,,,,manual
+North Dakota State CS,North Dakota State,493,roster_team,low_fuzzy
+North Georgia,North Georgia,30052,roster_team,high_auto
+NorthArk College,,,,manual
+Northeast Community College,,,,manual
+Northeastern State University,,,,manual
+Northeastern University,,,,manual
+Northern Ariz.,Northern Arizona,501,roster_team,low_fuzzy
+Northern Illinois University,,,,manual
+Northern Michigan,Northern Michigan,506,roster_team,high_auto
+Northern Michigan University,,,,manual
+Northern Oklahoma College,,,,manual
+Northern Virginia CC,,,,manual
+Northwest Christian,,,,manual
+Northwest Missouri State University,,,,manual
+Northwest Nazarene,Northwest Nazarene,1274,roster_team,high_auto
+Northwestern (Iowa),,,,manual
+Northwestern College (IA),,,,manual
+Northwestern Oklahoma State University,,,,manual
+Northwood,Northwood,510,roster_team,high_auto
+Notre Dame (OH),Notre Dame (OH),30126,roster_team,high_auto
+Notre Dame De Namur U.,,,,manual
+Notre Dame de Namur University,,,,manual
+Notre Dame High School,,,,manual
+Notre Dame of Maryland University,,,,manual
+NVU-Lyndon,NVU-Lyndon,30065,roster_team,high_auto
+NW Mississippi CC,,,,manual
+Oakland CC,,,,manual
+Odessa (Texas) Coll.,,,,manual
+Oglethorpe,Oglethorpe,2713,roster_team,high_auto
+Oklahoma / TCU,,,,manual
+Oklahoma City University,,,,manual
+Oklahoma State University,,,,manual
+Old Dominion University,,,,manual
+Ole Miss / Morehead State,,,,manual
+Olney Central College,,,,manual
+Oral Roberts Univ.,,,,manual
+Otero College,,,,manual
+Otero College/Dodge City CC,,,,manual
+Ouachita Baptist University,,,,manual
+Pacific Lutheran,Pacific Lutheran,1297,roster_team,high_auto
+Paine,,,,manual
+Paine College,,,,manual
+Palm Beach Atlantic,,,,manual
+Panola College/Iowa State,,,,manual
+Panola Junior College,,,,manual
+Paris (Texas) CC / Iowa Western CC,,,,manual
+Parkside,,,,manual
+Pasadena CC,,,,manual
+Patrick & Henry CC,,,,manual
+Peninsula CC,,,,manual
+Penn State at Lehigh Valley,,,,manual
+Penn State Lehigh Valley,,,,manual
+Pensacola State JC,,,,manual
+Pierce CC,,,,manual
+Pierce College,,,,manual
+Pikeville,,,,manual
+Pittsburg St.,Pittsburg St.,1314,roster_team,high_auto
+Point Loma Nazarene University,,,,manual
+Point Park,Point Park,30080,roster_team,high_auto
+Porta XI Ensino de Lugo,,,,manual
+Portland [Ore.] CC,,,,manual
+Post University,,,,manual
+Pratt Community College,,,,manual
+Purdue Univ. - Fort Wayne,,,,manual
+Purdue University Northwest,,,,manual
+Purdue University-Fort Wayne,,,,manual
+Queens college,,,,manual
+Queens University,,,,manual
+Quincy Univ.,,,,manual
+Quincy University,,,,manual
+Redlands C.C.,,,,manual
+Redlands College,,,,manual
+Regis (CO),Regis (CO),568,roster_team,high_auto
+Reinhardt,,,,manual
+Riverside CC,,,,manual
+Roane State CC,,,,manual
+Roanoke,Roanoke,578,roster_team,high_auto
+Robert Morris (Pa.) University,,,,manual
+Rochester Institute of Technology,,,,manual
+Rockford University,,,,manual
+Rockhurst,Rockhurst,1328,roster_team,high_auto
+Rogers State University,,,,manual
+Sacred Heart / CCBC Essex,,,,manual
+Saddleback College,,,,manual
+SAGU American Indian College / South Mountain CC,,,,manual
+Saint Anselm College,,,,manual
+Saint Francis (PA),Saint Francis (PA),600,roster_team,high_auto
+Salt Lake City C.C.,,,,manual
+Salt Lake Community College/Nevada,Salt Lake Community College,,juco,low_fuzzy
+San Diego Christian College,,,,manual
+San Joaquin Delta CC,,,,manual
+Santa Ana,,,,manual
+Santa Fe [Fla.] College,,,,manual
+Seattle Pacific University,,,,manual
+Seminole State,,,,manual
+Seton Hall / Boston College,,,,manual
+Seton Hall Univ.,,,,manual
+Seward County (Kan.) / New Mexico JC,,,,manual
+Seward County CC/Salt Lake CC,,,,manual
+Shawnee CC,,,,manual
+Shawnee State University,,,,manual
+Shenanadoah University,,,,manual
+Shepherd University,,,,manual
+Shippensburg,Shippensburg,638,roster_team,high_auto
+Shippensburg/Montclair State,,,,manual
+Shoreline College,,,,manual
+Shorter Univ.,,,,manual
+SIU-Edwardsville,,,,manual
+Slippery Rock University,,,,manual
+Snead State CC,,,,manual
+SNHU,,,,manual
+Snow,,,,manual
+Snow CC,,,,manual
+Solano CC,,,,manual
+Sonoma State University,,,,manual
+South Carolina St.,South Carolina St.,647,roster_team,high_auto
+South Carolina-Aiken,,,,manual
+South Plains,,,,manual
+South Plains CC,,,,manual
+South Plains College/Iowa Western,,,,manual
+South Puget Sound C.C.,,,,manual
+South Puget Sound Community College,,,,manual
+South Suburban College,,,,manual
+Southeast Community College,,,,manual
+Southeast Missouri State University,,,,manual
+Southeastern,,,,manual
+Southeastern (Fla.),,,,manual
+Southeastern CC,,,,manual
+Southeastern Louisiana University,,,,manual
+Southeastern University,,,,manual
+Southern California,,,,manual
+Southern Illinois University Carbondale,,,,manual
+Southern Maine CC,,,,manual
+Southern Maine Comm. Coll.,,,,manual
+Southern Miss / Gulf Coast State,,,,manual
+Southern Miss.,Southern Miss,664,roster_team,high_auto
+Southern Union,,,,manual
+Southern Union CC,,,,manual
+Southern Utah University,,,,manual
+Southern Wesleyan University,,,,manual
+Southwest Tennessee CC,,,,manual
+Southwestern Christian College / Murray State (Okla.) College,,,,manual
+Southwestern College,,,,manual
+Southwestern Illinois,,,,manual
+Southwestern Illinois College,,,,manual
+Southwestern Michigan College,,,,manual
+Southwestern Oklahoma State,,,,manual
+Spokane Falls CC,,,,manual
+Spring Arbor,,,,manual
+Spring Hill College,,,,manual
+Springfield Lady Migs Basketball,,,,manual
+SRSU,,,,manual
+St. Cloud State University,,,,manual
+St. Edward's University,,,,manual
+St. Francis (Brooklyn),,,,manual
+St. Francis Brooklyn / UNC Asheville,,,,manual
+St. Francis Brooklyn/St. Mary's (Texas),,,,manual
+St. Francis College Brooklyn,St. Francis College Brooklyn,599,roster_team,high_auto
+St. Josephs (PA),,,,manual
+"St. Mary’s California, Mt. SAC",,,,manual
+St. Thomas Univ. (Fla.),,,,manual
+Stetson Univ.,,,,manual
+SUNY Morrisville,SUNY Morrisville,30067,roster_team,high_auto
+SUNY New Paltz,SUNY New Paltz,475,roster_team,high_auto
+Swedish National Team,,,,manual
+Tabor,,,,manual
+Tallahassee CC/Florida,,,,manual
+Tallahassee Community College,,,,manual
+Tallahassee State College,,,,manual
+Tarbes GB,,,,manual
+Tates Creek High School,,,,manual
+TCU / UTEP,,,,manual
+Temple / Northwest Florida State College,Northwest Florida State College,,juco,low_fuzzy
+Tennessee State Univ.,,,,manual
+Tennessee-Chattanooga,,,,manual
+Tennessee/Texas A&M,,,,manual
+Tex. A&M-Commerce,Tex. A&M-Commerce,199,roster_team,high_auto
+Texas A&M International University,,,,manual
+Texas Tech/San Jacinto JC,,,,manual
+Texas Woman's,Texas Woman's,701,roster_team,high_auto
+Texas-Rio Grande Valley,UT-Rio Grande Valley,536,roster_team,low_fuzzy
+The Storm King School,,,,manual
+Three River College,,,,manual
+Tiffin University,,,,manual
+Toledo/Kansas,,,,manual
+Transylvania University,,,,manual
+Trevecca,,,,manual
+Trinidad State,,,,manual
+Trinity College,,,,manual
+Trinity Valley,,,,manual
+Trinity Valley (Texas) CC,Trinity Valley Community College,,juco,low_fuzzy
+Trinity Valley CC / Louisiana Tech,,,,manual
+Troy University,,,,manual
+Tufts,Tufts,717,roster_team,high_auto
+Tureberg / Exodus Europe,,,,manual
+Tusculum Univ.,,,,manual
+U. of Denver,,,,manual
+U. of Missouri-Kansas City,,,,manual
+U18 London Thunder,,,,manual
+UA Pine Bluff,,,,manual
+UC Colorado Springs,UC-Colo. Springs,9754,roster_team,low_fuzzy
+UCLA / Gulf Coast State,,,,manual
+UConn/Arkansas,,,,manual
+UConn/Virginia,,,,manual
+UIC / Trinity Valley CC,Trinity Valley Community College,,juco,low_fuzzy
+UIS,,,,manual
+UIW,,,,manual
+UMASS,,,,manual
+UMBC/CCBC Essex,,,,manual
+UMES,,,,manual
+Umpqua [Ore.] CC,,,,manual
+Umpqua Community College,,,,manual
+UMSL,,,,manual
+UNC,UNCW,460,roster_team,low_fuzzy
+UNC Charlotte,,,,manual
+UNC Pembroke,UNC Pembroke,537,roster_team,high_auto
+UNC Wilmington / Butler County CC,,,,manual
+UNC-Wilmington,,,,manual
+Union,,,,manual
+Univ. of Montevallo (Ala.),,,,manual
+Univ. of New Mexico,,,,manual
+Univ. of Northwestern Ohio,,,,manual
+Univ. of Texas,,,,manual
+Univ. of Wisconsin-Eau Claire,,,,manual
+University of Akron,,,,manual
+University of Arkansas at Little Rock/South Georgia Technical College,,,,manual
+University of Arkansas at Monticello,,,,manual
+University of Central Missouri,,,,manual
+University of Colorado,,,,manual
+University of Georgia,,,,manual
+University of Hartford/American University,,,,manual
+University of Hawaii,,,,manual
+University of Iceland,,,,manual
+University of Illinois Chicago,,,,manual
+University of Incarnate Word,,,,manual
+University of Jamestown,,,,manual
+University of Kentucky,,,,manual
+University of Kentucky/Georgetown College,,,,manual
+"University of Maryland, Baltimore County",,,,manual
+University of Mount Olive,,,,manual
+University of New Haven,,,,manual
+University of North Carolina,,,,manual
+University of North Florida,,,,manual
+University of Pennsylvania,,,,manual
+University of Taipei,,,,manual
+University of Tampa,,,,manual
+University of Texas El Paso,,,,manual
+University of Tulsa / Creighton University,,,,manual
+University of Utah,,,,manual
+University of Vermont,,,,manual
+Urbana,,,,manual
+Ursuline College,,,,manual
+USC / Oregon,,,,manual
+UT Rio Grande Valley,UT-Rio Grande Valley,536,roster_team,high_auto
+UT Tyler/St.Mary's,,,,manual
+UT-Tyler / Western Wyoming,,,,manual
+Utica University,,,,manual
+UW - Milwaulkee,,,,manual
+UW-Green Bay,Green Bay,794,roster_team,low_fuzzy
+UW-Stout,,,,manual
+Valdosta State University,,,,manual
+Valley City State,,,,manual
+VCU/Wright State,Wright St.,810,roster_team,low_fuzzy
+Vermont/NJIT,,,,manual
+Virginia/New Mexico,,,,manual
+Wabash Valley College / Auburn,,,,manual
+Wabash Valley College/Vincennes University,,,,manual
+Wabash Valley JC,Wabash Valley College,,juco,low_fuzzy
+Wabash/LSU,,,,manual
+Wagner College,,,,manual
+Walsh,Walsh,30141,roster_team,high_auto
+Walters State,,,,manual
+Warner University,,,,manual
+Wartburg,Wartburg,750,roster_team,high_auto
+Wayland Baptist University,,,,manual
+Wayne State University,,,,manual
+Weatherford,,,,manual
+Weatherford Community College,,,,manual
+Webster,Webster,759,roster_team,high_auto
+West Alabama,West Alabama,358,roster_team,high_auto
+West Los Angeles College,,,,manual
+West Virginia State,West Virginia St.,1439,roster_team,high_auto
+West Virginia Tech,,,,manual
+West Virginia Wesleyan College,,,,manual
+Western Carolina University,,,,manual
+Western Kentucky University,,,,manual
+Western Nebraska C.C.,,,,manual
+Western Nebraska College,,,,manual
+Western New Mexico / McLennan CC,,,,manual
+Western Oklahoma State,,,,manual
+Western Texas JC,,,,manual
+Westminster (Mo.),Westminster (MO),1450,roster_team,low_fuzzy
+Westminster University,,,,manual
+Westmont,Westmont,30260,roster_team,high_auto
+Whatcom Community College,,,,manual
+Wheeling University,,,,manual
+Whitworth University,,,,manual
+Wichita State / John. A Logan,,,,manual
+Willamette,Willamette,785,roster_team,high_auto
+William Jewell College,,,,manual
+Williams Baptist,,,,manual
+Williston State,,,,manual
+Williston State College/UAlbany,,,,manual
+Wilmington High School,,,,manual
+Winona State University (Minn.),,,,manual
+Wisconsin Lutheran,,,,manual
+Wisconsin-Oshkosh,,,,manual
+Xavier / Team Chile,,,,manual
+Xavier Univ.,,,,manual
+Yakima Valley,,,,manual
+Yale,Yale,813,roster_team,high_auto
+York / Truett McConnell,,,,manual
+5th High School of Nikaia,,,,manual
+"6'5""",,,,manual
+603 United / Lady Rivals,,,,manual
+@a.almon01,,,,manual
+@cameron.williams34,,,,manual
+@danielabies,,,,manual
+@darrionerogers,,,,manual
+@haleycavinder,,,,manual
+@hanna.cavinder,,,,manual
+@jasmynerobe,,,,manual
+@lemyahhylton,,,,manual
+@natalijamarshall,,,,manual
+@nay.adams,,,,manual
+@simonepelish,,,,manual
+@yeah._lee,,,,manual
+@zu1ich,,,,manual
+A&M-Corpus Christi,A&M-Corpus Christi,26172,roster_team,high_auto
+Abilene Christian / Ouachita Baptist,,,,manual
+Abilene Christian University,,,,manual
+Abilene Christian/Triton College,,,,manual
+Abingdon HS,,,,manual
+Abraham Baldwin Agricultural College,,,,manual
+Alabama A&M / Central State University,,,,manual
+Alabama A&M/Bishop State CC,,,,manual
+Alabama State / Jacksonville,,,,manual
+Alabama State / Loyola Chicago,,,,manual
+Alabama State University,,,,manual
+Alaska Anchorage + Southern Nevada,,,,manual
+Alaska Anchorage / Northwest (WA),,,,manual
+Alaska-Anchorage,Alas. Anchorage,11,roster_team,low_fuzzy
+Albany State University,,,,manual
+Albany Tech,,,,manual
+Alderson Broaddus/Lincoln,,,,manual
+Allan Hancock College,,,,manual
+Allegany CC,,,,manual
+Allegheny College,,,,manual
+Allen College,,,,manual
+Allen Community College,,,,manual
+Allen County [Kan.] CC,,,,manual
+Allen County Community College,,,,manual
+Allen University,,,,manual
+American International,American International,22,roster_team,high_auto
+American International College (NCAA DII),,,,manual
+American Univ.,,,,manual
+Ancilla,,,,manual
+Anderson Univ.,,,,manual
+Andover Central HS / Creighton,,,,manual
+Andrew College,,,,manual
+Angelina College/Nicholls,,,,manual
+Antelope Valley College,,,,manual
+Appalachian State / Daytona State,,,,manual
+Aquinas,,,,manual
+Aquinas College,,,,manual
+Aquinas/Davenport,,,,manual
+Arizona / Long Beach State,,,,manual
+Arizona Christian | Walla Walla University,,,,manual
+Arizona State / Oregon,,,,manual
+Arizona State University,,,,manual
+Arizona/FIU/Eastern Arizona,,,,manual
+Arizona/Kansas State,,,,manual
+Ark.-Little Rock,Arkansas-Little Rock,32,roster_team,low_fuzzy
+Arkansas at Little Rock,Arkansas-Little Rock,32,roster_team,low_fuzzy
+Arkansas at Monticello,,,,manual
+Arkansas at Monticello / Cal State - San Marcos,,,,manual
+Arkansas at Pine Bluff,Arkansas-Pine Bluff,2678,roster_team,low_fuzzy
+Arkansas Baptist/Arkansas-Pine Bluff,,,,manual
+Arkansas in Fort Smith,,,,manual
+Arkansas State Mid-South,,,,manual
+Arkansas State University,,,,manual
+Arkansas State/Tarleton State,,,,manual
+Arkansas Tech/North Dakota State College of Science,,,,manual
+Arkansas | Hutchinson CC,,,,manual
+Arkansas/LSU,,,,manual
+Armstrong State University,,,,manual
+Armwood HS,,,,manual
+ASA College Brooklyn/Niagara,,,,manual
+ASA Miami/Central Ga. Col.,,,,manual
+Asbury University,,,,manual
+Ashland,Ashland,35,roster_team,high_auto
+Assumption University,,,,manual
+Auburn/Chattahoochee Valley CC,,,,manual
+Auburn/McNeese State,,,,manual
+Augustana (S.D.),Augustana (SD),41,roster_team,low_fuzzy
+Augustana University,,,,manual
+Austin Peay / UIW,,,,manual
+Austin Peay State University,,,,manual
+Ave Marie,,,,manual
+Aztec HS,,,,manual
+Babes-Bolyai,,,,manual
+Baker (Kan.),,,,manual
+Bakersfield College,,,,manual
+Ball State/Dayton,,,,manual
+Ballarat Miners,,,,manual
+Barry / Greensboro College / St. Andrews,,,,manual
+Barry University,,,,manual
+Barstow Community College,,,,manual
+Barton CC/UTSA,,,,manual
+Barton County,,,,manual
+Barton County Community College,,,,manual
+Basket Foxes Giussano,,,,manual
+Bates College,,,,manual
+Baton Rouge Community College,,,,manual
+Baylor U.,,,,manual
+Baylor Univ.,,,,manual
+Baylor/Arkansas State,,,,manual
+Beijing Normal University,,,,manual
+Bellarmine University,,,,manual
+Bellevue University,,,,manual
+Benedict,Benedict,55,roster_team,high_auto
+Benedictine (Ill.) Univ.,,,,manual
+Benedictine College,,,,manual
+Bentley University,,,,manual
+Berkeley College,,,,manual
+Berry College (Ga.),,,,manual
+Bethany Lutheran,Bethany Lutheran,30038,roster_team,high_auto
+Bethel University,,,,manual
+Bethel University (TN),,,,manual
+Bethesda,,,,manual
+Bethune Cookman / CCBC Essex / Merrimack,,,,manual
+Bethune Cookman / Winter Haven HS,,,,manual
+Bethune-Cookman / Chowan,,,,manual
+Bethune-Cookman Univ.,,,,manual
+Bethune-Cookman University,,,,manual
+Binghamton/Temple,,,,manual
+Binghmaton,Binghamton,62,roster_team,low_fuzzy
+Birmingham-Southern,Birmingham-Southern,28593,roster_team,high_auto
+Bishop Brossart High School,,,,manual
+Bishop State,,,,manual
+Bismarck State,,,,manual
+Blackman HS,,,,manual
+Blinn (Texas),,,,manual
+Blinn Junior College,,,,manual
+Blinn/Arkansas-Forst Smith,,,,manual
+Bloom Carroll High School,,,,manual
+Blue Valley North HS / Harris-Stowe,,,,manual
+Bluefield State / Colorado Northwestern CC,,,,manual
+Bonner Springs HS / Ole Miss / Xavier,,,,manual
+Bossier Parish C.C.,,,,manual
+Boston College » Ohio State,,,,manual
+Boston Univ.,,,,manual
+Bowie State / Washington Adventist / Louisburg / Albany State,,,,manual
+Bowling Green/Ball State,,,,manual
+Bradley / Rutgers,,,,manual
+Bradley / UT Martin,,,,manual
+Bradley Univ.,,,,manual
+Brandeis,Brandeis,73,roster_team,high_auto
+BRCC,,,,manual
+Brevard College,Brevard College,30094,roster_team,high_auto
+Brewster Academy,,,,manual
+Bridgewater College,,,,manual
+Brigham Young,Brigham Young,77,roster_team,high_auto
+Brigidine College St. Ives/Blair Academy,,,,manual
+Brisbane State HS,,,,manual
+Bronx HS of Science / Choate Rosemary Hall,,,,manual
+Brookdale,,,,manual
+Brookdale C.C.,,,,manual
+Broward CC,,,,manual
+Broward College,,,,manual
+Brunswick CC,,,,manual
+Bryant & Stratton,,,,manual
+Bryant & Stratton - Albany,,,,manual
+Bryn Athyn College,,,,manual
+Bucknell University,,,,manual
+Buffalo/San Francisco,,,,manual
+Bushnell Univ.,,,,manual
+Business,,,,manual
+Butler CC (Kan.),,,,manual
+Butler County C.C.,,,,manual
+Butler | Maine,,,,manual
+Butler/IU-Northwest,,,,manual
+Butler/West Virginia,,,,manual
+Cal / Tennessee,,,,manual
+Cal Poly / Saint Leo,,,,manual
+Cal Poly Humboldt / University of Alaska Anchorage,,,,manual
+Cal Poly Pomona,Cal Poly Pomona,91,roster_team,high_auto
+Cal Stars Nike EYBL,,,,manual
+Cal State - San Bernardino,Cal St. San Bernardino,93,roster_team,high_auto
+Cal State Bakersfield / Indiana State / Whitworth,,,,manual
+Cal State Bakersfield | Vermont,,,,manual
+Cal State Long Beach,,,,manual
+Cal State San Bernardino,Cal St. San Bernardino,93,roster_team,high_auto
+Cal State San Bernardino / Western New Mexico,,,,manual
+Cal State San Marcos & Montana State,,,,manual
+Cal State San Marcos & Western Washington,,,,manual
+Cal State University Bakersfield,,,,manual
+Cal State University Dominguez Hills,,,,manual
+Cal State University Dominguez Hills / University of Alaska Anchorage / Laney CC,,,,manual
+California (PA),,,,manual
+California (Pa.),,,,manual
+California Baptist Univ.,,,,manual
+California Berkeley,,,,manual
+California Lutheran U,,,,manual
+California Sate University Dominguez Hills,,,,manual
+California St. Univ. East Bay,,,,manual
+"California State University, Northridge",,,,manual
+"California State University, Stanislaus",,,,manual
+"California State, Dominguez Hills",,,,manual
+California University of PA,,,,manual
+Calvin,Calvin,114,roster_team,high_auto
+Calvin Coll.,,,,manual
+Campbell Univ.,,,,manual
+Campbell University,,,,manual
+Campbell/Mount Olive,,,,manual
+Canisius College,,,,manual
+Cape Cod Warriors,,,,manual
+Cape Fear C.C.,,,,manual
+Capital University,,,,manual
+Cardinal O'Hara HS,,,,manual
+Cardinal Stritch,,,,manual
+Carlow,Carlow,30253,roster_team,high_auto
+Carson Newman,Carson-Newman,1000,roster_team,high_auto
+Casper College / Stetson,,,,manual
+Casper College/Oakland City University,,,,manual
+Catawba College,,,,manual
+Catawba Valley C.C.,,,,manual
+Cathedral HS,,,,manual
+Catholic,Catholic,124,roster_team,high_auto
+CC Baltimore County-Essex,,,,manual
+CC of Baltimore County Essex,,,,manual
+CC of Chicago Kennedy-King,,,,manual
+CC of Spokane,,,,manual
+CCBC Cantonsville,,,,manual
+CCBC Essex / Keystone,,,,manual
+Central Arizona/Garden City,,,,manual
+Central Arkansas/Little Rock,,,,manual
+Central CC,,,,manual
+Central Christian College of Kansas/Angelina College,,,,manual
+Central Connecticut State Univ.,,,,manual
+Central Georgia Technical CC/Morehead,,,,manual
+Central Maine Community College,,,,manual
+Central New Mexico Community College,,,,manual
+Central State University,,,,manual
+Central Wyoming,,,,manual
+Central Wyoming / Murray State College,,,,manual
+Chabot College/Mississippi Valley State,,,,manual
+Chadron State / Salt Lake CC,,,,manual
+Chadron State College,,,,manual
+Charleston (W.V.),Charleston (WV),1013,roster_team,low_fuzzy
+Charleston (WV) | Detroit Mercy,,,,manual
+Charleston Southern/Coker,Charleston Southern,48,roster_team,low_fuzzy
+Charlotte / College of Charleston,,,,manual
+Chattahoochee Valley,,,,manual
+Chattanooga Sate & Angelina College,,,,manual
+Cheatham County HS,,,,manual
+Chestnut Hill,Chestnut Hill,21323,roster_team,high_auto
+Cheyney University,,,,manual
+Chicago State Univ.,,,,manual
+Chicago State University,,,,manual
+Chico State (Calif.),,,,manual
+Chipola College / Louisiana Tech,,,,manual
+Chipola College / Missouri State,,,,manual
+Chipola College / University of North Florida,,,,manual
+Chowan,Chowan,8875,roster_team,high_auto
+Chowan University,,,,manual
+Christian Bros.,Christian Brothers,1015,roster_team,low_fuzzy
+Christoval HS,,,,manual
+Cincinnati/Jones College,,,,manual
+Cisco,,,,manual
+Clarendon CC/Midwestern State,,,,manual
+Clarendon College / Houston,,,,manual
+Clarendon College/VCU,,,,manual
+Clarion University,,,,manual
+Clark / Whatcom CC,,,,manual
+Clark Atlanta,Clark Atlanta,144,roster_team,high_auto
+Clark-Atlanta,Clark Atlanta,144,roster_team,high_auto
+Clayton State,Clayton State,20576,roster_team,high_auto
+Clemson / UT Martin,,,,manual
+Cleveland Community College (N.C),,,,manual
+Cleveland State CC/Point,,,,manual
+Clinton College,,,,manual
+Cloud CC,,,,manual
+Cloud Community College,,,,manual
+Cloud Country CC,,,,manual
+Cloud County CC/Bluefield State/Virginia Union,,,,manual
+Cloud County CC/PSU-Greater Allegheny,,,,manual
+Cloud County Community College / Panola College,,,,manual
+Club Atlético Lanus,,,,manual
+CMU/Colorado Christian,,,,manual
+Coahoma CC / Arkansas-Little Rock,,,,manual
+Coahoma CC / Costal Carolina / Mississippi College,,,,manual
+Coastal Alabama CC - South,,,,manual
+Coastal Alabama Community College,,,,manual
+Coastal Alabama North CC,,,,manual
+Coastal Alabama South,,,,manual
+"Coastal Bend College, Lee College",,,,manual
+Coastal Bend College/Palomar College,,,,manual
+Coastal Carolina Univ.,,,,manual
+Coastal Carolina University,,,,manual
+Coastal Georgia,,,,manual
+Cochise,,,,manual
+Cochise College / Tarleton State,,,,manual
+Cochise College | New Mexico,,,,manual
+Cochise College/Jacksonville State,,,,manual
+Cochise College/Odessa College/MSOL,,,,manual
+Cockburn Cougars NBL1,,,,manual
+Coffeyville CC / Wichita State University,,,,manual
+Coffeyville College,,,,manual
+Coker,Coker,1023,roster_team,high_auto
+Colby College / Queens,,,,manual
+Colby Community College,,,,manual
+Colby Sawyer,,,,manual
+Colby/Garden City CC/Paris CC,,,,manual
+Colgate / Manhattan,,,,manual
+College Champlain Saint-Lambert,,,,manual
+College of Canyons,,,,manual
+College of Sequoias / Nevada,,,,manual
+College of Sequoias / Northeastern State,,,,manual
+College of the Sequioas,,,,manual
+Collin CC,,,,manual
+Collin County CC / Northwestern Oklahoma State,,,,manual
+Colorado Christian / Otero JC,,,,manual
+Colorado College,Colorado Col.,154,roster_team,low_fuzzy
+Colorado Colorado Springs,,,,manual
+Colorado Mesa / Hillsdale / Mt. Vernon Nazarene / Reinhardt,,,,manual
+Colorado Mesa University,,,,manual
+Colorado School of Mines,,,,manual
+Colorado State / Cameron,,,,manual
+Colorado State-Pueblo,Colorado St.-Pueblo,2720,roster_team,high_auto
+"Colorado, Old Dominion, UT Arlington",,,,manual
+Colorado/Pitt,,,,manual
+Colorado/Rend Lake CC,,,,manual
+Columbia (Tenn.) State,,,,manual
+Columbia Basin CC/Montana Western,,,,manual
+Columbia Basin Coll.,,,,manual
+Columbia CC,,,,manual
+Columbia College,,,,manual
+Columbia State C.C.,,,,manual
+Columbia State College,,,,manual
+Columbia State/Bradley,,,,manual
+Comets,,,,manual
+Community College of Baltimore Essex,,,,manual
+Community College of Beaver County,,,,manual
+Community College of Philadelphia,,,,manual
+Concord University,,,,manual
+Concordia,,,,manual
+Concordia (NE),,,,manual
+Concordia (TX) / Howard Payne,,,,manual
+Concordia University - Irvine,,,,manual
+Concordia University Irvine | Glendale College,,,,manual
+Concordia University Nebraska,,,,manual
+"Concordia University, Nebraska",,,,manual
+Concordia-Portland,Concordia Portland,30200,roster_team,high_auto
+Concordia-St. Paul,Concordia-St. Paul,9081,roster_team,high_auto
+Connecticut College,Connecticut Col.,163,roster_team,low_fuzzy
+Connecticut Impact,,,,manual
+Connecticut Magic,,,,manual
+Connecticut Storm,,,,manual
+Connors State (Okla.),,,,manual
+Connors State College,,,,manual
+Converse College,,,,manual
+Converse University,,,,manual
+Coppin State University,,,,manual
+Coppin State/Siena,,,,manual
+Covenant,Covenant,30111,roster_team,high_auto
+Covenant College,,,,manual
+Cowley [Kan.] College,,,,manual
+Crowder College,,,,manual
+Crowder Community College,,,,manual
+CSN/Alcorn State,Alcorn State,17,roster_team,low_fuzzy
+CSU Bakersfield /Louisville,,,,manual
+CSU Bakersfield/Victory Valley College,,,,manual
+CSU Fullerton,,,,manual
+CSU San Bernardino,Cal St. San Bernardino,93,roster_team,low_fuzzy
+CSU-Bakersvield,,,,manual
+CSU-Pueblo,,,,manual
+CSUSB,,,,manual
+Cumberland CC,,,,manual
+Cumberland International Early College,,,,manual
+Cumberlands,,,,manual
+Cuyahoga Community College,,,,manual
+Cuyahoga Community College / York (Nebraska),,,,manual
+Cypress,,,,manual
+D'Youville University,,,,manual
+Daemen,Daemen,30174,roster_team,high_auto
+Daemen College,,,,manual
+Dakota College At Bottineau,,,,manual
+Danville CC,,,,manual
+Darazsak,,,,manual
+Davidson College,,,,manual
+Dawson CC / Wisconsin-Stout,,,,manual
+Dawson Community College,,,,manual
+Daytona State (Fla.) | Tennessee State,,,,manual
+Daytona State JUCO,,,,manual
+Delaware State Univ.,,,,manual
+Delaware State/Coastal Carolina,,,,manual
+Delaware State/Wallace State CC,,,,manual
+Delaware Valley University,,,,manual
+Delgado CC,,,,manual
+Delta,,,,manual
+Delta College/ Mesa CC,,,,manual
+Delta Comm. Coll.,,,,manual
+Delta State,Delta St.,181,roster_team,high_auto
+Denison,Denison,182,roster_team,high_auto
+Denison Univ.,,,,manual
+Denver/Arkansas State,,,,manual
+DePaul Univ.,,,,manual
+DePaul/Murray State,,,,manual
+DeSales,DeSales,20,roster_team,high_auto
+Detroit Mercy / Akron,,,,manual
+Detroit-Mercy,Detroit Mercy,184,roster_team,high_auto
+DFW Elite,,,,manual
+Dillard University,,,,manual
+DMACC,,,,manual
+DME Academy,,,,manual
+DME Academy / Lipscomb,,,,manual
+Dodge City CC / Odessa College,,,,manual
+Dodge City CC / Otero JC,,,,manual
+"Dodge City CC, Idaho",,,,manual
+"Dodge City CC, Western Carolina",,,,manual
+Dodge City CC/Morehead State,,,,manual
+Dodge City CC/South Plains,,,,manual
+Dodge City College,,,,manual
+Dodge City/Pepperdine,,,,manual
+Douglass,,,,manual
+Drake,Drake,189,roster_team,high_auto
+Drill for Skill,,,,manual
+Duquesne / Omaha,,,,manual
+Duquesne/North Carolina Central,,,,manual
+Dyersburg State CC,,,,manual
+Early Childhood Education,,,,manual
+East Carolina / Winter Haven HS,,,,manual
+East Carolina University,,,,manual
+East Central (Okla.),,,,manual
+East Central Community College,,,,manual
+East Central University,,,,manual
+East Los Angeles,,,,manual
+East Penn Crush,,,,manual
+East Texas A&M / New Mexico,,,,manual
+East Texas A&M / Rockwall HS,,,,manual
+East Texas A&M University,,,,manual
+Eastern Arizona / Utah State,,,,manual
+Eastern Arizona CC » Arkansas,,,,manual
+Eastern Arizona College / Lane CC,,,,manual
+Eastern Arizona/Highland CC,,,,manual
+Eastern Florida State Coll.,Eastern Florida State College,,juco,low_fuzzy
+Eastern Florida/Rollins,,,,manual
+Eastern Ill.,,,,manual
+Eastern Kentucky University/Butler University/IU Indy,,,,manual
+Eastern Kentucky/Glenville State,,,,manual
+Eastern Kentucky/Wabash Valley,,,,manual
+Eastern Michigan / Florida Southwestern State College,,,,manual
+Eastern Michigan / Iona,,,,manual
+Eastern Michigan/Saint Peter's/Temple,,,,manual
+Eastern New Mexico / Fresno City College (Calif.),,,,manual
+Eastern New Mexico State,,,,manual
+Eastern New Mexico University,,,,manual
+Eastern Oklahoma College,,,,manual
+Eastern Oklahoma State College,,,,manual
+Eastern Oklahoma State College/ University of Science and Arts of Oklahoma/ Southern Alabama,,,,manual
+Eastern Wyoming / Salt Lake CC / UC Irvine,,,,manual
+"Eastern Wyoming College, Presbyterian",,,,manual
+Eastern Wyoming College/University of Maine,,,,manual
+Edgewood College,,,,manual
+Edgewood High School,,,,manual
+El Camino College,,,,manual
+Elgin Community College,,,,manual
+Elizabeth City State,Elizabeth City St.,210,roster_team,high_auto
+Ellsworth (IA) CC,,,,manual
+Ellsworth Community College,,,,manual
+Elmhurst University,,,,manual
+Elon University,,,,manual
+"Elon, Wake Forest",,,,manual
+Elon/Liberty,,,,manual
+Embry-Riddle,,,,manual
+Emmanuel,,,,manual
+Emory & Henry College,,,,manual
+Empire State Blue Flames,,,,manual
+Emporia State / Bethany (Kan.),,,,manual
+Emporia State U.,,,,manual
+Emporia State University (Kan.),,,,manual
+Essex County,,,,manual
+Essex County College,,,,manual
+ETSU/Kansas,,,,manual
+Eureka College,,,,manual
+Evangel,,,,manual
+Evansville / North Dakota,,,,manual
+Evansville/Casper,,,,manual
+Everett CC,,,,manual
+Evolution Basketball,,,,manual
+F,,,,manual
+Fairfield University,,,,manual
+Fairleigh Dickinson / Florida Atlantic,,,,manual
+Farmingdale State College,,,,manual
+Faulkner,,,,manual
+Fayetteville State,Fayetteville St.,223,roster_team,high_auto
+Fayetteville Tech,,,,manual
+Fayetteville-Perry High School,,,,manual
+FDU / Bridgeport,,,,manual
+FDU-Florham / Glenville St.,,,,manual
+Felician University,,,,manual
+Findland U20 National Team,,,,manual
+FIndlay,Findlay,1079,roster_team,high_auto
+Fisk,,,,manual
+FIU / James Madison,,,,manual
+FIU/USC Upstate/Harcum College,,,,manual
+Five Towns College,,,,manual
+Florham,,,,manual
+Florida A&M / Wright State,,,,manual
+Florida A&M University,,,,manual
+Florida A&M/Daytona State CC,,,,manual
+Florida A&M/Houston Baptist/Tyler College,,,,manual
+Florida A&M/North Georgia,,,,manual
+Florida Atlantic / Tennessee-Martin,,,,manual
+"Florida Atlantic University, Rollins College",,,,manual
+Florida Atlantic/Daytona State College,,,,manual
+Florida Atlantic/George Mason,,,,manual
+Florida International » Middle Tennessee,,,,manual
+Florida National University,,,,manual
+Florida Southwestern CC,,,,manual
+"Florida Southwestern CC / Univ. of Arkansas, Little Rock",,,,manual
+Florida Southwestern State College,Florida SouthWestern State College,,juco,high_auto
+Florida Southwestern/Palm Beach Atlantic,,,,manual
+Florida SouthWestern/Palm Beach Atlantic,,,,manual
+Florida State Coll. at Jacksonville,,,,manual
+Florida State College Jacksonville,,,,manual
+FNV,,,,manual
+Folsom Lake College (CA),,,,manual
+Folsom Lake College / Sonoma State,,,,manual
+Foothill College,,,,manual
+Fordham/Bryant,,,,manual
+Fort Hays Tech Northwest,,,,manual
+Fort Hays Tech | Northwest,,,,manual
+Fort Lewis,Fort Lewis,1083,roster_team,high_auto
+Fort Lewis / Northeastern JC / Idaho State University,,,,manual
+Fort Lewis / Regis,,,,manual
+Frank Phillips,,,,manual
+Frank Phillips College / Crowder College,,,,manual
+Frank Phillips JC,,,,manual
+Frank Phillips Junior College,,,,manual
+Franklin Pierce/LIU,Franklin Pierce,241,roster_team,low_fuzzy
+Franklin Simpson HS,,,,manual
+Frederick CC/CCBC Essex,,,,manual
+Frederick Community College,,,,manual
+Fresno CC / UC Merced,,,,manual
+Fresno Pacific University,,,,manual
+Fresno State University,,,,manual
+Fresno State/Palomar,,,,manual
+Friends,,,,manual
+Frostburg St.,Frostburg St.,243,roster_team,high_auto
+Frostburg State / Salem,,,,manual
+FSCJ,,,,manual
+Fulton Montgomery,,,,manual
+Fulton-Montgomery,,,,manual
+Furman University,,,,manual
+Gadsden State CC,,,,manual
+Garden CC,Garden City Community College,,juco,low_fuzzy
+Garden City CC (Kan.),Garden City Community College,,juco,low_fuzzy
+Garden City CC (Kan.) / Eastern Florida State College,,,,manual
+Gardener-Webb,Gardner-Webb,1092,roster_team,low_fuzzy
+Gardner Webb,Gardner-Webb,1092,roster_team,high_auto
+Garrett CC,,,,manual
+Garrett College,,,,manual
+Gaston HS,,,,manual
+GBL,,,,manual
+George Fox University,,,,manual
+George Washington/SMU,George Washington,249,roster_team,low_fuzzy
+Georgetown College/Northern Arizona,,,,manual
+Georgetown University / Binghamton University,,,,manual
+Georgetown),Georgetown,251,roster_team,low_fuzzy
+Georgetown/Butler,,,,manual
+Georgetown/Oklahoma St./Arizona St./East Carolina,,,,manual
+Georgia College & State/South Carolina-Aiken,,,,manual
+Georgia Highlands CC,,,,manual
+Georgia Highlands/Augusta,,,,manual
+Georgia Southern University,,,,manual
+Georgia Southern/Virginia,,,,manual
+Georgia Southwestern State University,,,,manual
+Georgia Southwestern Univ.,,,,manual
+Georgia Southwestern/East Georgia State,,,,manual
+Georgia State / Kentucky,,,,manual
+Georgia Tech/Alabama,,,,manual
+Georgia/Miami Ohio/Mercer,,,,manual
+Georgian Court/Niagara,,,,manual
+Gillette CC (Wyo.),,,,manual
+Gitchi Gummi Soccer Club,,,,manual
+Glendale CC | Cal State San Bernardino,,,,manual
+Glenn HS,,,,manual
+Glenville St.,Glenville St.,1098,roster_team,high_auto
+Glenville State University,,,,manual
+Glenville State/Toledo,,,,manual
+Golden-Beacom,Goldey-Beacom,8366,roster_team,low_fuzzy
+Golden-Beacom College,,,,manual
+Gonzaga University/University of Utah,,,,manual
+Graceland University,,,,manual
+Grambling State/Jones County,,,,manual
+Grambling/Miles College,,,,manual
+Grand Canyon Univ.,,,,manual
+Grand Canyon/Northern Arizona,,,,manual
+Greensboro,Greensboro,263,roster_team,high_auto
+Greenville University,,,,manual
+Greenwich HS,,,,manual
+Guilford Technical CC,,,,manual
+Guilford Technical Community College,,,,manual
+Gulf Coast State CC / Tallahassee State College,,,,manual
+Gulf Coast State/Troy,,,,manual
+Gustavus Adolphus,Gust. Adolphus,266,roster_team,low_fuzzy
+Gwynedd Mercy,Gwynedd Mercy,12399,roster_team,high_auto
+Hagerstown CC,,,,manual
+Hamilton,Hamilton,267,roster_team,high_auto
+Hampton University/University of Hartford,,,,manual
+Harcum,,,,manual
+Harcum College/NC A&T,,,,manual
+Harding University,,,,manual
+Harford CC/Chowan,,,,manual
+Harford CC/Chowan University/University of New Orleans/Long Island University,,,,manual
+Harper College,,,,manual
+Harris-Stowe/Lane College,,,,manual
+Hartwick,Hartwick,273,roster_team,high_auto
+Haskell Indian Nations University / Rocky Mountain College,,,,manual
+Hawai’i,Hawaii,277,roster_team,low_fuzzy
+Henderson State,Henderson St.,1123,roster_team,high_auto
+Henderson State University,,,,manual
+Herkimer,,,,manual
+Hesston College,,,,manual
+High Point University,,,,manual
+High Point/Bowling Green,,,,manual
+High Point/UNLV,,,,manual
+Highland CC (IL),,,,manual
+Highland CC/Abilene Christian,,,,manual
+Hill (Texas),,,,manual
+Hillside,,,,manual
+Hobart and William Smith Colleges,,,,manual
+Hocking,,,,manual
+Hofstra University,,,,manual
+Holland HS,,,,manual
+Holliday HS,,,,manual
+Holmes CC/Southwest Mississippi CC,,,,manual
+Holy Names,Holy Names,30175,roster_team,high_auto
+Homestead,,,,manual
+Hope,Hope,286,roster_team,high_auto
+Hope Raising Foundation School / Shih Shih University Taipei,,,,manual
+Hostos,,,,manual
+Houston Baptist University,,,,manual
+Houston Christian University,,,,manual
+Houston | Texas A&M | Texas,,,,manual
+Houston/Diablo Valley College,,,,manual
+Howard / Syracuse,,,,manual
+Howard College (Texas),,,,manual
+Howard JC,,,,manual
+Howard University,,,,manual
+Huntington University,,,,manual
+Husson University,,,,manual
+Hutch CC,Hutchinson Community College,,juco,low_fuzzy
+Hutchinson C.C. (KS),,,,manual
+Hutchinson CC (Kan.),Hutchinson Community College,,juco,low_fuzzy
+Hutchinson CC (Kan.) / Glenville State (W.Va.),,,,manual
+Hutchinson CC / Georgia State,,,,manual
+Hutchinson Community College/Morehead State,,,,manual
+Idaho State/Maine,,,,manual
+Ill. Springfield,Illinois-Springfield,30050,roster_team,high_auto
+Illinois Chicago,Illinois-Chicago,302,roster_team,high_auto
+Illinois College/Fort Lewis College,,,,manual
+Illinois-Chicago,Illinois-Chicago,302,roster_team,high_auto
+Illinois-Marquette,,,,manual
+Illinois/Charlotte,,,,manual
+Illinois/Memphis,,,,manual
+Illinois/Trinity Valley CC/UCF,,,,manual
+IM Basketball,,,,manual
+Independence CC/Coppin State,,,,manual
+Independence JC,,,,manual
+Independence JC / Eastern New Mexico,,,,manual
+Indian Lake High School,,,,manual
+Indian River State / Barry Univ. / Moberly Area CC,,,,manual
+Indian River State CC,,,,manual
+Indian River State College (Fla.),,,,manual
+Indian River State College / Eastern Florida State College,,,,manual
+Indian River State College/West Alabama,,,,manual
+Indian River State/Wichita State,,,,manual
+Indian River/Vincennes/Gulf Coast State (Fla.),,,,manual
+Indiana (PA),Indiana (PA),307,roster_team,high_auto
+Indiana Southeast,,,,manual
+Indiana State / Morton College,,,,manual
+Indiana University,,,,manual
+Indiana University Pennsylvania,,,,manual
+Indiana Wesleyan University,,,,manual
+Indiana/Grand Canyon,,,,manual
+Indiana/Northwest Florida State,,,,manual
+Indianapolis,,,,manual
+Iona/Georgia State,,,,manual
+Iowa Central,,,,manual
+Iowa Central Community College,Iowa Central Community College,,juco,high_auto
+Iowa State/Sacramento State,,,,manual
+Iowa State/UMass,,,,manual
+Iowa Wesleyan,,,,manual
+Iowa Western C.C.,,,,manual
+Iowa Western CC/High Point,,,,manual
+Iowa Western Community,,,,manual
+Iowa Western Community College,Iowa Western Community College,,juco,high_auto
+Ipswich Force,,,,manual
+Ithaca High School,,,,manual
+Ittawamba CC,,,,manual
+IU East,,,,manual
+IU Indianapolis,,,,manual
+IU-Indy | Western Kentucky,,,,manual
+IUP / Youngstown State,,,,manual
+Jackson State / Colorado / Alabama A&M,,,,manual
+Jackson State / Indiana State,,,,manual
+Jackson State / Mississippi Gulf Coast CC,,,,manual
+Jackson State CC (Tenn.),,,,manual
+Jacksonville College (Texas),,,,manual
+Jacksonville State / Northwest Florida State College,,,,manual
+Jacksonville Univ. / Florida Southwestern CC,,,,manual
+"Jacksonville University, Shepherd University",,,,manual
+James Madison / Virginia,,,,manual
+Jamestown CC,,,,manual
+Jamestown CC (N.Y.),,,,manual
+Jamestown Community College,,,,manual
+Jessup,Jessup,30262,roster_team,high_auto
+John A. Logan CC,,,,manual
+Johnson and Wales,,,,manual
+Johnson CC,,,,manual
+Johnson County C.C.,,,,manual
+Johnson County CC / Central Arkansas,,,,manual
+Johnston CC,,,,manual
+Joliet CC,,,,manual
+Jones CC,,,,manual
+Jones College / Arkansas,,,,manual
+Jones College / Auburn / ULM,,,,manual
+Jones College / Mississippi State / ULM,,,,manual
+Jones College/Nicholls,,,,manual
+Jones College/Pensacola State,,,,manual
+Jones County CC / UNC Asheville,,,,manual
+Judson University,,,,manual
+K-State,,,,manual
+Kalamazoo Valley CC,,,,manual
+Kankakee Community College,,,,manual
+Kansas & North Alabama,,,,manual
+Kansas CC,,,,manual
+Kansas City / Garden City CC,,,,manual
+Kansas City CC,,,,manual
+Kansas City Kansas C.C.,,,,manual
+Kansas City Kansas CC,,,,manual
+Kansas City Kansas CC/Jones County JC/Palm Beach Atlantic,,,,manual
+Kansas State University,,,,manual
+Kansas State/Syracuse,,,,manual
+Kansas State/UC Santa Barbara,,,,manual
+Kansas Wesleyan University,,,,manual
+Kaskaskia College / Rutgers-Camden,,,,manual
+Kaskaskia College/Purdue University Northwest,,,,manual
+Kean,Kean,329,roster_team,high_auto
+Kennesaw State/ETSU,,,,manual
+Kentucky Christian University,,,,manual
+Kentucky State/Harcum College,,,,manual
+Kentucky Wesleyan,,,,manual
+Kilgore College / Labette CC / New Orleans,,,,manual
+Kilgore College / Sam Houston State,,,,manual
+Kilgore JC / Old Dominion,,,,manual
+Killgore College,Kilgore College,,juco,low_fuzzy
+King University,,,,manual
+Kingwood Park HS,,,,manual
+Kirkwood Community College/Lindenwood University,,,,manual
+Kirtland Central HS,,,,manual
+Knoxville Catholic,,,,manual
+KSC Szekszard,,,,manual
+Kutztown,Kutztown,339,roster_team,high_auto
+La Lumiere School (Prep) / UAB,,,,manual
+LA Tech,,,,manual
+LA Trade Tech/Cal State Dominguez Hills,,,,manual
+LA Valley College,,,,manual
+La. Tech,,,,manual
+Labette College,,,,manual
+Labette JC,,,,manual
+Lady Runnin' Rebels,,,,manual
+LaGrange College,,,,manual
+Lake Michigan College/Joliet JC,,,,manual
+Lake Superior State / Truman State,,,,manual
+Lakeland CC,,,,manual
+Lakeland Community College / Delta State,,,,manual
+Lakota East High School,,,,manual
+Lamar CC/Old Dominion,,,,manual
+Lamar University,,,,manual
+Lander/Tusculum,,,,manual
+Lane,Lane,347,roster_team,high_auto
+Lane CC / Eastern Arizona College,,,,manual
+Lane Community College,,,,manual
+Laney,,,,manual
+Laney CC,,,,manual
+LANEY COLLEGE,,,,manual
+Laney College / University of Alaska Anchorage,,,,manual
+Laney College/ Tulsa,,,,manual
+Laney College/Tulsa,,,,manual
+Langston University,,,,manual
+Langston/Kentucky State,,,,manual
+Laramie County CC (Wyo.),,,,manual
+Laramine County CC,,,,manual
+Las Positas College,,,,manual
+Lasell Univ.,,,,manual
+Lasell University,,,,manual
+Lassen College,,,,manual
+Lassen Community College,,,,manual
+Lawrence,Lawrence,348,roster_team,high_auto
+Lawson State CC/Valdosta State,,,,manual
+Lawson State Community College,,,,manual
+Lekdetec.nl,,,,manual
+LeMoyne College,,,,manual
+Lemoyne-Owen,LeMoyne-Owen,350,roster_team,high_auto
+LeMoyne-Owen College,,,,manual
+Lenoir Rhyne University,,,,manual
+Lenoir-Rhyne Univ.,,,,manual
+Lewis University,,,,manual
+Lewis University / D'Youville University,,,,manual
+Liberty Hill HS,,,,manual
+Liberty Union High School,,,,manual
+Liberty Univ.,,,,manual
+Life Pacific Univ.,,,,manual
+Lincoln (Ill.),,,,manual
+Lincoln Memorial,Lincoln Memorial,1176,roster_team,high_auto
+Lincoln Trail College/UNC-Greensboro,,,,manual
+Lincoln University (MO),,,,manual
+Lindenwood (MO),Lindenwood (MO),30136,roster_team,high_auto
+Lindenwood (Mo.),Lindenwood (MO),30136,roster_team,low_fuzzy
+Linfield,Linfield,1179,roster_team,high_auto
+Little Rock / Mesa CC / Franklin Pierce,,,,manual
+Little Rock/Evansville,,,,manual
+Livingstone,Livingstone,359,roster_team,high_auto
+Livingstone / Shaw,,,,manual
+LMU/SMU,,,,manual
+Lock Haven University,,,,manual
+London Ramblers,,,,manual
+Long Beach Poly,,,,manual
+Long Beach State / George Mason / Northeastern Oklahoma A&M,,,,manual
+Long Beach State University,,,,manual
+Long Beach State/Buffalo,,,,manual
+Long Beach State/Texas Tech/Kansas,,,,manual
+Long Island/Fresno State,,,,manual
+Loras College,,,,manual
+Los Angeles Trade-Tech/Pepperdine,,,,manual
+Los Angeles Trade-Technical,,,,manual
+Los Angeles Valley,,,,manual
+Louisiana College,,,,manual
+"Louisiana, Missouri, Old Dominion",,,,manual
+Louisiana-Lafayette,,,,manual
+Lower Columbia C.C./Warner Pacific,,,,manual
+Lower Columbia/Academy of Art,,,,manual
+Lower Columbia/Southern Utah,,,,manual
+Loyola Chicago/Saint Francis Univ.,,,,manual
+Loyola Univ. Chicago,,,,manual
+Loyola-Maryland,Loyola-Maryland,369,roster_team,high_auto
+LSU / Iowa State,,,,manual
+LSU / Kentucky,,,,manual
+LSU / Louisville,,,,manual
+LSU / Western Nebraska C.C.,,,,manual
+LSU New Orleans,,,,manual
+LSU-Alexandria,,,,manual
+LSU/Eastern Michigan/Texas Southern,,,,manual
+LSU/Houston,,,,manual
+LSU/South Plains College,South Plains College,,juco,low_fuzzy
+LSU/St. John's,,,,manual
+Lubbock Christian,Lubbock Christian,30177,roster_team,high_auto
+Lubbock Titans,,,,manual
+Lubbock-Cooper HS,,,,manual
+Luther,Luther,372,roster_team,high_auto
+Lutheran HS,,,,manual
+Lutheran North HS,,,,manual
+Lycoming College,,,,manual
+Lynchburg,Lynchburg,374,roster_team,high_auto
+Lynn,Lynn,20794,roster_team,high_auto
+Lynn College,,,,manual
+Maine Firecrackers,,,,manual
+Mandeville HS,,,,manual
+Manhattan Christian College,,,,manual
+Marian,,,,manual
+Marist University,,,,manual
+Marquette / Iowa State,,,,manual
+Marquette/Georgia Tech,,,,manual
+Marquette/Iona,,,,manual
+Marquette/Pittsburgh,,,,manual
+Marquette/Virginia,,,,manual
+Marshall/VCU,,,,manual
+Martin Methodist,,,,manual
+Maryland/Dayton,,,,manual
+Maryland/Kentucky,,,,manual
+Maryland/Oregon,,,,manual
+Maryland/Towson,,,,manual
+Maryland/Virginia Tech,,,,manual
+Mason High School,,,,manual
+Mason HS,,,,manual
+Massachusetts Mavericks,,,,manual
+Massasoit C.C.,,,,manual
+Massasoit CC,,,,manual
+Massbay CC,,,,manual
+Mayville State,,,,manual
+Mayville State University,,,,manual
+McClennan [TX] CC,McLennan Community College,,juco,low_fuzzy
+McClennan Community College,McLennan Community College,,juco,low_fuzzy
+McCook,,,,manual
+McCook CC/Wayland Baptist,,,,manual
+McDaniel College,,,,manual
+MCLA & Greenville,,,,manual
+McLennan CC / Allen,McLennan Community College,,juco,low_fuzzy
+"McLennan CC, Mary Hardin-Baylor",,,,manual
+McLennan CC/Angelo State,,,,manual
+McLennan CC/UT-Tyler/Chowan,,,,manual
+McNeese State/S. Alabama,,,,manual
+McNeese/Austin Peay,,,,manual
+McPherson College,,,,manual
+MCW Starz,,,,manual
+Medaille,Medaille,23725,roster_team,high_auto
+Memphis / Cincinnati,,,,manual
+Memphis / Tulsa,,,,manual
+Memphis » William & Mary,,,,manual
+Memphis/Tulsa,,,,manual
+Mendocino College,,,,manual
+Menlo College,,,,manual
+Mercer Univ.,,,,manual
+Mercer University / Pensacola State,,,,manual
+Mercer/North Florida,,,,manual
+Mercy College,,,,manual
+Mercyhurst Northeast,,,,manual
+Meredith College,,,,manual
+Merrimack / CCBC Essex,,,,manual
+Merritt College,,,,manual
+Mesabi Range College,,,,manual
+Metro State,,,,manual
+Metro State - Denver,,,,manual
+Metro State University,,,,manual
+Metropolitan CC,,,,manual
+Miami (OH) / Xavier / Marquette,,,,manual
+Miami Dade / Three Rivers CC,,,,manual
+Miami Dade CC / Alabama State,,,,manual
+Miami(OH),,,,manual
+Miami-Dade College,,,,manual
+Miami/Texas,,,,manual
+Michigan State/Clemson,,,,manual
+Michigan Tech,Michigan Tech,417,roster_team,high_auto
+Michigan-Dearborn,,,,manual
+Mid Penn Motion,,,,manual
+Mid-American Christian Univ. / Univ. of Providence,,,,manual
+Mid-American Christian University,,,,manual
+Mid-Atlantic Christian University,,,,manual
+Midland College / Garden City CC,,,,manual
+Midland Community College,,,,manual
+Midwestern State University,,,,manual
+Mile City CC,,,,manual
+Mile City Community College,,,,manual
+Miles Community College,,,,manual
+Millsaps College,,,,manual
+Milwaukee Area Tech,,,,manual
+Milwaukee Area Technical College,,,,manual
+Mineral Area [Mo.] College,,,,manual
+Mineral Area CC / Houston Christian,,,,manual
+Mineral Area Community College,,,,manual
+Minnesota / Nebraska / California,,,,manual
+Minnesota Duluth,,,,manual
+Minnesota West CC,,,,manual
+Minnesota-Crookston,,,,manual
+Minnesota/ Arkansas,,,,manual
+Minot State University,,,,manual
+Miss. Gulf Coast CC,,,,manual
+Miss. Valley State / Jones CC,,,,manual
+Mission College,,,,manual
+Mississippi Community College,,,,manual
+Mississippi Delta CC/Lane College,,,,manual
+Mississippi State/Georgia State,,,,manual
+Mississippi State/UAB,Mississippi State,430,roster_team,low_fuzzy
+Mississippi Valley State/Cape Fear CC,,,,manual
+Mississippi Valley State/Northwest Florida State,,,,manual
+Missouri Southern State University,,,,manual
+Missouri St.,Missouri St.,669,roster_team,high_auto
+Missouri St. Louis,Missouri-St. Louis,436,roster_team,high_auto
+Missouri State/Alabama A&M,,,,manual
+Missouri State/Colorado,,,,manual
+Missouri Valley,,,,manual
+Missouri Valley College,,,,manual
+Missouri Valley College / Abilene Christian / Trinidad State,,,,manual
+Missouri Western State / Park Hill South HS,,,,manual
+Missouri Western State U.,,,,manual
+Missouri-Kansas City / San Francisco / Southeastern (Fla.),,,,manual
+Missouri/Utah State,,,,manual
+Mizzou,,,,manual
+MN Suns P24,,,,manual
+Molloy University,,,,manual
+Monmouth / New Mexico JC,,,,manual
+Monroe,,,,manual
+Monroe (N.Y.),,,,manual
+Monroe / CCBC Essex / Kentucky State,,,,manual
+Monroe CC,,,,manual
+Monroe College- Bronx,,,,manual
+Monroe Community College,,,,manual
+Monroe/CCBC Essex,,,,manual
+Montana State Billings,Mont. St. Billings,205,roster_team,low_fuzzy
+Montana Tech,,,,manual
+Montana/Iowa Western,,,,manual
+Montclair State,Montclair St.,442,roster_team,high_auto
+Montgomery County,,,,manual
+Moore Catholic HS,,,,manual
+Moorpark CC,,,,manual
+Moraine Valley CC,,,,manual
+Moraine Valley Community College,,,,manual
+Morehead St. / Gulf Coast State College,,,,manual
+Morehead State / Georgia Highlands,,,,manual
+Morehead State University,,,,manual
+Morehead State/North Texas,,,,manual
+Morehead State/UNR,Morehead State,444,roster_team,low_fuzzy
+Morgan State / Hampton / Hartford,,,,manual
+Morgan State/Western Carolina/Barton CC,,,,manual
+Morton JC,,,,manual
+Mount St. Mary's (Md.) University,,,,manual
+Mount St. Mary's University,,,,manual
+Mount St. Mary’s / Harcum CC / La Salle,,,,manual
+Movistar Estudiantes,,,,manual
+MoWest,,,,manual
+MSU Denver / Morehead State University / New Mexico Junior College / McLennan College,,,,manual
+MSU-Denver,MSU Denver,413,roster_team,high_auto
+Mt. Hood CC (Ore.),,,,manual
+Mt. San Jacinto,,,,manual
+Mt. San Jacinto CC,,,,manual
+Mt. St. Mary's (MD),,,,manual
+Mt. St. Mary's (MD)/Coffeyville CC,,,,manual
+Muhlenberg College,,,,manual
+Muhlenberg/UMBC/CCBC Essex,,,,manual
+Murray State College (OK),,,,manual
+Murray State College / Mineral Area College / West Florida,,,,manual
+Muskegon CC / Ferrum,,,,manual
+Muskingham,,,,manual
+MVSU,,,,manual
+MVSU / Itawamba CC,,,,manual
+N.C. State,NC State,490,roster_team,low_fuzzy
+N.D. State College of Science,,,,manual
+Napa Valley College,,,,manual
+Napa Valley College | Cal State Los Angeles,,,,manual
+Napa Valley JC,,,,manual
+National Park College (AR),,,,manual
+National Park Community College,,,,manual
+Nativos Valle (Colombia),,,,manual
+"NC A&T, Northwest Florida State, George Washington",,,,manual
+NC A&T/Pensacola State College,,,,manual
+NDSCS,,,,manual
+Nebraska / Penn State,,,,manual
+Nebraska at Kearney,,,,manual
+Nebraska Wesleyan,,,,manual
+Nebraska/Omaha,,,,manual
+Nelson,,,,manual
+NEO/Dodge City CC,,,,manual
+Neosho Community College,,,,manual
+Neosho County CC,,,,manual
+Neosho County Community College,,,,manual
+Nevada / Grand Canyon,,,,manual
+New College of Florida,,,,manual
+New England Crusaders,,,,manual
+New England Playmakers,,,,manual
+New Hampshire Technical Institute,,,,manual
+New Home HS,,,,manual
+New Jersey City Univ.,,,,manual
+New Jersey Gems,,,,manual
+New Jersey Institute of Technology,New Jersey Institute of Technology,471,roster_team,high_auto
+New Mexico Highlands University / University of Texas at El Paso,,,,manual
+New Mexico JC/Incarnate Word,,,,manual
+New Mexico Junior College / Wichita State,,,,manual
+New Mexico State / Dodge City CC / Independence CC,,,,manual
+New Mexico State University,,,,manual
+"New Orleans, Northeastern JC",,,,manual
+New Orleans/Miami (OH),,,,manual
+New Prairie HS,,,,manual
+New York Tech,,,,manual
+Newberry College/Western Wyoming CC,,,,manual
+Newman University,,,,manual
+NIACC (Iowa),,,,manual
+Niagara/Georgian Court,,,,manual
+Niagara/McLennan CC,McLennan Community College,,juco,low_fuzzy
+Niagra/Memphis,,,,manual
+Nicholls State/Georgia Southwestern,,,,manual
+NJCU,,,,manual
+NKU,,,,manual
+No. Kentucky/Wisconsin/West Virginia,,,,manual
+North Alabama / Jones College / Florida State / ULM,,,,manual
+North American,,,,manual
+North Broward Prep (Fla.),North Broward Prep (Fla.),,prep,high_auto
+North Carolina / Arizona State,,,,manual
+North Carolina A&T / Northwest Florida State College,,,,manual
+North Carolina A&T State,,,,manual
+North Carolina A&T/Seton Hall,,,,manual
+North Carolina State,,,,manual
+North Carolina Wesleyan University,,,,manual
+North Central,,,,manual
+North Central Missouri College,,,,manual
+North Central University,,,,manual
+North Country Community College,,,,manual
+North Dakota / Baylor,,,,manual
+North Dakota State School of Science,,,,manual
+North Florda/Temple,,,,manual
+North Greenville University,,,,manual
+North Iowa Area Community College,,,,manual
+North Platte Community College,,,,manual
+North Texas / Tarleton State,,,,manual
+North Texas | UTSA,,,,manual
+Northampton Community College,,,,manual
+Northeast HS,,,,manual
+Northeastern JC / Appalachian State,,,,manual
+Northeastern State (Okla.),,,,manual
+Northeastern State / Winthrop,,,,manual
+Northeastern State/Northern Colorado,,,,manual
+Northeastern/Purdue,,,,manual
+Northern Arizona University,,,,manual
+Northern Illinois/Kirkwood CC,,,,manual
+Northern Iowa Area CC,,,,manual
+Northern Iowa Area Community College,,,,manual
+Northern Kentucky University,,,,manual
+Northern New Mexico College,,,,manual
+Northern Oklahoma,,,,manual
+Northern Oklahoma - Tonkawa,,,,manual
+Northern Oklahoma College Enid,,,,manual
+Northern Oklahoma College/LIU,,,,manual
+Northern Virginia Community College,,,,manual
+Northside HS / Colorado,,,,manual
+Northumbria University,,,,manual
+Northwest College (Wyo.),,,,manual
+Northwest Florida State College / Indiana State,,,,manual
+Northwest Florida State College/Evansville,,,,manual
+Northwest Florida State College/UAlbany,Northwest Florida State College,,juco,low_fuzzy
+Northwest Florida/Memphis,,,,manual
+Northwest Florida/Memphis/Akron State,,,,manual
+Northwest Kansas Tech,,,,manual
+Northwest Mississippi Community College,,,,manual
+Northwest Missouri,Northwest Missouri State,507,roster_team,low_fuzzy
+Northwest University,,,,manual
+Northwestern State / Diablo Valley CC,,,,manual
+Northwestern State/Pearl River CC,,,,manual
+Notre Dame / Cedarville,,,,manual
+NW Florida State,,,,manual
+NW Florida State College,Northwest Florida State College,,juco,low_fuzzy
+NW Oklahoma/Coffeyville CC,,,,manual
+Oakton,,,,manual
+Oakwood University,,,,manual
+Obudai Arpad Gimnazium,,,,manual
+Ocean County CC,,,,manual
+Odessa / South Plains,,,,manual
+Odessa College / Hillsborough CC,,,,manual
+Odessa College / Northwest Kansas Tech,,,,manual
+Odessa College/Jacksonville,,,,manual
+Odessa/University of San Francisco/Eckerd,,,,manual
+Ohio Dominican University,,,,manual
+Ohio State / Grand Canyon,,,,manual
+Ohio State University,,,,manual
+Ohio Valley / Bluefield State,,,,manual
+Ohio/Texas Southern,,,,manual
+Oklahoma Baptist/NOC-Enid,,,,manual
+Oklahoma Christian University,,,,manual
+Old Dominion / Colorado,,,,manual
+Ole Miss / Auburn,,,,manual
+Ole Miss / Southern Miss,,,,manual
+Olive-Harvey CC,,,,manual
+Onondaga C.C./St. John Fisher,,,,manual
+Oral Roberts / Hampton,,,,manual
+Oral Roberts | Oklahoma State,,,,manual
+Orange Lions Academy,,,,manual
+Oregon St. / TCU,,,,manual
+Oregon/Maryland,,,,manual
+Osterather TV,,,,manual
+Otero [Colo.] JC,,,,manual
+Otero JC / University of Alaska Anchorage,,,,manual
+Ottawa (Kan.),,,,manual
+Ottawa University (AZ),,,,manual
+Ottawa University Arizona / Montreat College,,,,manual
+Owens CC,,,,manual
+Owens CC/Winthrop,,,,manual
+Owens Community College,,,,manual
+Oxnard CC,,,,manual
+Pacific/Utah State,,,,manual
+Palm Beach Atlantic University,,,,manual
+Palm Beach Junior College,,,,manual
+Panola College/Loyola Marymount,,,,manual
+Panola College/McLennan CC/Fresno State,,,,manual
+Paris (Texas) JC,,,,manual
+Paris JC,,,,manual
+Paris JC/Independence CC,,,,manual
+Park University Gilbert,,,,manual
+Parkland Community College,,,,manual
+Parkway HS,,,,manual
+Passaic County CC,,,,manual
+Paul Smith's College,,,,manual
+Peak Knights,,,,manual
+Pearl River CC/McNeese State,,,,manual
+Penn Basketball,,,,manual
+Penn Fever,,,,manual
+Penn State / Bellarmine,,,,manual
+Penn State / Georgia Southern,,,,manual
+Penn State Abington,Penn St.-Abington,30114,roster_team,high_auto
+Penn State Brandywine/Lock Haven/Lincoln,,,,manual
+Penn State University,,,,manual
+Penn State-York,,,,manual
+Penn State/Baylor,,,,manual
+Penn State/Cleveland State CC,,,,manual
+Penn State/Georgia Southern,,,,manual
+Penn State/Texas,,,,manual
+Penn Valley,,,,manual
+Pensacola State / Cleveland State,,,,manual
+Pensacola State College/Hofstra,,,,manual
+Pensacola State/Charleston Southern,,,,manual
+Pensacola State/Jones College,,,,manual
+Pensacola State/Lamar CC,,,,manual
+Philander Smith,,,,manual
+Philander Smith University,,,,manual
+Phoenix JC,,,,manual
+Physics,,,,manual
+Pickett County HS,,,,manual
+Pima (Ariz.) CC,,,,manual
+Pima CC/Fort Lewis,,,,manual
+Pima Community College,,,,manual
+Pima Community College/Nevada,,,,manual
+Pitt State,,,,manual
+Pitt/Charlotte,,,,manual
+Pittsburgh/Arizona State,,,,manual
+Point Loma,Point Loma,30149,roster_team,high_auto
+Point Loma Nazarene,,,,manual
+Point Univ.,,,,manual
+Point University,,,,manual
+Porter/Winston JC,,,,manual
+Portland Community College,,,,manual
+Portland State. U.,,,,manual
+Potomac State College,,,,manual
+Prairie View,Prairie View A&M,553,roster_team,low_fuzzy
+Prairie View / Blinn College / Texas State,,,,manual
+Prairie View A&M University,,,,manual
+Presbyterian (S.C.),,,,manual
+Presbyterian / McCook CC,,,,manual
+Prince George CC,,,,manual
+Prince Georges C.C.,,,,manual
+Principia College,,,,manual
+PSU Abington,,,,manual
+PSU-Greater Allegheny,,,,manual
+Puerto Rico-Rio Piedras,,,,manual
+Purdue / Maryland,,,,manual
+Purdue Fort Wayne / Northeast CC,,,,manual
+Purdue Fort Wayne/Wagner College,,,,manual
+Purdue Fort-Wayne/Tyler JC/Arkansas Pine Bluff,,,,manual
+Purdue Northwest / Lake Central HS,,,,manual
+Purdue Northwest / Montevallo HS,,,,manual
+Purdue/ Gulf Coast State College,Gulf Coast State College,,juco,low_fuzzy
+Purdue/Virginia Tech,,,,manual
+Queen's University (N.Y.),,,,manual
+Queens (ECC),,,,manual
+Queens (N.Y.),Queens (NY),560,roster_team,low_fuzzy
+Queens College (NY),,,,manual
+Quincy/Iowa Western C.C.,,,,manual
+Quinnipiac Univ.,,,,manual
+Quinnipiac University,,,,manual
+Radford/Wabash Valley College,,,,manual
+Randolph College/Bluefield State,,,,manual
+Ranger,,,,manual
+Ranger College / Glenville State,,,,manual
+Raritan Valley C.C.,,,,manual
+Ravenwood HS,,,,manual
+Red Oak HS,,,,manual
+Redlands,Redlands,567,roster_team,high_auto
+Regis (Colo.),Regis (CO),568,roster_team,low_fuzzy
+Regis U. (CO),,,,manual
+Reinhardt Uni.,,,,manual
+Rend Lake CC/Colorado,,,,manual
+Rend Lake College,,,,manual
+Rend Lake Junior College,,,,manual
+Rhode Island/Hartford,,,,manual
+Rice / Oklahoma,,,,manual
+"Richmond, UNC Wilmington",,,,manual
+Rider / South Shore Christian Prep,Rider / South Shore Christian Prep,,prep,high_auto
+Rio Grande,,,,manual
+Rio Hondo,,,,manual
+Rising Stars and Lady Ballers,,,,manual
+Rivas Ecópolis,,,,manual
+Riverside City College,,,,manual
+Riverside HS,,,,manual
+Roane State,,,,manual
+Robert Morris (Horizon),,,,manual
+Robert Morris / Buffalo,,,,manual
+Robert Morris Univ.,,,,manual
+Robert Morris/Dawson CC,,,,manual
+Robert Morris/Midwestern State,,,,manual
+Robert Morris/Mineral Area,,,,manual
+Roberts Wesleyan,Roberts Wesleyan,30150,roster_team,high_auto
+Roberts Wesleyan University,,,,manual
+Rochester Christian,,,,manual
+Rock Valley JC,,,,manual
+Rockford University (NCAA - DIII),,,,manual
+Rogers (Okla.) State,,,,manual
+Rogers State (Okla.),,,,manual
+Rogue Community College,,,,manual
+Roosevelt HS,,,,manual
+Roosevelt University,,,,manual
+Roosevelt/State Fair Community College,,,,manual
+Rosemont College,,,,manual
+Rutgers/Georgia/Arkansas-Pine Bluff,,,,manual
+Rutgers/Jackson State,,,,manual
+Rutgers/Maryland,,,,manual
+Sacramento State / Xavier,,,,manual
+Sacramento State/MVSU,Sacramento State,102,roster_team,low_fuzzy
+Sacramento State/Trinity Valley CC,,,,manual
+Sacred Heart Academy,,,,manual
+Sacred Heart College,,,,manual
+Sacred Heart University,,,,manual
+Saint Anselm,St. Anselm,593,roster_team,low_fuzzy
+Saint Anslem,,,,manual
+Saint Augustine's University,,,,manual
+Saint Benedict,Saint Benedict,595,roster_team,high_auto
+Saint Elizabeth,St. Elizabeth,9684,roster_team,low_fuzzy
+Saint Francis (Pa.) University,,,,manual
+Saint Francis / FAU,,,,manual
+Saint Francis U,,,,manual
+Saint Joseph’s University,,,,manual
+Saint Louis/La Salle,,,,manual
+Saint Martin's University,,,,manual
+Saint Mary's (CA),Saint Mary's (CA),610,roster_team,high_auto
+Saint Mary's University (MN),,,,manual
+Saint Michael's,Saint Michael's,613,roster_team,high_auto
+Saint Peters,Saint Peter's,617,roster_team,low_fuzzy
+Salem State,Salem St.,621,roster_team,high_auto
+Salt Lake C.C.,,,,manual
+Salt Lake CC/ McNeese State,,,,manual
+Sam Houston State Univ. (Texas),,,,manual
+Sam Houston State University,,,,manual
+Samford / Butler,,,,manual
+San Diego City College,,,,manual
+San Diego Mesa College,,,,manual
+San Diego State / San Diego,,,,manual
+San Diego State/Scottsdale CC,,,,manual
+San Diego State/St. Bonaventure,,,,manual
+San Francisco State / Stanislaus State,,,,manual
+San Francisco State University,,,,manual
+San Jacinto CC,,,,manual
+San Joaquin Delta,,,,manual
+San Jose Community College,,,,manual
+San Jose State University,,,,manual
+San Jose State/Arkansas-Little Rock/San Jose State,,,,manual
+San Jose State/Salt Lake Community College/Saint Mary's,,,,manual
+San José State,San Jose State,630,roster_team,low_fuzzy
+Santa Barbara City College,,,,manual
+Santa Barbara Community College,,,,manual
+Santa Clara Univ.,,,,manual
+Santa Clara University,,,,manual
+Santa Fe CC / Coppin State,,,,manual
+Santa Fe College / Flagler College,,,,manual
+Santa Rosa JC,,,,manual
+Santa Rosa Junior College,,,,manual
+Sarah Lawrence,Sarah Lawrence,30163,roster_team,high_auto
+Schreiner,Schreiner,1355,roster_team,high_auto
+Scottsdale CC / Tusculum,,,,manual
+Scranton,Scranton,633,roster_team,high_auto
+SE Baptist / Holmes CC,,,,manual
+SE Baptist College,,,,manual
+SE Missouri St.,,,,manual
+SE Oklahoma St.,,,,manual
+Seattle Pacific / Cal State San Marcos,,,,manual
+Seattle Univ.,,,,manual
+Seminole State College,,,,manual
+Seton Hall / Penn State,,,,manual
+Seton Hall/Stetson,,,,manual
+Seton Hall/Trinity Valley CC,Trinity Valley Community College,,juco,low_fuzzy
+Seton Hall/UMass,,,,manual
+Seward Community College,,,,manual
+Seward County,,,,manual
+Seward County CC / UTEP,,,,manual
+Seward County CC/Old Dominion,,,,manual
+SFA,,,,manual
+SFA | LSU,,,,manual
+"Shaw university, Queens college",,,,manual
+Shawnee Community College,,,,manual
+Shawnee State,,,,manual
+Shelton State C.C.,,,,manual
+Shelton State CC / Clemson / ULM,,,,manual
+Shelton State Community College,Shelton State Community College,,juco,high_auto
+Shelton State/Alabama A&M,,,,manual
+Sheridan College,,,,manual
+Shippensburg University,,,,manual
+Siena Heights College,,,,manual
+Simon Fraser Univ.,,,,manual
+Simpson College,,,,manual
+Simpson University,,,,manual
+Sinclair Community College,,,,manual
+Sissonville High School,,,,manual
+SIU Edwardsville/South Mountain CC,,,,manual
+Skidmore College,,,,manual
+Skyline College/Chabot College,,,,manual
+Skyline JC,,,,manual
+SLAAM,,,,manual
+SMU / Arizona / South Carolina,,,,manual
+SMU / Fresno State,,,,manual
+SMU/Loyola Chi,,,,manual
+SNH Saints,,,,manual
+Solano Community College,,,,manual
+Sonoma State / Cal State Monterey Bay,,,,manual
+South Alabama/Georgia Southwestern,,,,manual
+South Carolina / Kentucky,,,,manual
+South Carolina Aiken,,,,manual
+South Carolina State University,,,,manual
+South Carolina Upstate,,,,manual
+South Dakota School of Mines,,,,manual
+South Florida/Miami,,,,manual
+South GA Tech / Murray State CC,,,,manual
+South Georgia Tech / George Washington,,,,manual
+South Georgia Tech/Miami (OH),,,,manual
+South Georgia Technical Coll.,,,,manual
+South Mountain Community College/Northern New Mexico College,,,,manual
+South Plaines College,South Plains College,,juco,low_fuzzy
+South Plains CC/UMass,,,,manual
+South Plains Community College,,,,manual
+South Plains Community College / Delta State,,,,manual
+South Puget Sound CC,,,,manual
+Southeast Missouri St.,Southeast Missouri State,654,roster_team,high_auto
+Southeast Missouri State Univ.,,,,manual
+Southeastern Louisiana,Southeastern Louisiana,655,roster_team,high_auto
+Southeastern Oklahoma State,,,,manual
+Southern Arkansas/LSU-Alexandria,,,,manual
+Southern Cal,Southern Cal,657,roster_team,high_auto
+Southern Illinois Carbondale,,,,manual
+Southern Illinois University Edwardsville,,,,manual
+Southern Illinois/Northeastern Oklahoma A&M/Eastern Oklahoma State,,,,manual
+Southern Methodist,Southern Methodist,663,roster_team,high_auto
+Southern Miss/CSU-Bakersfield,,,,manual
+Southern Nevada College,,,,manual
+Southern Oregon,,,,manual
+Southern Oregon University,,,,manual
+Southern Utah / Utah Valley,,,,manual
+Southern Wesleyan,Southern Wesleyan,30192,roster_team,high_auto
+Southwest Baptist/Kansas City Kansas CC,,,,manual
+Southwest CC,,,,manual
+Southwest Mississippi CC/Mississippi College,,,,manual
+Southwestern,,,,manual
+Southwestern Christian,,,,manual
+Southwestern HS,,,,manual
+Southwestern Ilinois CC/Iowa Western CC,,,,manual
+Southwestern Michigan,,,,manual
+Southwestern State,,,,manual
+SPAR Gran Canaria,,,,manual
+SPIRE Academy / Lindenwood / Southern,,,,manual
+Spoon River/Rend Lake/SIUE,,,,manual
+Spring Arbor University,,,,manual
+Spring Arbor/Northwood,,,,manual
+Spring Hill,Spring Hill,31091,roster_team,high_auto
+Springfield,Springfield,673,roster_team,high_auto
+St. Ambrose University,,,,manual
+St. Andrews,,,,manual
+St. Augustine,,,,manual
+St. Augustine's University,,,,manual
+St. Cloud St.,St. Cloud St.,598,roster_team,high_auto
+St. Edwards/Blinn College/Arizona State,,,,manual
+St. Francis (Ill.),,,,manual
+St. Francis (NY),,,,manual
+St. Francis Xavier,,,,manual
+St. Francis Xavier University/Dalhousie University,,,,manual
+St. John's | DePaul,,,,manual
+St. Joseph's,,,,manual
+St. Mary's (Texas) / Tallahassee CC / UTSA,,,,manual
+St. Mary's (TX) / Tallahassee CC,,,,manual
+St. Peter's,,,,manual
+St. Peter's/Texas A&M,,,,manual
+St. Thomas Aquinas,St. Thomas Aquinas,1348,roster_team,high_auto
+St. Thomas University,,,,manual
+St. Thomas/Arkansas-Little Rock,,,,manual
+STAC,,,,manual
+Stanford/Santa Clara,,,,manual
+Stanislaus State University,,,,manual
+State Fair C.C.,,,,manual
+State Fair Community College,,,,manual
+State Fair Community College / Santa Fe Community College,,,,manual
+Stephan F. Austin,Stephen F. Austin,676,roster_team,low_fuzzy
+Stephen F. Austin/Trinity Valley CC,,,,manual
+Stephens,,,,manual
+Stephens College,,,,manual
+Stetson/Central Michigan,,,,manual
+Stetson/Moberly Area CC,,,,manual
+Stevens,Stevens,679,roster_team,high_auto
+Stevenson,Stevenson,21852,roster_team,high_auto
+Stillman/Pearl River CC,,,,manual
+Stony Brook / North Carolina A&T,,,,manual
+Stony Brook/South Georgia Technical College,,,,manual
+Suffolk,Suffolk,684,roster_team,high_auto
+Sullivan CC,,,,manual
+Summit HS,,,,manual
+SUNY Fredonia,,,,manual
+SUNY Geneseo,SUNY Geneseo,247,roster_team,high_auto
+SUNY Old Westbury,,,,manual
+SUNY Old Westbury/New Haven,,,,manual
+SUNY Oneonta,SUNY Oneonta,526,roster_team,high_auto
+SUNY Poly,SUNY Poly,9500,roster_team,high_auto
+SUNY Potsdam,SUNY Potsdam,552,roster_team,high_auto
+SUNY Sullivan/Cloud County CC/Hampton,,,,manual
+SW Christian College,,,,manual
+SWOSU,,,,manual
+Syracuse / North Carolina A&T / CCBC Essex,,,,manual
+Syracuse Development Academy / Mercyhurst,,,,manual
+Taft (Calif.) College,,,,manual
+Talladega College,,,,manual
+Tallahassee CC/Jones College,,,,manual
+Talledega College/East Mississippi,,,,manual
+TCU/Florida/Eastern Michigan,,,,manual
+TCU/New Mexico JC/Incarnate Word,,,,manual
+TCU/Tulsa,,,,manual
+Team Saints,,,,manual
+Team Southwest Adidas 3SSB,,,,manual
+Temple College / Huston-Tillotson,,,,manual
+Temple College / McClennan Community College,,,,manual
+Temple JC / King Univ.,,,,manual
+Temple JC/King Univ.,,,,manual
+Temple/Binghamton/South Alabama,,,,manual
+Temple/North Florida,,,,manual
+Tennessee State/UT Arlington/North Texas,,,,manual
+Tennessee Tech University,,,,manual
+Tennessee/Syracuse,,,,manual
+Terrant County College,,,,manual
+Terry Sanford HS,,,,manual
+Texas / Seton Hall,,,,manual
+Texas A&M / SMU / James Madison,,,,manual
+Texas A&M Commerce,Tex. A&M-Commerce,199,roster_team,low_fuzzy
+Texas A&M San Antonio,,,,manual
+Texas A&M Texarkana / Palomar,,,,manual
+Texas A&M-Corpus Christi/Hutchinson CC,,,,manual
+Texas A&M/Tennessee,,,,manual
+Texas A&M/UCLA,,,,manual
+Texas Rio Grande Valley,UT-Rio Grande Valley,536,roster_team,low_fuzzy
+Texas Southern / Blinn College,,,,manual
+Texas Tech / Texas,,,,manual
+Texas Tech / Tulsa,,,,manual
+Texas Tech/Mississippi State,,,,manual
+Texas Tech/Purdue,,,,manual
+Texas Woman's / Wichita State,,,,manual
+Texas-Permian Basin,Tex. Permian Basin,30088,roster_team,low_fuzzy
+Texas-Tyler,Texas-Tyler,30028,roster_team,high_auto
+The Apprentice School,,,,manual
+The Bolles School,,,,manual
+The College of Saint Rose,,,,manual
+The Master's / Pepperdine,,,,manual
+The Newman School,,,,manual
+The University of New Orleans (La.),,,,manual
+Thiel College,,,,manual
+Thomas College,,,,manual
+Thomas Jefferson,,,,manual
+Thomas Moore,Thomas More,1402,roster_team,low_fuzzy
+Thomas Moore University,,,,manual
+Three Rivers CC/Southwest Baptist,,,,manual
+Three Rivers CC/Southwest Baptist University,,,,manual
+Three Rivers College (Mo.),,,,manual
+Toccoa Falls College,,,,manual
+Toledo | Cleveland State,,,,manual
+Toledo | Western Michigan,,,,manual
+Toledo/Akron,,,,manual
+Tompkins Cortland CC,,,,manual
+Torpan Pojat,,,,manual
+Tougaloo College,,,,manual
+Towson / Memphis,,,,manual
+Towson / North Carolina Central,,,,manual
+Towson/UMass,,,,manual
+Towson/UMBC,,,,manual
+Treasure Valley CC/Idaho State,,,,manual
+Trine,Trine,30037,roster_team,high_auto
+Trine University,,,,manual
+Trinidad Junior College,,,,manual
+Trinity,,,,manual
+Trinity Valley CC/Austin Peay,,,,manual
+Trinity Valley CC/Tennessee State,,,,manual
+Trinity Valley CC/Tennessee State/Portland State,,,,manual
+Trinity Valley CC/UALR,,,,manual
+Trinity Valley CC/Wichita State,,,,manual
+Trinity Western (B.C.) University,,,,manual
+Triton,,,,manual
+Triton College/Tusculum Univ.,,,,manual
+Troy Univ.,,,,manual
+Truett McConnell,,,,manual
+Tulane University,,,,manual
+Tulane/Louisiana,,,,manual
+Tulane/Wallace State CC,,,,manual
+Tulsa/Akron,,,,manual
+Tulsa/Langston,,,,manual
+Tulsa/Penn,,,,manual
+Tusculum College,,,,manual
+Tuskegee,Tuskegee,720,roster_team,high_auto
+Tuskegee/Snead State CC,,,,manual
+TVCC/Tyler CC,,,,manual
+Tyler,,,,manual
+Tyler JC/Arkansas Pine Bluff,,,,manual
+Tyler Junior College / Alabama A&M,,,,manual
+U of New Hampshire,,,,manual
+UA-Fort Smith,Ark.-Fort Smith,30105,roster_team,low_fuzzy
+UAB/Arkansas State,Arkansas St.,30,roster_team,low_fuzzy
+UAB/Jones College,Jones College,,juco,low_fuzzy
+UAB/Oklahoma State,Oklahoma State,521,roster_team,low_fuzzy
+UALR,,,,manual
+UAPB,,,,manual
+UC - Colorado Springs,UC-Colo. Springs,9754,roster_team,low_fuzzy
+UC Riverside / San Jose State,,,,manual
+UC San Diego / Utah State,,,,manual
+UC-Colorado Springs,UC-Colo. Springs,9754,roster_team,low_fuzzy
+UC-San Diego,UC San Diego,112,roster_team,high_auto
+UCCS,,,,manual
+UCF / Miami,,,,manual
+UConn Avery Point,,,,manual
+UConn-Avery Point,,,,manual
+UCSB,,,,manual
+UIC/Ohio,,,,manual
+UL Monroe,,,,manual
+UL-Monroe,,,,manual
+Ulcinj Montenegro,,,,manual
+ULM / Arkansas State,,,,manual
+ULM / Jackson State,,,,manual
+UMaine,Maine,380,roster_team,low_fuzzy
+UMary,Mary,30075,roster_team,low_fuzzy
+UMass Boston,UMass Boston,401,roster_team,high_auto
+UMASS-Lowell,UMass Lowell,368,roster_team,high_auto
+UMass/Canisius,,,,manual
+UMass/East Carolina,,,,manual
+UMBC/Alabama A&M,,,,manual
+UMBC/CCBC-Essex,,,,manual
+UMBC/St. Petersburg College,,,,manual
+UMES / Union / Monroe,,,,manual
+UNC-Charlotte/Tennessee State,,,,manual
+UNC-Greensboro/Lincoln Trail College,,,,manual
+UNCG,,,,manual
+UNCW/UCF,,,,manual
+undeclared,,,,manual
+Union City College,,,,manual
+Union Pacific,,,,manual
+Union University,,,,manual
+Univ. of Akron,,,,manual
+Univ. of Charleston (W.Va.),,,,manual
+Univ. of Colorado at Colorado Springs,,,,manual
+Univ. of Colorado Colorado Springs,,,,manual
+Univ. of Illinois Springfield,,,,manual
+Univ. of Massachusetts-Dartmouth,,,,manual
+Univ. of Mount Olive,,,,manual
+Univ. of North Florida,,,,manual
+Univ. of Toledo,,,,manual
+Univ. of West Alabama,,,,manual
+"University Colorado, Colorado Springs",,,,manual
+University Illinois-Chicago,,,,manual
+University of Alabama at Birmingham (UAB),,,,manual
+University of Alaska Fairbanks,,,,manual
+University of Albany,,,,manual
+University of Arizona,,,,manual
+University of Arkansas,,,,manual
+University of Arkansas - Fort Smith,,,,manual
+University of Arkansas - Little Rock,,,,manual
+University of Arkansas at Fort Smith,,,,manual
+University of Arkansas Fort Smith,,,,manual
+University of Arkansas in Fort Smith,,,,manual
+University of Arkansas-Pine Bluff,,,,manual
+University of British Columbia / California Baptist University,,,,manual
+University of Buffalo,,,,manual
+University of California Berkley,,,,manual
+University of California Merced,,,,manual
+University of California-Santa Barbara,,,,manual
+University of Central Arkansas,,,,manual
+University of Central Florida,,,,manual
+University of Chicago Illinois,,,,manual
+University of Cincinnati,,,,manual
+University of Colorado / University of Minnesota,,,,manual
+University of Colorado Colorado Springs,,,,manual
+University of Cumberlands,,,,manual
+University of Detroit Mercy/Eastern Florida State College,,,,manual
+University of Findlay,,,,manual
+University of Hartford,,,,manual
+University of Hawai'i,,,,manual
+University of Illinois Springfield,,,,manual
+University of Kansas,,,,manual
+University of Lynchburg,,,,manual
+University of Mary,,,,manual
+University of Mary Hardin Baylor,,,,manual
+University of Maryland,,,,manual
+University of Maryland-Baltimore County,,,,manual
+University of Miami,,,,manual
+University of Miami (Fla.),,,,manual
+University of Missouri,,,,manual
+University of Montana,,,,manual
+University of Mount Union,,,,manual
+University of Nebraska at Kearney,,,,manual
+University of Olivet,,,,manual
+University of Pittsburgh,,,,manual
+"University of Pittsburgh at Johnstown, Walsh University",,,,manual
+University of Pittsburgh Johnstown,,,,manual
+University of Richmond,,,,manual
+University of Saint Katherine,,,,manual
+University of San Francisco/Odessa College,,,,manual
+University of Science & Arts Oklahoma,,,,manual
+University of Science and Arts,,,,manual
+University of South Alabama,,,,manual
+University of South Carolina Aiken,,,,manual
+University Of South Carolina Aiken,,,,manual
+University of South Carolina-Aiken,,,,manual
+University of St. Francis (Ill.),,,,manual
+University of St. Thomas,,,,manual
+University of Tampa/Western Nebraska CC,,,,manual
+University of Tennessee at Martin,,,,manual
+University of Texas,,,,manual
+University of Texas Permian Basin,,,,manual
+University of Texas Rio Grande valley,,,,manual
+"University of Texas Rio Grande Valley, Garden City CC, University Mary Hardin Baylor",,,,manual
+University of the Sciences,,,,manual
+University of West Alabama,,,,manual
+University of West Georgia,,,,manual
+University of Wisconsin Parkside,,,,manual
+UNLV / Weber State,,,,manual
+UNLV/Minnesota,,,,manual
+UNO,,,,manual
+Upper Iowa/Anoka-Ramsey CC,,,,manual
+Upperman HS,,,,manual
+Urbana University,,,,manual
+Ursuline,Ursuline,30140,roster_team,high_auto
+USC / Arizona / Vanderbilt,,,,manual
+USC / Loyola Marymount,,,,manual
+USC / Virginia Tech,,,,manual
+USC Beaufort,USC Beaufort,30259,roster_team,high_auto
+USC Salkehatchie,,,,manual
+USC-Aiken,S.C. Aiken,11276,roster_team,low_fuzzy
+USF/South Plains CC,,,,manual
+USMAPS,,,,manual
+USU Eastern,,,,manual
+USU-Eastern,,,,manual
+UT-Arlington,,,,manual
+UT-Permian Basin,Tex. Permian Basin,30088,roster_team,low_fuzzy
+UT-Rio Grande Valley,UT-Rio Grande Valley,536,roster_team,high_auto
+UTA,,,,manual
+Utah St.,Utah St.,731,roster_team,high_auto
+Utah State University Eastern,,,,manual
+Utah State/Bellarmine,,,,manual
+UTD,,,,manual
+UTEP / Weatherford College,,,,manual
+UTEP | Bradley,,,,manual
+UTEP/Hutchinson CC,Hutchinson Community College,,juco,low_fuzzy
+Utica,Utica,733,roster_team,high_auto
+UTPB,,,,manual
+UTPB / Concordia (Neb.),,,,manual
+"UTRGV, UMHB",,,,manual
+UTSA/Sam Houston State,Sam Houston State,624,roster_team,low_fuzzy
+UW-Eau Claire,Wis.-Eau Claire,793,roster_team,low_fuzzy
+UW-Platteville,Wis.-Platteville,800,roster_team,low_fuzzy
+Valdosta State/Chattanooga,,,,manual
+Valparaiso Univ.,,,,manual
+Valparaiso University / Bay College,,,,manual
+Valparasio,Valparaiso,735,roster_team,low_fuzzy
+Vanguard University,,,,manual
+Ventura CC,,,,manual
+Victor Valley CC,,,,manual
+Villanova / Northeastern,,,,manual
+Villanova University,,,,manual
+Vincennes/Hutchinson CC,,,,manual
+Vincennes/Western Nebraska CC,Western Nebraska Community College,,juco,low_fuzzy
+Virgina Tech,Virginia Tech,742,roster_team,low_fuzzy
+Virginia State,Virginia State,743,roster_team,high_auto
+Virginia State University / Montgomery College,,,,manual
+Virginia Tech / Eastern Florida State,,,,manual
+Virginia Tech/Georgia,,,,manual
+Virginia Tech/San Diego,,,,manual
+Virginia Union / Point,,,,manual
+Virginia Union University,,,,manual
+Virginia University of Lynchburg,,,,manual
+Virginia/LSU,,,,manual
+Virginia/Maryland,,,,manual
+Virginia/Western Kentucky,,,,manual
+Vol State CC,,,,manual
+Vol State Community College,,,,manual
+Wabash / Vincennes / Notre Dame College,,,,manual
+Wabash CC,,,,manual
+Wabash Valley CC / LeMoyne-Owen,,,,manual
+Wabash Valley CC/Wright State,,,,manual
+Wabash Valley College/Alabama A&M,,,,manual
+Wabasha Valley,,,,manual
+Wagner/ECU,,,,manual
+Wake Forest/Georgia,,,,manual
+Wake Forest/Northwest Florida State,,,,manual
+Wake Tech CC,,,,manual
+Wake Technical CC,,,,manual
+Wake Technical Community College,,,,manual
+Walla Walla,,,,manual
+Walla Walla JC,,,,manual
+Wallace CC Selma,,,,manual
+Wallace State Community College,,,,manual
+Wallace State-Selma CC,,,,manual
+Wallace State/LaGrange,,,,manual
+Warren Wilson College,,,,manual
+Wash & Jeff,,,,manual
+Washburn (Kan.) / Asbury (Ky.) / Point Park,,,,manual
+Washington & Jefferson,Washington & Jefferson,751,roster_team,high_auto
+Washington & Jefferson College,,,,manual
+Washington College (MD),,,,manual
+Washington State/Miami,,,,manual
+Wayland Baptist/McCook CC,,,,manual
+Wayne State University (NE),,,,manual
+Weber State/Buffalo/Florida Southwestern,,,,manual
+Webster University,,,,manual
+West Branch High School (Youngstown State),,,,manual
+West Chester,West Chester,765,roster_team,high_auto
+West Hills College,,,,manual
+West Los Angeles CC,,,,manual
+West Texas A&M University,,,,manual
+West Virgina,West Virginia,768,roster_team,low_fuzzy
+West Virgina State,West Virginia St.,1439,roster_team,low_fuzzy
+West Virginia / Auburn / Seton Hall,,,,manual
+West Virginia/Penn State,,,,manual
+West Virginia/SFA,West Virginia,768,roster_team,low_fuzzy
+West Virginia/Temple,,,,manual
+Westchester CC,,,,manual
+Westcliff University,,,,manual
+Western Kentucky/Chipola,,,,manual
+Western Kentucky/UT Chattanooga,,,,manual
+Western Michigan/Michigan State,,,,manual
+Western Nebraska,,,,manual
+Western Nebraska CC/Mineral Area CC,,,,manual
+Western Nebraska CC/Vincennes,,,,manual
+Western Nebraska JC,Western Nebraska Community College,,juco,low_fuzzy
+Western Nebraska/Univ. of Charleston W.V.,,,,manual
+Western New England University,,,,manual
+Western New Mexico Universitiy,,,,manual
+Western New Mexico University,,,,manual
+Western Oklahoma State / Radford,,,,manual
+Western Texas,,,,manual
+Western Texas Community College,,,,manual
+Western Washington Univ.,,,,manual
+Western Wyoming College,,,,manual
+Western Wyoming Community College,,,,manual
+Westminster (PA),Westminster (PA),1451,roster_team,high_auto
+Westminster University / Western Wyoming CC,,,,manual
+Westmont College,,,,manual
+Whatcom College,,,,manual
+Wichita State / North Texas,,,,manual
+Wichita State/Odessa,,,,manual
+Wichita State/Pensacola State,,,,manual
+Wichita State/Robert Morris,,,,manual
+Wichita State/Texas State,,,,manual
+Widener,Widener,783,roster_team,high_auto
+Wilberforce University,,,,manual
+Wilbur Wright College,,,,manual
+William Blount HS,,,,manual
+William Jewell (Mo.) College,,,,manual
+William Peace,William Peace,17094,roster_team,high_auto
+Williamsville East HS,,,,manual
+Wilmington University,,,,manual
+Wilmington University (Del.),,,,manual
+Wingate Univ.,,,,manual
+Winston-Salem State University,,,,manual
+Winthrop / NC Central / Daytona State College,,,,manual
+Winthrop University/Johnson C. Smith University,,,,manual
+Winthrop/Evansville,,,,manual
+Winthrop/Evansville/Delaware,,,,manual
+Winthrop/Northern Colorado/Roosevelt,,,,manual
+Wis.-Eau Claire,Wis.-Eau Claire,793,roster_team,high_auto
+Wisconsin Parkside,Wisconsin-Parkside,799,roster_team,high_auto
+Wisconsin-Stout / Hermantown HS,,,,manual
+WKU,,,,manual
+Wolverinas,,,,manual
+Worcester Sting Elite,,,,manual
+Wright St.,Wright St.,810,roster_team,high_auto
+Wright State & Memphis,,,,manual
+Wright State/Canisius,,,,manual
+Wright State/Memphis,,,,manual
+WV Wesleyan,,,,manual
+WVU Tech,,,,manual
+Xavier (La.) University / Dallas College Cedar Valley / Murray State College,,,,manual
+Xavier/Indiana State/Wisconsin,,,,manual
+Yakima Valley CC,,,,manual
+Yamanashi Gakuin University,,,,manual
+Yavapai (Ariz.) JC,,,,manual
+Yavapai College,,,,manual
+Young Harris College | Northwestern State,,,,manual
+Youngstown State / UNLV,,,,manual
+Yuba CC,,,,manual
+Zetech University,,,,manual
