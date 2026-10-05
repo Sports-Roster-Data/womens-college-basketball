@@ -153,22 +153,11 @@ main { padding: 24px 0 48px; }
 
 /* ---------- Home ---------- */
 
-.hero { padding: 10px 2px 26px; }
-.hero h1 { font-size: 28px; font-weight: 600; line-height: 1.15; margin: 0 0 8px; max-width: 24ch; letter-spacing: -0.01em; }
+.hero { padding: 10px 2px 22px; }
+.hero h1 { font-size: 28px; font-weight: 600; line-height: 1.15; margin: 0 0 8px; max-width: 30ch; letter-spacing: -0.01em; }
 .hero .lede { color: var(--muted); margin: 0 0 18px; max-width: 70ch; font-size: 15px; }
 
-.stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-.stat {
-  display: flex; flex-direction: column; justify-content: center; gap: 2px;
-  min-height: 64px; padding: 12px 16px;
-  background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-lg);
-  color: var(--text); touch-action: manipulation;
-}
-.stat:hover { border-color: var(--accent); text-decoration: none; }
-.stat-num { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; color: var(--accent); }
-.stat-label { font-size: 12px; color: var(--muted); }
-
-.entry-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.entry-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .entry-card {
   display: flex; flex-direction: column; padding: 0; margin: 0; overflow: hidden;
   color: var(--text); min-width: 0; touch-action: manipulation;
@@ -205,7 +194,7 @@ a.entry-card:hover { text-decoration: none; border-color: var(--accent); transfo
 .skel-row i { display: block; height: 9px; border-radius: 999px; background: #d6d3d1; }
 .skel-row i:first-child { background: #a8a29e; }
 
-.entry-try { border-style: dashed; }
+.entry-spacer { min-width: 0; }
 
 /* ---------- Roster explorer / tables ---------- */
 
@@ -313,13 +302,16 @@ a.entry-card:hover { text-decoration: none; border-color: var(--accent); transfo
   main { padding: 16px 0 40px; }
 }
 
+@media (max-width: 900px) {
+  .entry-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .entry-spacer { display: none; }
+}
+
 @media (max-width: 600px) {
   .hero { padding: 4px 0 20px; }
   .hero h1 { font-size: 22px; }
   .hero .lede { font-size: 14px; }
-  .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .stat:last-child { grid-column: 1 / -1; }
-  .stat-num { font-size: 20px; }
+  .entry-spacer { display: none; }
   .entry-cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .thumb { height: 120px; }
   .card { padding: 14px; }

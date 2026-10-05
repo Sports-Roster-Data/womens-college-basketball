@@ -727,6 +727,10 @@ ft_ids <- names(ft_split)[ft_teams >= 2 & ft_teams <= 3 & ft_seas >= 4 & ft_last
 ft_names <- players$canonical_name[match(ft_ids, players$wbb_id)]
 ft_ord <- order(-ft_seas[ft_ids], -ft_teams[ft_ids], ft_names, method = "radix")
 ft_ids <- head(ft_ids[ft_ord], 5)
+# The home page timeline is pinned to a chosen example (Duke -> Maryland).
+FEATURED_PIN <- "wbb-022771"  # Oluchi Okananwa
+stopifnot("pinned featured player missing from combined data" = FEATURED_PIN %in% names(ft_split))
+ft_ids <- c(FEATURED_PIN, setdiff(ft_ids, FEATURED_PIN))
 stopifnot("no featured players found for the home page" = length(ft_ids) >= 1)
 featured <- lapply(ft_ids, function(id) {
   px <- ft_split[[id]]

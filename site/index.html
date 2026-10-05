@@ -38,16 +38,9 @@
   <!-- Home (core.js fills stats, chips, timeline and the two mini charts from site data) -->
   <section id="view-home" class="view" aria-label="Home">
     <div class="hero">
-      <h1 id="home-title">Every NCAA women's basketball roster since 2020-21</h1>
-      <p class="lede">Cleaned, standardized rosters for divisions I, II and III, with one stable ID that follows a player
+      <h1 id="home-title">Women's College Basketball Roster Database</h1>
+      <p class="lede" style="margin-bottom:0">Cleaned, standardized rosters for divisions I, II and III, with one stable ID that follows a player
         across every season and team. Maintained by the <a href="#/about">Sports Roster Data project at the University of Maryland</a>.</p>
-      <div class="stat-strip" id="home-stats" aria-label="Dataset at a glance">
-        <a class="stat" href="#/roster"><span class="stat-num" data-stat="player_seasons">—</span><span class="stat-label">player-seasons</span></a>
-        <a class="stat" href="#/roster" id="home-stat-players"><span class="stat-num" data-stat="players">—</span><span class="stat-label">players</span></a>
-        <a class="stat" href="#/roster"><span class="stat-num" data-stat="teams">—</span><span class="stat-label">teams</span></a>
-        <a class="stat" href="#/trends"><span class="stat-num" data-stat="seasons">—</span><span class="stat-label">seasons</span></a>
-        <a class="stat" href="#/geography"><span class="stat-num" data-stat="countries">—</span><span class="stat-label">countries</span></a>
-      </div>
     </div>
 
     <div class="entry-cards">
@@ -71,7 +64,7 @@
         <div class="thumb" id="home-timeline" aria-hidden="true"></div>
         <div class="body">
           <h2>Follow a player across years</h2>
-          <p>Search a name to get every season she played, with each team and class year. Transfers show up in the timeline.</p>
+          <p>Every season she played, with each team and class year. Transfers show up in the timeline. Open an example, or search a name above.</p>
         </div>
       </a>
 
@@ -91,6 +84,8 @@
         </div>
       </a>
 
+      <div class="entry-spacer" aria-hidden="true"></div>
+
       <a class="card entry-card" href="#/about">
         <div class="thumb thumb-files" aria-hidden="true">
           <svg viewBox="0 0 220 120">
@@ -109,15 +104,6 @@
           <p>Every CSV, a column-by-column data dictionary, known caveats and how to credit the project.</p>
         </div>
       </a>
-
-      <div class="card entry-card entry-try">
-        <div class="body">
-          <h2>Try a player who changed teams</h2>
-          <p>Real careers from the data, one stable ID each.</p>
-          <div class="chip-row chip-row-lg" id="home-featured"></div>
-          <p class="note">Or search any name in the box above.</p>
-        </div>
-      </div>
     </div>
   </section>
 

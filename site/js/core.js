@@ -486,20 +486,6 @@
     if (sec.dataset.built) return;
     sec.dataset.built = '1';
 
-    var title = document.getElementById('home-title');
-    title.textContent = 'Every NCAA women’s basketball roster since ' + meta.seasons[0];
-
-    var stats = { player_seasons: meta.player_seasons, players: meta.players, teams: meta.teams,
-      seasons: meta.seasons.length, countries: meta.countries };
-    sec.querySelectorAll('[data-stat]').forEach(function (el) {
-      var v = stats[el.dataset.stat];
-      el.textContent = v === undefined ? '—' : App.fmtNum(v);
-    });
-    document.getElementById('home-stat-players').addEventListener('click', function (e) {
-      e.preventDefault();
-      document.getElementById('global-search').focus();
-    });
-
     // Roster thumb: three real filter values (first non-Unknown of each list).
     var fo = meta.filter_options || {};
     function firstReal(list) {
@@ -515,19 +501,13 @@
     document.getElementById('home-file-a').textContent = 'wbb_rosters';
     document.getElementById('home-file-b').textContent = '_' + last.replace(/-/g, '_') + '.csv';
 
-    // Featured multi-team players (meta.featured_players), timeline from the first.
+    // Follow-a-player tile: draws and links to the first featured career, so
+    // its URL differs from the roster explorer's.
     var featured = meta.featured_players || [];
-    var row = document.getElementById('home-featured');
-    featured.forEach(function (p) {
-      row.append(App.h('a', { class: 'chip', href: '#/player/' + p.wbb_id, text: p.name }));
-    });
-    if (featured.length) homeTimeline(document.getElementById('home-timeline'), featured[0]);
-
-    var link = document.getElementById('home-search-link');
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.getElementById('global-search').focus();
-    });
+    if (featured.length) {
+      homeTimeline(document.getElementById('home-timeline'), featured[0]);
+      document.getElementById('home-search-link').href = '#/player/' + featured[0].wbb_id;
+    }
   }
 
   // Non-interactive mini charts for the Geography and Trends tiles. Charts are
