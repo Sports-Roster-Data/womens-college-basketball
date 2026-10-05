@@ -42,3 +42,32 @@ since the row was never parsed as a distinct record.
 - Look at whatever scraper step produces the `5'10""`-style height string --
   that's the root cause of the worst corruption (the Stanford/Wagoner merge)
   and could resurface in future seasons if not addressed.
+
+## Vintage contamination: never re-knit an old season against current raw
+
+In December 2025 the upstream scrape repo (`dwillis/wbb-rosters`) overhauled
+`rosters_2024-25.csv` by re-scraping **live** roster pages instead of the
+archived ones it had originally used. The refreshed file is a mixed-vintage
+hybrid: about a third of the teams still served archived pages (their files
+were honest), but for the rest each "2024-25" row actually carries a later
+season's content. The 2026-10-04 quantification (see
+`scripts/repair_2024_25_vintage.R`) found, over 12,434 comparable shared
+same-player stay rows:
+
+- 3,449 class cells changed from the pre-refresh vintage, with **zero +1
+  deltas** -- only +2/+3 jumps (a same-season progression is impossible).
+- 1,251 real 2024-25 rows (mostly schools that have closed) were dropped.
+- 891 NEW-only rows strong-mirrored a player's 2025-26 record backward
+  (same school, identical class/height/hometown), e.g. a 2024-25 "Virginia"
+  row for a player who was actually at NC State that season.
+
+`scripts/repair_2024_25_vintage.R` applied the owner-approved repair: the
+pre-refresh vintage (`f1a5ba0`) is historical truth wherever it has a value;
+strong-mirror fabrications were deleted; dropped rows were restored.
+Post-repair, the shared-stay class==2025-26 rate fell from 46.8% to 6.9%
+(honest-era control ~6.5%).
+
+**Rule: season files older than the live season must only ever be re-knit
+against an archived/raw source frozen at that season's vintage.** Re-knitting
+a historical season against upstream's current raw will silently import
+whichever season the live pages now serve.
