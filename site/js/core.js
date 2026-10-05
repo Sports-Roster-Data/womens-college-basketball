@@ -466,21 +466,34 @@
     var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, preserveAspectRatio: 'xMidYMid meet' });
     var xs = path.map(function (_, i) { return n === 1 ? W / 2 : x0 + (x1 - x0) * i / (n - 1); });
     svg.append(svgEl('line', { x1: xs[0], y1: 62, x2: xs[n - 1], y2: 62, stroke: '#bfdbfe', 'stroke-width': 3, 'stroke-linecap': 'round' }));
-    var stint = -1, lastTeam = null;
+    // Group seasons into team stints and place each label above its stint.
+    var stints = [];
     path.forEach(function (p, i) {
-      if (p.team !== lastTeam) {
-        stint += 1; lastTeam = p.team;
-        var runEnd = i;
-        while (runEnd + 1 < n && path[runEnd + 1].team === p.team) runEnd += 1;
-        var cx = (xs[i] + xs[runEnd]) / 2;
-        var label = p.team.length > 16 ? p.team.slice(0, 15) + '…' : p.team;
-        // Edge stints anchor inward so long names stay inside the viewBox.
-        var anchor = cx < 50 ? 'start' : cx > W - 50 ? 'end' : 'middle';
-        var tx = anchor === 'start' ? Math.max(4, xs[i] - 8) : anchor === 'end' ? Math.min(W - 4, xs[runEnd] + 8) : cx;
-        // Alternate label rows so short back-to-back stints don't collide.
-        svg.append(svgEl('text', { x: tx, y: stint % 2 ? 32 : 46, 'font-size': 10, 'font-weight': 600,
-          'text-anchor': anchor, fill: App.palette[stint % App.palette.length], text: label }));
-      }
+      var last = stints[stints.length - 1];
+      if (last && last.team === p.team) last.end = i;
+      else stints.push({ team: p.team, start: i, end: i });
+    });
+    stints.forEach(function (st) {
+      st.label = st.team.length > 16 ? st.team.slice(0, 15) + '…' : st.team;
+      var cx = (xs[st.start] + xs[st.end]) / 2;
+      st.anchor = cx < 50 ? 'start' : cx > W - 50 ? 'end' : 'middle';   // keep edge labels inside the viewBox
+      st.x = st.anchor === 'start' ? Math.max(4, xs[st.start] - 8)
+           : st.anchor === 'end' ? Math.min(W - 4, xs[st.end] + 8) : cx;
+      var half = st.label.length * 5.6 / 2;                              // ~10px bold text
+      st.l = st.anchor === 'start' ? st.x : st.anchor === 'end' ? st.x - 2 * half : st.x - half;
+      st.r = st.l + 2 * half;
+    });
+    // One row unless neighbouring labels would collide; then alternate rows.
+    var collide = stints.some(function (st, i) { return i > 0 && st.l < stints[i - 1].r + 6; });
+    stints.forEach(function (st, k) {
+      svg.append(svgEl('text', { x: st.x, y: collide && k % 2 ? 32 : 46, 'font-size': 10, 'font-weight': 600,
+        'text-anchor': st.anchor, fill: App.palette[k % App.palette.length], text: st.label }));
+    });
+    var stintOf = path.map(function (_, i) {
+      for (var k = 0; k < stints.length; k++) if (i >= stints[k].start && i <= stints[k].end) return k;
+    });
+    path.forEach(function (p, i) {
+      var stint = stintOf[i];
       svg.append(svgEl('circle', { cx: xs[i], cy: 62, r: 6.5, fill: App.palette[stint % App.palette.length], stroke: '#fff', 'stroke-width': 2 }));
       svg.append(svgEl('text', { x: xs[i], y: 86, 'font-size': 9, 'text-anchor': 'middle', fill: '#78716c',
         text: (App.seasons[p.idx] || '').replace(/^20/, '') }));
