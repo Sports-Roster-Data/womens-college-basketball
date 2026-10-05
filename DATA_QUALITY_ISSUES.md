@@ -71,3 +71,7 @@ Post-repair, the shared-stay class==2025-26 rate fell from 46.8% to 6.9%
 against an archived/raw source frozen at that season's vintage.** Re-knitting
 a historical season against upstream's current raw will silently import
 whichever season the live pages now serve.
+
+Bounds: within-file duplicate-key rows (8 keys in the old vintage carrying 16
+rows, 2 rows in the refreshed file) could not be attributed to one player
+unambiguously and were left as-is by the repair.
