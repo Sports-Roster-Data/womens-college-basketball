@@ -190,6 +190,15 @@ for (col in c("ncaa_id", "wbb_id", "team", "name", "jersey", "year_clean",
               "conference", "division", "url")) {
   w[[col]] <- blank_na(w[[col]])
 }
+# Previous-school canonical columns (applied by player_ids.Rmd): used by the
+# feeder section, kept out of SHIP_COLS and the per-season files.
+stopifnot("combined lacks the previous-school canonical columns - re-knit player_ids.Rmd" =
+            all(c("previous_school_canonical", "previous_school_ncaa_id",
+                  "previous_school_category") %in% names(d)))
+for (col in c("previous_school_canonical", "previous_school_ncaa_id",
+              "previous_school_category")) {
+  w[[col]] <- blank_na(d[[col]])
+}
 # Heights used for aggregates (plausible range only, same rule as cleaning.Rmd).
 w$height_ok <- !is.na(w$total_inches) &
                w$total_inches >= HEIGHT_MIN & w$total_inches <= HEIGHT_MAX
@@ -591,19 +600,40 @@ most_traveled <- lapply(mt_ids, function(id) {
 most_traveled <- most_traveled[order(-vapply(most_traveled, function(m) m$n_teams, 1L),
                                      vapply(most_traveled, function(m) m$name, ""))]
 
-# Feeders: previous_school_clean with >= 5 distinct players. is_known_team marks
-# values that match a current team name (four-year programs vs JuCO/prep).
-feeder_src <- w[!is.na(w$previous_school_clean), ]
-known_team_names <- tolower(unique(c(teams_out$team, w$team)))
-feeder_f <- factor(feeder_src$previous_school_clean)
+# Feeders: canonical previous school with >= FEEDER_MIN_PLAYERS distinct
+# players. Tier2a canonicalizes abbreviations on the ID layer, so "Utah
+# State" and "Utah St." feeders now aggregate. is_team is category-driven:
+# roster_team and four_year_other are four-year programs; juco / prep /
+# international / other render gray. Category is blank ("") when the mapping
+# row is still manual (canonical falls back to the raw lookup string there),
+# so one all-blank group is a real state, not an all-NA error.
+feeder_src <- w[!is.na(w$previous_school_canonical), ]
+feeder_f <- factor(feeder_src$previous_school_canonical)
+feeder_cat <- tapply(feeder_src$previous_school_category, feeder_f, function(v) {
+  v <- v[!is.na(v)]
+  if (length(v) == 0) return("")
+  tab <- table(v)
+  names(tab)[which.max(tab)]
+})
+feeder_ncaa <- tapply(feeder_src$previous_school_ncaa_id, feeder_f, function(v) {
+  u <- unique(na.omit(v))
+  if (length(u) > 0) u[[1]] else ""
+})
 feeders <- data.frame(
   name = levels(feeder_f),
   players = as.integer(tapply(feeder_src$wbb_id, feeder_f,
                               function(v) length(unique(v)))),
   rows = as.integer(table(feeder_f)),
-  is_team = tolower(levels(feeder_f)) %in% known_team_names,
+  is_team = unname(feeder_cat) %in% c("roster_team", "four_year_other"),
+  category = unname(feeder_cat),
+  ncaa_id = unname(feeder_ncaa),
   stringsAsFactors = FALSE
 )
+stopifnot("four-year feeders must carry an ncaa_id" =
+            all(feeders$ncaa_id[feeders$is_team] != ""))
+stopifnot("feeder categories are from the known set" =
+            all(feeders$category %in% c("", "roster_team", "four_year_other",
+                                        "juco", "prep", "international", "other")))
 feeders <- feeders[feeders$players >= FEEDER_MIN_PLAYERS, ]
 feeders <- feeders[order(-feeders$players, feeders$name, method = "radix"), ]
 rownames(feeders) <- NULL
