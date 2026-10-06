@@ -271,13 +271,16 @@
       }
       return geo.season_totals[i];
     }
+    // 'Unknown' is a missing hometown, not a country, so it is neither charted
+    // nor counted in the international totals.
+    function isIntl(c) { return c !== 'USA' && c !== 'Unknown'; }
     function top8Now() {
-      return Object.keys(countryMatrix(intDiv)).filter(function (c) { return c !== 'USA'; })
+      return Object.keys(countryMatrix(intDiv)).filter(isIntl)
         .sort(function (a, b) { return countryCount(b) - countryCount(a); }).slice(0, 8);
     }
     function allIntl(i) {
       var m = countryMatrix(intDiv);
-      return Object.keys(m).filter(function (c) { return c !== 'USA'; })
+      return Object.keys(m).filter(isIntl)
         .reduce(function (a, c) { return a + m[c][i]; }, 0);
     }
 
