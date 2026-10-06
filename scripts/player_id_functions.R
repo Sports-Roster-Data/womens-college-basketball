@@ -19,7 +19,8 @@ SEASON_FILES <- c(
   "2022-23" = "wbb_rosters_2022_23.csv",
   "2023-24" = "wbb_rosters_2023_24.csv",
   "2024-25" = "wbb_rosters_2024_25.csv",
-  "2025-26" = "wbb_rosters_2025_26.csv"
+  "2025-26" = "wbb_rosters_2025_26.csv",
+  "2026-27" = "wbb_rosters_2026_27.csv"
 )
 
 # Grad students are treated at the same tier as fifth-year players since
