@@ -122,9 +122,12 @@ main { padding: 36px 0 48px; }
   margin-bottom: 16px;
 }
 .chart-group { margin-bottom: 8px; }
-.geo-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
+.geo-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 16px; }
+.geo-table table { font-size: 12px; }
+.geo-table th, .geo-table td { padding: 4px 8px; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .table-wrap.max-h { max-height: 420px; overflow-y: auto; }
+.table-wrap.geo-table { max-height: 440px; }
 /* Classic (space-taking) scrollbar so it never overlays the last column and
    the rounded border stays intact; the thumb is rounded to match the site. */
 .table-wrap { scrollbar-gutter: stable; }

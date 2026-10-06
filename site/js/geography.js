@@ -97,13 +97,13 @@
     var featureNames = {};
     geojson.features.forEach(function (f) { featureNames[f.properties.name] = true; });
     var unmapped = Object.keys(geo.state_season).filter(function (code) {
-      return statesMeta[code] && !featureNames[statesMeta[code].name];
+      return statesMeta[code] && code !== 'AE' && !featureNames[statesMeta[code].name];
     });
 
     var mapState = { mode: 'percap', season: -1, division: 'all' }; // -1 = all seasons; per-capita is the default measure
     var mapEl = App.h('div', { class: 'chart', style: 'height:' + (window.innerWidth < 520 ? 340 : 440) + 'px', role: 'img',
       'aria-label': 'Choropleth map of players by home state' });
-    var mapTable = App.h('div', { class: 'table-wrap max-h' });
+    var mapTable = App.h('div', { class: 'table-wrap max-h geo-table' });
     var mapTakeaway = App.h('p', { class: 'takeaway' });
     var mapSub = chartSub('');
     var mapInst; // created after attach — ECharts measures the container at init
@@ -173,7 +173,8 @@
           type: 'continuous', min: 0, max: maxV, itemWidth: 12,
           // Narrow screens: horizontal bar centred under the map instead of overlapping it
           orient: narrow ? 'horizontal' : 'vertical',
-          left: narrow ? 'center' : 8, bottom: narrow ? 4 : 8,
+          left: narrow ? 'center' : 8,
+          top: narrow ? undefined : 'middle', bottom: narrow ? 4 : undefined,
           itemHeight: narrow ? 160 : undefined,
           precision: mapState.mode === 'percap' ? 1 : 0,
           inRange: { color: App.seqRamp }, outOfRange: { color: App.noData },
@@ -187,7 +188,7 @@
       });
 
       // Table twin: every state/territory in the data, sorted by the shaded measure
-      var allCodes = Object.keys(geo.state_season).sort(measureSort);
+      var allCodes = Object.keys(geo.state_season).filter(function (c) { return c !== 'AE'; }).sort(measureSort);
       mapTable.textContent = '';
       var tbody = App.h('tbody', {});
       allCodes.forEach(function (code) {
