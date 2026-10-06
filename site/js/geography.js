@@ -181,7 +181,7 @@
         },
         series: [{
           type: 'map', map: 'USA', data: rows, selectedMode: false,
-          top: 4, bottom: narrow ? 56 : 4, left: 4, right: 4,
+          top: narrow ? 4 : undefined, bottom: narrow ? 56 : undefined,
           emphasis: { label: { show: true }, itemStyle: { areaColor: '#60a5fa' } }
         }]
       });
