@@ -101,7 +101,7 @@
     });
 
     var mapState = { mode: 'percap', season: -1, division: 'all' }; // -1 = all seasons; per-capita is the default measure
-    var mapEl = App.h('div', { class: 'chart', style: 'height:440px', role: 'img',
+    var mapEl = App.h('div', { class: 'chart', style: 'height:' + (window.innerWidth < 520 ? 340 : 440) + 'px', role: 'img',
       'aria-label': 'Choropleth map of players by home state' });
     var mapTable = App.h('div', { class: 'table-wrap max-h' });
     var mapTakeaway = App.h('p', { class: 'takeaway' });
@@ -138,6 +138,7 @@
              (a < b ? -1 : a > b ? 1 : 0);
     }
 
+    var narrow = false;
     function mapUpdate() {
       mapSub.textContent = 'Players whose hometown has a US state, by state, ' +
         (mapState.division === 'all' ? 'all divisions' : 'Division ' + mapState.division) +
@@ -156,6 +157,7 @@
         .map(function (r) { return r.value; });
       var maxV = Math.max.apply(null, vals.concat([0]));
 
+      narrow = mapEl.clientWidth < 520;
       mapInst.setOption({
         aria: { show: true },
         tooltip: {
@@ -168,13 +170,18 @@
           }
         },
         visualMap: {
-          type: 'continuous', min: 0, max: maxV, left: 8, bottom: 8, itemWidth: 12,
+          type: 'continuous', min: 0, max: maxV, itemWidth: 12,
+          // Narrow screens: horizontal bar centred under the map instead of overlapping it
+          orient: narrow ? 'horizontal' : 'vertical',
+          left: narrow ? 'center' : 8, bottom: narrow ? 4 : 8,
+          itemHeight: narrow ? 160 : undefined,
           precision: mapState.mode === 'percap' ? 1 : 0,
           inRange: { color: App.seqRamp }, outOfRange: { color: App.noData },
           text: ['most', '0']
         },
         series: [{
           type: 'map', map: 'USA', data: rows, selectedMode: false,
+          top: 4, bottom: narrow ? 56 : 4, left: 4, right: 4,
           emphasis: { label: { show: true }, itemStyle: { areaColor: '#60a5fa' } }
         }]
       });
@@ -641,6 +648,9 @@
     mapInst.on('click', function (p) {
       var code = p.data && p.data.code;
       if (code) location.hash = '#/roster/' + lastSeason + '?state=' + code;
+    });
+    window.addEventListener('resize', function () {
+      if (mapEl.clientWidth && (mapEl.clientWidth < 520) !== narrow) mapUpdate();
     });
     intlInst = App.chart(intlEl);
     treeInst = App.chart(treeEl);

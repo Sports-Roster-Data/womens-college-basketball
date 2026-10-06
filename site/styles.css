@@ -93,12 +93,12 @@ a:hover { text-decoration: underline; }
 
 /* ---------- Layout & views ---------- */
 
-main { padding: 24px 0 48px; }
+main { padding: 36px 0 48px; }
 .view[hidden] { display: none; }
 
 .page-head { margin-bottom: 16px; }
 .page-head h1 { font-size: clamp(16px, 5vw, 22px); font-weight: 600; margin: 0 0 4px; white-space: nowrap; }
-.page-head .lede { color: var(--muted); margin: 0; max-width: 72ch; }
+.page-head .lede { color: var(--muted); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .card {
   background: var(--panel);
@@ -309,7 +309,7 @@ a.entry-card:hover { text-decoration: none; border-color: var(--accent); transfo
   .site-nav a { padding: 9px 14px; min-height: 40px; }
   .search-box { max-width: none; flex-basis: 100%; order: 3; }
   .site-nav { order: 2; }
-  main { padding: 16px 0 40px; }
+  main { padding: 28px 0 40px; }
 }
 
 @media (max-width: 900px) {
