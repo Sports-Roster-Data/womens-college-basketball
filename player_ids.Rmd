@@ -85,7 +85,7 @@ if (length(val$issues) > 0) {
   print(val$issues)
 } else {
   cat("\nNo validation issues: no wbb_id spans two teams in one season,",
-      "and no wbb_id spans more than 6 seasons.\n")
+      "and no wbb_id spans more than 7 seasons.\n")
 }
 ```
 

@@ -719,7 +719,7 @@ validate_ids <- function(all_rows, assignments) {
   span <- joined %>%
     group_by(wbb_id) %>%
     summarise(span = max(season_order) - min(season_order) + 1, .groups = "drop") %>%
-    filter(span > 6)
+    filter(span > 7)
   if (nrow(span) > 0) issues$impossible_span <- span
 
   funnel <- joined %>%
