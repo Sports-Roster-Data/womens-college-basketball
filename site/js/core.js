@@ -532,6 +532,53 @@
     }
   }
 
+  // site/updates.yml is a flat list of "- date: / text:" pairs; this reads just
+  // that shape (comments and optional quotes allowed) so no YAML library is needed.
+  function parseUpdates(text) {
+    var items = [], cur = null;
+    text.split(/\r?\n/).forEach(function (line) {
+      line = line.replace(/^\s*#.*$/, '');
+      if (!line.trim()) return;
+      var m = line.match(/^\s*(-\s+)?(date|text)\s*:\s*(.*?)\s*$/);
+      if (!m) return;
+      if (m[1]) { cur = {}; items.push(cur); }
+      if (!cur) return;
+      cur[m[2]] = m[3].replace(/^(["'])(.*)\1$/, '$2');
+    });
+    return items.filter(function (u) { return /^\d{4}-\d{2}-\d{2}$/.test(u.date || '') && u.text; })
+      .sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+  }
+
+  function fmtUpdateDate(iso) {
+    var p = iso.split('-');
+    var d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  }
+
+  function homeUpdates() {
+    var ul = document.getElementById('home-updates');
+    if (ul.dataset.built) return;
+    ul.dataset.built = '1';
+    fetch('updates.yml').then(function (r) {
+      if (!r.ok) throw new Error('updates.yml ' + r.status);
+      return r.text();
+    }).then(function (txt) {
+      var items = parseUpdates(txt).slice(0, 6);
+      ul.textContent = '';
+      if (!items.length) { ul.append(App.h('li', { class: 'updates-empty', text: 'No updates yet.' })); return; }
+      items.forEach(function (u) {
+        ul.append(App.h('li', {},
+          App.h('time', { datetime: u.date, text: fmtUpdateDate(u.date) }),
+          App.h('span', { text: u.text })));
+      });
+    }).catch(function (err) {
+      console.warn('home updates', err);
+      ul.textContent = '';
+      ul.append(App.h('li', { class: 'updates-empty', text: 'Updates are unavailable right now.' }));
+      delete ul.dataset.built;
+    });
+  }
+
   // Non-interactive mini charts for the Geography and Trends tiles. Charts are
   // disposed by App.clearCharts() on every route change, so they are rebuilt
   // on each home render; a missing data file leaves the tile blank.
@@ -588,6 +635,7 @@
     },
     render: function () {
       homeStatic();
+      homeUpdates();
       homeCharts();
       return Promise.resolve();
     }

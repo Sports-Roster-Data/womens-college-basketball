@@ -1,0 +1,18 @@
+# Homepage "Updates" card. Add a new entry at the TOP when the roster CSVs change.
+# Keep each summary to about 5-6 words, plain text. The card shows the newest six
+# (sorted by date, so order here doesn't matter, but newest-first is easiest to read).
+#
+# Format (exactly two keys per entry; quotes optional):
+#   - date: 2026-10-06
+#     text: Updated 2026-27 rosters and IDs
+
+- date: 2026-10-06
+  text: Updated 2026-27 rosters and added countries
+- date: 2026-10-05
+  text: Repaired 2024-25 rosters
+- date: 2026-10-01
+  text: Initial 2026-27 rosters posted
+- date: 2025-12-13
+  text: Latest 2025-26 roster fixes
+- date: 2025-09-12
+  text: First 2025-26 rosters posted

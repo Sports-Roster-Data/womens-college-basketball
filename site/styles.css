@@ -207,7 +207,12 @@ a.entry-card:hover { text-decoration: none; border-color: var(--accent); transfo
 .skel-row i { display: block; height: 9px; border-radius: 999px; background: #d6d3d1; }
 .skel-row i:first-child { background: #a8a29e; }
 
-.entry-spacer { min-width: 0; }
+/* Updates card: dated one-line list */
+.updates { list-style: none; margin: 8px 0 0; padding: 0; }
+.updates li { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.updates li:last-child { border-bottom: none; }
+.updates time { flex: none; width: 92px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.updates .updates-empty { color: var(--muted); font-style: italic; }
 
 /* ---------- Roster explorer / tables ---------- */
 
@@ -317,13 +322,11 @@ a.entry-card:hover { text-decoration: none; border-color: var(--accent); transfo
 
 @media (max-width: 900px) {
   .entry-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .entry-spacer { display: none; }
 }
 
 @media (max-width: 600px) {
   .hero { padding: 4px 0 20px; }
   .hero .lede { font-size: 14px; }
-  .entry-spacer { display: none; }
   .entry-cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .thumb { height: 120px; }
   .card { padding: 14px; }
