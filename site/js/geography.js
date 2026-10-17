@@ -445,7 +445,7 @@
                 .sort(function (a, b) { return b[3] - a[3]; }));
           })))));
 
-    /* ---------- 4. Hometown hotbeds + full city table ---------- */
+    /* ---------- 4. Hometown hotbeds ---------- */
 
     var hbMode = 'players';
     var hbDiv = 'all';
@@ -454,8 +454,6 @@
     var hbTakeaway = App.h('p', { class: 'takeaway' });
     var hbSub = chartSub('');
     var hbInst;
-    var cityTable; // full city table (below), created after attach
-
     // Per-division city lists come pre-thresholded by the build (>= 10 distinct
     // players within that division), so a city can appear in one division's
     // list but not another's.
@@ -467,13 +465,6 @@
         return { key: c[0] + '|' + c[1], city: c[0], state: c[1], players: c[2], rows: c[3] };
       });
     }
-    function refreshCityTable() {
-      cityCountSub.textContent = citiesNow().length + ' US cities' +
-        (hbDiv === 'all' ? '' : ' with 10+ Division ' + hbDiv + ' players') +
-        ', best-effort parsed from hometown strings.';
-      if (cityTable) cityTable.setData(cityRows());
-    }
-
     function hbUpdate() {
       var list = citiesNow().slice().sort(function (a, b) {
         return hbMode === 'rows' ? b[3] - a[3] : b[2] - a[2];
@@ -516,12 +507,11 @@
         '. Click a bar to open that hometown in the latest season’s roster.';
     }
 
-    var cityCountSub = chartSub('');
     sec.append(group(
       [radios('Measure', 'geo-hb-measure', [{ value: 'players', label: 'Distinct players' },
                                             { value: 'rows', label: 'Player-seasons' }],
               hbMode, function (v) { hbMode = v; hbUpdate(); }),
-       divSelect(hbDiv, function (v) { hbDiv = v; hbUpdate(); refreshCityTable(); })],
+       divSelect(hbDiv, function (v) { hbDiv = v; hbUpdate(); })],
       App.h('section', { class: 'card chart-card' },
         App.h('h2', { text: 'Hometown hotbeds' }),
         hbSub,
@@ -533,18 +523,6 @@
             return [['division', 'city', 'state', 'distinct_players', 'player_seasons']]
               .concat(citiesNow().map(function (c) { return [dv].concat(c); }));
           })))));
-
-    var cityTableEl = App.h('div', { id: 'city-table' });
-    sec.append(App.h('section', { class: 'card' },
-      App.h('h2', { style: 'font-size:15px;font-weight:600;margin:0 0 8px', text: 'Every city with 10+ players' }),
-      cityCountSub,
-      cityTableEl,
-      App.h('div', { class: 'card-foot' },
-        App.csvBtn('cities_all.csv', function () {
-          var dv = hbDiv === 'all' ? 'all' : hbDiv;
-          return [['division', 'city', 'state', 'distinct_players', 'player_seasons']]
-            .concat(citiesNow().map(function (c) { return [dv].concat(c); }));
-        }))));
 
     /* ---------- 5. In-state recruiting % ---------- */
 
@@ -678,21 +656,5 @@
     hbUpdate();
     inUpdate();
 
-    var cityTable = new Tabulator(cityTableEl, {
-      index: 'key',
-      columns: [
-        { title: 'City', field: 'city', minWidth: 140, maxWidth: 260, headerFilter: 'input', headerFilterPlaceholder: 'filter' },
-        { title: 'State', field: 'state', minWidth: 70, maxWidth: 90, headerFilter: 'input', headerFilterPlaceholder: 'filter' },
-        { title: 'Distinct players', field: 'players', minWidth: 140, sorter: 'number', hozAlign: 'right' },
-        { title: 'Player-seasons', field: 'rows', minWidth: 130, sorter: 'number', hozAlign: 'right' }
-      ],
-      layout: 'fitDataStretch',
-      height: 420,
-      selectableRows: false,
-      placeholder: 'No cities match.',
-      initialSort: [{ column: 'players', dir: 'desc' }]
-    });
-    geoTables.push(cityTable);
-    refreshCityTable(); // fills the count line + data now that the table exists
   }
 })();
