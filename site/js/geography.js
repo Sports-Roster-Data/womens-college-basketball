@@ -2,7 +2,7 @@
    1. US hometown choropleth (count ↔ per-1M-residents, season radio) + all-states table
    2. International players over time (count ↔ share of all players)
    3. Country treemap (USA excluded; season + division dropdowns)
-   4. Hometown hotbeds (top 25 US cities, distinct players ↔ player-seasons) + full city table
+   4. Hometown hotbeds (top 25 US cities, distinct players ↔ player-seasons)
    5. In-state recruiting % by season and division (top/bottom 25)
    Views 1-4 take a Division dropdown (All / I / II / III) fed by the
    per-division aggregates in geography.json; the NAIA and blank-division
@@ -655,6 +655,5 @@
     treeUpdate();
     hbUpdate();
     inUpdate();
-
   }
 })();
