@@ -428,15 +428,33 @@
   // US map GeoJSON is registered once and shared by the home tile and the
   // geography page.
   var mapRegistered = false;
+
+  // Albers USA composite: conic equal-area lower 48 with Alaska, Hawaii and
+  // Puerto Rico scaled and tucked beneath (same layout as d3.geoAlbersUsa,
+  // plus Puerto Rico). Passed to ECharts map series as `projection`.
+  var K = 1070, T = [480, 250];
+  function conic(rot, ctr, par, scale, dx, dy) {
+    return d3.geoConicEqualArea().rotate(rot).center(ctr).parallels(par)
+      .scale(scale).translate([T[0] + dx * K, T[1] + dy * K]);
+  }
+  var pLower = d3.geoAlbers().scale(K).translate(T);
+  var pAK = conic([154, 0], [-2, 58.5], [55, 65], K * 0.35, -0.307, 0.201);
+  var pHI = conic([157, 0], [-3, 19.9], [8, 18], K, -0.205, 0.212);
+  var pPR = conic([66, 0], [0, 18.2], [8, 18], K * 1.5, 0.3, 0.215);
+  function pick(lon, lat) {
+    if (lat > 51 && lon < -129) return pAK;
+    if (lat < 23 && lon < -154 && lon > -161) return pHI;
+    if (lat < 19.5 && lon > -68 && lon < -65) return pPR;
+    return pLower;
+  }
+  App.albersUSA = {
+    project: function (pt) { return pick(pt[0], pt[1])(pt); },
+    // Only used for hit-testing under roam; invert via the lower-48 projection.
+    unproject: function (pt) { return pLower.invert(pt); }
+  };
   App.registerUSMap = function (geojson) {
     if (!mapRegistered) {
-      // Shrink and tuck Alaska, Hawaii and Puerto Rico under the lower 48
-      // (map-coordinate boxes; left/top are the top-left corner in degrees).
-      echarts.registerMap('USA', geojson, {
-        Alaska: { left: -127, top: 29, width: 9 },
-        Hawaii: { left: -113, top: 27, width: 4.5 },
-        'Puerto Rico': { left: -78, top: 26, width: 2.5 }
-      });
+      echarts.registerMap('USA', geojson);
       mapRegistered = true;
     }
   };
@@ -621,7 +639,7 @@
       inst.setOption({
         animation: false, silent: true,
         visualMap: { show: false, min: 0, max: maxV, inRange: { color: App.seqRamp }, outOfRange: { color: App.noData } },
-        series: [{ type: 'map', map: 'USA', data: rows, selectedMode: false, roam: false,
+        series: [{ type: 'map', map: 'USA', projection: App.albersUSA, data: rows, selectedMode: false, roam: false,
           top: 2, bottom: 2, left: 2, right: 2,
           itemStyle: { borderColor: '#ffffff', borderWidth: 0.6 },
           emphasis: { disabled: true } }]

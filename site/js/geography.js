@@ -181,7 +181,7 @@
           text: ['most', '0']
         },
         series: [{
-          type: 'map', map: 'USA', data: rows, selectedMode: false,
+          type: 'map', map: 'USA', projection: App.albersUSA, data: rows, selectedMode: false,
           top: narrow ? 4 : undefined, bottom: narrow ? 56 : undefined,
           emphasis: { label: { show: true }, itemStyle: { areaColor: '#60a5fa' } }
         }]
