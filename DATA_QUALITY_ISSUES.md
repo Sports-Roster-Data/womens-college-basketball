@@ -42,3 +42,58 @@ since the row was never parsed as a distinct record.
 - Look at whatever scraper step produces the `5'10""`-style height string --
   that's the root cause of the worst corruption (the Stanford/Wagoner merge)
   and could resurface in future seasons if not addressed.
+
+## Vintage contamination: never re-knit an old season against current raw
+
+In December 2025 the upstream scrape repo (`dwillis/wbb-rosters`) overhauled
+`rosters_2024-25.csv` by re-scraping **live** roster pages instead of the
+archived ones it had originally used. The refreshed file is a mixed-vintage
+hybrid: about a third of the teams still served archived pages (their files
+were honest), but for the rest each "2024-25" row actually carries a later
+season's content. The 2026-10-04 quantification (see
+`scripts/repair_2024_25_vintage.R`) found, over 12,463 comparable shared
+same-player stay rows (12,438 same-label, 25 school label-drift):
+
+- 3,449 class cells changed from the pre-refresh vintage, with **zero +1
+  deltas** -- only +2/+3 jumps (a same-season progression is impossible).
+- 1,252 real 2024-25 rows (mostly schools that have closed) were dropped.
+- 892 NEW-only rows strong-mirrored a player's 2025-26 record backward
+  (same school, identical class/height/hometown), e.g. a 2024-25 "Virginia"
+  row for a player who was actually at NC State that season.
+
+`scripts/repair_2024_25_vintage.R` applied the owner-approved repair: the
+pre-refresh vintage (`f1a5ba0`) is historical truth wherever it has a value;
+strong-mirror fabrications were deleted (892); dropped rows were restored
+(1,252, including one duplicate pair collapsed to its single distinct copy);
+the repaired `wbb_rosters_2024_25.csv` carries 16,170 rows, with `height_clean`
+agreeing with `total_inches` on every parseable row. Post-repair, the
+shared-stay class==2025-26 rate fell from 46.8% to 6.9% (honest-era control
+~6.5%).
+
+**Rule: season files older than the live season must only ever be re-knit
+against an archived/raw source frozen at that season's vintage.** Re-knitting
+a historical season against upstream's current raw will silently import
+whichever season the live pages now serve.
+
+Bounds (within-file duplicate-key rows, unattributable one-to-one and never
+cross-matched by the repair):
+
+- NEW's own duplicate-keyed rows pass through on NEW's values. One such row
+  (Marley Freeman, 2024-25 LeMoyne-Owen, no jersey) matches neither its own
+  2025-26 twin (jersey 11, 5'8") nor the refreshed row (5'8") and was left
+  standing; its twin-matching neighbor was deleted as a mirror.
+- OLD's duplicate-keyed rows restore when NEW does not represent the key
+  (Samantha Campanelli, Lewis: two identical rows restored to one).
+- Three OLD duplicate keys self-contradict (Lewis scraped two class years for
+  the same player -- e.g. Tara Gugliuzza {Junior, Senior}); where NEW carries
+  the key, NEW's representation survives. A guard pins that NEW's class always
+  agreed with at least one OLD copy in these cases.
+
+Cascade note: 2025-26's final knit (`b2a69d2`) ran before the 2024-25 repair
+existed, so its high-school backfill (which reads the previous season's
+output) could see only the pre-repair 2024-25 vintage. About 3 of its 1,371
+missing-high-school rows would backfill from the restored rows. It is **not**
+re-knitted here -- a re-knit would also bake the working tree's uncommitted
+corrections and the current live upstream into the commit. If you choose to
+re-knit: set `SEASON` to 2025-26 in `cleaning.Rmd`, re-knit it, then re-knit
+`player_ids.Rmd` and commit both.

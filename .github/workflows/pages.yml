@@ -1,0 +1,63 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'scripts/build_site_data.R'
+      - 'wbb_rosters_combined.csv'
+      - 'players.csv'
+      - 'teams.csv'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          # Posit Package Manager serves a prebuilt jsonlite binary (seconds
+          # instead of a source compile).
+          use-public-rspm: true
+
+      - name: Install jsonlite
+        run: Rscript -e 'install.packages("jsonlite", repos = "https://cloud.r-project.org")'
+
+      # The R script carries guards (stopifnot) that fail the build if the
+      # CSVs are out of sync; run under a UTF-8 locale per the repo
+      # convention (LANG=en_US.UTF-8, as in CLAUDE.md).
+      - name: Build site data
+        env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+        run: Rscript scripts/build_site_data.R
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

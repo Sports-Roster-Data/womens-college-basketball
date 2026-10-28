@@ -6,9 +6,10 @@ library(tidyverse)
 wbb_rosters23 <- read_csv("wbb_rosters_2022_23.csv") |> mutate(player_id = as.character(player_id))
 wbb_rosters24 <- read_csv("wbb_rosters_2023_24.csv") |> mutate(player_id = as.character(player_id))
 wbb_rosters25 <- read_csv("wbb_rosters_2024_25.csv") |> mutate(player_id = as.character(player_id))
-wbb_rosters26 <- read_csv("wbb_rosters_2025_26.csv") |> mutate(player_id = as.character(player_id))
+wbb_rosters26 <- read_csv("wbb_rosters_2025_26.csv") 
+wbb_rosters27 <- read_csv("https://raw.githubusercontent.com/dwillis/wbb-rosters/refs/heads/main/rosters_2026-27.csv") |> rename(year = academic_year)
 
-combined_rosters <- bind_rows(list(wbb_rosters23, wbb_rosters24, wbb_rosters25))
+combined_rosters <- bind_rows(list(wbb_rosters23, wbb_rosters24, wbb_rosters25, wbb_rosters26, wbb_rosters27))
 ```
 
 # Data Exploration Section
@@ -17,10 +18,21 @@ combined_rosters <- bind_rows(list(wbb_rosters23, wbb_rosters24, wbb_rosters25))
 ## How many international players are on rosters?
 
 ```{r}
-combined_rosters |> 
-  filter(country_clean != 'USA') |> 
+
+
+div_one_counts <- combined_rosters |> 
+  filter(division == "I") |> 
+  group_by(season, ncaa_id, team, conference) |> 
+  summarize(count = n()) |> 
+  arrange(desc(count))
+  
+div_one_counts |> 
+  filter(count < 15) |> 
   group_by(season) |> 
-  summarize(count = n())
+  summarize(teams = n())
+
+
+
 ```
 
 
@@ -49,17 +61,30 @@ non_us_division <- combined_rosters %>%
 
 non_us_team <- combined_rosters %>% 
   filter(country_clean != 'USA') %>% 
-  group_by(team, season) %>% 
+  group_by(team, division, conference, season) %>% 
   summarize(players = n()) %>% 
   pivot_wider(names_from=season, values_from = players) |> 
   replace_na(list(`2022-23` = 0, `2023-24` = 0, `2024-25` = 0)) |> 
   mutate(total = `2022-23` + `2023-24` + `2024-25`) |> 
-  mutate(pct_change = (`2024-25` - `2023-24`)/`2023-24` *100)
+  mutate(pct_change = (`2024-25` - `2023-24`)/`2023-24` *100) |> 
+  mutate(three_year_pct = (`2024-25` - `2022-23`)/`2022-23` *100) |> 
+  mutate(three_year_diff = `2024-25` - `2022-23`, one_year_diff = `2024-25` - `2023-24`)
+  
+
+non_us_conf <- combined_rosters %>% 
+  filter(country_clean != 'USA') %>% 
+  group_by(conference, division, season) %>% 
+  summarize(players = n()) %>% 
+  pivot_wider(names_from=season, values_from = players) |> 
+  replace_na(list(`2022-23` = 0, `2023-24` = 0, `2024-25` = 0)) |> 
+  mutate(total = `2022-23` + `2023-24` + `2024-25`) |> 
+  mutate(pct_change = (`2024-25` - `2023-24`)/`2023-24` *100) |> 
+  mutate(three_year_diff = (`2024-25` - `2022-23`)/`2022-23` *100)
 ```
 More than 25 teams have at least seven non-U.S. players on their rosters, South Florida has 12, San Francisco 10 and six teams have nine each (Simon Fraser has 14 but it is located in Canada).
 
 ```{r}
-wbb_rosters24 %>% 
+wbb_rosters25 %>% 
   filter(country_clean != 'USA') %>% 
   group_by(team) %>% 
   summarize(count = n()) %>% 
@@ -73,14 +98,14 @@ Of the 95 teams that have at least one Australian player, 25 of them have two or
 More than 130 teams have a Spanish player on the roster. Four teams have enough to field a starting five entirely from Spain.
 
 ```{r}
-wbb_rosters24 %>% 
+wbb_rosters25 %>% 
   filter(country_clean == 'AUSTRALIA') %>% 
   group_by(team) %>% 
   summarize(count = n()) %>% 
   arrange(desc(count))
 
 
-wbb_rosters24 %>% 
+wbb_rosters25 %>% 
   filter(country_clean == 'SPAIN') %>% 
   group_by(team) %>% 
   summarize(count = n()) %>% 
@@ -174,6 +199,19 @@ team_transfer_counts <- wbb_rosters24 |> filter(!is.na(previous_school_clean)) |
 
 teams_with_transfers_count <- team_player_counts |> left_join(team_transfer_counts) |> mutate(transfers = if_else(is.na(transfers), 0, transfers)) |> mutate(pct = transfers/players*100)
 
+```
+
+
+```{r}
+non_us_team |> 
+  group_by(division) |> 
+  summarise(median = median(`2024-25`))
+
+wbb_rosters25 |> filter(division %in% c("I","II","III")) |>  distinct(team)
+
+
+non_us_team |> 
+  filter(`2022-23` == 0, `2023-24` == 0, `2024-25` > 0, division == "I")
 ```
 
 

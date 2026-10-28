@@ -53,3 +53,11 @@ __pycache__/
 *.pyd
 .Python
 *.so
+
+# Roster editor
+editor/.venv/
+corrections/baseline_*.csv
+
+# Generated site data (built by scripts/build_site_data.R, deployed by the Pages workflow)
+site/data/*
+!site/data/us-states.json
