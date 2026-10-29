@@ -135,7 +135,7 @@ function buildColumns() {
   const cols = [{ formatter: "rowSelection", titleFormatter: "rowSelection", hozAlign: "center", headerSort: false, width: 36, frozen: true,
                   cellClick: (e, cell) => cell.getRow().toggleSelect() }];
   for (const c of meta.columns) {
-    const def = { title: c, field: c, headerFilter: "input", headerFilterPlaceholder: "filter", minWidth: 70, maxWidth: 320,
+    const def = { title: c, field: c, headerFilter: "input", headerFilterPlaceholder: "text · = blank · ! filled", minWidth: 70, maxWidth: 320,
                   sorter: meta.numeric.includes(c) ? "number" : "string" };
     if (!meta.locked.includes(c)) {
       def.editor = "input";
@@ -143,7 +143,15 @@ function buildColumns() {
       def.editorParams = { selectContents: true };
     }
     if (c === "team") def.frozen = true;
-    if (c === "division") def.headerFilterFunc = "=";  // "I" would otherwise match II and III
+    // "=" alone matches blank/null cells, "!" alone matches non-blank ones
+    const exact = c === "division";  // "I" would otherwise match II and III
+    def.headerFilterFunc = (term, value) => {
+      const v = value == null ? "" : String(value).trim();
+      const t = String(term).trim();
+      if (t === "=") return v === "";
+      if (t === "!") return v !== "";
+      return exact ? v === t : v.toLowerCase().includes(t.toLowerCase());
+    };
     cols.push(def);
   }
   return cols;
