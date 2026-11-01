@@ -34,6 +34,24 @@ wbb_rosters <- read_csv(INPUT_URL, show_col_types = FALSE) |>
   mutate(team = str_squish(team))
 
 stopifnot(all(wbb_rosters$season == SEASON))
+
+# Drop rows listed in data/stale_roster_exclusions.csv (built by
+# scripts/find_stale_rosters.py): team-seasons whose scrape is a copy of
+# another season's roster, plus single duplicate rows.
+stale_norm_url <- \(x) x |> str_to_lower() |> str_remove("^https?://") |>
+  str_remove("^www\\.") |> str_remove("/$")
+stale <- read_csv("data/stale_roster_exclusions.csv", show_col_types = FALSE,
+                  col_types = cols(.default = "c")) |>
+  filter(season == SEASON)
+stale_rows <- stale |>
+  filter(scope == "row") |>
+  transmute(.ncaa = ncaa_id, name, .url = stale_norm_url(url))
+wbb_rosters <- wbb_rosters |>
+  filter(!as.character(ncaa_id) %in% stale$ncaa_id[stale$scope == "team_season"]) |>
+  mutate(.ncaa = as.character(ncaa_id), .url = stale_norm_url(url)) |>
+  anti_join(stale_rows, by = c(".ncaa", "name", ".url")) |>
+  select(-.ncaa, -.url)
+cat("Dropped", nrow(stale), "stale roster exclusion(s) for", SEASON, "\n")
 n_input <- nrow(wbb_rosters)
 
 # Load teams metadata
@@ -667,6 +685,28 @@ teams_missing_hs <- wbb_rosters_final |>
   arrange(desc(pct_missing), desc(missing_high_school))
 
 teams_missing_hs
+```
+
+```{r check-stale-roster}
+# Teams whose roster is a copy of last season's (same urls, names and class
+# years). Returning players should move up a class, so any row here means the
+# scrape fell back to an old page: add the team-season to
+# data/stale_roster_exclusions.csv (python3 scripts/find_stale_rosters.py).
+if (file.exists(PREV_FILE)) {
+  stale_key <- \(df) df |>
+    transmute(ncaa_id = as.character(ncaa_id), name, year_clean,
+              url = stale_norm_url(url)) |>
+    filter(!is.na(url), !is.na(year_clean))
+  prev_rows <- stale_key(read_csv(PREV_FILE, show_col_types = FALSE))
+  stale_key(wbb_rosters_final) |>
+    left_join(prev_rows, by = c("ncaa_id", "url"), suffix = c("", "_prev")) |>
+    group_by(ncaa_id) |>
+    summarize(players = n(), shared = sum(!is.na(name_prev)),
+              identical = sum(name == name_prev & year_clean == year_clean_prev,
+                              na.rm = TRUE), .groups = "drop") |>
+    filter(identical >= 5, identical >= 0.9 * players) |>
+    left_join(teams |> transmute(ncaa_id = as.character(ncaa_id), team), by = "ncaa_id")
+}
 ```
 
 ```{r check-duplicates}

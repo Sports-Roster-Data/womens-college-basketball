@@ -400,41 +400,62 @@ every re-run, so manual adjudication persists.</p>
 </div>
 <div id="load-and-prepare-all-six-seasons" class="section level2">
 <h2>Load and prepare all six seasons</h2>
-<pre class="r"><code>all_rows &lt;- load_all_seasons()
-cat(&quot;Total rows loaded:&quot;, nrow(all_rows), &quot;\n&quot;)</code></pre>
-<pre><code>## Total rows loaded: 86478</code></pre>
+<pre class="r"><code>all_rows &lt;- load_all_seasons()</code></pre>
+<pre><code>## Dropped 0 stale roster rows (data/stale_roster_exclusions.csv)</code></pre>
+<pre class="r"><code>cat(&quot;Total rows loaded:&quot;, nrow(all_rows), &quot;\n&quot;)</code></pre>
+<pre><code>## Total rows loaded: 98598</code></pre>
 <pre class="r"><code>print(all_rows %&gt;% count(season, season_order))</code></pre>
-<pre><code>## # A tibble: 6 × 3
+<pre><code>## # A tibble: 7 × 3
 ##   season  season_order     n
 ##   &lt;chr&gt;          &lt;int&gt; &lt;int&gt;
-## 1 2020-21            1 13075
-## 2 2021-22            2 13645
-## 3 2022-23            3 13805
-## 4 2023-24            4 13907
-## 5 2024-25            5 16170
-## 6 2025-26            6 15876</code></pre>
+## 1 2020-21            1 11835
+## 2 2021-22            2 12844
+## 3 2022-23            3 13508
+## 4 2023-24            4 13814
+## 5 2024-25            5 16115
+## 6 2025-26            6 15876
+## 7 2026-27            7 14606</code></pre>
 <pre class="r"><code>dedup &lt;- resolve_within_season_dupes(all_rows)
 all_rows_d &lt;- dedup$rows
 cat(&quot;\nWithin-season duplicate (same name + team) groups flagged as the same&quot;,
     &quot;person (scraper double-listing):&quot;, sum(!is.na(all_rows_d$dup_of)), &quot;\n&quot;)</code></pre>
 <pre><code>## 
-## Within-season duplicate (same name + team) groups flagged as the same person (scraper double-listing): 117</code></pre>
+## Within-season duplicate (same name + team) groups flagged as the same person (scraper double-listing): 87</code></pre>
 <pre class="r"><code>cat(&quot;Within-season duplicate groups flagged as genuinely distinct players&quot;,
     &quot;(sent to review queue):&quot;, nrow(dedup$review), &quot;\n&quot;)</code></pre>
-<pre><code>## Within-season duplicate groups flagged as genuinely distinct players (sent to review queue): 32</code></pre>
+<pre><code>## Within-season duplicate groups flagged as genuinely distinct players (sent to review queue): 34</code></pre>
 </div>
 <div id="run-the-tiered-matcher-across-all-seasons" class="section level2">
 <h2>Run the tiered matcher across all seasons</h2>
 <pre class="r"><code>result &lt;- build_player_ids(all_rows_d)
 
 assignments &lt;- propagate_dup_assignments(all_rows_d, result$assignments)
+assignments_matched &lt;- assignments
 assignments &lt;- apply_overrides(assignments, all_rows_d)
+
+# Map this run&#39;s temporary IDs back onto the published ones (see
+# persist_ids in scripts/player_id_functions.R).
+persisted &lt;- persist_ids(assignments, all_rows_d)
+assignments &lt;- persisted$assignments
+cat(&quot;Kept&quot;, sum(persisted$id_map$wbb_id %in% read_csv(&quot;wbb_player_seasons.csv&quot;,
+    show_col_types = FALSE, col_types = cols(.default = &quot;c&quot;))$wbb_id),
+    &quot;published wbb_ids; retired&quot;, nrow(persisted$new_retirements), &quot;this run\n&quot;)</code></pre>
+<pre><code>## Kept 45424 published wbb_ids; retired 0 this run</code></pre>
+<pre class="r"><code>print(count(persisted$new_retirements, reason))</code></pre>
+<pre><code>## # A tibble: 0 × 2
+## # ℹ 2 variables: reason &lt;chr&gt;, n &lt;int&gt;</code></pre>
+<pre class="r"><code># The review queue names candidates by the matcher&#39;s temporary IDs, before
+# overrides; translate them to final IDs through the rows they label.
+queue_id_map &lt;- assignments_matched %&gt;%
+  inner_join(assignments, by = &quot;row_id&quot;, suffix = c(&quot;_temp&quot;, &quot;&quot;)) %&gt;%
+  distinct(wbb_id_temp, wbb_id) %&gt;%
+  group_by(wbb_id_temp) %&gt;% slice(1) %&gt;% ungroup()
 
 stopifnot(nrow(assignments) == nrow(all_rows_d))
 cat(&quot;Assigned a wbb_id to all&quot;, nrow(assignments), &quot;rows\n&quot;)</code></pre>
-<pre><code>## Assigned a wbb_id to all 86478 rows</code></pre>
+<pre><code>## Assigned a wbb_id to all 98598 rows</code></pre>
 <pre class="r"><code>cat(&quot;Distinct players (wbb_id) across all seasons:&quot;, n_distinct(assignments$wbb_id), &quot;\n&quot;)</code></pre>
-<pre><code>## Distinct players (wbb_id) across all seasons: 40251</code></pre>
+<pre><code>## Distinct players (wbb_id) across all seasons: 45424</code></pre>
 </div>
 <div id="validation" class="section level2">
 <h2>Validation</h2>
@@ -443,24 +464,25 @@ cat(&quot;Assigned a wbb_id to all&quot;, nrow(assignments), &quot;rows\n&quot;)
 cat(&quot;Match-tier funnel by season:\n&quot;)</code></pre>
 <pre><code>## Match-tier funnel by season:</code></pre>
 <pre class="r"><code>print(val$funnel)</code></pre>
-<pre><code>## # A tibble: 6 × 7
+<pre><code>## # A tibble: 7 × 7
 ##   season    new new_dup tier1 tier1_dup tier2 tier2_dup
 ##   &lt;chr&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;     &lt;int&gt; &lt;int&gt;     &lt;int&gt;
-## 1 2020-21 13055      20     0         0     0         0
-## 2 2021-22  4537       2  8450         1   654         1
-## 3 2022-23  4404       0  8405         7   980         9
-## 4 2023-24  4753       1  8089         0  1064         0
-## 5 2024-25  6617       2  8205         3  1342         1
-## 6 2025-26  6885       7  7390         3  1589         2</code></pre>
+## 1 2020-21 11830       5     0         0     0         0
+## 2 2021-22  4745       2  7434         1   661         1
+## 3 2022-23  5095       1  7352         6  1045         9
+## 4 2023-24  4822       1  7907         0  1084         0
+## 5 2024-25  6569       2  8185         3  1355         1
+## 6 2025-26  6875       7  7398         3  1591         2
+## 7 2026-27  5560       0  7517         0  1529         0</code></pre>
 <pre class="r"><code>if (length(val$issues) &gt; 0) {
   warning(&quot;Validation issues found -- review before publishing:&quot;)
   print(val$issues)
 } else {
   cat(&quot;\nNo validation issues: no wbb_id spans two teams in one season,&quot;,
-      &quot;and no wbb_id spans more than 6 seasons.\n&quot;)
+      &quot;and no wbb_id spans more than 7 seasons.\n&quot;)
 }</code></pre>
 <pre><code>## 
-## No validation issues: no wbb_id spans two teams in one season, and no wbb_id spans more than 6 seasons.</code></pre>
+## No validation issues: no wbb_id spans two teams in one season, and no wbb_id spans more than 7 seasons.</code></pre>
 <div id="guid-crosswalk-cross-check-2022-23" class="section level3">
 <h3>GUID crosswalk cross-check (2022-23)</h3>
 <p><code>wbb_rosters23_crosswalk.csv</code> carries a persistent
@@ -489,12 +511,13 @@ cat(&quot;Payton Hull (Abilene Christian) -- should be one wbb_id across three s
 <pre class="r"><code>print(joined %&gt;% filter(str_detect(name, &quot;Payton Hull&quot;)) %&gt;%
         select(season, team, name, season_player_id, wbb_id, match_tier) %&gt;%
         arrange(season))</code></pre>
-<pre><code>## # A tibble: 3 × 6
+<pre><code>## # A tibble: 4 × 6
 ##   season  team              name        season_player_id wbb_id     match_tier
 ##   &lt;chr&gt;   &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;            &lt;chr&gt;      &lt;chr&gt;     
 ## 1 2023-24 Abilene Christian Payton Hull 9800             wbb-021997 new       
 ## 2 2024-25 Abilene Christian Payton Hull 10389            wbb-021997 tier1     
-## 3 2025-26 Abilene Christian Payton Hull 10942            wbb-021997 tier1</code></pre>
+## 3 2025-26 Abilene Christian Payton Hull 10942            wbb-021997 tier1     
+## 4 2026-27 Abilene Christian Payton Hull 15919            wbb-021997 tier1</code></pre>
 <pre class="r"><code>cat(&quot;\nKamryn Mraz (Abilene Christian) -- redshirt Sophomore -&gt; redshirt Junior,&quot;,
     &quot;should be one wbb_id:\n&quot;)</code></pre>
 <pre><code>## 
@@ -561,19 +584,20 @@ players &lt;- joined %&gt;%
 
 write_csv(players, &quot;players.csv&quot;, quote = &quot;all&quot;, na = &quot;&quot;)
 cat(&quot;Wrote players.csv:&quot;, nrow(players), &quot;players\n&quot;)</code></pre>
-<pre><code>## Wrote players.csv: 40251 players</code></pre>
+<pre><code>## Wrote players.csv: 45424 players</code></pre>
 <pre class="r"><code>print(table(players$match_confidence))</code></pre>
 <pre><code>## 
 ##          high        medium single_season 
-##         18670          4986         16595</code></pre>
+##         21243          6300         17881</code></pre>
 <pre class="r"><code>player_seasons &lt;- joined %&gt;%
   arrange(wbb_id, season_order) %&gt;%
   select(wbb_id, season, ncaa_id, team, name, season_player_id, url,
          year_clean, redshirt, match_tier)
 
 write_csv(player_seasons, &quot;wbb_player_seasons.csv&quot;, quote = &quot;all&quot;, na = &quot;&quot;)
+write_csv(persisted$registry, RETIRED_IDS_FILE, quote = &quot;all&quot;, na = &quot;&quot;)
 cat(&quot;Wrote wbb_player_seasons.csv:&quot;, nrow(player_seasons), &quot;rows\n&quot;)</code></pre>
-<pre><code>## Wrote wbb_player_seasons.csv: 86478 rows</code></pre>
+<pre><code>## Wrote wbb_player_seasons.csv: 98598 rows</code></pre>
 <pre class="r"><code>wbb_rosters_combined &lt;- joined %&gt;%
   select(-name_norm, -last_name_norm, -url_norm, -year_rank, -redshirt_num,
          -total_inches_num, -dup_of, -is_dup_representative, -row_id,
@@ -585,15 +609,17 @@ stopifnot(sum(is.na(wbb_rosters_combined$wbb_id)) == 0)
 
 write_csv(wbb_rosters_combined, &quot;wbb_rosters_combined.csv&quot;, quote = &quot;all&quot;, na = &quot;&quot;)
 cat(&quot;Wrote wbb_rosters_combined.csv:&quot;, nrow(wbb_rosters_combined), &quot;rows\n&quot;)</code></pre>
-<pre><code>## Wrote wbb_rosters_combined.csv: 86478 rows</code></pre>
+<pre><code>## Wrote wbb_rosters_combined.csv: 98598 rows</code></pre>
 <pre class="r"><code>review_queue_final &lt;- bind_rows(result$review_queue, dedup$review) %&gt;%
-  mutate(decision = NA_character_) %&gt;%
+  left_join(queue_id_map, by = c(&quot;candidate_wbb_id&quot; = &quot;wbb_id_temp&quot;)) %&gt;%
+  mutate(candidate_wbb_id = wbb_id, decision = NA_character_) %&gt;%
+  select(-wbb_id) %&gt;%
   arrange(desc(score))
 
 write_csv(review_queue_final, &quot;wbb_id_review_queue.csv&quot;, quote = &quot;all&quot;, na = &quot;&quot;)
 cat(&quot;Wrote wbb_id_review_queue.csv:&quot;, nrow(review_queue_final), &quot;candidate rows&quot;,
     &quot;for manual review\n&quot;)</code></pre>
-<pre><code>## Wrote wbb_id_review_queue.csv: 3842 candidate rows for manual review</code></pre>
+<pre><code>## Wrote wbb_id_review_queue.csv: 4925 candidate rows for manual review</code></pre>
 <pre class="r"><code>if (!file.exists(&quot;player_id_overrides.csv&quot;)) {
   tibble(
     season_a = character(), team_a = character(), name_a = character(),

@@ -162,10 +162,34 @@ load_one_season <- function(file, season_label, ps_map = NULL) {
     )
 }
 
+STALE_EXCLUSIONS_FILE <- "data/stale_roster_exclusions.csv"
+
+# Drop the rows scripts/find_stale_rosters.py listed: team-seasons whose
+# roster is a stale copy of another season (scope team_season) and single
+# duplicate rows (scope row: season + ncaa_id + name + url). The published
+# season CSVs are stripped too (scripts/strip_stale_rows.py); this keeps the
+# ID build correct if a stale row ever comes back.
+drop_stale_rows <- function(df, exclusions_file = STALE_EXCLUSIONS_FILE) {
+  if (!file.exists(exclusions_file)) return(df)
+  ex <- read_csv(exclusions_file, show_col_types = FALSE,
+                 col_types = cols(.default = "c"))
+  team_seasons <- ex %>% filter(scope == "team_season") %>% distinct(season, ncaa_id)
+  rows <- ex %>%
+    filter(scope == "row") %>%
+    transmute(season, ncaa_id, name, url_norm = normalize_url(url))
+  df %>%
+    anti_join(team_seasons, by = c("season", "ncaa_id")) %>%
+    anti_join(rows, by = c("season", "ncaa_id", "name", "url_norm"))
+}
+
 load_all_seasons <- function(season_files = SEASON_FILES,
                              ps_map = load_prev_school_map()) {
   seasons_in_order <- names(season_files)
   all_rows <- imap_dfr(season_files, ~ load_one_season(.x, .y, ps_map = ps_map))
+  n_loaded <- nrow(all_rows)
+  all_rows <- drop_stale_rows(all_rows)
+  message("Dropped ", n_loaded - nrow(all_rows), " stale roster rows (",
+          STALE_EXCLUSIONS_FILE, ")")
   all_rows %>%
     mutate(
       season_order = match(season, seasons_in_order),
@@ -666,6 +690,113 @@ apply_overrides <- function(assignments, all_rows, overrides_file = "player_id_o
   }
 
   assignments
+}
+
+# ---------------------------------------------------------------------------
+# Step 4b (post-process): keep published wbb_ids stable across re-knits
+# ---------------------------------------------------------------------------
+#
+# The matcher mints IDs from 1 on every run, so any change to the input
+# (a dropped stale roster, a new override) would renumber everyone. This
+# step maps the run's temporary IDs back onto the IDs already published in
+# wbb_player_seasons.csv, matching rows on season + ncaa_id + name + url:
+#
+#   - Old IDs are handed out lowest first. Each goes to the cluster holding
+#     most of its rows, unless that cluster already has an (older) ID.
+#   - When every cluster holding an old ID already has one, the old ID is
+#     retired into the cluster's ID (a merge). Old IDs whose rows are all gone
+#     retire with no successor. Retirements are appended to wbb_id_retired.csv,
+#     so downstream users can follow them.
+#   - Clusters with no old ID get new IDs above the highest ever issued,
+#     retired ones included, so an ID is never reused.
+
+RETIRED_IDS_FILE <- "wbb_id_retired.csv"
+
+id_num <- function(x) suppressWarnings(as.numeric(str_extract(x, "\\d+")))
+
+persist_ids <- function(assignments, all_rows, prior_file = "wbb_player_seasons.csv",
+                        registry_file = RETIRED_IDS_FILE,
+                        retired_on = as.character(Sys.Date())) {
+  registry <- if (file.exists(registry_file)) {
+    read_csv(registry_file, show_col_types = FALSE, col_types = cols(.default = "c"))
+  } else {
+    tibble(old_wbb_id = character(), new_wbb_id = character(),
+           retired_on = character(), reason = character())
+  }
+  prior <- if (file.exists(prior_file)) {
+    read_csv(prior_file, show_col_types = FALSE, col_types = cols(.default = "c")) %>%
+      transmute(old_id = wbb_id, season, ncaa_id, name, url_norm = normalize_url(url)) %>%
+      distinct()
+  } else {
+    tibble(old_id = character(), season = character(), ncaa_id = character(),
+           name = character(), url_norm = character())
+  }
+
+  rows <- assignments %>%
+    left_join(all_rows %>% select(row_id, season, ncaa_id, name, url_norm, season_order),
+              by = "row_id")
+  clusters <- rows %>%
+    group_by(temp_id = wbb_id) %>%
+    summarise(first_order = min(season_order),
+              first_row = min(as.numeric(str_remove(row_id, "^r"))), .groups = "drop") %>%
+    arrange(first_order, first_row)
+  carried <- rows %>%
+    inner_join(prior, by = c("season", "ncaa_id", "name", "url_norm"),
+               relationship = "many-to-many") %>%
+    count(temp_id = wbb_id, old_id, name = "support") %>%
+    left_join(clusters %>% mutate(cluster_rank = row_number()) %>%
+                select(temp_id, cluster_rank), by = "temp_id") %>%
+    arrange(old_id, desc(support), cluster_rank)
+
+  final <- setNames(rep(NA_character_, nrow(clusters)), clusters$temp_id)
+  retired <- list()
+  by_old <- split(carried$temp_id, carried$old_id)
+  for (old in names(by_old)) {
+    cands <- by_old[[old]]
+    free <- cands[is.na(final[cands])]
+    if (length(free) > 0) {
+      final[free[1]] <- old
+    } else {
+      retired[[length(retired) + 1]] <- tibble(old_wbb_id = old, temp_id = cands[1],
+                                               reason = "merged")
+    }
+  }
+
+  max_num <- max(c(0, id_num(prior$old_id), id_num(registry$old_wbb_id),
+                   id_num(registry$new_wbb_id)), na.rm = TRUE)
+  unassigned <- names(final)[is.na(final)]
+  final[unassigned] <- sprintf("wbb-%06d", max_num + seq_along(unassigned))
+
+  id_map <- tibble(temp_id = names(final), wbb_id = unname(final))
+  gone <- setdiff(unique(prior$old_id), carried$old_id)
+  new_registry <- bind_rows(
+    bind_rows(retired, tibble(old_wbb_id = character(), temp_id = character(),
+                              reason = character())) %>%
+      left_join(id_map, by = "temp_id") %>%
+      transmute(old_wbb_id, new_wbb_id = wbb_id, retired_on, reason),
+    tibble(old_wbb_id = gone, new_wbb_id = NA_character_, retired_on = retired_on,
+           reason = rep("rows removed", length(gone)))
+  ) %>% arrange(old_wbb_id)
+
+  out <- assignments %>%
+    rename(temp_id = wbb_id) %>%
+    left_join(id_map, by = "temp_id") %>%
+    select(row_id, wbb_id, everything(), -temp_id)
+
+  all_retired <- c(registry$old_wbb_id, new_registry$old_wbb_id)
+  stopifnot(
+    "persist_ids: every row keeps exactly one wbb_id" =
+      nrow(out) == nrow(assignments) && !any(is.na(out$wbb_id)),
+    "persist_ids: one temporary ID maps to one final ID" =
+      !any(duplicated(id_map$wbb_id)),
+    "persist_ids: a retired wbb_id is live again" =
+      !any(out$wbb_id %in% all_retired),
+    "persist_ids: a published wbb_id vanished without a retirement record" =
+      all(unique(prior$old_id) %in% c(out$wbb_id, all_retired))
+  )
+
+  list(assignments = out, id_map = id_map,
+       registry = bind_rows(registry, new_registry), new_retirements = new_registry)
 }
 
 # ---------------------------------------------------------------------------

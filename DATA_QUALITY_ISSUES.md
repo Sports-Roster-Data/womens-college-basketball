@@ -97,3 +97,35 @@ re-knitted here -- a re-knit would also bake the working tree's uncommitted
 corrections and the current live upstream into the commit. If you choose to
 re-knit: set `SEASON` to 2025-26 in `cleaning.Rmd`, re-knit it, then re-knit
 `player_ids.Rmd` and commit both.
+
+## Stale-copy team-seasons: a past season scraped from the current page
+
+Found 2026-11-01 while checking a duplicate-ID report from Her Hoop Stats.
+For 170 team-seasons (115 teams, mostly D-II/D-III, 13 D-I) the raw scrape
+saved a different season's roster under the season label: the same roster
+URLs, names and class years, row for row. Sidearm's season-specific roster
+URLs (`/roster/2020-21`) now serve the current roster, which is the likely
+cause. Example: IUPUI's 2020-21 rows are its 2022-23 roster, and its 2021-22
+rows are its 2023-24 roster. Katie Davidson appears there in 2021-22 even
+though she was at Miami (OH) that season.
+
+The copies broke cross-season IDs: class years ran backwards, so tier 1 could
+not link the real seasons. They also placed players on teams they never
+played for. 2020-21 and 2021-22 copying 2022-23 account for most of them.
+
+`scripts/find_stale_rosters.py` flags them. Two seasons of one team are
+flagged when at least 5 URLs are shared, they cover 90% or more of the
+smaller roster, and every shared row has the same name and class year. The
+season kept is the one whose class years line up with the team's nearest
+unflagged seasons. The others are written to
+`data/stale_roster_exclusions.csv` (scope `team_season`, plus curated
+single-row duplicates, scope `row`).
+
+`scripts/strip_stale_rows.py` removed those 2,482 rows from the published
+season CSVs (byte-identical otherwise). `load_all_seasons()` and
+`cleaning.Rmd` also drop them, and `cleaning.Rmd`'s `check-stale-roster`
+chunk flags a new season that copies `PREV_FILE`.
+
+Not caught: sites that reuse the same URLs and edit the class years in place
+(Hunter 2022-23 vs 2023-24). The real rosters for the dropped team-seasons
+still need a re-scrape upstream. When one lands, remove its exclusion rows.

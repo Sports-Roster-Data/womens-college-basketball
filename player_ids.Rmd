@@ -65,7 +65,24 @@ cat("Within-season duplicate groups flagged as genuinely distinct players",
 result <- build_player_ids(all_rows_d)
 
 assignments <- propagate_dup_assignments(all_rows_d, result$assignments)
+assignments_matched <- assignments
 assignments <- apply_overrides(assignments, all_rows_d)
+
+# Map this run's temporary IDs back onto the published ones (see
+# persist_ids in scripts/player_id_functions.R).
+persisted <- persist_ids(assignments, all_rows_d)
+assignments <- persisted$assignments
+cat("Kept", sum(persisted$id_map$wbb_id %in% read_csv("wbb_player_seasons.csv",
+    show_col_types = FALSE, col_types = cols(.default = "c"))$wbb_id),
+    "published wbb_ids; retired", nrow(persisted$new_retirements), "this run\n")
+print(count(persisted$new_retirements, reason))
+
+# The review queue names candidates by the matcher's temporary IDs, before
+# overrides; translate them to final IDs through the rows they label.
+queue_id_map <- assignments_matched %>%
+  inner_join(assignments, by = "row_id", suffix = c("_temp", "")) %>%
+  distinct(wbb_id_temp, wbb_id) %>%
+  group_by(wbb_id_temp) %>% slice(1) %>% ungroup()
 
 stopifnot(nrow(assignments) == nrow(all_rows_d))
 cat("Assigned a wbb_id to all", nrow(assignments), "rows\n")
@@ -179,6 +196,7 @@ player_seasons <- joined %>%
          year_clean, redshirt, match_tier)
 
 write_csv(player_seasons, "wbb_player_seasons.csv", quote = "all", na = "")
+write_csv(persisted$registry, RETIRED_IDS_FILE, quote = "all", na = "")
 cat("Wrote wbb_player_seasons.csv:", nrow(player_seasons), "rows\n")
 ```
 
@@ -198,7 +216,9 @@ cat("Wrote wbb_rosters_combined.csv:", nrow(wbb_rosters_combined), "rows\n")
 
 ```{r build-review-queue}
 review_queue_final <- bind_rows(result$review_queue, dedup$review) %>%
-  mutate(decision = NA_character_) %>%
+  left_join(queue_id_map, by = c("candidate_wbb_id" = "wbb_id_temp")) %>%
+  mutate(candidate_wbb_id = wbb_id, decision = NA_character_) %>%
+  select(-wbb_id) %>%
   arrange(desc(score))
 
 write_csv(review_queue_final, "wbb_id_review_queue.csv", quote = "all", na = "")

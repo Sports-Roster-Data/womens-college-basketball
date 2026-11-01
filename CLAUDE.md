@@ -43,7 +43,11 @@ The season files' own `player_id` is a roster number that changes every season (
 
 Human decisions go in `player_id_overrides.csv` (`season_a/team_a/name_a`, `season_b/team_b/name_b`, decision `same`/`different`) and are re-applied on every re-knit, so adjudication persists across seasons. The 2022-23 GUID crosswalk (`wbb_rosters23_crosswalk.csv`) serves as independent within-season ground truth (precision/recall check).
 
-Outputs: `players.csv` (one row per `wbb_id`, mode-value attributes), `wbb_player_seasons.csv` (season-level links), `wbb_rosters_combined.csv` (all seasons joined with `wbb_id` appended), `wbb_id_review_queue.csv`.
+**ID persistence** (`persist_ids`, run after overrides): the matcher mints temporary IDs from 1 each run; `persist_ids` maps them back onto the IDs already published in `wbb_player_seasons.csv` (row key: season + ncaa_id + name + url), lowest old ID first. Old IDs folded into a merge, or whose rows are all gone, are appended to `wbb_id_retired.csv` (`old_wbb_id, new_wbb_id, retired_on, reason`); new players get IDs above the highest ever issued, so IDs are never reused. A re-knit with unchanged inputs must be byte-identical.
+
+Stale-copy team-seasons listed in `data/stale_roster_exclusions.csv` are dropped in `load_all_seasons()` (see DATA_QUALITY_ISSUES.md).
+
+Outputs: `players.csv` (one row per `wbb_id`, mode-value attributes), `wbb_player_seasons.csv` (season-level links, also the persistence baseline for the next knit), `wbb_rosters_combined.csv` (all seasons joined with `wbb_id` appended), `wbb_id_review_queue.csv`, `wbb_id_retired.csv`.
 
 ### 3. High school standardization — `data/high_school_mapping.csv`
 
@@ -71,9 +75,13 @@ Knit with a UTF-8 locale (`LANG=en_US.UTF-8 Rscript ...`). Under the C locale th
 
 1. Set `SEASON` in `cleaning.Rmd` and knit it; review the quality-check sections. (`cleaning.Rmd` requires `PREV_FILE` — last season's CSV — to already exist.)
 2. Add the new season's CSV to `SEASON_FILES` in `scripts/player_id_functions.R`, knit `player_ids.Rmd`, then adjudicate `wbb_id_review_queue.csv`: fill its `decision` column, copy resolved pairs into `player_id_overrides.csv`, and re-knit so overrides take effect across seasons.
-3. Commit the new season CSV plus the rebuilt `players.csv`, `wbb_player_seasons.csv`, `wbb_rosters_combined.csv`, and review queue.
+3. Commit the new season CSV plus the rebuilt `players.csv`, `wbb_player_seasons.csv`, `wbb_rosters_combined.csv`, `wbb_id_retired.csv`, and review queue.
+
+When writing overrides for a player with 3+ IDs, anchor every pair on the same side-A row: `apply_overrides` resolves IDs before it loops, so a chain (A–B, then B–C) leaves C on B's stale ID.
 
 ## Known source-corruption landmines
+
+Stale-copy seasons: the scraper sometimes saved a team's current roster under an earlier season label (170 team-seasons in 2020-21 through 2024-25). Run `python3 scripts/find_stale_rosters.py --check` after a new season lands. The `check-stale-roster` chunk in `cleaning.Rmd` catches a copy of `PREV_FILE`.
 
 Read `DATA_QUALITY_ISSUES.md` before writing new parsing code: ~5 roster rows have structurally shifted fields (a missing field shifts every downstream column left), and the worst case — an unescaped `5'10""` height string — breaks CSV quoting and swallows the entire next row into the previous record. When a new season shows one-row-off values or a vanished neighbor row, check for this pattern in the raw scrape first; the scraper is in `dwillis/wbb/blob/master/ncaa/rosters.py`.
 
