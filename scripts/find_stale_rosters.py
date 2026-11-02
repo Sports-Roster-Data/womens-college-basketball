@@ -48,9 +48,21 @@ SEASONS = ["2020-21", "2021-22", "2022-23", "2023-24", "2024-25",
 YEAR_RANK = {"Freshman": 1, "Sophomore": 2, "Junior": 3, "Senior": 4,
              "Fifth Year": 5, "Graduate Student": 5, "Sixth Year": 6}
 
-# Flagged pairs where "keep the latest" was checked and is wrong:
-# (ncaa_id, stale_season) -> never excluded. Extend as audits find them.
-AUDIT_KEEP = set()
+# Flagged pairs where the kept season was checked and is wrong:
+# (ncaa_id, season) -> never excluded. Extend as audits find them, and add
+# the season that really is the copy to AUDIT_STALE.
+AUDIT_KEEP = {
+    ("321", "2022-23"),  # John Jay: the re-scrape returns this roster for 2022-23
+}
+
+# The real copies behind AUDIT_KEEP entries. Once their rows are stripped the
+# detector cannot see them, so they are listed by hand.
+AUDIT_STALE = [
+    {"season": "2020-21", "ncaa_id": "321", "team": "John Jay",
+     "scope": "team_season", "name": "", "url": "", "copy_of_season": "2022-23",
+     "reason": "roster is an exact copy of 2022-23 (CUNYAC did not play 2020-21; "
+               "no 2020-21 roster on the site)"},
+]
 
 # Single duplicate rows the season-level test cannot see.
 ROW_EXCLUSIONS = [
@@ -199,7 +211,7 @@ def main():
     except FileNotFoundError:
         pass
     merged = {key(r): r for r in existing}
-    for r in found + ROW_EXCLUSIONS:
+    for r in found + AUDIT_STALE + ROW_EXCLUSIONS:
         merged.setdefault(key(r), r)
     for ncaa_id, season in AUDIT_KEEP:
         merged = {k: r for k, r in merged.items()

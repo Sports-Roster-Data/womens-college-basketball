@@ -408,9 +408,9 @@ every re-run, so manual adjudication persists.</p>
 <pre><code>## # A tibble: 7 × 3
 ##   season  season_order     n
 ##   &lt;chr&gt;          &lt;int&gt; &lt;int&gt;
-## 1 2020-21            1 11835
+## 1 2020-21            1 11822
 ## 2 2021-22            2 12844
-## 3 2022-23            3 13508
+## 3 2022-23            3 13521
 ## 4 2023-24            4 13814
 ## 5 2024-25            5 16115
 ## 6 2025-26            6 15876
@@ -440,10 +440,12 @@ assignments &lt;- persisted$assignments
 cat(&quot;Kept&quot;, sum(persisted$id_map$wbb_id %in% read_csv(&quot;wbb_player_seasons.csv&quot;,
     show_col_types = FALSE, col_types = cols(.default = &quot;c&quot;))$wbb_id),
     &quot;published wbb_ids; retired&quot;, nrow(persisted$new_retirements), &quot;this run\n&quot;)</code></pre>
-<pre><code>## Kept 45424 published wbb_ids; retired 0 this run</code></pre>
+<pre><code>## Kept 45423 published wbb_ids; retired 1 this run</code></pre>
 <pre class="r"><code>print(count(persisted$new_retirements, reason))</code></pre>
-<pre><code>## # A tibble: 0 × 2
-## # ℹ 2 variables: reason &lt;chr&gt;, n &lt;int&gt;</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   reason     n
+##   &lt;chr&gt;  &lt;int&gt;
+## 1 merged     1</code></pre>
 <pre class="r"><code># The review queue names candidates by the matcher&#39;s temporary IDs, before
 # overrides; translate them to final IDs through the rows they label.
 queue_id_map &lt;- assignments_matched %&gt;%
@@ -455,7 +457,7 @@ stopifnot(nrow(assignments) == nrow(all_rows_d))
 cat(&quot;Assigned a wbb_id to all&quot;, nrow(assignments), &quot;rows\n&quot;)</code></pre>
 <pre><code>## Assigned a wbb_id to all 98598 rows</code></pre>
 <pre class="r"><code>cat(&quot;Distinct players (wbb_id) across all seasons:&quot;, n_distinct(assignments$wbb_id), &quot;\n&quot;)</code></pre>
-<pre><code>## Distinct players (wbb_id) across all seasons: 45424</code></pre>
+<pre><code>## Distinct players (wbb_id) across all seasons: 45423</code></pre>
 </div>
 <div id="validation" class="section level2">
 <h2>Validation</h2>
@@ -467,10 +469,10 @@ cat(&quot;Match-tier funnel by season:\n&quot;)</code></pre>
 <pre><code>## # A tibble: 7 × 7
 ##   season    new new_dup tier1 tier1_dup tier2 tier2_dup
 ##   &lt;chr&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;     &lt;int&gt; &lt;int&gt;     &lt;int&gt;
-## 1 2020-21 11830       5     0         0     0         0
-## 2 2021-22  4745       2  7434         1   661         1
-## 3 2022-23  5095       1  7352         6  1045         9
-## 4 2023-24  4822       1  7907         0  1084         0
+## 1 2020-21 11817       5     0         0     0         0
+## 2 2021-22  4752       2  7426         1   662         1
+## 3 2022-23  5100       1  7360         6  1045         9
+## 4 2023-24  4823       1  7906         0  1084         0
 ## 5 2024-25  6569       2  8185         3  1355         1
 ## 6 2025-26  6875       7  7398         3  1591         2
 ## 7 2026-27  5560       0  7517         0  1529         0</code></pre>
@@ -584,11 +586,11 @@ players &lt;- joined %&gt;%
 
 write_csv(players, &quot;players.csv&quot;, quote = &quot;all&quot;, na = &quot;&quot;)
 cat(&quot;Wrote players.csv:&quot;, nrow(players), &quot;players\n&quot;)</code></pre>
-<pre><code>## Wrote players.csv: 45424 players</code></pre>
+<pre><code>## Wrote players.csv: 45423 players</code></pre>
 <pre class="r"><code>print(table(players$match_confidence))</code></pre>
 <pre><code>## 
 ##          high        medium single_season 
-##         21243          6300         17881</code></pre>
+##         21242          6301         17880</code></pre>
 <pre class="r"><code>player_seasons &lt;- joined %&gt;%
   arrange(wbb_id, season_order) %&gt;%
   select(wbb_id, season, ncaa_id, team, name, season_player_id, url,
@@ -619,7 +621,7 @@ cat(&quot;Wrote wbb_rosters_combined.csv:&quot;, nrow(wbb_rosters_combined), &qu
 write_csv(review_queue_final, &quot;wbb_id_review_queue.csv&quot;, quote = &quot;all&quot;, na = &quot;&quot;)
 cat(&quot;Wrote wbb_id_review_queue.csv:&quot;, nrow(review_queue_final), &quot;candidate rows&quot;,
     &quot;for manual review\n&quot;)</code></pre>
-<pre><code>## Wrote wbb_id_review_queue.csv: 4925 candidate rows for manual review</code></pre>
+<pre><code>## Wrote wbb_id_review_queue.csv: 4926 candidate rows for manual review</code></pre>
 <pre class="r"><code>if (!file.exists(&quot;player_id_overrides.csv&quot;)) {
   tibble(
     season_a = character(), team_a = character(), name_a = character(),

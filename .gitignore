@@ -61,3 +61,6 @@ corrections/baseline_*.csv
 # Generated site data (built by scripts/build_site_data.R, deployed by the Pages workflow)
 site/data/*
 !site/data/us-states.json
+
+# re-scrape staging (scripts/rescrape_stale_rosters.py)
+data/rescrape/
