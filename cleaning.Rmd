@@ -12,7 +12,7 @@ library(usdata)
 library(rvest)
 
 # Configuration: change SEASON (e.g. "2027-28") and everything else follows
-SEASON      <- "2026-27"
+SEASON      <- "2023-24"
 START_YEAR  <- as.integer(str_sub(SEASON, 1, 4))
 SEASON_END  <- START_YEAR + 1L                                   # 2027
 SEASON_TAG  <- str_replace(SEASON, "-", "_")                     # 2026_27
@@ -20,6 +20,19 @@ PREV_TAG    <- sprintf("%d_%02d", START_YEAR - 1L, START_YEAR %% 100L)  # 2025_2
 
 INPUT_URL    <- paste0("https://raw.githubusercontent.com/dwillis/wbb-rosters/refs/heads/main/rosters_", SEASON, ".csv")
 OUTPUT_FILE  <- paste0("wbb_rosters_", SEASON_TAG, ".csv")
+
+# Staging run (scripts/splice_rescraped_rows.py): clean a local raw file into
+# a separate output, leaving the season file and corrections/ untouched
+if (nzchar(Sys.getenv("WBB_STAGING_SEASON"))) {
+  SEASON      <- Sys.getenv("WBB_STAGING_SEASON")
+  START_YEAR  <- as.integer(str_sub(SEASON, 1, 4))
+  SEASON_END  <- START_YEAR + 1L
+  SEASON_TAG  <- str_replace(SEASON, "-", "_")
+  PREV_TAG    <- sprintf("%d_%02d", START_YEAR - 1L, START_YEAR %% 100L)
+  INPUT_URL   <- Sys.getenv("WBB_STAGING_INPUT")
+  OUTPUT_FILE <- Sys.getenv("WBB_STAGING_OUTPUT")
+}
+STAGING <- nzchar(Sys.getenv("WBB_STAGING_SEASON"))
 PREV_FILE    <- paste0("wbb_rosters_", PREV_TAG, ".csv")
 TEAMS_URL    <- "https://raw.githubusercontent.com/Sports-Roster-Data/womens-college-basketball/main/teams.csv"
 POSITIONS_URL <- "https://raw.githubusercontent.com/dwillis/jour479x_fall_2022/main/data/wbb_positions.csv"
@@ -64,6 +77,38 @@ wbb_rosters <- wbb_rosters |>
   left_join(teams, by = c("ncaa_id", "team"), relationship = "many-to-one")
 
 stopifnot(nrow(wbb_rosters) == n_input)
+
+# Season-aware conference override. teams.csv has a single static conference
+# column that reflects each team's current affiliation, but affiliations move
+# (the 2021-2024 realignment waves, the 2026 Pac-12 rebuild, reclassifiers).
+# data/teams_conference.csv holds one row per (team, season-range) where the
+# actual conference differs from the static teams.csv value; blank last_season
+# = currently in effect. Teams absent from the table for a given season keep
+# the static teams.csv value. Built from Wikipedia's "List of NCAA Division I
+# conference changes in the 2020s" (full-membership and women's-basketball
+# moves, seasons 2020-21 through 2026-27).
+conf_overrides <- read_csv("data/teams_conference.csv", show_col_types = FALSE) |>
+  filter(
+    SEASON >= first_season,
+    is.na(last_season) | SEASON <= last_season
+  )
+stopifnot(
+  # one conference per team per season
+  !anyDuplicated(conf_overrides$ncaa_id),
+  # every override must actually apply this season
+  all(conf_overrides$ncaa_id %in% teams$ncaa_id)
+)
+if (nrow(conf_overrides) > 0) {
+  wbb_rosters <- wbb_rosters |>
+    left_join(
+      conf_overrides |> transmute(ncaa_id, conference_override = conference),
+      by = "ncaa_id",
+      relationship = "many-to-one"
+    ) |>
+    mutate(conference = coalesce(conference_override, conference)) |>
+    select(-conference_override)
+  cat("Applied", nrow(conf_overrides), "season conference override(s) for", SEASON, "\n")
+}
 ```
 
 ## Height Cleaning
@@ -532,7 +577,8 @@ Edits made in the browser editor (`python editor/app.py --season 2026-27`) are l
 
 ```{r apply-corrections}
 CORRECTIONS_FILE <- paste0("corrections/corrections_", SEASON_TAG, ".csv")
-BASELINE_FILE    <- paste0("corrections/baseline_", SEASON_TAG, ".csv")
+BASELINE_FILE    <- if (STAGING) str_replace(OUTPUT_FILE, "\\.csv$", "_baseline.csv") else
+                      paste0("corrections/baseline_", SEASON_TAG, ".csv")
 
 dir.create("corrections", showWarnings = FALSE)
 write_csv(wbb_rosters_final, BASELINE_FILE, quote = "all", na = "")
